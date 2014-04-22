@@ -26,7 +26,8 @@ module.exports = function(grunt) {
                 dateFormat: function(time) {
                     grunt.log.writeln('The watch finished in ' + time + 'ms at' + (new Date()).toString());
                     grunt.log.writeln('Waiting for more changes...');
-                }
+            },
+                livereload: true
             },
             branchChanged: { // clear cache if the branch is changed
                 files: '.git/HEAD',
@@ -40,11 +41,36 @@ module.exports = function(grunt) {
                         '<%= baseURL %>/**/*.css',
                         '<%= baseURL %>/**/*.sass',
                         '<%= baseURL %>/**/*.less',
-                        '<%= baseURL %>/**/*.twig'],
-                tasks: ['shell:asseticDump', 'shell:assetsInstall'],
+                        '<%= baseURL %>/**/*.twig',
+                        'less/**/*.less'],
+                tasks: ['shell:asseticDump', 'shell:assetsInstall', 'less:development'],
                 options: {
                     interrupt: true
                 }
+            },
+            less: {
+                files: ['less/**/*.less'],
+                tasks: ['less:development'],
+                options: {
+                    interrupt: true,
+        }
+            }
+        },
+        open: {
+            dev: {
+                path: 'http://127.0.0.1/vhosts/travel-site/web/app_dev.php',
+                app: 'Chrome'
+            }
+        },
+        less: {
+            development: {
+                options: {
+                    paths: ['web/css']
+                },
+                files: {
+                    "web/css/main.css": "less/main.less"
+                }
+                
             }
         }
     });
@@ -52,6 +78,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-shell');
     grunt.registerTask('default', ['shell:asseticDump', 'shell:assetsInstall']);
+    grunt.loadNpmTasks('grunt-open');
+    grunt.loadNpmTasks('grunt-contrib-less');
 
     grunt.registerTask('dump', 'A task to dump all assets.', function() {
         grunt.task.run("shell:asseticDump");
@@ -64,6 +92,17 @@ module.exports = function(grunt) {
         grunt.task.run("shell:assetsInstall");
     });
 
+    grunt.registerTask('run', 'A task to dump all assets and clear cache.', function() {
+        grunt.task.run("open");
+        grunt.task.run("watch");       
+    });
+    
+    grunt.registerTask('less', 'A task to dump all assets and clear cache.', function() {
+        grunt.task.run("all");
+        grunt.task.run("open");
+        grunt.task.run("watch:less");       
+    });
+    
     grunt.registerTask('setDir', 'A task to set the web dir of the project.', function() {
         grunt.config.set("dir", "web");
         grunt.log.writeln("DIR: " + grunt.config.get("dir"));
