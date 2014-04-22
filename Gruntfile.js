@@ -43,9 +43,10 @@ module.exports = function(grunt) {
                         '<%= baseURL %>/**/*.less',
                         '<%= baseURL %>/**/*.twig',
                         'less/**/*.less'],
-                tasks: ['shell:asseticDump', 'shell:assetsInstall', 'less:development'],
+                tasks: ['shell:asseticDump', 'shell:assetsInstall'],
                 options: {
-                    interrupt: true
+                    interrupt: true,
+                    livereload: true
                 }
             },
             less: {
@@ -53,12 +54,13 @@ module.exports = function(grunt) {
                 tasks: ['less:development'],
                 options: {
                     interrupt: true,
-        }
+                    livereload: true
+                }
             }
         },
         open: {
             dev: {
-                path: 'http://127.0.0.1/vhosts/travel-site/web/app_dev.php',
+                path: 'http://127.0.0.1:5000/app_dev.php',
                 app: 'Chrome'
             }
         },
@@ -72,15 +74,27 @@ module.exports = function(grunt) {
                 }
                 
             }
+        },
+        php: {
+            watch: {
+                options: {
+                    open:false,
+                    port:5000,
+                    hostname: '127.0.0.1',
+                    base: './web/'
+                }
+            }
         }
     });
-
-    grunt.loadNpmTasks('grunt-contrib-watch');
+   
     grunt.loadNpmTasks('grunt-shell');
     grunt.registerTask('default', ['shell:asseticDump', 'shell:assetsInstall']);
     grunt.loadNpmTasks('grunt-open');
+    grunt.loadNpmTasks('grunt-php');
+    grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-less');
-
+    
+    
     grunt.registerTask('dump', 'A task to dump all assets.', function() {
         grunt.task.run("shell:asseticDump");
         grunt.task.run("shell:assetsInstall");
@@ -92,15 +106,18 @@ module.exports = function(grunt) {
         grunt.task.run("shell:assetsInstall");
     });
 
-    grunt.registerTask('run', 'A task to dump all assets and clear cache.', function() {
+    grunt.registerTask('run', 'Task watch for changes in Resouces', function() {
+        grunt.task.run("php:watch");
         grunt.task.run("open");
-        grunt.task.run("watch");       
+        grunt.task.run("watch:scripts");
     });
     
-    grunt.registerTask('less', 'A task to dump all assets and clear cache.', function() {
+    grunt.registerTask('phpwatch', ['php:watch','open','watch:scripts']);
+    
+    grunt.registerTask('less', 'Watch for less and generate css', function() {
         grunt.task.run("all");
-        grunt.task.run("open");
-        grunt.task.run("watch:less");       
+//        grunt.task.run("open");
+        grunt.task.run("watch:less");
     });
     
     grunt.registerTask('setDir', 'A task to set the web dir of the project.', function() {
