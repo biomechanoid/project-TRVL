@@ -19,10 +19,9 @@
         "sensio/framework-extra-bundle": "~3.0",
         "sensio/generator-bundle": "~2.3",
         "incenteev/composer-parameter-handler": "~2.0",
-        
-        "braincrafted/bootstrap-bundle": "~2.0",
-        "twbs/bootstrap": "3.0.*",
-        "jquery/jquery":  "1.10.*"
+
+        "twbs/bootstrap": "v3.1.1",
+        "sonata-project/jquery-bundle": "1.10.2"
     },
     "repositories": [
         {
