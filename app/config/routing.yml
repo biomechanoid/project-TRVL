@@ -1,0 +1,5 @@
+dj_main:
+    resource: "@DJMainBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
