@@ -24,6 +24,8 @@ class AppKernel extends Kernel
             new Sonata\AdminBundle\SonataAdminBundle(),
 
             new DJ\MainBundle\DJMainBundle(),
+            new DJ\AdminBundle\DJAdminBundle(),
+            new DJ\BlogBundle\DJBlogBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
