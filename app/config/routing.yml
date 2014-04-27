@@ -3,13 +3,13 @@ dj_blog:
     type:     annotation
     prefix:   /
 
-dj_admin:
-    resource: "@DJAdminBundle/Resources/config/routing.yml"
-    prefix:   /
-
 dj_main:
     resource: "@DJMainBundle/Controller/"
     type:     annotation
+    prefix:   /
+    
+dj_admin:
+    resource: "@DJAdminBundle/Resources/config/routing.yml"
     prefix:   /
 
 admin:

@@ -1,7 +1,18 @@
 parameters:
 #    dj_admin.example.class: DJ\AdminBundle\Example
 
-services:
+#services:
 #    dj_admin.example:
 #        class: %dj_admin.example.class%
 #        arguments: [@service_id, "plain_value", %parameter%]
+services:
+    sonata.admin.post:
+        class: DJ\AdminBundle\Admin\PostAdmin 
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Post" }
+        arguments:
+            - ~
+            - DJ\BlogBundle\Entity\Post
+            - ~
+        calls:
+            - [ setTranslationDomain, [DJAdminBundle]]

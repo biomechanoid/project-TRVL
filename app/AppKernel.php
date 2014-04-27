@@ -22,6 +22,7 @@ class AppKernel extends Kernel
             new Sonata\jQueryBundle\SonatajQueryBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Sonata\AdminBundle\SonataAdminBundle(),
+            new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
 
             new DJ\MainBundle\DJMainBundle(),
             new DJ\AdminBundle\DJAdminBundle(),
