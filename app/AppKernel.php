@@ -23,10 +23,12 @@ class AppKernel extends Kernel
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Sonata\AdminBundle\SonataAdminBundle(),
             new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
 
             new DJ\MainBundle\DJMainBundle(),
             new DJ\AdminBundle\DJAdminBundle(),
             new DJ\BlogBundle\DJBlogBundle(),
+            new DJ\UserBundle\DJUserBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

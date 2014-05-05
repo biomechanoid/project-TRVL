@@ -122,4 +122,8 @@ sonata_doctrine_orm_admin:
                 percent:    SonataAdminBundle:CRUD:base_percent.html.twig
                 choice:     SonataAdminBundle:CRUD:show_choice.html.twig
                 url:        SonataAdminBundle:CRUD:show_url.html.twig
-            
+
+fos_user:
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main
+    user_class: DJ\UserBundle\Entity\User
