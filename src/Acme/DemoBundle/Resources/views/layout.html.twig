@@ -34,4 +34,7 @@
             <div class="symfony-content">{{ code|raw }}</div>
         </div>
     {% endif %}
+    {% block javascripts %}
+    <script src="//localhost:35729/livereload.js"></script>
+    {% endblock %}
 {% endblock %}

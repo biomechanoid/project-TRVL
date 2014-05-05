@@ -1,6 +1,6 @@
 module.exports = function(grunt) {
     grunt.initConfig({
-        baseURL: "src/Acme/**/Resources",
+        baseURL: "src/DJ/**/Resources",
         shell: {
             clearCache: {
                 options: {
@@ -45,7 +45,6 @@ module.exports = function(grunt) {
                         'less/**/*.less'],
                 tasks: ['shell:asseticDump', 'shell:assetsInstall'],
                 options: {
-                    interrupt: true,
                     livereload: true
                 }
             },
@@ -107,8 +106,8 @@ module.exports = function(grunt) {
     });
 
     grunt.registerTask('run', 'Task watch for changes in Resouces', function() {
-        grunt.task.run("php:watch");
-        grunt.task.run("open");
+//        grunt.task.run("php:watch");
+//        grunt.task.run("open");
         grunt.task.run("watch:scripts");
     });
     
