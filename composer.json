@@ -20,12 +20,11 @@
         "sensio/generator-bundle": "~2.3",
         "incenteev/composer-parameter-handler": "~2.0",
         "sonata-project/admin-bundle": "dev-master",
-        "sonata-project/jquery-bundle": "1.10.2",        
+        "sonata-project/jquery-bundle": "1.10.2",
         "twbs/bootstrap": "3.1.1",
         "sonata-project/doctrine-orm-admin-bundle": "dev-master",
         "doctrine/doctrine-fixtures-bundle": "2.2.*",
-        "friendsofsymfony/user-bundle": "v1.3.3",
-        "sonata-project/user-bundle": "2.2.4"
+        "friendsofsymfony/user-bundle": "v1.3.3"
 
     },
     "repositories": [
