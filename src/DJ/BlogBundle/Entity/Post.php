@@ -22,6 +22,20 @@ class Post
     private $id;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="category_id", type="integer")
+     */
+    private $categoryId;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="postauthor", type="integer")
+     */
+    private $author;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
@@ -31,40 +45,87 @@ class Post
     /**
      * @var text
      *
-     * @ORM\Column(name="body", type="text")
+     * @ORM\Column(name="content", type="text")
      */
-    private $body;
+    private $content;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="postauthor", type="integer")
-     */
-    private $postauthor;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="created_date", type="datetimetz")
-     */
-    private $createdDate;
+    * @var string
+    * @ORM\Column(name="slug", type="string", length=255)
+    *
+    */
+    private $slug;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="updated_date", type="datetimetz")
+     * @ORM\Column(name="created", type="datetimetz")
      */
-    private $updatedDate;
+    private $created;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updated", type="datetimetz")
+     */
+    private $updated;
 
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set categoryId
+     *
+     * @param integer $categoryId
+     * @return Post
+     */
+    public function setCategoryId($categoryId)
+    {
+
+        $this->categoryId = $categoryId;
+
+        return $this;
+    }
+
+    /**
+     * Get categoryId
+     *
+     * @return integer
+     */
+    public function getCategoryId()
+    {
+        return $this->categoryId;
+    }
+
+    /**
+     * Set author
+     *
+     * @param integer $author
+     * @return Post
+     */
+    public function setAuthor($author)
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    /**
+     * Get author
+     *
+     * @return integer
+     */
+    public function getAuthor()
+    {
+        return $this->author;
     }
 
     /**
@@ -83,7 +144,7 @@ class Post
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
@@ -91,94 +152,94 @@ class Post
     }
 
     /**
-     * Set body
+     * Set content
      *
-     * @param string $body
+     * @param string $content
      * @return Post
      */
-    public function setBody($body)
+    public function setContent($content)
     {
-        $this->body = $body;
+        $this->content = $content;
 
         return $this;
     }
 
     /**
-     * Get body
+     * Get content
      *
-     * @return string 
+     * @return string
      */
-    public function getBody()
+    public function getContent()
     {
-        return $this->body;
+        return $this->content;
     }
 
     /**
-     * Set postauthor
+     * Set slug
      *
-     * @param integer $postauthor
+     * @param string $slug
      * @return Post
      */
-    public function setPostauthor($postauthor)
+    public function setSlug($slug)
     {
-        $this->postauthor = $postauthor;
+        $this->slug = $slug;
 
         return $this;
     }
 
     /**
-     * Get postauthor
+     * Get slug
      *
-     * @return integer 
+     * @return string
      */
-    public function getPostauthor()
+    public function getSlug()
     {
-        return $this->postauthor;
+        return $this->slug;
     }
 
     /**
-     * Set createdDate
+     * Set created
      *
-     * @param \DateTime $createdDate
+     * @param \DateTime $created
      * @return Post
      */
-    public function setCreatedDate($createdDate)
+    public function setCreated($created)
     {
-        $this->createdDate = $createdDate;
+        $this->created = $created;
 
         return $this;
     }
 
     /**
-     * Get createdDate
+     * Get created
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
-    public function getCreatedDate()
+    public function getCreated()
     {
-        return $this->createdDate;
+        return $this->created;
     }
 
     /**
-     * Set updatedDate
+     * Set updated
      *
-     * @param \DateTime $updatedDate
+     * @param \DateTime $updated
      * @return Post
      */
-    public function setUpdatedDate($updatedDate)
+    public function setUpdated($updated)
     {
-        $this->updatedDate = $updatedDate;
+        $this->updated = $updated;
 
         return $this;
     }
 
     /**
-     * Get updatedDate
+     * Get updated
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
-    public function getUpdatedDate()
+    public function getUpdated()
     {
-        return $this->updatedDate;
+        return $this->updated;
     }
 }

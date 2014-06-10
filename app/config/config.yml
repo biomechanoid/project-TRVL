@@ -127,3 +127,20 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
     user_class: DJ\UserBundle\Entity\User
+
+sonata_admin:
+    title: Site Admin Area
+    templates:
+        dashboard: DJAdminBundle:Core:dashboard.html.twig
+        show: DJAdminBundle:Default:index.html.twig
+    dashboard:
+        groups:
+            acme.admin.group.content:
+                label: dj.admin.group.content
+                label_catalogue: DJAdminBundle
+                items:
+                    - sonata.admin.post
+    options:
+        use_select2:    false
+
+
