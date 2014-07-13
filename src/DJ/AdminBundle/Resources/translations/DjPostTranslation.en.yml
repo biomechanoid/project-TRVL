@@ -1,0 +1,6 @@
+dj.admin.group.content: Mange your resources
+dj.admin.post.add.general.title.header: Create Blog Content
+dj.admin.post.add.title.help: Create main title of your story.
+dj.admin.post.add.author.help: Choose author.
+dj.admin.post.add.content.help: This is main content of the story.
+dj.admin.post.add.slug.help: This contain uri name (must be uniqe)

@@ -11,8 +11,9 @@ use Sonata\AdminBundle\Route\RouteCollection;
 
 class PostAdmin extends Admin
 {
-    protected $baseROuteName = 'admin_dj_post';
+    protected $baseRouteName = 'admin_dj_post';
     protected $baseRoutePattern = 'post';
+    protected $translationDomain =  'DjPostTranslation';
 
      protected function configureRoutes(RouteCollection $collection)
     {
@@ -23,11 +24,11 @@ class PostAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-        ->with('dj.admin.post.add.general.title.header', array('description' => 'dj.admin.post.add.general.title.description'))
-            ->add('title', 'text', array('label' => 'Post Title', 'help' => 'dj.admin.post.add.title.help'))
+        ->with('dj.admin.post.add.general.title.header', array('description' => 'Manage your blog content'))
+            ->add('title', 'text', array('help' => 'dj.admin.post.add.title.help'))
             ->add('author', 'entity', array('class' => 'DJ\UserBundle\Entity\User', 'help' => 'dj.admin.post.add.author.help'))
-            ->add('content','text', array('label' => 'dj.admin.post.add.content.label', 'help' => 'dj.admin.post.add.content.help'))
-            ->add('slug', 'text', array('label'=>'dj.admin.post.add.slug.label','help' => 'dj.admin.post.add.slug.help'))
+            ->add('content','text', array('help' => 'dj.admin.post.add.content.help'))
+            ->add('slug', 'text', array('help' => 'dj.admin.post.add.slug.help'))
             ->add('created','datetime')
             ->add('updated', 'datetime')
             ->end()
