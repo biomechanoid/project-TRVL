@@ -137,7 +137,7 @@ sonata_admin:
         groups:
             acme.admin.group.content:
                 label: dj.admin.group.content
-                label_catalogue: DJAdminBundle
+                label_catalogue: DjPostTranslation
                 items:
                     - sonata.admin.post
     options:

@@ -12,3 +12,6 @@
 /composer.phar
 nbproject/
 node_modules/
+.buildpath
+.project
+.settings/

@@ -9,10 +9,8 @@ services:
     sonata.admin.post:
         class: DJ\AdminBundle\Admin\PostAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "dj.admin.group.content", label: "Post" }
+            - { name: sonata.admin, manager_type: orm, group: "dj.admin.group.content", label: "Post", label_translator_strategy: "sonata.admin.label.strategy.native" }
         arguments:
             - ~
             - DJ\BlogBundle\Entity\Post
             - 'DJAdminBundle:PostCRUD' # define the new controller via the third argument
-        calls:
-            - [ setTranslationDomain, [DJ\AdminBundle]]
