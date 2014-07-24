@@ -2,7 +2,9 @@
 
 namespace DJ\BlogBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+
 
 /**
  * Post
@@ -24,14 +26,7 @@ class Post
     /**
      * @var integer
      *
-     * @ORM\Column(name="category_id", type="integer")
-     */
-    private $categoryId;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="postauthor", type="integer")
+     * @ORM\Column(name="author", type="integer")
      */
     private $author;
 
@@ -69,6 +64,32 @@ class Post
      * @ORM\Column(name="updated", type="datetimetz")
      */
     private $updated;
+
+    /**
+     * @var string
+     * @ORM\Column(name="status", type="string", length=20)
+     *
+     */
+    private $status;
+
+    /**
+     * @var string
+     * @ORM\Column(name="soft_delete", type="boolean", length=20)
+     *
+     */
+    private $softDelete;
+
+    /**
+    * @ORM\OneToMany(targetEntity="Comment", mappedBy="postid")
+    */
+    protected $comments;
+
+    /**
+     * @ORM\ManyToOne( targetEntity="Category", inversedBy="posts")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     *
+     */
+    protected $categoryId;
 
 
     /**
@@ -241,5 +262,91 @@ class Post
     public function getUpdated()
     {
         return $this->updated;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->comments = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add comments
+     *
+     * @param \DJ\BlogBundle\Entity\Comment $comments
+     * @return Post
+     */
+    public function addComment(\DJ\BlogBundle\Entity\Comment $comments)
+    {
+        $this->comments[] = $comments;
+
+        return $this;
+    }
+
+    /**
+     * Remove comments
+     *
+     * @param \DJ\BlogBundle\Entity\Comment $comments
+     */
+    public function removeComment(\DJ\BlogBundle\Entity\Comment $comments)
+    {
+        $this->comments->removeElement($comments);
+    }
+
+    /**
+     * Get comments
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getComments()
+    {
+        return $this->comments;
+    }
+
+    /**
+     * Set status
+     *
+     * @param string $status
+     * @return Post
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Set softDelete
+     *
+     * @param boolean $softDelete
+     * @return Post
+     */
+    public function setSoftDelete($softDelete)
+    {
+        $this->softDelete = $softDelete;
+
+        return $this;
+    }
+
+    /**
+     * Get softDelete
+     *
+     * @return boolean
+     */
+    public function getSoftDelete()
+    {
+        return $this->softDelete;
     }
 }
