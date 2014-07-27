@@ -87,7 +87,7 @@ class Post
     private $softDelete;
 
     /**
-    * @ORM\OneToMany(targetEntity="Comment", mappedBy="postid")
+    * @ORM\OneToMany(targetEntity="Comment", mappedBy="post", orphanRemoval=true)
     */
     protected $comments;
 

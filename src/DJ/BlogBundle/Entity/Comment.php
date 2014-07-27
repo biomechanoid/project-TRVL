@@ -24,16 +24,16 @@ class Comment
     /**
      * @var integer
      * @ORM\ManyToOne(targetEntity="Post", inversedBy="comments")
-     * @ORM\JoinColumn(name="postid", referencedColumnName="id")
+     * @ORM\JoinColumn(name="postid", referencedColumnName="id", onDelete="CASCADE")
      */
-    private $postid;
+    private $post;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="userid", type="integer")
      */
-    protected $userid;
+    protected $user;
 
     /**
      * @var text
@@ -207,7 +207,7 @@ class Comment
     /**
      * Get ip
      *
-     * @return string 
+     * @return string
      */
     public function getIp()
     {
