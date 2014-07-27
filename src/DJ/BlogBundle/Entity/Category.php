@@ -30,8 +30,7 @@ class Category
 
     /**
      * @var integer
-     *
-     * @ORM\Column(name="parent_category", type="integer", nullable=true)
+     * @ORM\Column(name="parent_category", type="integer")
      */
     private $parentCategory;
 

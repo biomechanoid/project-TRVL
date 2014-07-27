@@ -42,11 +42,17 @@ class Asset
      */
     private $alt;
 
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="PostAsset", mappedBy="assetid", cascade={"persist", "remove"}, orphanRemoval=true)
+     */
+    private $postAssets;
+
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -69,7 +75,7 @@ class Asset
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -92,7 +98,7 @@ class Asset
     /**
      * Get src
      *
-     * @return string 
+     * @return string
      */
     public function getSrc()
     {
@@ -115,10 +121,50 @@ class Asset
     /**
      * Get alt
      *
-     * @return string 
+     * @return string
      */
     public function getAlt()
     {
         return $this->alt;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->postAssets = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add postAssets
+     *
+     * @param \DJ\BlogBundle\Entity\PostAsset $postAssets
+     * @return Asset
+     */
+    public function addPostAsset(\DJ\BlogBundle\Entity\PostAsset $postAssets)
+    {
+        $this->postAssets[] = $postAssets;
+
+        return $this;
+    }
+
+    /**
+     * Remove postAssets
+     *
+     * @param \DJ\BlogBundle\Entity\PostAsset $postAssets
+     */
+    public function removePostAsset(\DJ\BlogBundle\Entity\PostAsset $postAssets)
+    {
+        $this->postAssets->removeElement($postAssets);
+    }
+
+    /**
+     * Get postAssets
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPostAssets()
+    {
+        return $this->postAssets;
     }
 }
