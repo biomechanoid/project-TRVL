@@ -26,6 +26,7 @@
         "doctrine/doctrine-fixtures-bundle": "2.2.*",
         "friendsofsymfony/user-bundle": "v1.3.3",
         "sonata-project/user-bundle": "2.2.4"
+        "doctrine/doctrine-fixtures-bundle": "2.2.*"
 
     },
     "repositories": [
