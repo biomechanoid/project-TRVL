@@ -213,4 +213,50 @@ class Comment
     {
         return $this->ip;
     }
+
+    /**
+     * Set user
+     *
+     * @param integer $user
+     * @return Comment
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return integer 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set post
+     *
+     * @param \DJ\BlogBundle\Entity\Post $post
+     * @return Comment
+     */
+    public function setPost(\DJ\BlogBundle\Entity\Post $post = null)
+    {
+        $this->post = $post;
+
+        return $this;
+    }
+
+    /**
+     * Get post
+     *
+     * @return \DJ\BlogBundle\Entity\Post 
+     */
+    public function getPost()
+    {
+        return $this->post;
+    }
 }

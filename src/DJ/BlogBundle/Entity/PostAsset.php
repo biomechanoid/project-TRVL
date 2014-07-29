@@ -34,9 +34,8 @@ class PostAsset
     private $assetid;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="postid", type="integer")
+     *  @ORM\ManyToOne(targetEntity="Post", inversedBy="postAssets")
+     *  @ORM\JoinColumn(name="postid", referencedColumnName="id", nullable=false)
      */
     private $postid;
 

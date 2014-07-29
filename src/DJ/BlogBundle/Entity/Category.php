@@ -37,7 +37,7 @@ class Category
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="created", type="datetimetz")
+     * @ORM\Column(name="created", type="datetime")
      */
     private $created;
 
@@ -61,8 +61,10 @@ class Category
     private $posts;
 
 
+
     public function __construct() {
         $this->posts = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->created = new \DateTime('now');
     }
 
     /**
@@ -129,7 +131,7 @@ class Category
      */
     public function setCreated($created)
     {
-        $this->created = $created;
+    	$this->created = $created;
 
         return $this;
     }

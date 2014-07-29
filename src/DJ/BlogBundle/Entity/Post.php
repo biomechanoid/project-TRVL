@@ -54,14 +54,14 @@ class Post
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="created", type="datetimetz")
+     * @ORM\Column(name="created", type="datetime")
      */
     private $created;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="updated", type="datetimetz")
+     * @ORM\Column(name="updated", type="datetime")
      */
     private $updated;
 
@@ -81,7 +81,7 @@ class Post
 
     /**
      * @var string
-     * @ORM\Column(name="soft_delete", type="boolean", length=20)
+     * @ORM\Column(name="soft_delete", type="boolean")
      *
      */
     private $softDelete;
@@ -98,6 +98,21 @@ class Post
      */
     protected $category;
 
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="PostAsset", mappedBy="postid", cascade={"persist", "remove"}, orphanRemoval=true)
+     */
+    private $postAssets;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+    	$this->comments = new \Doctrine\Common\Collections\ArrayCollection();
+    	$this->created = new \DateTime('now');
+    	$this->softDelete = false;
+    }
 
     /**
      * Get id
@@ -270,13 +285,7 @@ class Post
     {
         return $this->updated;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->comments = new \Doctrine\Common\Collections\ArrayCollection();
-    }
+
 
     /**
      * Add comments
@@ -401,5 +410,38 @@ class Post
     public function getCategory()
     {
         return $this->category;
+    }
+
+    /**
+     * Add postAssets
+     *
+     * @param \DJ\BlogBundle\Entity\PostAsset $postAssets
+     * @return Post
+     */
+    public function addPostAsset(\DJ\BlogBundle\Entity\PostAsset $postAssets)
+    {
+        $this->postAssets[] = $postAssets;
+
+        return $this;
+    }
+
+    /**
+     * Remove postAssets
+     *
+     * @param \DJ\BlogBundle\Entity\PostAsset $postAssets
+     */
+    public function removePostAsset(\DJ\BlogBundle\Entity\PostAsset $postAssets)
+    {
+        $this->postAssets->removeElement($postAssets);
+    }
+
+    /**
+     * Get postAssets
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPostAssets()
+    {
+        return $this->postAssets;
     }
 }
