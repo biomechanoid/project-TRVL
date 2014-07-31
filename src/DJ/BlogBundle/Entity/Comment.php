@@ -45,7 +45,7 @@ class Comment
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="created", type="datetimetz")
+     * @ORM\Column(name="created", type="datetime")
      */
     protected $created;
 
@@ -63,7 +63,9 @@ class Comment
      */
     protected $ip;
 
-
+	public function __construct() {
+		$this->created = new \DateTime('now');
+	}
 
 
     /**
@@ -230,7 +232,7 @@ class Comment
     /**
      * Get user
      *
-     * @return integer 
+     * @return integer
      */
     public function getUser()
     {
@@ -253,7 +255,7 @@ class Comment
     /**
      * Get post
      *
-     * @return \DJ\BlogBundle\Entity\Post 
+     * @return \DJ\BlogBundle\Entity\Post
      */
     public function getPost()
     {

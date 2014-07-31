@@ -27,7 +27,7 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
 		];
 
 		$category1 = new Category();
-		$category1->setName('Main Categry')
+		$category1->setName('Main Category')
 				 ->setParentCategory(0)
 				 ->setDescription('Lorem ipsum dolor sit amet, consectetur.')
 				 ->setSlug('main');
@@ -40,22 +40,30 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
 
 		$manager->persist($category1);
 		$manager->persist($category2);
-
+		$iteration = 0;
 		foreach ($articles as $author=>$title) {
+			$iteration++;
+
 			$article =  new Post();
-			$article->setCategory($category1)
-					->setAuthor($author)
+			$article->setAuthor($author)
 					->setTitle($title)
 					->setContent('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore unde.')
 					->setSlug(strtolower(str_replace(' ','', $title)))
 					->setUpdated(new \DateTime('now'))
 					->setStatus('visible')
 					->setNode(0);
+			if ($iteration % 2) {
+				$article->setCategory($category2);
+			} else {
+				$article->setCategory($category1);
+			}
 
 			$manager->persist($article);
 		}
 
 		$manager->flush();
+		$this->addReference('article',$article);
+
 	}
 
 	public function getOrder()
