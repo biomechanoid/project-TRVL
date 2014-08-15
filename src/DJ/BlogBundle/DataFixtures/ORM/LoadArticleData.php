@@ -45,7 +45,7 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
 			$iteration++;
 
 			$article =  new Post();
-			$article->setAuthor($author)
+			$article->setAuthor($this->getReference('admin'))
 					->setTitle($title)
 					->setContent('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore unde.')
 					->setSlug(strtolower(str_replace(' ','', $title)))

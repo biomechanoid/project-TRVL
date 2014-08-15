@@ -25,8 +25,8 @@ class Post
 
     /**
      * @var integer
-     *
-     * @ORM\Column(name="author", type="integer")
+     * @ORM\ManyToOne(targetEntity="DJ\UserBundle\Entity\User", inversedBy="post")
+     * @ORM\JoinColumn(name="author", referencedColumnName="id")
      */
     private $author;
 

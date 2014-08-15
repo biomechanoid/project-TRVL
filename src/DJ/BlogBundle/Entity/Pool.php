@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Pool
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="DJ\BlogBundle\Entity\PoolRepository")
+ * @ORM\Entity
  */
 class Pool
 {
@@ -161,7 +161,7 @@ class Pool
     /**
      * Get postAssets
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getPostAssets()
     {
