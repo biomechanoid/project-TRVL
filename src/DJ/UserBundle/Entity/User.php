@@ -18,6 +18,11 @@ class User extends BaseUser
      */
     protected $id;
 
+    /**
+     * @ORM\OneToOne(targetEntity="DJ\BlogBundle\Entity\Comment", mappedBy="user")
+     */
+    protected $comment;
+
     public function __construct()
     {
         parent::__construct();

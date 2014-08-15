@@ -17,7 +17,7 @@ class LoadCommentData extends AbstractFixture implements OrderedFixtureInterface
 		for($i=0; $i<10; $i++) {
 			$comment1 = new Comment();
 			$comment1->setPost($this->getReference('article'))
-			->setUserid($this->getReference('admin'))
+			->setUser($this->getReference('admin'))
 			->setContent('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure nam maxime consectetur.')
 			->setDisplay(1)
 			->setIp('101.110.111.111')

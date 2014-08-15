@@ -4,6 +4,8 @@ namespace DJ\BlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+
+
 /**
  * Comment
  *
@@ -22,7 +24,6 @@ class Comment
     private $id;
 
     /**
-     * @var integer
      * @ORM\ManyToOne(targetEntity="Post", inversedBy="comments")
      * @ORM\JoinColumn(name="postid", referencedColumnName="id", onDelete="CASCADE")
      */
@@ -30,8 +31,8 @@ class Comment
 
     /**
      * @var integer
-     *
-     * @ORM\Column(name="userid", type="integer")
+     * @ORM\ManyToOne(targetEntity="DJ\UserBundle\Entity\User", inversedBy="comment")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     protected $user;
 
