@@ -14,3 +14,11 @@ services:
             - ~
             - DJ\BlogBundle\Entity\Post
             - 'DJAdminBundle:PostCRUD' # define the new controller via the third argument
+    sonata.admin.category:
+        class: DJ\AdminBundle\Admin\CategoryAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "dj.admin.group.content", label: "Category", label_translator_strategy: "sonata.admin.label.strategy.native" }
+        arguments:
+            - ~
+            - DJ\BlogBundle\Entity\Category
+            - 'DJAdminBundle:PostCRUD'

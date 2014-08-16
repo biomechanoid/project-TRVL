@@ -65,6 +65,7 @@ class Category
     public function __construct() {
         $this->posts = new \Doctrine\Common\Collections\ArrayCollection();
         $this->created = new \DateTime('now');
+        $this->parentCategory = 0;
     }
 
     /**
