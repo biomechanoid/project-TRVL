@@ -6,6 +6,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
+use Sonata\AdminBundle\Validator\ErrorElement;
 
 
 class CategoryAdmin extends Admin
@@ -46,6 +47,15 @@ class CategoryAdmin extends Admin
 		->add('slug', 'url')
 
 		;
+	}
+
+	public function validationCategory(ErrorElement $errorElement, $object)
+	{
+ 			$errorElement->with('name')
+					//Todo: Add Validation for form elements
+
+//                 ->assetNotInteger()
+            ->end();
 	}
 
 }

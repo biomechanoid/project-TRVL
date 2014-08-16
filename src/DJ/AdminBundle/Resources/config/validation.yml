@@ -1,0 +1,5 @@
+DJ\BlogBundle\Entity\Category:
+    constraints:
+        - Sonata\AdminBundle\Validator\Constraints\InlineConstraint:
+            service: sonata.admin.category
+            method: validationCategory

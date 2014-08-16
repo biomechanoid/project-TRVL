@@ -226,7 +226,7 @@ class Post
      */
     public function setSlug($slug)
     {
-        $this->slug = $slug;
+        $this->slug = strtolower( str_replace(' ', '', $slug));
 
         return $this;
     }
