@@ -22,3 +22,11 @@ services:
             - ~
             - DJ\BlogBundle\Entity\Category
             - 'DJAdminBundle:PostCRUD'
+    sonata.admin.comment:
+        class: DJ\AdminBundle\Admin\CommentAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "dj.admin.group.content", label: "Comments", label_translator_strategy: "sonata.admin.label.strategy.native" }
+        arguments:
+            - ~
+            - DJ\BlogBundle\Entity\Comment
+            - 'DJAdminBundle:PostCRUD'

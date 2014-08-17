@@ -11,3 +11,12 @@ dj.admin.category.add.title.header: Create new category
 dj.admin.category.add.name.help: Add category name
 dj.admin.category.add.description.help: Add category description 
 dj.admin.category.add.slug.help: Add uri name eg. foo (will appear like www.example.com/foo)
+
+dj.admin.comment.add.title.header:  Manage comment
+dj.admin.comment.add.checkbox.help: Check if visible
+dj.admin.comment.add.author.help : Comment Creator
+dj.admin.comment.add.content.help: Comment body
+dj.admin.comment.add.postid.help: Post ID
+dj.admin.comment.list.display.help: Displayed
+dj.admin.comment.filter.post.help: Find Post ID
+dj.admin.comment.filter.created.help: Find Post by Date

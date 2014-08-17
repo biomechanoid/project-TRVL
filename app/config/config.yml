@@ -141,6 +141,7 @@ sonata_admin:
                 items:
                     - sonata.admin.post
                     - sonata.admin.category
+                    - sonata.admin.comment
     options:
         use_select2:    false
 
