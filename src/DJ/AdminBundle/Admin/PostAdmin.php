@@ -28,14 +28,23 @@ class PostAdmin extends Admin
             ->add('title', 'text', array('help' => 'dj.admin.post.add.title.help'))
             ->add('content','textarea', array('help' => 'dj.admin.post.add.content.help'))
             ->add('slug', 'text', array('help' => 'dj.admin.post.add.slug.help'))
+            ->add('status')
             ->end()
-       ->with('dj.admin.post.add.resources.title.header')
-//TODO: add other entities for managing blog resources
+       ->with('dj.admin.post.add.category.title.header')
+			->add('category', 'sonata_type_model_list', array(
+						'btn_delete'=>false,
+						'btn_add'=>false
+
+						))
+       	    ->end()
+       ->with('dj.admin.post.add.category.title.header')
        	    ->end()
        ->with('dj.admin.post.add.settings.title.header')
             ->add('author', 'entity', array('class' => 'DJ\UserBundle\Entity\User', 'help' => 'dj.admin.post.add.author.help'))
-            ->add('updated', 'datetime')
-
+            ->add('created')
+            ->add('softDelete','checkbox', array(
+            		'required'=>false
+				))
             ->end()
         ;
     }

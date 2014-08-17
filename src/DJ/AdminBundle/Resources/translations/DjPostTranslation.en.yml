@@ -1,11 +1,13 @@
 dj.admin.group.content: Mange your resources
-dj.admin.post.add.blog.title.header: Create Blog Content
-dj.admin.post.add.settings.title.header: Manage Blog Resources
-dj.admin.post.add.settings.title.header: Settings
-dj.admin.post.add.title.help: Create main title of your story.
+dj.admin.post.add.blog.title.header: Create Article Content
+dj.admin.post.add.settings.title.header: Blog Settings
+dj.admin.post.add.title.help: Create main title for your article.
 dj.admin.post.add.author.help: Choose author.
 dj.admin.post.add.content.help: This is main content of the story.
 dj.admin.post.add.slug.help: This contain uri name (must be uniqe)
+dj.admin.post.add.resources.title.header: Manage Article Resources
+dj.admin.post.add.category.title.header: Choose article category
+
 
 dj.admin.category.add.title.header: Create new category
 dj.admin.category.add.name.help: Add category name

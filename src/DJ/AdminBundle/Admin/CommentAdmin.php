@@ -52,8 +52,6 @@ class CommentAdmin extends Admin
 		->add('post', 'doctrine_orm_number', array('label'=>'dj.admin.comment.filter.post.help'))
 		->add('user')
 		->add('display')
-// 		->add('post', 'doctrine_orm_class', array('sub_classes' => $this->getSubClasses(),
-// 												  ''));
 		;
 	}
 

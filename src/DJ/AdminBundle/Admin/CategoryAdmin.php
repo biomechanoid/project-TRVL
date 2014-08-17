@@ -22,8 +22,8 @@ class CategoryAdmin extends Admin
 		->with('dj.admin.category.add.title.header',
 				array('description' => 'Create new blog category'))
 			->add('name', 'text', array('help' => 'dj.admin.category.add.name.help'))
-			->add('description', 'text', array('help' => 'dj.admin.category.add.description.help') )
 			->add('slug', 'text', array('help' => 'dj.admin.category.add.slug.help'))
+			->add('description', 'text', array('help' => 'dj.admin.category.add.description.help') )
 
 		->end()
 		;
