@@ -56,7 +56,7 @@ class Category
     private $slug;
 
     /**
-     * @ORM\OneToMany(targetEntity="Post", mappedBy="category_id")
+     * @ORM\OneToMany(targetEntity="Post", mappedBy="category")
      */
     private $posts;
 

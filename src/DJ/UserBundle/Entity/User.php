@@ -19,12 +19,12 @@ class User extends BaseUser
     protected $id;
 
     /**
-     * @ORM\OneToOne(targetEntity="DJ\BlogBundle\Entity\Post", mappedBy="author")
+     * @ORM\OneToMany(targetEntity="DJ\BlogBundle\Entity\Post", mappedBy="author")
      */
     protected $post;
 
     /**
-     * @ORM\OneToOne(targetEntity="DJ\BlogBundle\Entity\Comment", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="DJ\BlogBundle\Entity\Comment", mappedBy="user")
      */
     protected $comment;
 
