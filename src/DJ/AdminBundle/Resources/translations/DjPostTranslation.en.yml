@@ -1,4 +1,4 @@
-dj.admin.group.content: Mange your resources
+dj.admin.group.content: Mange your Blog resources
 dj.admin.post.add.blog.title.header: Create Article Content
 dj.admin.post.add.settings.title.header: Blog Settings
 dj.admin.post.add.title.help: Create main title for your article.
@@ -22,3 +22,8 @@ dj.admin.comment.add.postid.help: Post ID
 dj.admin.comment.list.display.help: Displayed
 dj.admin.comment.filter.post.help: Find Post ID
 dj.admin.comment.filter.created.help: Find Post by Date
+
+dj.admin.asset.add.title.header: Manage Assets
+dj.admin.asset.add.name.help: Add name for the resource
+dj.admin.asset.add.src.help: Create source path to the resource
+dj.admin.asset.add.alt.help: Alternative text (only for images)

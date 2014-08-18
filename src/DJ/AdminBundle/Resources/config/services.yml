@@ -30,3 +30,9 @@ services:
             - ~
             - DJ\BlogBundle\Entity\Comment
             - 'DJAdminBundle:PostCRUD'
+
+    dj_admin.admin.asset:
+        class: DJ\AdminBundle\Admin\AssetAdmin
+        arguments: [~, DJ\BlogBundle\Entity\Asset, 'SonataAdminBundle:CRUD']
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: "dj.admin.group.content", label: "Asset", label_translator_strategy: "sonata.admin.label.strategy.native"}

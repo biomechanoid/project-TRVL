@@ -161,7 +161,7 @@ class Asset
     /**
      * Get postAssets
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getPostAssets()
     {
