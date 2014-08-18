@@ -1,7 +1,7 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
-    - { resource: @DJAdminBundle/Resources/config/services.yml }
+    - { resource: '@DJAdminBundle/Resources/config/services.yml' }
 framework:
     #esi:             ~
     translator:      { fallback: en }
@@ -34,8 +34,8 @@ assetic:
         cssrewrite: ~
         less:
             node: C:\Program Files (x86)\nodejs\npm
-            node_paths: [C:\Program Files (x86)\nodejs\node_modules\npm\node_modules]
-            apply_to: "\.less$"
+            node_paths: ['C:\Program Files (x86)\nodejs\node_modules\npm\node_modules']
+            apply_to: '\.less$'
 
 
 # Doctrine Configuration
@@ -143,6 +143,7 @@ sonata_admin:
                     - sonata.admin.category
                     - sonata.admin.comment
                     - dj_admin.admin.asset
+                    - dj_admin.admin.pool
     options:
         use_select2:    false
 

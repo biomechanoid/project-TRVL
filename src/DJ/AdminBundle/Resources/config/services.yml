@@ -36,3 +36,9 @@ services:
         arguments: [~, DJ\BlogBundle\Entity\Asset, 'SonataAdminBundle:CRUD']
         tags:
             - {name: sonata.admin, manager_type: orm, group: "dj.admin.group.content", label: "Asset", label_translator_strategy: "sonata.admin.label.strategy.native"}
+
+    dj_admin.admin.pool:
+        class: DJ\AdminBundle\Admin\PoolAdmin
+        arguments: [~, DJ\BlogBundle\Entity\Pool,'SonataAdminBundle:CRUD']
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: dj.admin.group.content, label: Pool, label_translator_strategy: "sonata.admin.label.strategy.native"}
