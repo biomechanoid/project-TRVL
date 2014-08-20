@@ -77,7 +77,7 @@ class Post
      *
      * @ORM\Column(name="node", type="integer")
      */
-    private $node;
+    private $node=0;
 
     /**
      * @var string
@@ -113,6 +113,11 @@ class Post
     	$this->created = new \DateTime('now');
     	$this->softDelete = false;
     	$this->postAssets = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    public function __toString()
+    {
+    	return $this->slug;
     }
 
     /**
@@ -226,7 +231,7 @@ class Post
      */
     public function setSlug($slug)
     {
-        $this->slug = strtolower( str_replace(' ', '', $slug));
+        $this->slug = trim(strtolower( str_replace(' ', '-', $slug)));
 
         return $this;
     }

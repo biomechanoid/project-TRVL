@@ -5,9 +5,9 @@ dj.admin.post.add.title.help: Create main title for your Article.
 dj.admin.post.add.author.help: Choose Author.
 dj.admin.post.add.content.help: This is main content of the story.
 dj.admin.post.add.slug.help: This contain URI name (must be uniqe)
-dj.admin.post.add.resources.title.header: Manage Article Resources
 dj.admin.post.add.category.title.header: Choose Article Category
-
+dj.admin.post.add.assets.title.header: Assets Management
+dj.admin.post.add.blog.status.header: Select state of the article
 
 dj.admin.category.add.title.header: Create new Category
 dj.admin.category.add.name.help: Add Category name

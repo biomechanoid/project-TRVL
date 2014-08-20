@@ -49,6 +49,11 @@ class Pool
     private $postAssets;
 
 
+    public function __toString()
+    {
+    	return $this->name;
+    }
+
     /**
      * Get id
      *
@@ -167,4 +172,5 @@ class Pool
     {
         return $this->postAssets;
     }
+
 }

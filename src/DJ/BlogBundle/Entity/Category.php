@@ -68,6 +68,11 @@ class Category
         $this->parentCategory = 0;
     }
 
+    public function __toString()
+    {
+    	return $this->name;
+    }
+
     /**
      * Get id
      *
@@ -178,7 +183,7 @@ class Category
      */
     public function setSlug($slug)
     {
-        $this->slug = strtolower( str_replace(' ', '', $slug));
+        $this->slug = trim(strtolower( str_replace(' ', '-', $slug)));
 
         return $this;
     }

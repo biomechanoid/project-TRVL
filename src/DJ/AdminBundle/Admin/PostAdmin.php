@@ -23,25 +23,38 @@ class PostAdmin extends Admin
     // Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)
     {
+
+//     	$post = $this->getModelManager()->createQuery('DJ\BlogBundle\Entity\Post');
+
+//     	var_dump($this->getModelManager()->find('DJ\BlogBundle\Entity\Post', 60));exit;
+// 		$postAsset = $this->getModelManager()->createQuery('DJ\BlogBundle\Entity\PostAsset');
+
+
         $formMapper
         ->with('dj.admin.post.add.blog.title.header', array('description' => 'Manage your blog content'))
             ->add('title', 'text', array('help' => 'dj.admin.post.add.title.help'))
             ->add('content','textarea', array('help' => 'dj.admin.post.add.content.help'))
             ->add('slug', 'text', array('help' => 'dj.admin.post.add.slug.help'))
-            ->add('status')
+            ->add('status', 'choice', array(
+            		'label'=>'dj.admin.post.add.blog.status.header',
+            		'choices'=>array('visible', 'hidden'),
+            		'required'=>true,
+            		'expanded'=>true
+            ))
             ->end()
        ->with('dj.admin.post.add.category.title.header')
-			->add('category', 'sonata_type_model_list', array(
-						'btn_delete'=>false,
-						'btn_add'=>false
-
-						))
+			->add('category', 'sonata_type_model', array())
        	    ->end()
-       ->with('dj.admin.post.add.category.title.header')
+       ->with('dj.admin.post.add.assets.title.header')
+//        		->add('postAssets', 'sonata_type_collection',
+//        				array(),
+//        				array('admin_code'=>'dj_admin.admin.post_asset')
+//         )
+
        	    ->end()
        ->with('dj.admin.post.add.settings.title.header')
             ->add('author', 'entity', array('class' => 'DJ\UserBundle\Entity\User', 'help' => 'dj.admin.post.add.author.help'))
-            ->add('created')
+//             ->add('created')
             ->add('softDelete','checkbox', array(
             		'required'=>false
 				))
