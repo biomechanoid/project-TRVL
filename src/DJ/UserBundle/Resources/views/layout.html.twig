@@ -1,0 +1,17 @@
+{% extends '::base.html.twig' %}
+{% block title %}Login{% endblock %}
+{% block stylesheets %}
+	{% stylesheets '@DJUserBundle/Resources/public/css/*' filter='cssrewrite' %}
+    	<link rel="stylesheet" href="{{ asset_url }}" />
+	{% endstylesheets %}
+{% endblock %}
+
+{% block body %}
+	{{ block('fos_user_content') }}
+{% endblock body %}
+
+{% block javascripts %}
+    {% javascripts '@DJUserBundle/Resources/public/js/*' %}
+    	<script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock javascripts %}
