@@ -1,0 +1,50 @@
+parameters:
+#    dj_admin.example.class: DJ\AdminBundle\Example
+
+#services:
+#    dj_admin.example:
+#        class: %dj_admin.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+services:
+    sonata.admin.post:
+        class: DJ\AdminBundle\Admin\PostAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "dj.admin.group.content", label: "Post", label_translator_strategy: "sonata.admin.label.strategy.native" }
+        arguments:
+            - ~
+            - DJ\BlogBundle\Entity\Post
+            - 'DJAdminBundle:PostCRUD' # define the new controller via the third argument
+    sonata.admin.category:
+        class: DJ\AdminBundle\Admin\CategoryAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "dj.admin.group.content", label: "Category", label_translator_strategy: "sonata.admin.label.strategy.native" }
+        arguments:
+            - ~
+            - DJ\BlogBundle\Entity\Category
+            - 'DJAdminBundle:PostCRUD'
+    sonata.admin.comment:
+        class: DJ\AdminBundle\Admin\CommentAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "dj.admin.group.content", label: "Comments", label_translator_strategy: "sonata.admin.label.strategy.native" }
+        arguments:
+            - ~
+            - DJ\BlogBundle\Entity\Comment
+            - 'DJAdminBundle:PostCRUD'
+
+    dj_admin.admin.asset:
+        class: DJ\AdminBundle\Admin\AssetAdmin
+        arguments: [~, DJ\BlogBundle\Entity\Asset, 'SonataAdminBundle:CRUD']
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: "dj.admin.group.content", label: "Assets", label_translator_strategy: "sonata.admin.label.strategy.native"}
+
+    dj_admin.admin.pool:
+        class: DJ\AdminBundle\Admin\PoolAdmin
+        arguments: [~, DJ\BlogBundle\Entity\Pool,'SonataAdminBundle:CRUD']
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: dj.admin.group.content, label: Pools, label_translator_strategy: "sonata.admin.label.strategy.native"}
+
+    dj_admin.admin.post_asset:
+        class: DJ\AdminBundle\Admin\PostAssetAdmin
+        arguments: [~, DJ\BlogBundle\Entity\PostAsset, 'SonataAdminBundle:CRUD']
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: PostAsset, label_translator_strategy: "sonata.admin.label.strategy.native"}

@@ -1,0 +1,35 @@
+dj.admin.group.content: Mange your Blog resources
+dj.admin.post.add.blog.title.header: Create Article Content
+dj.admin.post.add.settings.title.header: Blog Settings
+dj.admin.post.add.title.help: Create main title for your Article.
+dj.admin.post.add.author.help: Choose Author.
+dj.admin.post.add.content.help: This is main content of the story.
+dj.admin.post.add.slug.help: This contain URI name (must be uniqe)
+dj.admin.post.add.category.title.header: Choose Article Category
+dj.admin.post.add.assets.title.header: Assets Management
+dj.admin.post.add.blog.status.header: Select state of the article
+
+dj.admin.category.add.title.header: Create new Category
+dj.admin.category.add.name.help: Add Category name
+dj.admin.category.add.description.help: Add category description 
+dj.admin.category.add.slug.help: Add uri name eg. foo (will appear like www.example.com/foo)
+
+dj.admin.comment.add.title.header:  Manage Comments
+dj.admin.comment.add.checkbox.help: Check if visible
+dj.admin.comment.add.author.help : Comment Creator
+dj.admin.comment.add.content.help: Comment Body
+dj.admin.comment.add.postid.help: Post ID
+dj.admin.comment.list.display.help: Displayed
+dj.admin.comment.filter.post.help: Find Post ID
+dj.admin.comment.filter.created.help: Find Post by Date
+
+dj.admin.asset.add.title.header: Manage Assets
+dj.admin.asset.add.name.help: Add name for the resource
+dj.admin.asset.add.src.help: Create source path to the resource
+dj.admin.asset.add.alt.help: Alternative text (only for images)
+
+dj.admin.pool.add.title.header: Create and Manage Pools
+dj.admin.pool.add.id.help : Pool ID
+dj.admin.pool.add.name.help: Pool Name
+dj.admin.pool.add.description.help: Pool short description
+dj.admin.pool.add.type.help: Pool Type 

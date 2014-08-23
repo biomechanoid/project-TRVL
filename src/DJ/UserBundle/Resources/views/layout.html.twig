@@ -1,0 +1,16 @@
+{% extends '::base.html.twig' %}
+{% block title %}Login{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+	{{ block('fos_user_content') }}
+{% endblock body %}
+
+{% block javascripts %}
+    {% javascripts '@DJUserBundle/Resources/public/js/*' %}
+    	<script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock javascripts %}
