@@ -8,6 +8,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Sonata\AdminBundle\Validator\ErrorElement;
 
 class AssetAdmin extends Admin
 {
@@ -70,5 +71,18 @@ class AssetAdmin extends Admin
             ->add('src')
             ->add('alt')
         ;
+    }
+    public function validationCategory(ErrorElement $errorElement, $object)
+    {
+            $errorElement->with('name')
+                ->assertType(array('type'=>'string',
+                                   'message'=>'dj.admin.asset.add.name.error'))
+                ->assertNotBlank()
+            ->end();
+            $errorElement->with('src')
+                ->assertUrl(array('message'=>'dj.admin.asset.add.src.error'))
+                ->assertNotBlank()
+            ->end();
+
     }
 }

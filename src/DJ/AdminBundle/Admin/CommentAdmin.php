@@ -25,9 +25,9 @@ class CommentAdmin extends Admin
 		->add('content', 'textarea', array(
 				'trim'=>true,
 				'label'=>'dj.admin.comment.add.content.help'))
-// 		->add('post',  'sonata_type_admin', array('delete'=>false, 'btn_catalogue'=>false))
-		->add('post.id', null, array('label'=>'dj.admin.comment.add.postid.help',
-									 'disabled'=>true))
+		// ->add('post',  'sonata_type_admin', array('delete'=>false, 'btn_catalogue'=>false))
+		->add('post', null, array('label'=>'dj.admin.comment.add.postid.help',
+									 'disabled'=>true ))
 		->add('user', 'entity', array(
 				'class' => 'DJ\UserBundle\Entity\User',
 				'expanded' => false,
@@ -68,7 +68,6 @@ class CommentAdmin extends Admin
 		// add custom action links
 		->add('_action', 'display', array(
 				'actions' => array(
-// 						'show' => array(),
 						'edit' => array(),
 						'delete' => array()
 
@@ -80,9 +79,7 @@ class CommentAdmin extends Admin
 	public function validationCategory(ErrorElement $errorElement, $object)
 	{
  			$errorElement->with('content')
-					//Todo: Add Validation for form elements
-
-//                 ->assetNotInteger()
+                ->assetNotInteger()
             ->end();
 	}
 

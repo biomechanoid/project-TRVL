@@ -145,7 +145,18 @@ sonata_admin:
                     - dj_admin.admin.asset
                     - dj_admin.admin.pool
                     - dj_admin.admin.post_asset
+        blocks:
+            -
+                position: left
+                type: sonata.admin.block.admin_list
+            # -
+            #     position: right
+            #     type: sonata.block.service.text
+            #     settings:
+            #         content: >
+            #             <h2>Welcome in blog administration section</h2>
     options:
         use_select2:    false
+
 
 

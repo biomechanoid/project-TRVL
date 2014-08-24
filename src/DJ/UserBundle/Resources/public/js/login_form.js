@@ -2,7 +2,6 @@ $(document).ready(function(){
     $("input").attr('autocomplete','off');
 
 	$( "input").focus(function(e) {
-
   		$( e.target ).next("span").addClass( "blur" ).fadeOut( 900 );
 	});
 	$( "input" ).blur(function(e) {

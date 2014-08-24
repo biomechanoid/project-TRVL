@@ -7,6 +7,7 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Sonata\AdminBundle\Validator\ErrorElement;
 
 class PoolAdmin extends Admin
 {
@@ -23,7 +24,11 @@ class PoolAdmin extends Admin
 		->add('id', 'text', array('disabled'=>true,'label'=>'dj.admin.pool.add.id.help'))
 		->add('name', 'text', array('trim'=>true, 'label'=>'dj.admin.pool.add.name.help'))
 		->add('description', 'text', array('trim'=>true, 'label'=>'dj.admin.pool.add.description.help'))
-		->add('type', 'text', array('trim'=>true, 'label'=>'dj.admin.pool.add.type.help'))
+		->add('type', 'choice', array('label'=>'dj.admin.pool.add.type.help',
+                    'choices'=>array('image'=>'image', 'video'=>'video','other'=>'other'),
+                    'required'=>true,
+                    'expanded'=>true,
+                    'data'=>'image'))
 		;
 	}
 
@@ -69,5 +74,25 @@ class PoolAdmin extends Admin
             ->add('description')
             ->add('type')
         ;
+    }
+
+    public function validationCategory(ErrorElement $errorElement, $object)
+    {
+        $errorElement->with('name')
+            ->assertType(array('type'=>'string',
+                               'message'=>'dj.admin.pool.add.name.error'))
+            ->assertNotBlank()
+        ->end();
+        $errorElement->with('description')
+                ->assertType(array('type'=>'alnum',
+                                   'message'=>'dj.admin.pool.add.description.error'))
+            ->end();
+        $errorElement->with('type')
+            ->assertType(array('type'=>'alnum',
+                               'message'=>'dj.admin.pool.add.description.error',
+                               'value'=>'image'))
+        ->end();
+
+
     }
 }

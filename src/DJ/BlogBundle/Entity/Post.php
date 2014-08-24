@@ -111,6 +111,7 @@ class Post
     {
     	$this->comments = new \Doctrine\Common\Collections\ArrayCollection();
     	$this->created = new \DateTime('now');
+        $this->updated = new \DateTime('now');
     	$this->softDelete = false;
     	$this->postAssets = new \Doctrine\Common\Collections\ArrayCollection();
     }

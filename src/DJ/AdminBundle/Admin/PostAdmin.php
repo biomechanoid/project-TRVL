@@ -7,6 +7,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
+use Sonata\AdminBundle\Validator\ErrorElement;
 
 
 class PostAdmin extends Admin
@@ -80,6 +81,25 @@ class PostAdmin extends Admin
             ->add('slug', 'url')
             ->add('author', 'text')
         ;
+    }
+
+    public function validationCategory(ErrorElement $errorElement, $object)
+    {
+            $errorElement->with('title')
+                ->assertType(array('type'=>'string',
+                                   'message'=>'dj.admin.post.add.title.error'))
+                ->assertNotBlank()
+            ->end();
+            $errorElement->with('content')
+                ->assertNotBlank()
+                ->assertNotNull()
+            ->end();
+            $errorElement->with('slug')
+                ->assertType(array('type'=>'string',
+                                   'message'=>'dj.admin.post.add.slug.error'))
+                ->assertNotBlank()
+                ->assertNotNull()
+            ->end();
     }
 
 }

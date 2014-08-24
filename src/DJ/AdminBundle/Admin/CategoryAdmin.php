@@ -44,7 +44,7 @@ class CategoryAdmin extends Admin
 		$listMapper
 		->addIdentifier('name', 'text')
 		->add('description', 'text')
-		->add('slug', 'url')
+		->addIdentifier('slug', 'text')
 
 		;
 	}
@@ -52,9 +52,19 @@ class CategoryAdmin extends Admin
 	public function validationCategory(ErrorElement $errorElement, $object)
 	{
  			$errorElement->with('name')
-					//Todo: Add Validation for form elements
-
-//                 ->assetNotInteger()
+                ->assertType(array('type'=>'string',
+                                   'message'=>'dj.admin.category.add.text.error'))
+                ->assertNotBlank()
+            ->end();
+            $errorElement->with('slug')
+                ->assertType(array('type'=>'string',
+                                   'message'=>'dj.admin.category.add.slug.error'))
+                ->assertNotBlank()
+                ->assertNotNull()
+            ->end();
+            $errorElement->with('description')
+                ->assertType(array('type'=>'alnum',
+                                   'message'=>'dj.admin.category.add.description.error'))
             ->end();
 	}
 

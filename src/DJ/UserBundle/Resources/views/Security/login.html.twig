@@ -1,9 +1,10 @@
 {% extends "FOSUserBundle::layout.html.twig" %}
 {% block stylesheets %}
+    {{ parent() }}
 	{% stylesheets '@DJUserBundle/Resources/public/css/*' filter='cssrewrite' %}
-    	<link rel="stylesheet" href="{{ asset_url }}" />
+        <link rel="stylesheet" href="{{ asset_url }}" />
 	{% endstylesheets %}
-
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 {% endblock stylesheets %}
 {% block fos_user_content %}
 {% if error %}
