@@ -59,4 +59,5 @@ class PostAssetAdmin extends Admin
             ->add('id')
         ;
     }
+
 }

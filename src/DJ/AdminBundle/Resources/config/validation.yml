@@ -15,3 +15,9 @@ DJ\BlogBundle\Entity\Asset:
         - Sonata\AdminBundle\Validator\Constraints\InlineConstraint:
             service: dj_admin.admin.asset
             method: validationCategory
+
+DJ\BlogBundle\Entity\Pool:
+    constraints:
+        - Sonata\AdminBundle\Validator\Constraints\InlineConstraint:
+            service: dj_admin.admin.pool
+            method: validationCategory
