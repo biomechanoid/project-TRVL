@@ -16,6 +16,7 @@ class PostAdmin extends Admin
     protected $baseRoutePattern = 'post';
     protected $translationDomain =  'DjPostTranslation';
 
+
      protected function configureRoutes(RouteCollection $collection)
     {
         $collection->add('new'); #Action gets added automaticly
@@ -34,7 +35,7 @@ class PostAdmin extends Admin
         $formMapper
         ->with('dj.admin.post.add.blog.title.header', array('description' => 'Manage your blog content'))
             ->add('title', 'text', array('help' => 'dj.admin.post.add.title.help'))
-            ->add('content','textarea', array('help' => 'dj.admin.post.add.content.help'))
+            ->add('content','textarea', array('help' => 'dj.admin.post.add.content.help', 'attr'=>array('class'=>'editor')))
             ->add('slug', 'text', array('help' => 'dj.admin.post.add.slug.help'))
             ->add('status', 'choice', array(
             		'label'=>'dj.admin.post.add.blog.status.header',

@@ -75,6 +75,7 @@ sonata_block:
         # Enable the SonataAdminBundle block
         sonata.admin.block.admin_list:
             contexts:   [admin]
+        sonata.block.service.text:
 
 sonata_doctrine_orm_admin:
     # default value is null, so doctrine uses the value defined in the configuration
@@ -149,12 +150,12 @@ sonata_admin:
             -
                 position: left
                 type: sonata.admin.block.admin_list
-            # -
-            #     position: right
-            #     type: sonata.block.service.text
-            #     settings:
-            #         content: >
-            #             <h2>Welcome in blog administration section</h2>
+            -
+                position: right
+                type: sonata.block.service.text
+                settings:
+                    content: >
+                        <h2 class="col-md-offset-2">Welcome in blog administration section</h2>
     options:
         use_select2:    false
 
