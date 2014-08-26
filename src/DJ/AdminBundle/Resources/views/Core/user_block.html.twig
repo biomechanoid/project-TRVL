@@ -1,1 +1,4 @@
-{% block user_block %}{# Customize this value #}{% endblock %}
+{% block user_block %}
+    <li><a href="{{ path('fos_user_registration_register') }}">Registration</a></li>
+    <li><a href="{{ path('fos_user_security_logout') }}">Sign Out</a></li>
+{% endblock user_block %}

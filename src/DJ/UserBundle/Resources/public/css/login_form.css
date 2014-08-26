@@ -30,8 +30,8 @@ form{
   width: 300px;
   margin:50px auto;
 }
-input[type="text"],
-input[type="password"]{
+.login_form input[type="text"],
+.login_form input[type="password"]{
  font-size: 18pt;
 border: none;
 outline: none;
@@ -103,3 +103,34 @@ line-height: 40px;
 
   }
 }
+
+/* Registration form*/
+
+.register_form input[type="text"],
+.register_form input[type="password"],
+.register_form input[type="email"] {
+.register_form input[type="email"] {
+ font-size: 18pt;
+border: none;
+outline: none;
+top: 0;
+left: 0;
+display: block;
+background-color: #ecf0f1;
+height: 40px;
+margin-bottom: 2%;
+padding-left: 50px;
+-webkit-border-top-left-radius: 20px;
+-webkit-border-bottom-left-radius: 20px;
+-moz-border-radius-topleft: 20px;
+-moz-border-radius-bottomleft: 20px;
+border-top-left-radius: 20px;
+border-bottom-left-radius: 20px;
+color:#676868;
+}
+
+.register_form  .register_username,
+.register_form  .register_email,
+ .register_form .register_password {
+  position: relative;
+ }
