@@ -9,26 +9,22 @@
         {{ form_label(form.username) }}
         {{ form_errors(form.username) }}
         {{ form_widget(form.username) }}
-        <i class="fa fa-user"></i>
+
     </div>
     <div class="register_email">
         {{ form_label(form.email) }}
         {{ form_errors(form.email) }}
         {{ form_widget(form.email) }}
 
-        <i class="fa fa-email"></i>
     </div>
     <div class="register_password">
         {{ form_errors(form.plainPassword) }}
         {{ form_widget(form.plainPassword) }}
-        <i class="fa fa-password"></i>
+    </div>
+    <div>
+        <input type="submit" value="{{ 'registration.submit'|trans({}, 'FOSUserBundle') }}" class="btn btn-default" />
     </div>
 
-     <div >
-        <div>
-            <input type="submit" value="{{ 'registration.submit'|trans({}, 'FOSUserBundle') }}" class="btn btn-default" />
-        </div>
-    </div>
 {{ form_end(form) }}
 
 {# </form> #}
