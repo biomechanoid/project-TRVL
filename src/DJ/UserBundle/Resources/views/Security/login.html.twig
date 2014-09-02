@@ -1,29 +1,29 @@
 {% extends "FOSUserBundle::layout.html.twig" %}
+{% block title %}Admin - login{% endblock %}
 {% block stylesheets %}
     {{ parent() }}
 {% endblock stylesheets %}
-{% block fos_user_content %}
-{% if error %}
-    <div>{{ error|trans({}, 'FOSUserBundle') }}</div>
-{% endif %}
-<h2>Login to admin panel</h2>
-<form action="{{ path("fos_user_security_check") }}" method="post" autocomplete="off" class="login_form">
-
-	<div class="my_input">
-		<input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
-	    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" autocomplete="off"  />
-		{#<span class="placeHolder">{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}</span>#}
-		<i class="fa fa-user"></i>
-    </div>
-	<div class="my_input">
-	    <input type="password" id="password" name="_password" required="required"  autocomplete="off" />
-	    {#<span class="placeHolder">{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</span>#}
-		<i class="fa fa-key"></i>
-	</div>
-    <div class="my_input checkbox-area">
-        <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-        <label for="remember_me">{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label>
-	    <input type="submit" id="_submit" class="btn" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" />
-	</div>
-</form>
-{% endblock fos_user_content %}
+{% block body%}
+    {% block fos_user_content %}
+    {% if error %}
+        <div>{{ error|trans({}, 'FOSUserBundle') }}</div>
+    {% endif %}
+    <h2>Login to admin panel</h2>
+    <form action="{{ path("fos_user_security_check") }}" method="post" autocomplete="off" class="login_form">
+    	<div class="my_input">
+    		<input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+    	    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" autocomplete="off"  />
+    		<i class="fa fa-user"></i>
+        </div>
+    	<div class="my_input">
+    	    <input type="password" id="password" name="_password" required="required"  autocomplete="off" />
+    		<i class="fa fa-key"></i>
+    	</div>
+        <div class="my_input checkbox-area">
+            <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+            <label for="remember_me">{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label>
+    	    <input type="submit" id="_submit" class="btn" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" />
+    	</div>
+    </form>
+    {% endblock fos_user_content %}
+{% endblock body%}

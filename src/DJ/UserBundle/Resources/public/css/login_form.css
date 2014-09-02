@@ -128,8 +128,8 @@ border-bottom-left-radius: 20px;
 color:#676868;
 }
 
-.register_form  .register_username,
+/*.register_form  .register_username,
 .register_form  .register_email,
  .register_form .register_password {
-  /*position: relative;*/
- }
+  position: relative;
+ }*/

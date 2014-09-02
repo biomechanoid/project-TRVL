@@ -1,21 +1,14 @@
-{# <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register"> #}
-
-    {# {{ form_widget(form) }} #}
-
     {{ form_start(form,{'attr':{'class':'register_form'}})  }}
     {{ form_errors(form) }}
-
     <div class="register_username">
         {{ form_label(form.username) }}
         {{ form_errors(form.username) }}
         {{ form_widget(form.username) }}
-
     </div>
     <div class="register_email">
         {{ form_label(form.email) }}
         {{ form_errors(form.email) }}
         {{ form_widget(form.email) }}
-
     </div>
     <div class="register_password">
         {{ form_errors(form.plainPassword) }}
@@ -26,5 +19,3 @@
     </div>
 
 {{ form_end(form) }}
-
-{# </form> #}

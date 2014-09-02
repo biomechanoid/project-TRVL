@@ -1,14 +1,12 @@
 {% extends '::base.html.twig' %}
-{% block title %}Login{% endblock %}
+{% block title %}Admin section{% endblock %}
 {% block stylesheets %}
-
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" media="screen">
     {% stylesheets '@DJUserBundle/Resources/public/css/*' filter='cssrewrite' %}
-
-        <link rel="stylesheet" href="{{ asset_url }}" />
+    <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}
-     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-
-{% endblock %}
+{% endblock stylesheets %}
 
 {% block body %}
 	{{ block('fos_user_content') }}
