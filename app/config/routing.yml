@@ -1,15 +1,16 @@
-dj_user:
-    resource: "@DJUserBundle/Controller/"
-    type:     annotation
-    prefix:   /
-
 dj_blog:
     resource: "@DJBlogBundle/Controller/"
     type:     annotation
-    prefix:   /
+    prefix:   /blog
+
 
 dj_main:
     resource: "@DJMainBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+dj_user:
+    resource: "@DJUserBundle/Controller/"
     type:     annotation
     prefix:   /
 

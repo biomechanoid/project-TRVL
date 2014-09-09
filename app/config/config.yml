@@ -27,14 +27,14 @@ framework:
 # Assetic Configuration
 assetic:
     debug:          "%kernel.debug%"
-    use_controller: false
+    use_controller: true
     bundles:        [ FOSUserBundle, DJUserBundle ]
     #java: /usr/bin/java
     filters:
         cssrewrite: ~
         less:
-            node: C:\Program Files (x86)\nodejs\npm
-            node_paths: ['C:\Program Files (x86)\nodejs\node_modules\npm\node_modules']
+            node: C:\Program Files\nodejs\npm
+            node_paths: ['C:\Program Files\nodejs\node_modules\npm\node_modules']
             apply_to: '\.less$'
 
 
