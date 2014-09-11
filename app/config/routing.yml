@@ -3,7 +3,6 @@ dj_blog:
     type:     annotation
     prefix:   /blog
 
-
 dj_main:
     resource: "@DJMainBundle/Controller/"
     type:     annotation
