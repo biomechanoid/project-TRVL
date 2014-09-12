@@ -1,0 +1,21 @@
+Category action!{{ category }}
+<h1>ID: {{ category.id }}</h1>
+<p>
+    Name: {{ category.name }} <br>
+    Description: {{ category.description }} <br>
+    Created : {{ category.created|date("Y/m/d") }} <br>
+    URI : {{ category.slug }}
+</p>
+<section>
+    <h1>Category post</h1>
+
+    {% for post in posts %}
+    <ul>
+        <li><strong>{{ post.title }}</strong></li>
+        <li>{{ post.content }}</li>
+    </ul>
+    {% endfor %}
+
+
+</section>
+

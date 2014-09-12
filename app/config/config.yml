@@ -28,7 +28,7 @@ framework:
 assetic:
     debug:          "%kernel.debug%"
     use_controller: true
-    bundles:        [ FOSUserBundle, DJUserBundle ]
+    bundles:        [ FOSUserBundle, DJUserBundle, DJMainBundle ]
     #java: /usr/bin/java
     filters:
         cssrewrite: ~
@@ -36,7 +36,10 @@ assetic:
             node: C:\Program Files\nodejs\npm
             node_paths: ['C:\Program Files\nodejs\node_modules\npm\node_modules']
             apply_to: '\.less$'
-
+    assets:
+        modernizr:
+            inputs:
+                - '@DJMainBundle/Resources/public/js/modernizr.custom.js'
 
 # Doctrine Configuration
 doctrine:

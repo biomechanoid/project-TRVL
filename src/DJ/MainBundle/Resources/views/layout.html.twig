@@ -1,0 +1,53 @@
+{% extends '::base.html.twig' %}
+{% block title %}Denca&amp;Kubo - {% block titlePage %}Welcome{% endblock titlePage %}{% endblock %}
+
+{% block meta %}
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content=""/>
+    <meta name="msapplication-TileColor" content="#333333">
+    <meta name="msapplication-TileImage" content="img/favicon/mstile-144x144.png">
+{% endblock meta %}
+{% block favicon %}
+    <link rel="apple-touch-icon" sizes="57x57" href={{ asset('bundles/djmain/img/favicon/apple-touch-icon-57x57.png') }}>
+    <link rel="apple-touch-icon" sizes="114x114" href={{ asset('bundles/djmain/img/favicon/apple-touch-icon-114x114.png') }}>
+    <link rel="apple-touch-icon" sizes="72x72" href={{ asset('bundles/djmain/img/favicon/apple-touch-icon-72x72.png') }}>
+    <link rel="apple-touch-icon" sizes="144x144" href={{ asset('bundles/djmain/img/favicon/apple-touch-icon-144x144.png') }}>
+    <link rel="apple-touch-icon" sizes="60x60" href={{ asset('bundles/djmain/img/favicon/apple-touch-icon-60x60.png') }}>
+    <link rel="apple-touch-icon" sizes="120x120" href={{ asset('bundles/djmain/img/favicon/apple-touch-icon-120x120.png') }}>
+    <link rel="apple-touch-icon" sizes="76x76" href={{ asset('bundles/djmain/img/favicon/apple-touch-icon-76x76.png') }}>
+    <link rel="apple-touch-icon" sizes="152x152" href={{ asset('bundles/djmain/img/favicon/apple-touch-icon-152x152.png') }}>
+    <link rel="icon" type="image/png" href={{ asset('bundles/djmain/img/favicon/favicon-196x196.png') }} sizes="196x196">
+    <link rel="icon" type="image/png" href={{ asset('bundles/djmain/img/favicon/favicon-160x160.png') }} sizes="160x160">
+    <link rel="icon" type="image/png" href={{ asset('bundles/djmain/img/favicon/favicon-96x96.png') }} sizes="96x96">
+    <link rel="icon" type="image/png" href={{ asset('bundles/djmain/img/favicon/favicon-16x16.png') }} sizes="16x16">
+    <link rel="icon" type="image/png" href={{ asset('bundles/djmain/img/favicon/favicon-32x32.png') }} sizes="32x32">
+{% endblock favicon %}
+{% block stylesheets %}
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    {% stylesheets '@DJMainBundle/Resources/public/css/fonts/*'
+                   '@DJMainBundle/Resources/public/css/bootstrap/*'
+                   '@DJMainBundle/Resources/public/css/main/*'
+
+     filter='cssrewrite' %}
+        <link href="{{ asset_url }}" rel="stylesheet">
+    {% endstylesheets %}
+{% endblock stylesheets %}
+{% block head_javascript %}
+    {% javascripts '@modernizr' %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+{% block body %}{% endblock body %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script type="text/javascript" src={{ asset('bundles/djmain/js/scripts.js') }}></script>
+    {# <!--  <script type="text/javascript" src={{ asset('bundles/djmain/js/preloader.js') }}></script> --> #}
+    <script type="text/javascript" src={{ asset('bundles/djmain/js/custom.js') }}></script>
+     {# {% javascripts '@DJMainBundle/Resources/public/js/*' %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %} #}
+    {% block javascript %}{% endblock %}
+{% endblock javascripts %}
