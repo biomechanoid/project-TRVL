@@ -14,7 +14,9 @@
         <![endif]-->
     </head>
     <body {% block bodyAttributes %}{% endblock bodyAttributes %}>
+        {% block header %}{% endblock header %}
         {% block body %}{% endblock %}
+        {% block footer %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
 </html>

@@ -39,8 +39,207 @@
         <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
 {% endblock %}
-{% block body %}{% endblock body %}
+{% block header %}
+    {% set isBlogPage = false %}
+    {% block navigation %}
+        <header>
+            <nav class="navbar navbar-default navbar-fixed-top" role="navigation" data-spy="affix" data-offset-top={% if isBlogPage %}"0"{% else %}"50"{% endif %}>
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">PHOENIX</a>
+                    </div>
 
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse navbar-right" id="navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a data-scroll href="#intro">Home</a></li>
+                            <li><a data-scroll href="pages/about.html">About</a></li>
+                            <li><a data-scroll href="pages/portfolio.html">Portfolio</a></li>
+                            <li><a data-scroll href="pages/team.html">Team</a></li>
+                            <li><a data-scroll href="pages/services.html">Services</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a data-scroll href="pages/pricing.html">Pricing Tables</a></li>
+                                    <li><a data-scroll href="blog-1.html">Blog 3 Columns</a></li>
+                                    <li><a data-scroll href="blog-2.html">Blog 2 Columns</a></li>
+                                    <li><a data-scroll href="blog-3.html">Blog Standard</a></li>
+                                    <li><a data-scroll href="blog-single.html">Single Post</a></li>
+                                    <li><a data-scroll href="blog-single-carousel.html">Single Carousel Post</a></li>
+                                    <li class="divider"></li>
+                                    <li><a data-scroll href="404.html">404 Page</a></li>
+                                    <li><a data-scroll href="coming-soon.html">Coming Soon</a></li>
+                                    <li><a data-scroll href="external-single-project.html">Single Project</a></li>
+                                </ul>
+                            </li>
+                            <li><a data-scroll href="pages/contact.html">Contact</a></li>
+
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </div><!-- /.container-fluid -->
+            </nav>
+        </header>
+    {% endblock navigation %}
+
+
+<!--preloader-->
+    {# <div class="ip-header">
+        <div class="ip-logo">
+            <img class="img-responsive preloaderLogo center-block" src={{ asset('bundles/djmain/img/logoWhite.png') }} alt="preloader">
+        </div>
+
+        <div class="ip-loader">
+            <svg class="ip-inner" width="60px" height="60px" viewBox="0 0 80 80">
+                <path class="ip-loader-circlebg" d="M40,10C57.351,10,71,23.649,71,40.5S57.351,71,40.5,71 S10,57.351,10,40.5S23.649,10,40.5,10z"/>
+                <path id="ip-loader-circle" class="ip-loader-circle" d="M40,10C57.351,10,71,23.649,71,40.5S57.351,71,40.5,71 S10,57.351,10,40.5S23.649,10,40.5,10z"/>
+            </svg>
+        </div>
+    </div> #}
+    <!--end preloader-->
+
+
+    <!--OVERLAY FOR THE PORTFOLIO MENU // DONT' DELETE IF YOU PLAN TO USE THIS OPTION-->
+    <div class="container overlay overlay-slidedown">
+
+        <div class="row">
+
+            <div class="overlay-section"></div>
+
+            <div class="col-md-12 ">
+                <a class="overlay-close">
+                    <br><br>
+                    <img class="img-responsive center-block" src={{ asset('bundles/djmain/img/xsep.png') }} alt="close image"  data-toggle="tooltip" title="Close">
+                </a>
+            </div>
+        </div>
+    </div>
+    <!--end OVERLAY FOR THE PORTFOLIO MENU // DONT' DELETE IF YOU PLAN TO USE THIS OPTION-->
+
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <!--/* Intro  */-->
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <section id="intro">
+        <div class="black-overlay"></div>
+        <div class="container valign">
+            <div class="row">
+                <div class="col-md-12">
+                    <img src= {{ asset('bundles/djmain/img/logoWhite.png') }} class="img-responsive center-block introLogo" alt="Intro Logo">
+                </div>
+                <div class="col-md-12 text-center">
+                    <h1>minimal & bold</h1>
+                </div>
+
+                <div class="col-md-12 text-center">
+                    <img src={{ asset('bundles/djmain/img/separatorWhite.png') }} class="img-responsive center-block separator" alt="separator">
+                </div>
+
+
+                <div class="col-md-6 col-md-offset-3 text-center">
+                    <p>
+                        Eat imagine you chiefly few end ferrars compass. Be visitor females am ferrars inquiry. Latter law remark two lively thrown. Spot set they know rest its.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <!--/* END Intro  */-->
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+{% endblock header %}
+{% block bodyAttributes %}id="bigWrapper" data-spy="scroll" data-target=".navbar-default" data-offset="100"{% endblock bodyAttributes %}
+{% block body %}{% endblock body %}
+{% block footer %}
+    <section id="footer" class="dark">
+{#        <div class="topLine">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-4 footerText">
+                    <h4 data-scroll-reveal="enter left move 10px over 1s after 0.2s"> About Phoenix</h4>
+                    <img src="img/lineSeparatorWhite.png" class="img-responsive lineSeparator" data-scroll-reveal="enter left move 10px over 1s after 0.3s" alt="separator">
+                    <p data-scroll-reveal="enter left move 10px over 1s after 0.3s">
+                        Moments its musical age explain. But extremity sex now education concluded earnestly her continual. Oh furniture acuteness suspected continual ye something frankness. Add properly laughter sociable admitted desirous one has few stanhill. Opinion regular in perhaps another enjoyed no engaged he at.
+                    </p>
+                </div>
+
+                <div class="col-md-4 footerText">
+                    <h4 data-scroll-reveal="enter left move 10px over 1s after 0.2s">Newsletter</h4>
+                    <img src="img/lineSeparatorWhite.png" class="img-responsive lineSeparator" data-scroll-reveal="enter left move 10px over 1s after 0.3s" alt="separator">
+                    <div class="form-group" data-scroll-reveal="enter left move 10px over 1s after 0.3s">
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="fa fa-envelope-o"></i></div>
+                            <input class="form-control" type="email" placeholder="Enter email">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 footerText" data-scroll-reveal="enter left move 10px over 1s after 0.2s">
+                    <h4 data-scroll-reveal="enter left move 10px over 1s after 0.2s">Contact</h4>
+                    <img src="img/lineSeparatorWhite.png" class="img-responsive lineSeparator" data-scroll-reveal="enter left move 10px over 1s after 0.3s" alt="separator">
+
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <ul class="infoContact">
+                                <li><i class="fa fa-location-arrow"></i> 4435 Berkshire Circle</li>
+                                <li>Knoxville</li>
+                                <li>TN 27912</li>
+                            </ul>
+
+                            <ul class="infoContact">
+                                <li><i class="fa fa-phone"></i> 879-890-9767</li>
+                                <li>234-890-1213</li>
+                            </ul>
+                        </div>
+
+                        <div class="col-md-6">
+                            <ul class="infoContact">
+                                <li><i class="fa fa-envelope-o"></i> mail@mail.com</li>
+                                <li>support@mail.com</li>
+                            </ul>
+
+                            <ul class="infoContact">
+                                <li><i class="fa fa-clock-o"></i> M-F: 8 AM - 3 PM</li>
+                                <li>Sa: 8 AM - 12 PM</li>
+                                <li>Su: Closed</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div> #}
+
+    <div class="bottomLine text-center">
+
+        <div class="backToTop">
+            <a data-scroll href="#intro">
+                <i class="fa fa-angle-double-up"></i><br>
+                <h5>Back to top</h5>
+            </a>
+        </div>
+
+        <ul class="footerSocialIcons">
+            <li><a href="#"><i class="fa fa-facebook fa-2x"></i></a></li>
+            <li><a href="#"><i class="fa fa-twitter fa-2x"></i></a></li>
+            <li><a href="#"><i class="fa fa-instagram fa-2x"></i></a></li>
+            <li><a href="#"><i class="fa fa-behance fa-2x"></i></a></li>
+        </ul>
+        <p class="bold">All Rights Reserved. </p> <p>Premium Template by artBreeze Studios.</p>
+    </div>
+</section>
+{% endblock %}
 {% block javascripts %}
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <script type="text/javascript" src={{ asset('bundles/djmain/js/scripts.js') }}></script>
@@ -49,5 +248,62 @@
      {# {% javascripts '@DJMainBundle/Resources/public/js/*' %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %} #}
+     <script>
+        // featured gallery overlay
+        (function() {
+            var triggerBttn = document.getElementById( 'trigger-overlay' ),
+                    triggerBttnTwo = document.getElementById( 'trigger-overlay-two' ),
+                    triggerBttnThree = document.getElementById( 'trigger-overlay-three' ),
+                    triggerBttnFour = document.getElementById( 'trigger-overlay-four' ),
+                    // add here more buttons trigger
+
+                    overlay = document.querySelector( 'div.overlay' ),
+                    closeBttn = overlay.querySelector( 'a.overlay-close' );
+            transEndEventNames = {
+                'WebkitTransition': 'webkitTransitionEnd',
+                'MozTransition': 'transitionend',
+                'OTransition': 'oTransitionEnd',
+                'msTransition': 'MSTransitionEnd',
+                'transition': 'transitionend'
+            },
+                    transEndEventName = transEndEventNames[ Modernizr.prefixed( 'transition' ) ],
+                    support = { transitions : Modernizr.csstransitions };
+
+        //     function toggleOverlay() {
+        //         if( classie.has( overlay, 'open' ) ) {
+        //             classie.remove( overlay, 'open' );
+        //             classie.add( overlay, 'close' );
+        //             var onEndTransitionFn = function( ev ) {
+        //                 if( support.transitions ) {
+        //                     if( ev.propertyName !== 'visibility' ) return;
+        //                     this.removeEventListener( transEndEventName, onEndTransitionFn );
+        //                 }
+        //                 classie.remove( overlay, 'close' );
+        //             };
+        //             if( support.transitions ) {
+        //                 overlay.addEventListener( transEndEventName, onEndTransitionFn );
+        //             }
+        //             else {
+        //                 onEndTransitionFn();
+        //             }
+        //         }
+        //         else if( !classie.has( overlay, 'close' ) ) {
+        //             classie.add( overlay, 'open' );
+        //         }
+
+        //         $("div.overlay").animate({ scrollTop: 0 }, "slow");
+        //     }
+
+        //     triggerBttn.addEventListener( 'click', toggleOverlay );
+        //     triggerBttnTwo.addEventListener( 'click', toggleOverlay );
+        //     triggerBttnThree.addEventListener( 'click', toggleOverlay );
+        //     triggerBttnFour.addEventListener( 'click', toggleOverlay );
+
+
+        //     closeBttn.addEventListener( 'click', toggleOverlay );
+        //     return false;
+        })();
+
+    </script>
     {% block javascript %}{% endblock %}
 {% endblock javascripts %}
