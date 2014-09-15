@@ -115,13 +115,9 @@
                             </div>
                     {% endfor %}
 
-
-
-
             </div>
 
             <hr>
-
             <div class="row">
                 <br><br>
                 <div class="col-xs-6">
@@ -165,18 +161,22 @@
             </div>
 
 
+        {# {%set categories = [] %} #}
+        {% if categories is empty %}
+        {% else %}
             <div class="widgetList widget">
                 <h4 class="montserrat">Categories</h4>
                 <div class="blogPostSeparator"></div>
                 <ul class="list">
-                {% for category in categies %}
-                    <li><a href={{ path('blog_category',{'category':category.slug}) }}>{{ category.name }}</a></li>
+                    {% for category in categories %}
+                        <li><a href={{ path('blog_category',{'category':category.slug}) }}>{{ category.name }}</a></li>
+                    {% endfor %}
 
-                {% endfor %}
                 </ul>
             </div>
 
-        </div>
+        {% endif %}
+    </div>
         {# sidebar end #}
 
     </div>

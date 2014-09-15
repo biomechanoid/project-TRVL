@@ -33,116 +33,49 @@
 
         <!--content-->
         <div class="row">
-            <div class="col-md-4 col-sm-12 col-xs-12 text-center">
-                <div class="tableWrapper" data-scroll-reveal="enter left move 10px over 1s after 0.2s">
-                    <div class="subscriptionName">
-                        <h2>Brazil</h2>
+            {% if categories is empty %}
+                    <div class="col-md-4 col-sm-12 col-xs-12 text-center">
+                        Sorry no category here..
                     </div>
-                    <img class="separator center-block img-responsive" src={{ asset('bundles/djmain/img/separatorBlack.png') }} alt="Dotted Separator">
+                {% else %}
+                {% for category in categories %}
+                    <div class="col-md-4 col-sm-12 col-xs-12 text-center"  style="margin-top:20px;">
+                        <div class="tableWrapper" data-scroll-reveal="enter left move 10px over 1s after 0.2s">
+                            <div class="subscriptionName">
+                                <h2>{{ category.name}}</h2>
+                            </div>
+                            <img class="separator center-block img-responsive" src={{ asset('bundles/djmain/img/separatorBlack.png') }} alt="Dotted Separator">
 
-                    <div class="subscriptionPrice">
-                        <h2>40$</h2><p> /month</p>
+                            <div class="subscriptionPrice">
+                                <h2>{{loop.index}}</h2><p> /month</p>
+                            </div>
+
+                            <div class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-half-o"></i>
+                                <i class="fa fa-star-o"></i>
+                            </div>
+
+                            <img class=" separator center-block img-responsive" src={{ asset('bundles/djmain/img/separatorBlack.png') }} alt="Dotted Separator">
+
+                            <div class="subscriptionList">
+                                <ul>
+                                    <li>Customer Support 24/7</li>
+                                    <li>Lifetime Updates</li>
+                                    <li>10GB Cloud Storage</li>
+                                    <li>10 E-mail boxes</li>
+                                    <li>-</li>
+                                </ul>
+                            </div>
+                            <a class="btn btn-default btn-black" href={{ path('blog_category',{'category':category.slug}) }}>Explore</a> <br> or
+                            <a href={{ path('blog_category',{'category':category.slug}) }}>Subscribe!</a>
+                        </div>
                     </div>
-
-                    <div class="rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star-half-o"></i>
-                        <i class="fa fa-star-o"></i>
-                    </div>
-
-
-                    <img class=" separator center-block img-responsive" src={{ asset('bundles/djmain/img/separatorBlack.png') }} alt="Dotted Separator">
-
-                    <div class="subscriptionList">
-                        <ul>
-                            <li>Customer Support 24/7</li>
-                            <li>Lifetime Updates</li>
-                            <li>10GB Cloud Storage</li>
-                            <li>10 E-mail boxes</li>
-                            <li>-</li>
-                        </ul>
-                    </div>
-                    <a class="btn btn-default btn-black" href="#">Explore it</a> <br> or
-                    <a href="#">Subscribe!</a>
-                </div>
-            </div>
-
-            <div class="col-md-4 col-sm-12 col-xs-12 text-center">
-                <div class="tableWrapper" data-scroll-reveal="enter bottom move 10px over 1s after 0.2s">
-                    <div class="subscriptionName">
-                        <h2>Argentina</h2>
-                    </div>
-
-                    <img class="separator center-block img-responsive" src={{ asset('bundles/djmain/img/separatorBlack.png') }} alt="Dotted Separator">
-
-                    <div class="subscriptionPrice">
-                        <h2>60$</h2><p> /month</p>
-                    </div>
-
-                    <div class="rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star-o"></i>
-                    </div>
-
-                    <img class=" separator center-block img-responsive" src={{ asset('bundles/djmain/img/separatorBlack.png') }} alt="Dotted Separator">
-
-                    <div class="subscriptionList">
-                        <ul>
-                            <li>Customer Support 24/7</li>
-                            <li>Lifetime Updates</li>
-                            <li>10GB Cloud Storage</li>
-                            <li>10 E-mail boxes</li>
-                            <li>-</li>
-                        </ul>
-                    </div>
-                    <a class="btn btn-default btn-black" href="#">Explore it</a> <br> or
-                    <a href="#">Subscribe!</a>
-                </div>
-            </div>
-
-            <div class="col-md-4 col-sm-12 col-xs-12 text-center">
-                <div class="tableWrapper" data-scroll-reveal="enter right move 10px over 1s after 0.2s">
-                    <div class="subscriptionName">
-                        <h2>Peru</h2>
-                    </div>
-
-                    <img class="separator center-block img-responsive" src={{ asset('bundles/djmain/img/separatorBlack.png') }} alt="Dotted Separator">
-
-                    <div class="subscriptionPrice">
-                        <h2>80$</h2><p> /month</p>
-                    </div>
-
-                    <div class="rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                    </div>
-
-
-                    <img class=" separator center-block img-responsive" src={{ asset('bundles/djmain/img/separatorBlack.png') }} alt="Dotted Separator">
-
-                    <div class="subscriptionList">
-                        <ul>
-                            <li>Customer Support 24/7</li>
-                            <li>Lifetime Updates</li>
-                            <li>10GB Cloud Storage</li>
-                            <li>10 E-mail boxes</li>
-                            <li>-</li>
-                        </ul>
-                    </div>
-                    <a class="btn btn-default btn-black" href="#">Explore it</a> <br> or
-                    <a href="#">Subscribe!</a>
-                </div>
-            </div>
+                {% endfor %}
+        {% endif %}
         </div>
-
         <!--end content-->
     </div>
 </section>

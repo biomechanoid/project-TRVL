@@ -18,7 +18,16 @@ class BlogController extends Controller
      */
     public function indexAction()
     {
-        return array();
+        $categoryEnity = $this->get('doctrine')->getRepository('DJBlogBundle:Category')->findAll() ;
+        if(!$categoryEnity) {
+            return array('categories' => array());
+        }
+        $all_categories = [];
+        foreach ($categoryEnity as $category) {
+            $all_categories[] = $category;
+        }
+
+        return array('categories' => $all_categories);
     }
 
     /**
@@ -39,7 +48,7 @@ class BlogController extends Controller
 
         return array(
                      'category' => $this->assets['category'],
-                     'categies' => $this->assets['categies'],
+                     'categories' => $this->assets['categies'],
                      'posts'=>$this->assets['category_posts']
                      );
         // $response = $this->render('DJBlogBundle:Blog:category.html.twig', array('category' => $this->assets['category'],
