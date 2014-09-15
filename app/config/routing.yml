@@ -1,16 +1,14 @@
 dj_blog:
     resource: "@DJBlogBundle/Controller/"
     type:     annotation
-    prefix:   /{_locale}/blog
+    prefix:   /blog/{_locale}
     requirements:
         _locale: en|sk
 
 dj_main:
     resource: "@DJMainBundle/Controller/"
     type:     annotation
-    prefix:   /{_locale}
-    requirements:
-        _locale: en|sk
+    prefix:   /
 
 dj_user:
     resource: "@DJUserBundle/Controller/"

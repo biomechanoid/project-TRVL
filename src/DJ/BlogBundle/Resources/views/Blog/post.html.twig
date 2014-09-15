@@ -1,1 +1,28 @@
+{% extends "DJMainBundle::layout.html.twig" %}
+{% block titlePage %}Category{% endblock titlePage %}
+{% block header %}
+    {% set isBlogPage = true %}
+    {% block navigation %}
+        {{ parent() }}
+            <!--OVERLAY FOR THE PORTFOLIO MENU // DONT' DELETE IF YOU PLAN TO USE THIS OPTION-->
+        <div class="container overlay overlay-slidedown">
+
+            <div class="row">
+
+                <div class="overlay-section"></div>
+
+                <div class="col-md-12 ">
+                    <a class="overlay-close">
+                        <br><br>
+                        <img class="img-responsive center-block" src={{ asset('bundles/djmain/img/xsep.png') }} alt="close image"  data-toggle="tooltip" title="Close">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!--end OVERLAY FOR THE PORTFOLIO MENU // DONT' DELETE IF YOU PLAN TO USE THIS OPTION-->
+    {% endblock navigation %}
+{% endblock header %}
+{% block body %}
 Blog post template category ={{ category }}, post ={{ post }}
+
+{% endblock body %}

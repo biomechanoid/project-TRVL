@@ -1,7 +1,33 @@
 {% extends "DJMainBundle::layout.html.twig" %}
-{# {% block header %} {% block navigation %} {{ parent() }} {% endblock %} {% endblock header %} #}
+
 {% block titlePage %}Blog{% endblock titlePage %}
 {% block body %}
+{% block intro %}
+<section id="intro">
+    <div class="black-overlay"></div>
+    <div class="container valign">
+        <div class="row">
+            <div class="col-md-12">
+                <img src= {{ asset('bundles/djmain/img/logoWhite.png') }} class="img-responsive center-block introLogo" alt="Intro Logo">
+            </div>
+            <div class="col-md-12 text-center">
+                <h1>minimal & bold</h1>
+            </div>
+
+            <div class="col-md-12 text-center">
+                <img src={{ asset('bundles/djmain/img/separatorWhite.png') }} class="img-responsive center-block separator" alt="separator">
+            </div>
+
+            <div class="col-md-6 col-md-offset-3 text-center">
+                <p>
+                    Eat imagine you chiefly few end ferrars compass. Be visitor females am ferrars inquiry. Latter law remark two lively thrown. Spot set they know rest its.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+{% endblock intro %}
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <!--/* pricing SECTION */-->
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
@@ -38,42 +64,44 @@
                         Sorry no category here..
                     </div>
                 {% else %}
-                {% for category in categories %}
-                    <div class="col-md-4 col-sm-12 col-xs-12 text-center"  style="margin-top:20px;">
-                        <div class="tableWrapper" data-scroll-reveal="enter left move 10px over 1s after 0.2s">
-                            <div class="subscriptionName">
-                                <h2>{{ category.name}}</h2>
-                            </div>
-                            <img class="separator center-block img-responsive" src={{ asset('bundles/djmain/img/separatorBlack.png') }} alt="Dotted Separator">
+                    {% for category in categories %}
+                        {% if (loop.index % 4) == 0 %}
+                            <div class="col-xs-12">&nbsp;</div>
+                        {% endif %}
+                        <div class="col-md-4 col-sm-12 col-xs-12 text-center">
+                            <div class="tableWrapper" data-scroll-reveal="enter left move 10px over 1s after 0.2s">
+                                <div class="subscriptionName">
+                                    <h2>{{ category.name}}</h2>
+                                </div>
+                                <img class="separator center-block img-responsive" src={{ asset('bundles/djmain/img/separatorBlack.png') }} alt="Dotted Separator">
 
-                            <div class="subscriptionPrice">
-                                <h2>{{loop.index}}</h2><p> /month</p>
-                            </div>
+                                <div class="subscriptionPrice">
+                                    <h2>{{loop.index}}</h2><p> /month</p>
+                                </div>
 
-                            <div class="rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star-half-o"></i>
-                                <i class="fa fa-star-o"></i>
-                            </div>
+                                <div class="rating">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-half-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                </div>
 
-                            <img class=" separator center-block img-responsive" src={{ asset('bundles/djmain/img/separatorBlack.png') }} alt="Dotted Separator">
+                                <img class=" separator center-block img-responsive" src={{ asset('bundles/djmain/img/separatorBlack.png') }} alt="Dotted Separator">
 
-                            <div class="subscriptionList">
-                                <ul>
-                                    <li>Customer Support 24/7</li>
-                                    <li>Lifetime Updates</li>
-                                    <li>10GB Cloud Storage</li>
-                                    <li>10 E-mail boxes</li>
-                                    <li>-</li>
-                                </ul>
+                                <div class="subscriptionList">
+                                    <ul>
+                                        <li>Customer Support 24/7</li>
+                                        <li>Lifetime Updates</li>
+                                        <li>10GB Cloud Storage</li>
+                                        <li>10 E-mail boxes</li>
+                                        <li>-</li>
+                                    </ul>
+                                </div>
+                                <a class="btn btn-default btn-black" href={{ path('blog_category',{'category':category.slug}) }}>Explore</a>
                             </div>
-                            <a class="btn btn-default btn-black" href={{ path('blog_category',{'category':category.slug}) }}>Explore</a> <br> or
-                            <a href={{ path('blog_category',{'category':category.slug}) }}>Subscribe!</a>
                         </div>
-                    </div>
-                {% endfor %}
+                    {% endfor %}
         {% endif %}
         </div>
         <!--end content-->

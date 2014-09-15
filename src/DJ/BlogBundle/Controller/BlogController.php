@@ -13,7 +13,7 @@ class BlogController extends Controller
 
 
     /**
-     * @Route("/")
+     * @Route("/", name="dj_blog_main")
      * @Template("DJMainBundle:Blog:blog_index.html.twig")
      */
     public function indexAction()
@@ -37,7 +37,7 @@ class BlogController extends Controller
     public function categoryAction($category)
     {
         $this->assets['category'] = $this->getCategory($category)['categoryName'];
-        $this->assets['categies'] = $this->getCategory($category)['all_categories'];
+        $this->assets['categories'] = $this->getCategory($category)['all_categories'];
         $this->assets['category_posts'] = $this->assets['category']->getPosts();
         $this->assets['category_posts'] = [];
         foreach ($this->assets['category']->getPosts() as $value) {
@@ -48,8 +48,8 @@ class BlogController extends Controller
 
         return array(
                      'category' => $this->assets['category'],
-                     'categories' => $this->assets['categies'],
-                     'posts'=>$this->assets['category_posts']
+                     'categories' => $this->assets['categories'],
+                     'posts'=> $this->assets['category_posts']
                      );
         // $response = $this->render('DJBlogBundle:Blog:category.html.twig', array('category' => $this->assets['category'],
         //              'posts'=>$assets['category_post']));
@@ -66,14 +66,18 @@ class BlogController extends Controller
     public function postAction($category, $post)
     {
         $this->assets['category'] = $this->getCategory($category)['categoryName'];
+        $this->assets['categories'] = $this->getCategory($category)['all_categories'];
 
         $post = (string)trim(strtolower($post));
         $assets['post'] = [];
 
         foreach ($this->assets['category']->getPosts() as $value) {
-
             if($value->getSlug() == $post) {
-                return array('category' => $this->assets['category'], 'post'=>$value);
+                return array(
+                            'category' => $this->assets['category'],
+                            'categories' => $this->assets['categories'],
+                            'post' => $value
+                            );
             } else {
                 continue;
             }

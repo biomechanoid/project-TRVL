@@ -9,11 +9,11 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class MainController extends Controller
 {
     /**
-     * @Route("/")
+     * @Route("/", name="dj_route_home")
      * @Template()
      */
-    public function indexAction($name='')
+    public function indexAction()
     {
-        return array('name' => $name);
+        return array();
     }
 }

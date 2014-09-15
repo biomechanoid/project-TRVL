@@ -1,2 +1,34 @@
-{# {% extends "DJMainBundle::layout.html.twig" %} #}
-Blog post template category ={{ category }}, post ={{ post }}
+{% extends "DJMainBundle:Blog:blog_layout.html.twig" %}
+{% block intro %}
+    <div class="col-md-12 text-center">
+        <img src={{ asset('bundles/djmain/img/separatorWhite.png') }} class="img-responsive center-block separator" alt="separator">
+    </div>
+{% endblock intro %}
+{% block content %}
+    <div class="blogPost3">
+
+    <div class="post-thumbnail">
+        <img class="img-responsive" src={{ asset('bundles/djmain/img//gallery/1.jpg') }} alt="image">
+    </div>
+
+    <div class="post-content">
+        <div class="post-title">
+            <h2>{{ post.title }}</h2>
+        </div>
+        <div class="post-info">
+            <div class="postBy">
+                <p><i class="fa fa-pencil"></i> Posted by {{ post.author }} on {{ post.created | date }}</p>
+            </div>
+        </div>
+        <img src={{ asset('bundles/djmain/img/lineSeparatorBlack.png') }} class="img-responsive blogSeparator" alt="separator">
+        {% block blogContent %}
+            {{ post.content }}
+        {% endblock %}
+    </div>
+
+</div>
+{% endblock content %}
+{% block sidebar %}
+    {{ include('DJMainBundle:Blog:partials/blog_sidebar.html.twig', { 'categories': categories, 'current_category': '' }) }}
+{% endblock sidebar %}
+
