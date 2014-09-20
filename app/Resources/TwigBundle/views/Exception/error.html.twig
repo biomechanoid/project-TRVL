@@ -67,46 +67,16 @@
                         <ul class="nav navbar-nav">
                             <li class="active"><a data-scroll href={{ path('dj_route_home') }}>Home</a></li>
                             <li><a data-scroll href={{ path('dj_blog_main') }}>Blog</a></li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <span class="caret"></span></a>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li><a data-scroll href="blog-1.html">category 1</a></li>
-                                    <li><a data-scroll href="blog-2.html">category 1</a></li>
-                                    <li class="active"><a data-scroll href="blog-3.html">Blog Standard</a></li>
-                                </ul>
-                            </li>
-                           {#  <li><a data-scroll href="pages/services.html">Gallery</a></li>
-                            <li><a data-scroll href="pages/portfolio.html">About</a></li>
-                            <li><a data-scroll href="pages/contact.html">Contact</a></li> #}
-
                         </ul>
                     </div><!-- /.navbar-collapse -->
                 </div><!-- /.container-fluid -->
             </nav>
         </header>
-        <!--preloader-->
-     {#    <div class="ip-header">
-            <div class="ip-logo">
-                <img class="img-responsive preloaderLogo center-block" src={{ asset('bundles/djmain/img/logoWhite.png') }} alt="preloader">
-            </div>
-
-            <div class="ip-loader">
-                <svg class="ip-inner" width="60px" height="60px" viewBox="0 0 80 80">
-                    <path class="ip-loader-circlebg" d="M40,10C57.351,10,71,23.649,71,40.5S57.351,71,40.5,71 S10,57.351,10,40.5S23.649,10,40.5,10z"/>
-                    <path id="ip-loader-circle" class="ip-loader-circle" d="M40,10C57.351,10,71,23.649,71,40.5S57.351,71,40.5,71 S10,57.351,10,40.5S23.649,10,40.5,10z"/>
-                </svg>
-            </div>
-        </div> #}
-        <!--end preloader-->
-
-        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-        <!--/* Intro  */-->
-        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
         <section id="intro">
             <div class="black-overlay"></div>
             <div class="container valign">
                 <div class="row">
-                    <div class="col-md-12" style="margin:100px;">
+                    <div class="col-md-12" >
                         {# <img src={{ asset('bundles/djmain/img/logoWhite.png') }} class="img-responsive center-block introLogo" alt="Intro Logo"> #}
                          {# <img src={{ asset('bundles/djmain/img/lineSeparatorWhite.png') }} class="img-responsive lineSeparator" data-scroll-reveal="enter left move 10px over 1s after 0.3s" alt="separator"> #}
                     </div>
@@ -114,8 +84,6 @@
                         <h1>404 Error! </h1>
                         <h5 style="color:white">The page you are looking for doesn't exist.</h5>
                     </div>
-
-
                     <div class="col-md-6 col-md-offset-3 text-center">
                         <a class="btn btn-default btn-white" onclick="history.go(-1);">Go Back!</a>
                     </div>
@@ -123,34 +91,11 @@
                 </div>
             </div>
         </section>
-        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-        <!--/* END Intro  */-->
-        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-
-
-
-        <section id="footer" class="dark">
-         {#    <div class="topLine text-center">
-                <img src={{ asset('bundles/djmain/img/logoWhite.png') }} class="footerLogo center-block" alt="Small Logo" width="100" height="134">
-            </div> #}
-
-            <div class="bottomLine text-center">
-
-                <ul class="footerSocialIcons">
-                    <li><a href="#"><i class="fa fa-facebook fa-2x"></i></a></li>
-                    <li><a href="#"><i class="fa fa-twitter fa-2x"></i></a></li>
-                    <li><a href="#"><i class="fa fa-instagram fa-2x"></i></a></li>
-                    <li><a href="#"><i class="fa fa-behance fa-2x"></i></a></li>
-                </ul>
-                <p class="bold">All Rights Reserved. </p> <p>Premium Template by artBreeze Studios.</p>
-            </div>
-        </section>
-
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+        <script type="text/javascript" src={{ asset('bundles/djmain/js/scripts.js') }}></script>
+        <script type="text/javascript" src={{ asset('bundles/djmain/js/custom.js') }}></script>
         <script src="https://maps.googleapis.com/maps/api/js"></script>
-        <script src="js/overlay.js"></script> <!-- edit to add/remove oeverlay -->
-    <script type="text/javascript" src={{ asset('bundles/djmain/js/scripts.js') }}></script>
-    <script type="text/javascript" src={{ asset('bundles/djmain/js/custom.js') }}></script>
+        <script src={{ asset('bundles/djmain/js/overlay.js') }}></script> <!-- edit to add/remove oeverlay -->
         <script>
             $.backstretch("{{ asset('bundles/djmain/img/background1.jpg') }}");
         </script>

@@ -59,6 +59,7 @@ class CategoryAdmin extends Admin
             $errorElement->with('slug')
                 ->assertType(array('type'=>'string',
                                    'message'=>'dj.admin.category.add.slug.error'))
+                ->assertRegex(array('pattern' => '/[a-zA-Z0-9-_]+/', 'match' => true, 'message' => 'Only -, _, 0-9, a-Z characters are valid'))
                 ->assertNotBlank()
                 ->assertNotNull()
             ->end();

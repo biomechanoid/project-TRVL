@@ -2,7 +2,7 @@
 
 {% block titlePage %}Blog{% endblock titlePage %}
 {% block body %}
-{% block intro %}
+{# {% block intro %}
 <section id="intro">
     <div class="black-overlay"></div>
     <div class="container valign">
@@ -27,21 +27,19 @@
         </div>
     </div>
 </section>
-{% endblock intro %}
-<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!--/* pricing SECTION */-->
-<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+{% endblock intro %} #}
+
 <section id="pricing">
     <div class="container">
 
-        <h1 class="parallaxLetter letter1" data-stellar-ratio="1.2" data-stellar-vertical-offset="-200">P</h1>
-        <h1 class="parallaxLetter letter2" data-stellar-ratio="0.8">H</h1>
+        <h1 class="parallaxLetter letter1" data-stellar-ratio="1.2" data-stellar-vertical-offset="-200">K</h1>
+        <h1 class="parallaxLetter letter2" data-stellar-ratio="0.8">D</h1>
 
         <!--header-->
         <div class="row sectionIntro">
             <div class="col-md-8 col-md-offset-2 text-center">
                 <h2 data-scroll-reveal="enter top move 10px over 1s after 0.2s">
-                    <span>Blog it</span>
+                    <span>Explore</span>
                 </h2>
                 <p data-scroll-reveal="enter bottom move 10px over 1s after 0.2s">
                     Marianne or husbands if at stronger ye. Considered is as middletons uncommonly. Promotion perfectly ye consisted so. His chatty dining for effect ladies active. Equally journey wishing not several behaved chapter she two sir.
@@ -52,10 +50,6 @@
             </div>
         </div>
         <!--end header-->
-
-
-        <h1 class="parallaxLetter letter3" data-stellar-ratio="1.2">N</h1>
-        <h1 class="parallaxLetter letter4" data-stellar-ratio="0.3">X</h1>
 
         <!--content-->
         <div class="row">
@@ -87,16 +81,16 @@
                                     <i class="fa fa-star-o"></i>
                                 </div>
 
-                                <img class=" separator center-block img-responsive" src={{ asset('bundles/djmain/img/separatorBlack.png') }} alt="Dotted Separator">
+                                {# <img class=" separator center-block img-responsive" src={{ asset('bundles/djmain/img/separatorBlack.png') }} alt="Dotted Separator"> #}
 
                                 <div class="subscriptionList">
-                                    <ul>
+                                   {#  <ul>
                                         <li>Customer Support 24/7</li>
                                         <li>Lifetime Updates</li>
                                         <li>10GB Cloud Storage</li>
                                         <li>10 E-mail boxes</li>
                                         <li>-</li>
-                                    </ul>
+                                    </ul> #}
                                 </div>
                                 <a class="btn btn-default btn-black" href={{ path('blog_category',{'category':category.slug}) }}>Explore</a>
                             </div>
