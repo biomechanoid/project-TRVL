@@ -1,5 +1,4 @@
 {% extends "DJMainBundle::layout.html.twig" %}
-
 {% block titlePage %}Blog{% endblock titlePage %}
 {% block header %}
     {% set isBlogPage = true %}
@@ -24,68 +23,68 @@
     {% endblock navigation %}
 {% endblock header %}
 {% block body %}
-{% block intro %}
-<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!--/* blog intro SECTION */-->
-<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<section id="blogIntro">
+    {% block intro %}
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <!--/* blog intro SECTION */-->
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <section id="blogIntro">
+
+        <div class="container">
+
+            <!--header-->
+            <div class="row sectionIntro">
+                <div class="col-md-8 col-md-offset-2 text-center">
+                    <h2 data-scroll-reveal="enter top move 10px over 1s after 0.2s">
+                        <span>Blog</span>
+                    </h2>
+                    <p data-scroll-reveal="enter bottom move 10px over 1s after 0.2s">
+                        Marianne or husbands if at stronger ye. Considered is as middletons uncommonly. Promotion perfectly ye consisted so. His chatty dining for effect ladies active. Equally journey wishing not several behaved chapter she two sir.
+                    </p>
+
+                    <img src={{ asset('bundles/djmain/img/separatorBlack.png') }} class="img-responsive center-block separator" alt="separator">
+
+                </div>
+            </div>
+            <!--end header-->
+
+        </div>
+
+    </section>
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <!--/* END blog intro SECTION */-->
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    {% endblock intro %}
+
+
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <!--/* blog content SECTION */-->
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <section id="blogContent">
 
     <div class="container">
-
-        <!--header-->
-        <div class="row sectionIntro">
-            <div class="col-md-8 col-md-offset-2 text-center">
-                <h2 data-scroll-reveal="enter top move 10px over 1s after 0.2s">
-                    <span>Blog</span>
-                </h2>
-                <p data-scroll-reveal="enter bottom move 10px over 1s after 0.2s">
-                    Marianne or husbands if at stronger ye. Considered is as middletons uncommonly. Promotion perfectly ye consisted so. His chatty dining for effect ladies active. Equally journey wishing not several behaved chapter she two sir.
-                </p>
-
-                <img src={{ asset('bundles/djmain/img/separatorBlack.png') }} class="img-responsive center-block separator" alt="separator">
-
+        <div class="row content">
+            <div class="col-md-9">
+                {% block content %}{% endblock content %}
+            </div>
+            <div class="col-md-3">
+                {% block sidebar %}
+                {% endblock %}
             </div>
         </div>
-        <!--end header-->
+
+
+        <h1 class="parallaxLetter letter3" data-stellar-ratio="1.5" data-stellar-vertical-offset="-600">X</h1>
+        <h1 class="parallaxLetter letter4" data-stellar-ratio="0.8" data-stellar-vertical-offset="0">N</h1>
+        <!--end content-->
+
+
 
     </div>
 
-</section>
-<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!--/* END blog intro SECTION */-->
-<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-{% endblock intro %}
-
-
-<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!--/* blog content SECTION */-->
-<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<section id="blogContent">
-
-<div class="container">
-    <div class="row content">
-        <div class="col-md-9">
-            {% block content %}{% endblock content %}
-        </div>
-        <div class="col-md-3">
-            {% block sidebar %}
-            {% endblock %}
-        </div>
-    </div>
-
-
-    <h1 class="parallaxLetter letter3" data-stellar-ratio="1.5" data-stellar-vertical-offset="-600">X</h1>
-    <h1 class="parallaxLetter letter4" data-stellar-ratio="0.8" data-stellar-vertical-offset="0">N</h1>
-    <!--end content-->
-
-
-
-</div>
-
-</section>
-<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!--/* END blog content SECTION */-->
-<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    </section>
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <!--/* END blog content SECTION */-->
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
 {% endblock body %}
 {% block javascript %}

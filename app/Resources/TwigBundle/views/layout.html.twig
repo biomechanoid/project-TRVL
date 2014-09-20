@@ -1,0 +1,256 @@
+{% extends '::base.html.twig' %}
+{% block title %}Denca&amp;Kubo - {% block titlePage %}Welcome{% endblock titlePage %}{% endblock %}
+
+{% block meta %}
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content=""/>
+    <meta name="msapplication-TileColor" content="#333333">
+    <meta name="msapplication-TileImage" content="img/favicon/mstile-144x144.png">
+{% endblock meta %}
+{% block favicon %}
+    <link rel="apple-touch-icon" sizes="57x57" href={{ asset('bundles/djmain/img/favicon/apple-touch-icon-57x57.png') }}>
+    <link rel="apple-touch-icon" sizes="114x114" href={{ asset('bundles/djmain/img/favicon/apple-touch-icon-114x114.png') }}>
+    <link rel="apple-touch-icon" sizes="72x72" href={{ asset('bundles/djmain/img/favicon/apple-touch-icon-72x72.png') }}>
+    <link rel="apple-touch-icon" sizes="144x144" href={{ asset('bundles/djmain/img/favicon/apple-touch-icon-144x144.png') }}>
+    <link rel="apple-touch-icon" sizes="60x60" href={{ asset('bundles/djmain/img/favicon/apple-touch-icon-60x60.png') }}>
+    <link rel="apple-touch-icon" sizes="120x120" href={{ asset('bundles/djmain/img/favicon/apple-touch-icon-120x120.png') }}>
+    <link rel="apple-touch-icon" sizes="76x76" href={{ asset('bundles/djmain/img/favicon/apple-touch-icon-76x76.png') }}>
+    <link rel="apple-touch-icon" sizes="152x152" href={{ asset('bundles/djmain/img/favicon/apple-touch-icon-152x152.png') }}>
+    <link rel="icon" type="image/png" href={{ asset('bundles/djmain/img/favicon/favicon-196x196.png') }} sizes="196x196">
+    <link rel="icon" type="image/png" href={{ asset('bundles/djmain/img/favicon/favicon-160x160.png') }} sizes="160x160">
+    <link rel="icon" type="image/png" href={{ asset('bundles/djmain/img/favicon/favicon-96x96.png') }} sizes="96x96">
+    <link rel="icon" type="image/png" href={{ asset('bundles/djmain/img/favicon/favicon-16x16.png') }} sizes="16x16">
+    <link rel="icon" type="image/png" href={{ asset('bundles/djmain/img/favicon/favicon-32x32.png') }} sizes="32x32">
+{% endblock favicon %}
+{% block stylesheets %}
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    {% stylesheets '@DJMainBundle/Resources/public/css/fonts/*'
+                   '@DJMainBundle/Resources/public/css/bootstrap/*'
+                   '@DJMainBundle/Resources/public/css/main/*'
+
+     filter='cssrewrite' %}
+        <link href="{{ asset_url }}" rel="stylesheet">
+    {% endstylesheets %}
+{% endblock stylesheets %}
+{% block head_javascript %}
+    {% javascripts '@modernizr' %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+{% block header %}
+    {% set isBlogPage = false %}
+    {% block navigation %}
+        <header>
+            <nav class="navbar navbar-default navbar-fixed-top" role="navigation" data-spy="affix" data-offset-top={% if isBlogPage %}"0"{% else %}"50"{% endif %}>
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href={{ path('dj_route_home') }}>denca & kubo</a>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse navbar-right" id="navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a data-scroll href={{ path('dj_route_home') }}>Home</a></li>
+                            <li><a data-scroll href={{ path('dj_blog_main') }}>Blog</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a data-scroll href="blog-1.html">category 1</a></li>
+                                    <li><a data-scroll href="blog-2.html">category 1</a></li>
+                                    <li class="active"><a data-scroll href="blog-3.html">Blog Standard</a></li>
+                                </ul>
+                            </li>
+                           {#  <li><a data-scroll href="pages/services.html">Gallery</a></li>
+                            <li><a data-scroll href="pages/portfolio.html">About</a></li>
+                            <li><a data-scroll href="pages/contact.html">Contact</a></li> #}
+
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </div><!-- /.container-fluid -->
+            </nav>
+        </header>
+    {% endblock navigation %}
+
+
+    <!--OVERLAY FOR THE PORTFOLIO MENU // DONT' DELETE IF YOU PLAN TO USE THIS OPTION-->
+    <div class="container overlay overlay-slidedown">
+
+        <div class="row">
+
+            <div class="overlay-section"></div>
+
+            <div class="col-md-12 ">
+                <a class="overlay-close">
+                    <br><br>
+                    <img class="img-responsive center-block" src={{ asset('bundles/djmain/img/xsep.png') }} alt="close image"  data-toggle="tooltip" title="Close">
+                </a>
+            </div>
+        </div>
+    </div>
+    <!--end OVERLAY FOR THE PORTFOLIO MENU // DONT' DELETE IF YOU PLAN TO USE THIS OPTION-->
+
+
+{% endblock header %}
+{% block bodyAttributes %}id="bigWrapper" data-spy="scroll" data-target=".navbar-default" data-offset="100"{% endblock bodyAttributes %}
+{% block body %}
+{% endblock body %}
+{% block footer %}
+    <section id="footer" class="dark">
+{#        <div class="topLine">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-4 footerText">
+                    <h4 data-scroll-reveal="enter left move 10px over 1s after 0.2s"> About Phoenix</h4>
+                    <img src="img/lineSeparatorWhite.png" class="img-responsive lineSeparator" data-scroll-reveal="enter left move 10px over 1s after 0.3s" alt="separator">
+                    <p data-scroll-reveal="enter left move 10px over 1s after 0.3s">
+                        Moments its musical age explain. But extremity sex now education concluded earnestly her continual. Oh furniture acuteness suspected continual ye something frankness. Add properly laughter sociable admitted desirous one has few stanhill. Opinion regular in perhaps another enjoyed no engaged he at.
+                    </p>
+                </div>
+
+                <div class="col-md-4 footerText">
+                    <h4 data-scroll-reveal="enter left move 10px over 1s after 0.2s">Newsletter</h4>
+                    <img src="img/lineSeparatorWhite.png" class="img-responsive lineSeparator" data-scroll-reveal="enter left move 10px over 1s after 0.3s" alt="separator">
+                    <div class="form-group" data-scroll-reveal="enter left move 10px over 1s after 0.3s">
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="fa fa-envelope-o"></i></div>
+                            <input class="form-control" type="email" placeholder="Enter email">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 footerText" data-scroll-reveal="enter left move 10px over 1s after 0.2s">
+                    <h4 data-scroll-reveal="enter left move 10px over 1s after 0.2s">Contact</h4>
+                    <img src="img/lineSeparatorWhite.png" class="img-responsive lineSeparator" data-scroll-reveal="enter left move 10px over 1s after 0.3s" alt="separator">
+
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <ul class="infoContact">
+                                <li><i class="fa fa-location-arrow"></i> 4435 Berkshire Circle</li>
+                                <li>Knoxville</li>
+                                <li>TN 27912</li>
+                            </ul>
+
+                            <ul class="infoContact">
+                                <li><i class="fa fa-phone"></i> 879-890-9767</li>
+                                <li>234-890-1213</li>
+                            </ul>
+                        </div>
+
+                        <div class="col-md-6">
+                            <ul class="infoContact">
+                                <li><i class="fa fa-envelope-o"></i> mail@mail.com</li>
+                                <li>support@mail.com</li>
+                            </ul>
+
+                            <ul class="infoContact">
+                                <li><i class="fa fa-clock-o"></i> M-F: 8 AM - 3 PM</li>
+                                <li>Sa: 8 AM - 12 PM</li>
+                                <li>Su: Closed</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div> #}
+
+    <div class="bottomLine text-center">
+
+        <div class="backToTop">
+            <a data-scroll href="#intro">
+                <i class="fa fa-angle-double-up"></i><br>
+                <h5>Back to top</h5>
+            </a>
+        </div>
+
+        <ul class="footerSocialIcons">
+            <li><a href="#"><i class="fa fa-facebook fa-2x"></i></a></li>
+            <li><a href="#"><i class="fa fa-twitter fa-2x"></i></a></li>
+            <li><a href="#"><i class="fa fa-instagram fa-2x"></i></a></li>
+            <li><a href="#"><i class="fa fa-behance fa-2x"></i></a></li>
+        </ul>
+        <p class="bold">All Rights Reserved. </p> <p>Premium Template by artBreeze Studios.</p>
+    </div>
+</section>
+{% endblock %}
+{% block javascripts %}
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script type="text/javascript" src={{ asset('bundles/djmain/js/scripts.js') }}></script>
+    {# <!--  <script type="text/javascript" src={{ asset('bundles/djmain/js/preloader.js') }}></script> --> #}
+    <script type="text/javascript" src={{ asset('bundles/djmain/js/custom.js') }}></script>
+     {# {% javascripts '@DJMainBundle/Resources/public/js/*' %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %} #}
+     <script>
+        // featured gallery overlay
+        (function() {
+            var triggerBttn = document.getElementById( 'trigger-overlay' ),
+                    triggerBttnTwo = document.getElementById( 'trigger-overlay-two' ),
+                    triggerBttnThree = document.getElementById( 'trigger-overlay-three' ),
+                    triggerBttnFour = document.getElementById( 'trigger-overlay-four' ),
+                    // add here more buttons trigger
+
+                    overlay = document.querySelector( 'div.overlay' ),
+                    closeBttn = overlay.querySelector( 'a.overlay-close' );
+            transEndEventNames = {
+                'WebkitTransition': 'webkitTransitionEnd',
+                'MozTransition': 'transitionend',
+                'OTransition': 'oTransitionEnd',
+                'msTransition': 'MSTransitionEnd',
+                'transition': 'transitionend'
+            },
+                    transEndEventName = transEndEventNames[ Modernizr.prefixed( 'transition' ) ],
+                    support = { transitions : Modernizr.csstransitions };
+
+        //     function toggleOverlay() {
+        //         if( classie.has( overlay, 'open' ) ) {
+        //             classie.remove( overlay, 'open' );
+        //             classie.add( overlay, 'close' );
+        //             var onEndTransitionFn = function( ev ) {
+        //                 if( support.transitions ) {
+        //                     if( ev.propertyName !== 'visibility' ) return;
+        //                     this.removeEventListener( transEndEventName, onEndTransitionFn );
+        //                 }
+        //                 classie.remove( overlay, 'close' );
+        //             };
+        //             if( support.transitions ) {
+        //                 overlay.addEventListener( transEndEventName, onEndTransitionFn );
+        //             }
+        //             else {
+        //                 onEndTransitionFn();
+        //             }
+        //         }
+        //         else if( !classie.has( overlay, 'close' ) ) {
+        //             classie.add( overlay, 'open' );
+        //         }
+
+        //         $("div.overlay").animate({ scrollTop: 0 }, "slow");
+        //     }
+
+        //     triggerBttn.addEventListener( 'click', toggleOverlay );
+        //     triggerBttnTwo.addEventListener( 'click', toggleOverlay );
+        //     triggerBttnThree.addEventListener( 'click', toggleOverlay );
+        //     triggerBttnFour.addEventListener( 'click', toggleOverlay );
+
+
+        //     closeBttn.addEventListener( 'click', toggleOverlay );
+        //     return false;
+        })();
+
+    </script>
+    {% block javascript %}{% endblock %}
+{% endblock javascripts %}
