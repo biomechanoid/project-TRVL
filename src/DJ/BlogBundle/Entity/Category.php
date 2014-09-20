@@ -60,13 +60,6 @@ class Category
      */
     private $posts;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="display", type="boolean")
-     */
-    private $display;
-
 
 
     public function __construct() {
