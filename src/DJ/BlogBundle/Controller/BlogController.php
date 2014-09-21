@@ -18,7 +18,6 @@ class BlogController extends Controller
      */
     public function indexAction()
     {
-        var_dump($this->get('request')->getLocale());
         $categoryEnity = $this->get('doctrine')->getRepository('DJBlogBundle:Category')->findAll() ;
         if(!$categoryEnity) {
             return array('categories' => array());

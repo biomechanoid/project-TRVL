@@ -23,7 +23,9 @@
                             </div>
                             <img src={{ asset('bundles/djmain/img/lineSeparatorBlack.png') }} class="img-responsive blogSeparator" alt="separator">
                             <p class="excerpt">
-                                {{ post.content | length >250 ? post.content | slice(0,250)~ '...' : post.content }}
+{% autoescape 'html' %}
+                                {{ post.content   | length >250 ? post.content | slice(0,250)~ '...' : post.content  }}
+{% endautoescape %}
                             </p>
                             <a class="btn btn-default btn-black center-block" href={{ path('blog_post',{'category':category.slug,'post':post.slug}) }}>Read More</a>
                         </div>

@@ -39,7 +39,7 @@ class PostAdmin extends Admin
             ->add('slug', 'text', array('help' => 'dj.admin.post.add.slug.help'))
             ->add('status', 'choice', array(
             		'label'=>'dj.admin.post.add.blog.status.header',
-            		'choices'=>array('visible', 'hidden'),
+            		'choices'=>array('visible'=>'visible', 'hidden'=>'hidden'),
             		'required'=>true,
             		'expanded'=>true
             ))
@@ -98,6 +98,7 @@ class PostAdmin extends Admin
             $errorElement->with('slug')
                 ->assertType(array('type'=>'string',
                                    'message'=>'dj.admin.post.add.slug.error'))
+                ->assertRegex(array('pattern' => '/[a-zA-Z0-9-_]+/', 'match' => true, 'message' => 'Only -, _, 0-9, a-Z characters are valid'))
                 ->assertNotBlank()
                 ->assertNotNull()
             ->end();

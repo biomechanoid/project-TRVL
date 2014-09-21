@@ -22,7 +22,7 @@
         </div>
         <img src={{ asset('bundles/djmain/img/lineSeparatorBlack.png') }} class="img-responsive blogSeparator" alt="separator">
         {% block blogContent %}
-            {{ post.content }}
+            {{ post.content | raw }}
         {% endblock %}
     </div>
 
