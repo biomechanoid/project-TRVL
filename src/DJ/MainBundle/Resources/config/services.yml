@@ -1,0 +1,5 @@
+services:
+    foo.twig.extension:
+        class: DJ\MainBundle\Extension\MainTwigExtension
+        tags:
+            -  { name: twig.extension }
