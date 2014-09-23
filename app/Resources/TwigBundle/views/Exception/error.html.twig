@@ -81,8 +81,8 @@
                          {# <img src={{ asset('bundles/djmain/img/lineSeparatorWhite.png') }} class="img-responsive lineSeparator" data-scroll-reveal="enter left move 10px over 1s after 0.3s" alt="separator"> #}
                     </div>
                     <div class="col-md-12 text-center">
-                        <h1>404 Error! </h1>
-                        <h5 style="color:white">The page you are looking for doesn't exist.</h5>
+                        <h1>{{ status_code }} Error! </h1>
+                        <h5 style="color:white">Server says: {{ status_text }}</h5>
                     </div>
                     <div class="col-md-6 col-md-offset-3 text-center">
                         <a class="btn btn-default btn-white" onclick="history.go(-1);">Go Back!</a>
@@ -91,7 +91,8 @@
                 </div>
             </div>
         </section>
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+        <script type="text/javascript" src="/../../offline-assets/jquery.min.js"></script>
+        <!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script> -->
         <script type="text/javascript" src={{ asset('bundles/djmain/js/scripts.js') }}></script>
         <script type="text/javascript" src={{ asset('bundles/djmain/js/custom.js') }}></script>
         <script src="https://maps.googleapis.com/maps/api/js"></script>
