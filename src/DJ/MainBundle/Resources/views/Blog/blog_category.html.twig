@@ -1,5 +1,6 @@
 {% extends "DJMainBundle:Blog:blog_layout.html.twig" %}
 {# {% block intro %}{% endblock %} #}
+{% block introHeader %}<span>{{ category.name }}</span>{% endblock %}
 {% block content %}
     <div class="blogPostsWrapper2">
         <div class="grid-sizer-blog-2"></div>
