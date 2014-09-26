@@ -48,6 +48,7 @@ class Asset
      */
     private $postAssets;
 
+
     public function __toString()
     {
     	return $this->name;

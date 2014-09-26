@@ -105,6 +105,20 @@ class Post
     private $postAssets;
 
     /**
+     * @var string
+     * @ORM\Column(name="display", type="boolean")
+     *
+     */
+    private $display;
+
+    /**
+    * @var string
+    * @ORM\Column(name="locale", type="string", length=10)
+    *
+    */
+    private $locale;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -450,5 +464,51 @@ class Post
     public function getPostAssets()
     {
         return $this->postAssets;
+    }
+
+    /**
+     * Set display
+     *
+     * @param boolean $display
+     * @return Post
+     */
+    public function setDisplay($display)
+    {
+        $this->display = $display;
+
+        return $this;
+    }
+
+    /**
+     * Get display
+     *
+     * @return boolean
+     */
+    public function getDisplay()
+    {
+        return $this->display;
+    }
+
+    /**
+     * Set locale
+     *
+     * @param string $locale
+     * @return Post
+     */
+    public function setLocale($locale)
+    {
+        $this->locale = $locale;
+
+        return $this;
+    }
+
+    /**
+     * Get locale
+     *
+     * @return string
+     */
+    public function getLocale()
+    {
+        return $this->locale;
     }
 }

@@ -60,6 +60,13 @@ class Category
      */
     private $posts;
 
+    /**
+     * @var string
+     * @ORM\Column(name="display", type="boolean")
+     *
+     */
+    private $display;
+
 
 
     public function __construct() {
@@ -229,5 +236,28 @@ class Category
     public function getPosts()
     {
         return $this->posts;
+    }
+
+    /**
+     * Set display
+     *
+     * @param boolean $display
+     * @return Category
+     */
+    public function setDisplay($display)
+    {
+        $this->display = $display;
+
+        return $this;
+    }
+
+    /**
+     * Get display
+     *
+     * @return boolean 
+     */
+    public function getDisplay()
+    {
+        return $this->display;
     }
 }
