@@ -1,7 +1,9 @@
 {% extends "DJMainBundle::layout.html.twig" %}
+
+{% set isBlogPage = true %}
 {% block titlePage %}Blog{% endblock titlePage %}
 {% block header %}
-    {% set isBlogPage = true %}
+
     {% block navigation %}
         {{ parent() }}
             <!--OVERLAY FOR THE PORTFOLIO MENU // DONT' DELETE IF YOU PLAN TO USE THIS OPTION-->
