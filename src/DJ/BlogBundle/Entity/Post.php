@@ -4,6 +4,7 @@ namespace DJ\BlogBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Locale\Stub\StubLocale;
 
 
 /**
@@ -66,13 +67,6 @@ class Post
     private $updated;
 
     /**
-     * @var string
-     * @ORM\Column(name="status", type="string", length=20)
-     *
-     */
-    private $status;
-
-    /**
      * @var integer
      *
      * @ORM\Column(name="node", type="integer")
@@ -109,14 +103,14 @@ class Post
      * @ORM\Column(name="display", type="boolean")
      *
      */
-    private $display;
+    private $display = false;
 
     /**
     * @var string
     * @ORM\Column(name="locale", type="string", length=10)
     *
     */
-    private $locale;
+    private $locale = 'en';
 
     /**
      * Constructor
@@ -339,29 +333,6 @@ class Post
     public function getComments()
     {
         return $this->comments;
-    }
-
-    /**
-     * Set status
-     *
-     * @param string $status
-     * @return Post
-     */
-    public function setStatus($status)
-    {
-        $this->status = $status;
-
-        return $this;
-    }
-
-    /**
-     * Get status
-     *
-     * @return string
-     */
-    public function getStatus()
-    {
-        return $this->status;
     }
 
     /**

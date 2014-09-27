@@ -23,6 +23,12 @@ class CategoryAdmin extends Admin
 				array('description' => 'Create new blog category'))
 			->add('name', 'text', array('help' => 'dj.admin.category.add.name.help'))
 			->add('slug', 'text', array('help' => 'dj.admin.category.add.slug.help'))
+            ->add('display', 'choice', array(
+                                'label'=>'dj.admin.category.add.display.help',
+                                'choices'=>array(true=>'visible', false=>'hidden'),
+                                'required'=>true,
+                                'expanded'=>true
+                        ))
 			->add('description', 'text', array('help' => 'dj.admin.category.add.description.help') )
 
 		->end()
@@ -35,6 +41,7 @@ class CategoryAdmin extends Admin
 		$datagridMapper
 		->add('name')
 		->add('slug')
+        ->add('display')
 		;
 	}
 
@@ -45,6 +52,7 @@ class CategoryAdmin extends Admin
 		->addIdentifier('name', 'text')
 		->add('description', 'text')
 		->addIdentifier('slug', 'text')
+        ->add('display','text')
 
 		;
 	}
@@ -63,10 +71,10 @@ class CategoryAdmin extends Admin
                 ->assertNotBlank()
                 ->assertNotNull()
             ->end();
-            $errorElement->with('description')
-                ->assertType(array('type'=>'alnum',
-                                   'message'=>'dj.admin.category.add.description.error'))
-            ->end();
+            // $errorElement->with('description')
+            //     ->assertType(array('type'=>'alnum',
+            //                        'message'=>'dj.admin.category.add.description.error'))
+            // ->end();
 	}
 
 }

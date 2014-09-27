@@ -48,5 +48,5 @@
     </div> #}
 {% endblock content %}
 {% block sidebar %}
-    {{ include('DJMainBundle:Blog:partials/blog_sidebar.html.twig', { 'categories': categories, 'current_category': category }) }}
+    {{ include('DJMainBundle:Blog:partials/blog_sidebar.html.twig', { 'categories': categories, 'current_category': category.slug }) }}
 {% endblock sidebar %}

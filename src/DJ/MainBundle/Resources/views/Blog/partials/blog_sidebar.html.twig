@@ -28,17 +28,20 @@
 
 {% if categories is empty %}
 {% else %}
-    <div class="widgetList widget">
-        <h4 class="montserrat">Categories</h4>
-        <div class="blogPostSeparator"></div>
-        <ul class="list">
-            {% for category in categories %}
-                {% if current_category != category %}
-                    <li><a href={{ path('blog_category',{'category':category.slug}) }}>{{ category.name }}</a></li>
-                {% endif %}
-            {% endfor %}
+    {% if categories | length == 1 and current_category in categories | keys %}
+    {% else %}
+        <div class="widgetList widget">
+            <h4 class="montserrat">Categories</h4>
+            <div class="blogPostSeparator"></div>
+            <ul class="list">
+                {% for category in categories %}
+                    {% if current_category != category.slug %}
+                        <li><a href={{ path('blog_category',{'category':category.slug}) }}>{{ category.name }}</a></li>
+                    {% endif %}
+                {% endfor %}
 
-        </ul>
-    </div>
+            </ul>
+        </div>
+    {% endif %}
 
 {% endif %}

@@ -65,7 +65,7 @@ class Category
      * @ORM\Column(name="display", type="boolean")
      *
      */
-    private $display;
+    private $display=true;
 
 
 
@@ -254,7 +254,7 @@ class Category
     /**
      * Get display
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getDisplay()
     {

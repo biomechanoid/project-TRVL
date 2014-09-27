@@ -18,8 +18,10 @@ class BlogController extends Controller
      */
     public function indexAction()
     {
-        $categoryEnity = $this->get('doctrine')->getRepository('DJBlogBundle:Category')->findAll() ;
-        if(!$categoryEnity) {
+        $categoryRepository = $this->get('doctrine')->getRepository('DJBlogBundle:Category')
+                                ->createQueryBuilder('c')->where('c.display= 1')->getQuery();
+        $categoryEnity = $categoryRepository->getResult();
+        if(!$categoryRepository) {
             return array('categories' => array());
         }
         $all_categories = [];
@@ -36,13 +38,14 @@ class BlogController extends Controller
      */
     public function categoryAction($category)
     {
-        if($this->getCategory($category)['categoryName'] ) {
-            $this->assets['category'] = $this->getCategory($category)['categoryName'];
-            $this->assets['categories'] = $this->getCategory($category)['all_categories'];
+            if($this->getCategory($category) != null) {
+
+            $this->assets['category'] = $this->getCategory($category);
+            $this->assets['categories'] = $this->getCategories();
             $this->assets['category_posts'] = [];
 
-            foreach ($this->assets['category']->getPosts() as $value) {
-                if($value->getStatus() == 'visible' ) {
+            foreach ($this->getCategory($category)->getPosts() as $value) {
+                if($value->getDisplay() == 1 ) {
                     $this->assets['category_posts'][] = $value;
                 }
             }
@@ -52,10 +55,11 @@ class BlogController extends Controller
                      'categories' => $this->assets['categories'],
                      'posts'=> $this->assets['category_posts']
                      );
-        } else {
-             throw $this->createNotFoundException('This category does not exist!' . 'In class '. __class__ .'. On line ' . __line__ );
-        }
 
+            } else {
+                throw $this->createNotFoundException('Category does not exist!' . 'In class '. __class__ .'. On line ' . __line__ );
+
+            }
 
         // $response = $this->render('DJBlogBundle:Blog:category.html.twig', array('category' => $this->assets['category'],
         //              'posts'=>$assets['category_post']));
@@ -71,62 +75,62 @@ class BlogController extends Controller
      */
     public function postAction($category, $post)
     {
-        if($this->getCategory($category)['categoryName'] ) {
 
-            // $this->assets['category'] = $this->getCategory($category)['categoryName'];
-            // $this->assets['categories'] = $this->getCategory($category)['all_categories'];
-
-            $post = (string)trim(strtolower($post));
+         if($this->getCategory($category) != null) {
             $assets['post'] = false;
+            $this->assets['category'] = $this->getCategory($category);
+            $this->assets['categories'] = $this->getCategories();
+            $this->assets['category_posts'] = [];
 
-            foreach ($this->getCategory($category)['categoryName']->getPosts() as $value) {
-                if($value->getSlug() == $post) {
+            foreach ($this->getCategory($category)->getPosts() as $value) {
+                if($value->getSlug() == $post && $value->getDisplay() == true) {
                     $assets['post'] = true;
-                    return array(
-                                'category' => $this->getCategory($category)['categoryName'],
-                                'categories' => $this->getCategory($category)['all_categories'],
-                                'post' => $value
-                                );
+                    break;
                 }
             }
-            if (!$assets['post']) {
-                    throw $this->createNotFoundException('This category does not exist!' . 'In class '. __class__ .'. On line ' . __line__ );
-                }
-        } else {
-             throw $this->createNotFoundException('This category does not exist!' . 'In class '. __class__ .'. On line ' . __line__ );
+
+            if($assets['post']) {
+                return array(
+                    'category' => $this->getCategory($category),
+                    'categories' =>$this->getCategories(),
+                    'post' => $value
+                    );
+            } else {
+                throw $this->createNotFoundException('Post does not exists in category or is set as invisible!' . 'In class '. __class__ .'. On line ' . __line__ );
+            }
         }
-
-
-
-        // throw $this->createNotFoundException('No article "' . $post . '" in category with id = '.$assets['category']->getId());
-
     }
+
 
     public function getCategory($category)
     {
         if ($category != '' ) {
-            $categoryEnity = $this->get('doctrine')->getRepository('DJBlogBundle:Category');
-            if(!$categoryEnity) {
-                $this->createNotFoundException('Category does not exists in DB!');
-            }
-            $all_categories = [];
-            $category_name = [];
-            if ($categoryEnity->findOneBySlug($category)) {
-                $category_name = $categoryEnity->findOneBySlug($category);
+            $categoryEnity = $this->get('doctrine')->getRepository('DJBlogBundle:Category')->createQueryBuilder('c');
+            $categoryQuery = $categoryEnity->setParameter('category', $category)->where('c.slug = :category')->andHaving('c.display=1')->getQuery();
+
+            if( $categoryQuery->getOneOrNullResult() == null ) {
+                throw $this->createNotFoundException('Category does not exists in DB!');
             }
 
-            foreach ($categoryEnity->findAll() as $value) {
-                $all_categories[] = $value;
-            }
-            if(empty($all_categories)) {
-                throw $this->createNotFoundException('This category does not exist!');
-            }
-            return array('categoryName' => $category_name,
-                         'all_categories' => $all_categories);
+            return $categoryQuery->getOneOrNullResult();
 
         } else {
-            throw $this->createNotFoundException('This category does not exist!' . 'In class '. __class__ .'. On line ' . __line__ );
+            throw $this->createNotFoundException('This category name is empty!' . 'In class '. __class__ .'. On line ' . __line__ );
         }
+    }
+
+    public function getCategories() {
+
+        $categoryRepository = $this->get('doctrine')->getRepository('DJBlogBundle:Category')
+                                ->createQueryBuilder('c')->having('c.display= 1')->getQuery();
+
+        if( empty($categoryRepository->getResult()) ) {
+            return array();
+        } else {
+            return $categoryRepository->getResult();
+        }
+
+
     }
 
 

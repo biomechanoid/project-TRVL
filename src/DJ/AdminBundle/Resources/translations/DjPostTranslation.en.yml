@@ -11,8 +11,9 @@ dj.admin.post.add.blog.status.header: Select state of the article
 
 dj.admin.category.add.title.header: Create new Category
 dj.admin.category.add.name.help: Add Category name
-dj.admin.category.add.description.help: Add category description 
+dj.admin.category.add.description.help: Add category description
 dj.admin.category.add.slug.help: Add uri name eg. foo (will appear like www.example.com/foo)
+dj.admin.category.add.display.help: Set visibility status
 
 dj.admin.comment.add.title.header:  Manage Comments
 dj.admin.comment.add.checkbox.help: Check if visible
@@ -22,6 +23,7 @@ dj.admin.comment.add.postid.help: Post ID
 dj.admin.comment.list.display.help: Displayed
 dj.admin.comment.filter.post.help: Find Post ID
 dj.admin.comment.filter.created.help: Find Post by Date
+dj.admin.post.add.locale.help: Set locale language for the article
 
 dj.admin.asset.add.title.header: Manage Assets
 dj.admin.asset.add.name.help: Add name for the resource
@@ -32,4 +34,4 @@ dj.admin.pool.add.title.header: Create and Manage Pools
 dj.admin.pool.add.id.help : Pool ID
 dj.admin.pool.add.name.help: Pool Name
 dj.admin.pool.add.description.help: Pool short description
-dj.admin.pool.add.type.help: Pool Type 
+dj.admin.pool.add.type.help: Pool Type

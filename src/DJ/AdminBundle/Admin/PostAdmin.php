@@ -26,20 +26,20 @@ class PostAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
 
-//     	$post = $this->getModelManager()->createQuery('DJ\BlogBundle\Entity\Post');
-
-//     	var_dump($this->getModelManager()->find('DJ\BlogBundle\Entity\Post', 60));exit;
-// 		$postAsset = $this->getModelManager()->createQuery('DJ\BlogBundle\Entity\PostAsset');
-
-
         $formMapper
         ->with('dj.admin.post.add.blog.title.header', array('description' => 'Manage your blog content'))
             ->add('title', 'text', array('help' => 'dj.admin.post.add.title.help'))
             ->add('content','textarea', array('help' => 'dj.admin.post.add.content.help', 'attr'=>array('class'=>'ckeditor')))
             ->add('slug', 'text', array('help' => 'dj.admin.post.add.slug.help'))
-            ->add('status', 'choice', array(
+            ->add('locale', 'choice', array(
+                            'label' => 'dj.admin.post.add.locale.help',
+                            'choices'=>array('en'=>'en', 'sk'=>'sk'),
+                            'required'=>true
+                            ))
+            ->end()
+            ->add('display', 'choice', array(
             		'label'=>'dj.admin.post.add.blog.status.header',
-            		'choices'=>array('visible'=>'visible', 'hidden'=>'hidden'),
+            		'choices'=>array(true=>'visible', false=>'hidden'),
             		'required'=>true,
             		'expanded'=>true
             ))
@@ -70,6 +70,8 @@ class PostAdmin extends Admin
         $datagridMapper
             ->add('title')
             ->add('author')
+            ->add('locale')
+            ->add('display')
         ;
     }
 
@@ -81,6 +83,8 @@ class PostAdmin extends Admin
             ->add('content','text', array('label' => 'Post Content'))
             ->add('slug', 'url')
             ->add('author', 'text')
+            ->add('locale', 'text')
+            ->add('display', 'choice')
         ;
     }
 

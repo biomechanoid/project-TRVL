@@ -13,8 +13,8 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
 	public function load(ObjectManager $manager) {
 		$time = new \DateTime();
 		$articles = [
-				'F. Scott Fitzgerald'=>'#1The Great Gatsby',
-				'John Steinbeck'=>'#2The Grapes of Wrath',
+				'F. Scott Fitzgerald'=>'1The Great Gatsby',
+				'John Steinbeck'=>'2The Grapes of Wrath',
 				'George Orwell'=>'Nineteen Eighty-Four',
 				'James Joyce'=>'Ulysses',
 				'Vladimir Nabokov'=>'Lolita',
@@ -30,13 +30,15 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
 		$category1->setName('Main Category')
 				 ->setParentCategory(0)
 				 ->setDescription('Lorem ipsum dolor sit amet, consectetur.')
-				 ->setSlug('main');
+				 ->setSlug('main')
+				 ->setDisplay(true);
 
 		$category2 = new Category();
 		$category2->setName('My Books')
 				->setParentCategory(0)
 				->setDescription('Lorem ipsum dolor sit amet, consectetur.')
-				->setSlug('my-books');
+				->setSlug('my-books')
+				->setDisplay(true);
 
 		$manager->persist($category1);
 		$manager->persist($category2);
@@ -50,8 +52,8 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
 					->setContent('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore unde.')
 					->setSlug(strtolower(str_replace(' ','', $title)))
 					->setUpdated(new \DateTime('now'))
-					->setStatus('visible')
-					->setNode(0);
+					->setNode(0)
+					->setDisplay(true);
 			if ($iteration % 2) {
 				$article->setCategory($category2);
 			} else {
