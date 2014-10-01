@@ -24,6 +24,7 @@ class AppKernel extends Kernel
             new Sonata\AdminBundle\SonataAdminBundle(),
             new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            new Vlabs\MediaBundle\VlabsMediaBundle(),
 
             new DJ\MainBundle\DJMainBundle(),
             new DJ\AdminBundle\DJAdminBundle(),

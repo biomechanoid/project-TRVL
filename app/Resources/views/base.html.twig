@@ -49,8 +49,8 @@
         {% block body %}{% endblock %}
         {% block footer %}{% endblock %}
         {% block javascripts %}
-    <script type="text/javascript" src="../offline-assets/jquery.min.js"></script>
-    <!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>-->
+    <!--<script type="text/javascript" src="/offline-assets/jquery.min.js"></script>-->
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <script type="text/javascript" src={{ asset('bundles/djmain/js/scripts.js') }}></script>
     <script type="text/javascript" src={{ asset('bundles/djmain/js/custom.js') }}></script>
     {% block javascript %}{% endblock %}

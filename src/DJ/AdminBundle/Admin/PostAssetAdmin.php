@@ -41,23 +41,26 @@ class PostAssetAdmin extends Admin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
-
         $formMapper
 //             ->add('id', 'text', array('read_only'=>true))
             ->add('poolid', 'sonata_type_model', array('property'=>'name'))
-            ->add('assetid', 'sonata_type_model', array())
+            // ->add('assetid', 'sonata_type_model', array())
+            ->add('assetid', 'vlabs_file', array(
+                'required' => false
+            ))
             ->add('postid', 'sonata_type_model', array())
         ;
     }
 
+
     /**
      * @param ShowMapper $showMapper
      */
-    protected function configureShowFields(ShowMapper $showMapper)
-    {
-        $showMapper
-            ->add('id')
-        ;
-    }
+    // protected function configureShowFields(ShowMapper $showMapper)
+    // {
+    //     $showMapper
+    //         ->add('id')
+    //     ;
+    // }
 
 }

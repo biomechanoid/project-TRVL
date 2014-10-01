@@ -48,10 +48,10 @@ class PostAdmin extends Admin
 			->add('category', 'sonata_type_model', array())
        	    ->end()
        ->with('dj.admin.post.add.assets.title.header')
-//        		->add('postAssets', 'sonata_type_collection',
-//        				array(),
-//        				array('admin_code'=>'dj_admin.admin.post_asset')
-//         )
+       	// 	->add('postAssets', 'sonata_type_collection',
+       	// 			array(),
+       	// 			array('admin_code'=>'dj_admin.admin.post_asset')
+        // )
 
        	    ->end()
        ->with('dj.admin.post.add.settings.title.header')

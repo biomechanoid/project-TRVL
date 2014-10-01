@@ -158,5 +158,13 @@ sonata_admin:
     options:
         use_select2:    false
 
+vlabs_media:
+    driver: orm
+    image_cache:
+        cache_dir: files/c
+    mapping:
+        asset_entity:
+          class: DJ\BlogBundle\Entity\Asset
+
 
 

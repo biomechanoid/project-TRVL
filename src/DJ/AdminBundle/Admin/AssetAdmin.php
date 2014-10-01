@@ -23,7 +23,12 @@ class AssetAdmin extends Admin
 		->with('dj.admin.asset.add.title.header',
 				array('description' => 'Create new blog category'))
 		->add('name', 'text', array('label'=>'dj.admin.asset.add.name.help') )
-		->add('src','text', array('label'=>'dj.admin.asset.add.src.help'))
+		// ->add('path','text', array('label'=>'dj.admin.asset.add.path.help'))
+        ->add('path', 'vlabs_file', array(
+                'required' => false,
+                'add_del' => true,
+                'del_label' => 'Delete ?'
+            ))
 		->add('alt','text', array('label'=>'dj.admin.asset.add.alt.help'))
 		;
 	}
@@ -35,8 +40,7 @@ class AssetAdmin extends Admin
     {
         $datagridMapper
         	->add('id')
-            ->add('name')
-            ->add('src')
+            ->add('path')
             ->add('alt')
         ;
     }
@@ -48,8 +52,7 @@ class AssetAdmin extends Admin
     {
         $listMapper
             ->addIdentifier('id')
-            ->addIdentifier('name')
-            ->add('src')
+            ->add('path')
             ->add('alt')
             ->add('_action', 'actions', array(
                 'actions' => array(
@@ -67,20 +70,19 @@ class AssetAdmin extends Admin
     {
         $showMapper
             ->add('id')
-            ->add('name')
-            ->add('src')
+            ->add('path')
             ->add('alt')
         ;
     }
     public function validationCategory(ErrorElement $errorElement, $object)
     {
-            $errorElement->with('name')
-                ->assertType(array('type'=>'string',
-                                   'message'=>'dj.admin.asset.add.name.error'))
-                ->assertNotBlank()
-            ->end();
-            $errorElement->with('src')
-                ->assertUrl(array('message'=>'dj.admin.asset.add.src.error'))
+            // $errorElement->with('name')
+            //     ->assertType(array('type'=>'string',
+            //                        'message'=>'dj.admin.asset.add.name.error'))
+            //     ->assertNotBlank()
+            // ->end();
+            $errorElement->with('path')
+                // ->asser  Url(array('message'=>'dj.admin.asset.add.src.error'))
                 ->assertNotBlank()
             ->end();
 
