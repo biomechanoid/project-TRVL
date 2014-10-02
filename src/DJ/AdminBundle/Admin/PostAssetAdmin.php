@@ -44,10 +44,7 @@ class PostAssetAdmin extends Admin
         $formMapper
 //             ->add('id', 'text', array('read_only'=>true))
             ->add('poolid', 'sonata_type_model', array('property'=>'name'))
-            // ->add('assetid', 'sonata_type_model', array())
-            ->add('assetid', 'vlabs_file', array(
-                'required' => false
-            ))
+            ->add('assetid', 'sonata_type_model', array())
             ->add('postid', 'sonata_type_model', array())
         ;
     }

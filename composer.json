@@ -25,7 +25,8 @@
         "sonata-project/doctrine-orm-admin-bundle": "2.3.0",
         "doctrine/doctrine-fixtures-bundle": "2.2.*",
         "friendsofsymfony/user-bundle": "v1.3.3",
-        "vlabs/media-bundle": "dev-master"
+        "sonata-project/media-bundle": "2.3.0",
+        "jms/serializer-bundle": "~0.13"
 
     },
     "repositories": [

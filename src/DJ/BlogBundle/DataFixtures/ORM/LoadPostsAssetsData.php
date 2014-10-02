@@ -31,16 +31,14 @@ class LoadPostsAssetsData extends AbstractFixture implements OrderedFixtureInter
 		$asset1 = new Asset();
 		$asset1->setName('cool image')
 			  ->setAlt('My best image')
-			  ->setPath('/foo/bar/image.jpg')
-			  ->setCreatedAt(new \DateTime('now'))
+			  ->setSrc('/foo/bar/image.jpg')
 			  ;
 		$manager->persist($asset1);
 
 		$asset2 = new Asset();
 		$asset2->setName('cool video')
 			   ->setAlt('My best video')
-		       ->setPath('/foo/bar/video.vlc')
-		       ->setCreatedAt(new \DateTime('now'))
+		       ->setSrc('/foo/bar/video.vlc')
 		;
 		$manager->persist($asset2);
 

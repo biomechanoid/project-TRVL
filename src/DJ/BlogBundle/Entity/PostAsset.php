@@ -3,8 +3,6 @@
 namespace DJ\BlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
-use Vlabs\MediaBundle\Annotation\Vlabs;
 
 /**
  * PostAsset
@@ -30,13 +28,8 @@ class PostAsset
     private $poolid;
 
     /**
-     *  @var VlabsFile
-     *
-     * @ORM\ManyToOne(targetEntity="Asset", inversedBy="postAssets", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(name="assetid", referencedColumnName="id", nullable=false)
-     *
-     * @Vlabs\Media(identifier="asset_entity", upload_dir="files/images")
-     * @Assert\Valid()
+     *  @ORM\ManyToOne(targetEntity="Asset", inversedBy="postAssets")
+     *  @ORM\JoinColumn(name="assetid", referencedColumnName="id", nullable=false)
      */
     private $assetid;
 
@@ -83,10 +76,10 @@ class PostAsset
     /**
      * Set assetid
      *
-     * @param DJ\BLogBundle\Entity\Asset $assetid
+     * @param integer $assetid
      * @return PostAsset
      */
-    public function setAssetid($assetid = null)
+    public function setAssetid($assetid)
     {
         $this->assetid = $assetid;
 
@@ -96,7 +89,7 @@ class PostAsset
     /**
      * Get assetid
      *
-     * @return DJ\BLogBundle\Entity\Asset
+     * @return integer
      */
     public function getAssetid()
     {
