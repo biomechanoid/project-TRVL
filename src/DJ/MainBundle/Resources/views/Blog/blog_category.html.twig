@@ -7,9 +7,19 @@
             {% for post in posts %}
                     <div class="blogPost2">
 
-                        <a href="blog-single.html">
+                        <a href={{ path('blog_post',{'category':category.slug,'post':post.slug}) }}>
                             <div class="post-thumbnail">
-                                <img class="img-responsive" src={{ asset('bundles/djmain/img/gallery/1.jpg') }} alt="image">
+
+                            {% if post.media %}
+                               {% thumbnail post.media, 'medium' with {'class': 'img-responsive'} %} {# render the related thumbnail #}
+                               {# {% media post.media, 'small' %} #}
+                               {# render the media #}
+                            {% else %}
+                                <img  class="img-responsive" src={{ asset('bundles/djmain/img/gallery/1.jpg') }} alt="image"></a>
+                            {% endif %}
+
+
+
                             </div>
                         </a>
 

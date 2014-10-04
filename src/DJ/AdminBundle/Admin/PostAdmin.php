@@ -52,6 +52,13 @@ class PostAdmin extends Admin
        	// 			array(),
        	// 			array('admin_code'=>'dj_admin.admin.post_asset')
         // )
+//        ->add('media', 'sonata_media_type', array(
+//                     'provider' => 'sonata.media.provider.image',
+//                     'context'  => 'blog',
+//                     'empty_on_new' => false
+// ))
+        ->add('media', 'sonata_type_model_list', array(), array('link_parameters' => array('context' => 'blog')))
+
 
        	    ->end()
        ->with('dj.admin.post.add.settings.title.header')

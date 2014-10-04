@@ -8,7 +8,11 @@
     <div class="blogPost3">
 
     <div class="post-thumbnail">
-        <img class="img-responsive" src={{ asset('bundles/djmain/img//gallery/1.jpg') }} alt="image">
+        {% if post.media %}
+           {% media post.media, 'big' %} {# render the related thumbnail #}
+        {% else %}
+            <img class="img-responsive" src={{ asset('bundles/djmain/img//gallery/1.jpg') }} alt="image">
+        {% endif %}
     </div>
 
     <div class="post-content">

@@ -24,6 +24,7 @@ class AssetAdmin extends Admin
 				array('description' => 'Create new blog category'))
 		->add('name', 'text', array('label'=>'dj.admin.asset.add.name.help') )
 		// ->add('path','text', array('label'=>'dj.admin.asset.add.path.help'))
+
 		->add('alt','text', array('label'=>'dj.admin.asset.add.alt.help'))
 		;
 	}

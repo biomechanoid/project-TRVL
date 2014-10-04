@@ -59,9 +59,9 @@ doctrine:
         entity_managers:
             default:
                 mappings:
+                    FOSUserBundle: ~
                     ApplicationSonataMediaBundle: ~
                     SonataMediaBundle: ~
-                    FOSUserBundle: ~
                     DJUserBundle: ~
                     DJBlogBundle: ~
                     # add your own bundles here
@@ -79,6 +79,10 @@ swiftmailer:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    form:
+        resources:
+            # other files
+            - 'SonataMediaBundle:Form:media_widgets.html.twig'
 
 sonata_block:
     default_contexts: [cms]
@@ -183,6 +187,13 @@ sonata_media:
             formats:
                 small: { width: 100 , quality: 70}
                 big:   { width: 500 , quality: 70}
+        blog:
+            providers:
+                - sonata.media.provider.image
+            formats:
+                small: { width: 150 , quality: 95}
+                medium: { width: 380 , height: 287, quality: 90}
+                big:   { width: 787 , height: 591, quality: 90}
 
     cdn:
         server:

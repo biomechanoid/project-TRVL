@@ -5,6 +5,7 @@ namespace DJ\BlogBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Locale\Stub\StubLocale;
+use Application\Sonata\MediaBundle\Entity\Media as Media ;
 
 
 /**
@@ -97,6 +98,12 @@ class Post
      * @ORM\OneToMany(targetEntity="PostAsset", mappedBy="postid", cascade={"persist", "remove"}, orphanRemoval=true)
      */
     private $postAssets;
+
+    /**
+     * @var \Application\Sonata\MediaBundle\Entity\Media
+     * @ORM\ManytoOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist", "remove"}, fetch="LAZY")
+     */
+    private $media;
 
     /**
      * @var string
@@ -481,5 +488,74 @@ class Post
     public function getLocale()
     {
         return $this->locale;
+    }
+
+    /**
+     * Add images
+     *
+     * @param \Application\Sonata\MediaBundle\Entity\Media $images
+     * @return Post
+     */
+    public function addImage(\Application\Sonata\MediaBundle\Entity\Media $images)
+    {
+        $this->images[] = $images;
+
+        return $this;
+    }
+
+    /**
+     * Remove images
+     *
+     * @param \Application\Sonata\MediaBundle\Entity\Media $images
+     */
+    public function removeImage(\Application\Sonata\MediaBundle\Entity\Media $images)
+    {
+        $this->images->removeElement($images);
+    }
+
+    /**
+     * Get images
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getImages()
+    {
+        return $this->images;
+    }
+
+    /**
+     * Set images
+     *
+     * @param \Application\Sonata\MediaBundle\Entity\Media $images
+     * @return Post
+     */
+    public function setImages(\Application\Sonata\MediaBundle\Entity\Media $images = null)
+    {
+        $this->images = $images;
+
+        return $this;
+    }
+
+    /**
+     * Set media
+     *
+     * @param \Application\Sonata\MediaBundle\Entity\Media $media
+     * @return Post
+     */
+    public function setMedia(\Application\Sonata\MediaBundle\Entity\Media $media = null)
+    {
+        $this->media = $media;
+
+        return $this;
+    }
+
+    /**
+     * Get media
+     *
+     * @return \Application\Sonata\MediaBundle\Entity\Media
+     */
+    public function getMedia()
+    {
+        return $this->media;
     }
 }
