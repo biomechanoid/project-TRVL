@@ -92,6 +92,7 @@ class PostAdmin extends Admin
             ->add('author', 'text')
             ->add('locale', 'text')
             ->add('display', 'choice')
+             ->add('media')
         ;
     }
 

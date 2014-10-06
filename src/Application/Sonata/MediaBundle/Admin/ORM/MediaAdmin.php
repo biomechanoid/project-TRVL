@@ -11,39 +11,47 @@
 
 namespace Application\Sonata\MediaBundle\Admin\ORM;
 
-use Sonata\MediaBundle\Admin\BaseMediaAdmin as Admin;
+use Sonata\AdminBundle\Admin\Admin;
+use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
+use Sonata\AdminBundle\Datagrid\ListMapper;
+use Sonata\AdminBundle\Show\ShowMapper;
+use Sonata\AdminBundle\Route\RouteCollection;
+use Sonata\MediaBundle\Provider\Pool;
+use Sonata\MediaBundle\Form\DataTransformer\ProviderDataTransformer;
+use Sonata\MediaBundle\Admin\BaseMediaAdmin as BaseMediaAdmin;
 
-class MediaAdmin extends Admin
+class MediaAdmin extends BaseMediaAdmin
 {
-    /**
-     * @param  \Sonata\AdminBundle\Datagrid\DatagridMapper $datagridMapper
-     * @return void
-     */
-    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
-    {
-        $datagridMapper
-            // ->add('name')
-            ->add('providerReference')
-            ->add('enabled')
-            ->add('context')
-        ;
 
-        $providers = array();
+/**
+ * {@inheritdoc}
+ */
+protected function configureListFields(ListMapper $listMapper)
+{
+    $listMapper
+        ->add('custom', 'string', array('template' =>  'SonataMediaBundle:MediaAdmin:list_custom.html.twig'))
+        ->add('enabled', 'boolean', array('editable' => true))
+        ->add('_action', 'actions', array(
+            'actions' => array(
+                'show' => array(),
+                'edit' => array(),
+                'delete' => array(),
+            )
+        ))
+    ;
+}
 
-        $providerNames = (array) $this->pool->getProviderNamesByContext($this->getPersistentParameter('context', $this->pool->getDefaultContext()));
-        foreach ($providerNames as $name) {
-            $providers[$name] = $name;
-        }
+// protected function configureFormFields(FormMapper $formMapper)
+//     {
+//          $formMapper
+//         ->with('dj.admin.post.add.media.title.header', array('description' => 'Manage your media files'))
+//             ->add('name')
+//             ->add('enabled', 'boolean')
+//             ->add('content_size')
+//             ->add('context')
+//             ;
 
-        $datagridMapper->add('providerName', 'doctrine_orm_choice', array(
-            'field_options'=> array(
-                'choices' => $providers,
-                'required' => false,
-                'multiple' => false,
-                'expanded' => false,
-            ),
-            'field_type'=> 'choice',
-        ));
-    }
+//     }
+
 }

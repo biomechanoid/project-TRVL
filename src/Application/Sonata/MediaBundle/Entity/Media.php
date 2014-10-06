@@ -19,7 +19,7 @@ use Sonata\MediaBundle\Entity\BaseMedia as BaseMedia;
  * References :
  *   working with object : http://www.doctrine-project.org/projects/orm/2.0/docs/reference/working-with-objects/en
  *
- * @author <yourname> <youremail>
+ * @author Jakub Ruttkay jakubruttkay@gmail.com
  */
 class Media extends BaseMedia
 {

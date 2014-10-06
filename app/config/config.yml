@@ -2,6 +2,7 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: '@DJAdminBundle/Resources/config/services.yml' }
+    - { resource: @ApplicationSonataMediaBundle/Resources/config/services.yml }
 framework:
     #esi:             ~
     translator:      { fallback: en }
@@ -79,10 +80,6 @@ swiftmailer:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
-    form:
-        resources:
-            # other files
-            - 'SonataMediaBundle:Form:media_widgets.html.twig'
 
 sonata_block:
     default_contexts: [cms]
@@ -161,6 +158,9 @@ sonata_admin:
                     - dj_admin.admin.asset
                     - dj_admin.admin.pool
                     - dj_admin.admin.post_asset
+            Media:
+                items:
+                    - aplication.admin.media
         blocks:
             -
                 position: left
@@ -177,6 +177,10 @@ sonata_admin:
 sonata_media:
     default_context: default
     db_driver: doctrine_orm
+    class:
+        media:              Application\Sonata\MediaBundle\Entity\Media
+        gallery:            Application\Sonata\MediaBundle\Entity\Gallery
+        gallery_has_media:  Application\Sonata\MediaBundle\Entity\GalleryHasMedia
     contexts:
         default:  # the default context is mandatory
             providers:
@@ -193,6 +197,14 @@ sonata_media:
             formats:
                 small: { width: 150 , quality: 95}
                 medium: { width: 380 , height: 287, quality: 90}
+                big:   { width: 2132 , height: 1421, quality: 90}
+        pool:
+            providers:
+                - sonata.media.provider.image
+                - sonata.media.provider.youtube
+            formats:
+                small: { width: 150 , quality: 95}
+                medium: { width: 1400 , height: 661, quality: 90}
                 big:   { width: 787 , height: 591, quality: 90}
 
     cdn:
@@ -203,6 +215,27 @@ sonata_media:
         local:
             directory:  %kernel.root_dir%/../web/uploads/media
             create:     false
+        ftp:
+            directory:
+            host:
+            username:
+            password:
+            port:     21
+            passive:  false
+            create:   false
+            mode:     2 # this is the FTP_BINARY constant. see: http://php.net/manual/en/ftp.constants.
+
+    providers:
+        image:
+            service:    sonata.media.provider.image
+            resizer:    sonata.media.resizer.simple # sonata.media.resizer.square
+            filesystem: sonata.media.filesystem.local
+            cdn:        sonata.media.cdn.server
+            generator:  sonata.media.generator.default
+            thumbnail:  sonata.media.thumbnail.format
+            allowed_extensions: ['jpg', 'png', 'jpeg']
+            allowed_mime_types: ['image/pjpeg', 'image/jpeg', 'image/png', 'image/x-png']
+
 
 
 
