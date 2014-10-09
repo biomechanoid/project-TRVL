@@ -14,6 +14,18 @@ class MainController extends Controller
      */
     public function indexAction()
     {
-        return array();
+        $pools = $this->get('doctrine')->getRepository('DJBlogBundle:Pool')
+                                ->findByPath('index');
+                                // ->findBy(array('path' => 'index'));
+        $pool = [];
+        foreach ($pools as $value) {
+            if($value->getName() == 'primary_image') {
+                $pool['primary'] = $value;
+            } elseif($value->getName() == 'secondary_image') {
+                $pool['secondary'] = $value;
+            }
+        }
+
+        return array('pool'=>$pool);
     }
 }

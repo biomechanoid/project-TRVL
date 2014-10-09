@@ -106,7 +106,10 @@ class BlogController extends Controller
     {
         if ($category != '' ) {
             $categoryEnity = $this->get('doctrine')->getRepository('DJBlogBundle:Category')->createQueryBuilder('c');
-            $categoryQuery = $categoryEnity->setParameter('category', $category)->where('c.slug = :category')->andHaving('c.display=1')->getQuery();
+            $categoryQuery = $categoryEnity->setParameter('category', $category)
+                                            ->where('c.slug = :category')
+                                            ->andHaving('c.display=1')
+                                            ->getQuery();
 
             if( $categoryQuery->getOneOrNullResult() == null ) {
                 throw $this->createNotFoundException('Category does not exists in DB!');
@@ -120,7 +123,6 @@ class BlogController extends Controller
     }
 
     public function getCategories() {
-
         $categoryRepository = $this->get('doctrine')->getRepository('DJBlogBundle:Category')
                                 ->createQueryBuilder('c')->having('c.display= 1')->getQuery();
 

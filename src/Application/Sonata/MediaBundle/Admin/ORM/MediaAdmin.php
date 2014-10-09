@@ -24,34 +24,24 @@ use Sonata\MediaBundle\Admin\BaseMediaAdmin as BaseMediaAdmin;
 class MediaAdmin extends BaseMediaAdmin
 {
 
-/**
- * {@inheritdoc}
- */
-protected function configureListFields(ListMapper $listMapper)
-{
-    $listMapper
-        ->add('custom', 'string', array('template' =>  'SonataMediaBundle:MediaAdmin:list_custom.html.twig'))
-        ->add('enabled', 'boolean', array('editable' => true))
-        ->add('_action', 'actions', array(
-            'actions' => array(
-                'show' => array(),
-                'edit' => array(),
-                'delete' => array(),
-            )
-        ))
-    ;
-}
+    /**
+     * {@inheritdoc}
+     */
+    protected function configureListFields(ListMapper $listMapper)
+    {
+        $listMapper
+            ->add('custom', 'string', array('template' =>  'SonataMediaBundle:MediaAdmin:list_custom.html.twig'))
+            ->add('enabled', 'boolean', array('editable' => true))
+            ->add('_action', 'actions', array(
+                'actions' => array(
+                    'show' => array(),
+                    'edit' => array(),
+                    'delete' => array(),
+                )
+            ))
+        ;
+    }
 
-// protected function configureFormFields(FormMapper $formMapper)
-//     {
-//          $formMapper
-//         ->with('dj.admin.post.add.media.title.header', array('description' => 'Manage your media files'))
-//             ->add('name')
-//             ->add('enabled', 'boolean')
-//             ->add('content_size')
-//             ->add('context')
-//             ;
 
-//     }
 
 }

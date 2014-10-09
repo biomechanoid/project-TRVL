@@ -34,4 +34,5 @@ dj.admin.pool.add.title.header: Create and Manage Pools
 dj.admin.pool.add.id.help : Pool ID
 dj.admin.pool.add.name.help: Pool Name
 dj.admin.pool.add.description.help: Pool short description
-dj.admin.pool.add.type.help: Pool Type
+dj.admin.pool.add.description.error: Some characters are not allowed in the string
+dj.admin.pool.add.paht.help: Path to page where pool is loacated

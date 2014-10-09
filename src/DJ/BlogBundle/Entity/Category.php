@@ -42,6 +42,12 @@ class Category
     private $created;
 
     /**
+     * @var \Application\Sonata\MediaBundle\Entity\Media
+     * @ORM\ManytoOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist", "remove"}, fetch="LAZY")
+     */
+    private $media;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="description", type="text")
@@ -259,5 +265,28 @@ class Category
     public function getDisplay()
     {
         return $this->display;
+    }
+
+    /**
+     * Set media
+     *
+     * @param \Application\Sonata\MediaBundle\Entity\Media $media
+     * @return Category
+     */
+    public function setMedia(\Application\Sonata\MediaBundle\Entity\Media $media = null)
+    {
+        $this->media = $media;
+
+        return $this;
+    }
+
+    /**
+     * Get media
+     *
+     * @return \Application\Sonata\MediaBundle\Entity\Media 
+     */
+    public function getMedia()
+    {
+        return $this->media;
     }
 }

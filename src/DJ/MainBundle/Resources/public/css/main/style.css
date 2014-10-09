@@ -1025,8 +1025,17 @@ p.bold{
 
 
 .tableWrapper{
-    padding:60px;
+    height: 386px;
+    position: relative;
+    /*padding:60px;*/
     border: solid 10px black;
+    overflow: hidden;
+}
+.tableWrapper img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
 }
 
 .tableWrapper .separator{

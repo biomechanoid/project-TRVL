@@ -48,15 +48,11 @@ class PostAdmin extends Admin
 			->add('category', 'sonata_type_model', array())
        	    ->end()
        ->with('dj.admin.post.add.assets.title.header')
-       	// 	->add('postAssets', 'sonata_type_collection',
-       	// 			array(),
-       	// 			array('admin_code'=>'dj_admin.admin.post_asset')
-        // )
-//        ->add('media', 'sonata_media_type', array(
-//                     'provider' => 'sonata.media.provider.image',
-//                     'context'  => 'blog',
-//                     'empty_on_new' => false
-// ))
+       // ->add('media', 'sonata_media_type', array(
+       //              'provider' => 'sonata.media.provider.image',
+       //              'context'  => 'blog',
+       //              'empty_on_new' => false
+       //  ))
         ->add('media', 'sonata_type_model_list', array(), array('link_parameters' => array('context' => 'blog')))
 
 
@@ -64,9 +60,7 @@ class PostAdmin extends Admin
        ->with('dj.admin.post.add.settings.title.header')
             ->add('author', 'entity', array('class' => 'DJ\UserBundle\Entity\User', 'help' => 'dj.admin.post.add.author.help'))
 //             ->add('created')
-            ->add('softDelete','checkbox', array(
-            		'required'=>false
-				))
+
             ->end()
         ;
     }

@@ -21,14 +21,14 @@ class PoolAdmin extends Admin
 		$formMapper
 		->with('dj.admin.pool.add.title.header',
 				array('description' => 'Pool is the place where images and videos will be placed'))
-		->add('id', 'text', array('disabled'=>true,'label'=>'dj.admin.pool.add.id.help'))
 		->add('name', 'text', array('trim'=>true, 'label'=>'dj.admin.pool.add.name.help'))
 		->add('description', 'text', array('trim'=>true, 'label'=>'dj.admin.pool.add.description.help'))
-		->add('type', 'choice', array('label'=>'dj.admin.pool.add.type.help',
-                    'choices'=>array('image'=>'image', 'video'=>'video','other'=>'other'),
+		->add('path', 'choice', array('label'=>'dj.admin.pool.add.paht.help',
+                    'choices'=>array('index'=>'/', 'blog_index'=>'/blog', 'blog_category'=>'/blog/category', 'blog_post'=>'/blog/post'),
                     'required'=>true,
-                    'expanded'=>true,
+                    'expanded'=>false,
                     'data'=>'image'))
+        ->add('media', 'sonata_type_model_list', array(), array('link_parameters' => array('context' => 'pool')))
 		;
 	}
 
@@ -40,7 +40,7 @@ class PoolAdmin extends Admin
         $datagridMapper
             ->add('id')
             ->add('name')
-            ->add('type')
+            ->add('path')
         ;
     }
 
@@ -53,7 +53,7 @@ class PoolAdmin extends Admin
             ->add('id')
             ->addIdentifier('name')
             ->add('description')
-            ->add('type')
+            ->add('path')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'edit' => array(),
@@ -72,7 +72,7 @@ class PoolAdmin extends Admin
             ->add('id')
             ->add('name')
             ->add('description')
-            ->add('type')
+            ->add('path')
         ;
     }
 
@@ -84,13 +84,13 @@ class PoolAdmin extends Admin
             ->assertNotBlank()
         ->end();
         $errorElement->with('description')
-                ->assertType(array('type'=>'alnum',
+                ->assertType(array('type'=>'string',
                                    'message'=>'dj.admin.pool.add.description.error'))
             ->end();
-        $errorElement->with('type')
+        $errorElement->with('path')
             ->assertType(array('type'=>'alnum',
-                               'message'=>'dj.admin.pool.add.description.error',
-                               'value'=>'image'))
+                               'message'=>'dj.admin.pool.add.path.error'
+                               ))
         ->end();
 
 

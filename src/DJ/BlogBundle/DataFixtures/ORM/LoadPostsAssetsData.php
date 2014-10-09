@@ -15,16 +15,16 @@ class LoadPostsAssetsData extends AbstractFixture implements OrderedFixtureInter
 	public function load(ObjectManager $manager) {
 
 		$pool1 = new Pool();
-		$pool1->setName('video-main')
-		     ->setDescription('main video pool on the blog post')
-		     ->setType('video')
+		$pool1->setName('primary_image')
+		     ->setDescription('primary backgound image on landing page')
+		     ->setPath('index')
 		     ;
 		$manager->persist($pool1);
 
 		$pool2 = new Pool();
-		$pool2->setName('image-main')
+		$pool2->setName('secondary_image')
 		->setDescription('main image pool on the blog post')
-		->setType('image')
+		->setPath('index')
 		;
 		$manager->persist($pool2);
 

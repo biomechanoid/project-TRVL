@@ -23,6 +23,7 @@ class CategoryAdmin extends Admin
 				array('description' => 'Create new blog category'))
 			->add('name', 'text', array('help' => 'dj.admin.category.add.name.help'))
 			->add('slug', 'text', array('help' => 'dj.admin.category.add.slug.help'))
+            ->add('media', 'sonata_type_model_list', array(), array('link_parameters' => array('context' => 'blog_category')))
             ->add('display', 'choice', array(
                                 'label'=>'dj.admin.category.add.display.help',
                                 'choices'=>array(true=>'visible', false=>'hidden'),
@@ -52,6 +53,7 @@ class CategoryAdmin extends Admin
 		->addIdentifier('name', 'text')
 		->add('description', 'text')
 		->addIdentifier('slug', 'text')
+        ->add('media')
         ->add('display','text')
 
 		;
@@ -71,10 +73,6 @@ class CategoryAdmin extends Admin
                 ->assertNotBlank()
                 ->assertNotNull()
             ->end();
-            // $errorElement->with('description')
-            //     ->assertType(array('type'=>'alnum',
-            //                        'message'=>'dj.admin.category.add.description.error'))
-            // ->end();
 	}
 
 }

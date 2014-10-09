@@ -75,13 +75,6 @@ class Post
     private $node=0;
 
     /**
-     * @var string
-     * @ORM\Column(name="soft_delete", type="boolean")
-     *
-     */
-    private $softDelete;
-
-    /**
     * @ORM\OneToMany(targetEntity="Comment", mappedBy="post", orphanRemoval=true)
     */
     protected $comments;
@@ -127,7 +120,6 @@ class Post
     	$this->comments = new \Doctrine\Common\Collections\ArrayCollection();
     	$this->created = new \DateTime('now');
         $this->updated = new \DateTime('now');
-    	$this->softDelete = false;
     	$this->postAssets = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -342,28 +334,6 @@ class Post
         return $this->comments;
     }
 
-    /**
-     * Set softDelete
-     *
-     * @param boolean $softDelete
-     * @return Post
-     */
-    public function setSoftDelete($softDelete)
-    {
-        $this->softDelete = $softDelete;
-
-        return $this;
-    }
-
-    /**
-     * Get softDelete
-     *
-     * @return boolean
-     */
-    public function getSoftDelete()
-    {
-        return $this->softDelete;
-    }
 
     /**
      * Set node

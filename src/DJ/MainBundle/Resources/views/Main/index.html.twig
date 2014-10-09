@@ -46,7 +46,12 @@
         <div class="container-fluid">
             <div class="col-md-7 col-sm-6 hidden-xs image" >
                 <div class="whiteOverlay"></div>
-                <img src={{ asset('bundles/djmain/img/backgroundWelcome.jpg') }} alt="background">
+                {% if pool['secondary'].media %}
+                    {% media pool['secondary'].media, 'medium' with {'alt': 'background'} %}
+                {% else %}
+                   <img src={{ asset('bundles/djmain/img/backgroundWelcome.jpg') }} alt="background">
+                {% endif %}
+
             </div>
 
             <div class="col-md-5 col-sm-6 col-xs-12 textOverlay text-center">
@@ -65,7 +70,13 @@
 
 {% block javascript %}
     <script>
-        $.backstretch("{{ asset('bundles/djmain/img/background1.jpg') }}");
+            {% if pool['primary'].media %}
+            $.backstretch("{% path pool['primary'].media, 'big' %}");
+            {% else %}
+               $.backstretch("{{ asset('bundles/djmain/img/background1.jpg') }}");
+            {% endif %}
+
+
     </script>
 {% endblock javascript %}
 
