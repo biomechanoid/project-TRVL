@@ -106,17 +106,16 @@
                 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
                     $.backstretch('bundles/djmain/img/background1.jpg');
                 }
-
                 else{
-                    // $.okvideo({
-                    //     video: 'http://www.youtube.com/watch?v=rBmMzabdEKQ',  // enter here the url of your vimeo or youtube video
-                    //     autoplay: true,
-                    //     loop: true,
-                    //     highdef: false,
-                    //     hd: true,
-                    //     adproof: true,
-                    //     volume: 10 // video volume value from 0 (mute) to 100
-                    // })
+                    $.okvideo({
+                        source: 'http://vimeo.com/18052127',  // enter here the url of your vimeo or youtube video
+                        autoplay: true,
+                        loop: true,
+                        highdef: true,
+                        hd: true,
+                        adproof: true,
+                        volume: 0 // video volume value from 0 (mute) to 100
+                    })
                 }
             });
 

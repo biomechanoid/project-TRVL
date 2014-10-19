@@ -25,7 +25,7 @@
 
                         <div class="post-content">
                             <div class="post-title">
-                                <a href="blog-single.html"><h3>{{ post.title }}</h3></a>
+                                <a href={{ path('blog_post',{'category':category.slug,'post':post.slug}) }}><h3>{{ post.title }}</h3></a>
                             </div>
                             <div class="post-info">
                                 <div class="postBy">
@@ -58,5 +58,5 @@
     </div> #}
 {% endblock content %}
 {% block sidebar %}
-    {{ include('DJMainBundle:Blog:partials/blog_sidebar.html.twig', { 'categories': categories, 'current_category': category.slug }) }}
+    {{ include('DJMainBundle:Blog:partials/blog_sidebar.html.twig', { 'categories': categories, 'current_category': category.slug, 'category_posts': null, 'current_post': null }) }}
 {% endblock sidebar %}

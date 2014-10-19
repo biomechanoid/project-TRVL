@@ -38,61 +38,78 @@ class BlogController extends Controller
      */
     public function categoryAction($category)
     {
-            if($this->getCategory($category) != null) {
+        if($this->getCategory($category) != null) {
 
-            $this->assets['category'] = $this->getCategory($category);
-            $this->assets['categories'] = $this->getCategories();
-            $this->assets['category_posts'] = [];
+        $this->assets['category'] = $this->getCategory($category);
+        $this->assets['categories'] = $this->getCategories();
+        $this->assets['category_posts'] = [];
 
-            foreach ($this->getCategory($category)->getPosts() as $value) {
-                if($value->getDisplay() == 1 ) {
-                    $this->assets['category_posts'][] = $value;
-                }
+        foreach ($this->getCategory($category)->getPosts() as $value) {
+            if($value->getDisplay() == 1 ) {
+                static $localKey = 0;
+                $value->reindexedId = ++$localKey;
+                $this->assets['category_posts'][$localKey] = $value;
+
+                // $this->assets['category_posts']['idd'] = ++$localKey;
+                // $this->assets['category_posts']['real_id'] = $value->getId();
+                // array_push($this->assets['category_posts'], $newValue);
             }
+        }
+// var_dump( $this->assets['category_posts']);exit;
+        return array(
+                 'category' => $this->assets['category'],
+                 'categories' => $this->assets['categories'],
+                 'posts'=> $this->assets['category_posts']
+                 );
 
-            return array(
-                     'category' => $this->assets['category'],
-                     'categories' => $this->assets['categories'],
-                     'posts'=> $this->assets['category_posts']
-                     );
+        } else {
+            throw $this->createNotFoundException('Category does not exist!' . 'In class '. __class__ .'. On line ' . __line__ );
 
-            } else {
-                throw $this->createNotFoundException('Category does not exist!' . 'In class '. __class__ .'. On line ' . __line__ );
+        }
 
-            }
-
-        // $response = $this->render('DJBlogBundle:Blog:category.html.twig', array('category' => $this->assets['category'],
-        //              'posts'=>$assets['category_post']));
-        // $response->setMaxAge(600);
-        // $response->setPublic();
-
-        // return $response;
     }
 
     /**
      * @Route("/{category}/{post}", name="blog_post", requirements={"category" = "[a-zA-Z0-9-_]+","post" = "[a-zA-Z0-9-_]+"}, defaults={"category" = null})
      * @Template("DJMainBundle:Blog:blog_post.html.twig")
      */
-    public function postAction($category, $post)
+    public function postAction($category, $post, $page=1)
     {
 
          if($this->getCategory($category) != null) {
             $assets['post'] = false;
-            $this->assets['category'] = $this->getCategory($category);
-            $this->assets['categories'] = $this->getCategories();
+            $this->assets['post_category'] = $this->getCategory($category);
+            $this->assets['post_categories'] = [];
             $this->assets['category_posts'] = [];
 
             foreach ($this->getCategory($category)->getPosts() as $value) {
                 if($value->getSlug() == $post && $value->getDisplay() == true) {
                     $assets['post'] = true;
+
+                    foreach ($this->getCategories() as $category) {
+                        $this->assets['post_categories'][] = array('name' => $category->getName(),
+                                                                 'slug' => $category->getSlug() );
+                    }
+
+                    foreach ($this->assets['post_category']->getPosts() as $localKey=>$localPost) {
+
+                        $this->assets['category_posts'][++$localKey] = array(
+                                                                'id'=>  $localKey,
+                                                                'real_id'=>$localPost->getId(),
+                                                                'name'=>$localPost->getTitle(),
+                                                                'slug'=>$localPost->getSlug()
+                                                                 );
+                    }
+
                     break;
                 }
             }
 
             if($assets['post']) {
                 return array(
-                    'category' => $this->getCategory($category),
-                    'categories' =>$this->getCategories(),
+                    'category' => $this->assets['post_category'],
+                    'categories' =>$this->assets['post_categories'],
+                    'posts' => $this->assets['category_posts'],
                     'post' => $value
                     );
             } else {
@@ -102,7 +119,7 @@ class BlogController extends Controller
     }
 
 
-    public function getCategory($category)
+    public function getCategory($category ='')
     {
         if ($category != '' ) {
             $categoryEnity = $this->get('doctrine')->getRepository('DJBlogBundle:Category')->createQueryBuilder('c');
@@ -121,6 +138,7 @@ class BlogController extends Controller
             throw $this->createNotFoundException('This category name is empty!' . 'In class '. __class__ .'. On line ' . __line__ );
         }
     }
+
 
     public function getCategories() {
         $categoryRepository = $this->get('doctrine')->getRepository('DJBlogBundle:Category')

@@ -1,14 +1,32 @@
-{#
-You need the following variables:
+    //////////// Paginator //////////////////////////////
 
-paginationCurrentFilters:       an associative array that contains the current settings of the page like search, filters, etc. For example {% set paginationCurrentFilters = { â€˜searchâ€™: search, â€˜filter_by_is_activeâ€™: filter_by_is_active } %}, so it can be easy for us to merge the pagination with these filters.
-paginationCurrentPage :         the current page you are in
-paginationRouteName :           the route name of the path that paginates files
-paginationTotal :               The paginationTotal number of pages (ceil(found_entities/items_per_page))
-paginationLastPage :            represents the paginationTotal number of existing pages
-paginationExtremePagesLimit :   the number of first and last pages to be displayed
-paginationNearbyPagesLimit :    the number of pages that are displayed around the active page
-#}
+{% set max_posts = posts | length %}
+{% set items_per_page = 1 %}
+{% set paginationCurrentPage = 1 %}
+{% for p in posts if p.real_id == post.id %}
+    {% set paginationCurrentPage = p.id %}
+{% endfor %}
+{% set paginationRouteName  = 'blog_post' %}
+{% set paginationTotal = max_posts/items_per_page | round %}
+{% set paginationLastPage = max_posts %}
+{% set paginationExtremePagesLimit = max_posts + 3 %}
+{% set paginationNearbyPagesLimit = max_posts + 2 %}
+
+
+<div class="test">max Posts {{ max_posts }}</div>
+<div class="test">PostID {{ post.id }}</div>
+
+<div class="test">paginationCurrentPage {{ paginationCurrentPage}}</div>
+<div class="test">paginationRouteName {{ paginationRouteName }}</div>
+<div class="test">paginationTotal {{ paginationTotal }}</div>
+<div class="test">paginationLastPage {{ paginationLastPage }}</div>
+<div class="test">paginationExtremePagesLimit {{ paginationExtremePagesLimit }}</div>
+<div class="test">paginationNearbyPagesLimit {{ paginationNearbyPagesLimit }}</div>
+<hr>
+{% for p in posts %}
+   <div class="test">post name: {{ p.name }}</div>
+{% endfor %}
+
 
 {% if paginationLastPage > 1 %}
     {% if not paginationExtremePagesLimit %}
@@ -21,13 +39,13 @@ paginationNearbyPagesLimit :    the number of pages that are displayed around th
     <div class="pagination">
 
         {% if paginationCurrentPage > 1 %}
-            <li><a href="{{ url_route(paginationRouteName, paginationCurrentFilters) }}&page=0">&laquo;</a></li>
-            <li><a href="{{ url_route(paginationRouteName, paginationCurrentFilters) }}&page={{ paginationCurrentPage-1 }}">&lsaquo;</a></li>
+            <li><a href="{{ path(paginationRouteName, { page:1, post : posts[1].slug, category: category.slug }) }}">&laquo;</a></li>
+            <li><a href="{{ path(paginationRouteName, { page: paginationCurrentPage-1, post : posts[paginationCurrentPage-1].slug, category: category.slug }) }}">&lsaquo;</a></li>
         {% endif %}
 
         {% for i in range(1, paginationExtremePagesLimit) %}
             {% if ( i < paginationCurrentPage-paginationNearbyPagesLimit ) %}
-            <li><a href="{{ url_route(paginationRouteName, paginationCurrentFilters) }}&page={{ i }}">{{ i }}</a></li>
+            <li><a href="{{ path(paginationRouteName, { page: i, post : posts[i].slug, category: category.slug }) }}">{{ i }}</a></li>
             {% endif %}
         {% endfor %}
 
@@ -37,15 +55,16 @@ paginationNearbyPagesLimit :    the number of pages that are displayed around th
 
         {% for i in range(paginationCurrentPage-paginationNearbyPagesLimit, paginationCurrentPage-1) %}
             {% if ( i > 0 ) %}
-            <li><a href="{{ url_route(paginationRouteName, paginationCurrentFilters) }}&page={{ i }}">{{ i }}</a></li>
+            {# display current page button #}
+            <li><a href="{{ path(paginationRouteName, { page: i, post : posts[i].slug, category: category.slug }) }}">{{ i }}</a></li>
             {% endif %}
         {% endfor %}
-        <li><a href="{{ url_route(paginationRouteName, paginationCurrentFilters) }}&page={{ paginationCurrentPage }}" id="active_page">{{ paginationCurrentPage }}</a></li>
+        <li><a href="{{ path(paginationRouteName, { page: paginationCurrentPage, post : posts[paginationCurrentPage].slug, category: category.slug }) }}" id="active_page">{{ paginationCurrentPage }}</a></li>
 
         {% if paginationCurrentPage < paginationLastPage %}
             {% for i in range(paginationCurrentPage+1, paginationTotal) %}
                 {% if loop.index <= paginationNearbyPagesLimit and i <= paginationLastPage %}
-                    <li><a href="{{ url_route(paginationRouteName, paginationCurrentFilters) }}&page={{ i }}">{{ i }}</a></li>
+                    <li><a href="{{ path(paginationRouteName, { page: i, post : posts[i].slug, category: category.slug }) }}">{{ i }}</a></li>
                 {% endif %}
             {% endfor %}
 
@@ -55,16 +74,18 @@ paginationNearbyPagesLimit :    the number of pages that are displayed around th
 
             {% for i in range(paginationLastPage-paginationExtremePagesLimit+1, paginationLastPage)  %}
                 {% if ( i > paginationCurrentPage+paginationNearbyPagesLimit ) %}
-                <li><a href="{{ url_route(paginationRouteName, paginationCurrentFilters) }}&page={{ i }}">{{ i }}</a></li>
+                <li><a href="{{ path(paginationRouteName, { page: i, post : posts[i].slug, category: category.slug }) }}">{{ i }}</a></li>
                 {% endif %}
             {% endfor %}
         {% endif %}
 
         {% if paginationCurrentPage < paginationLastPage %}
-            <li><a href="{{ url_route(paginationRouteName, paginationCurrentFilters) }}&page={{ (paginationCurrentPage+1) }}">&rsaquo;</a></li>
-            <li><a href="{{ url_route(paginationRouteName, paginationCurrentFilters) }}&page={{ paginationLastPage }}">&raquo;</a></li>
+            <li><a href="{{ path(paginationRouteName, { page: paginationCurrentPage+1, post : posts[paginationCurrentPage+1].slug, category: category.slug }) }}">&rsaquo;</a></li>
+            <li><a href="{{ path(paginationRouteName, { page: paginationLastPage, post : posts[paginationLastPage].slug, category: category.slug }) }}">&raquo;</a></li>
         {% endif %}
 
     </div>
     <div style="clear: both"></div>
 {% endif %}
+
+//////////// END Paginator //////////////////////////////

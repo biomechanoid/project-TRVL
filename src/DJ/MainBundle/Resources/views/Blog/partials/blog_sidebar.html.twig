@@ -26,6 +26,25 @@
         </ul>
     </div>
 
+    {% if category_posts is empty %}
+    {% else %}
+        {% if category_posts | length == 1 and current_post in category_posts | keys  %}
+        {% else %}
+            <div class="widgetList widget">
+                <h4 class="montserrat">Related Posts</h4>
+                <div class="blogPostSeparator"></div>
+                <ul class="list">
+                    {% for post in category_posts %}
+                        {% if post.slug != current_post %}
+                            <li><a href={{ path('blog_category',{'category':post.slug}) }}>{{ post.name }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+
+                </ul>
+            </div>
+            {% endif %}
+    {% endif %}
+
 {% if categories is empty %}
 {% else %}
     {% if categories | length == 1 and current_category in categories | keys %}
@@ -45,3 +64,4 @@
     {% endif %}
 
 {% endif %}
+

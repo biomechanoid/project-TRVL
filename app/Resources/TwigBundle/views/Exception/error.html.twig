@@ -91,14 +91,19 @@
                 </div>
             </div>
         </section>
-        <script type="text/javascript" src="/../../offline-assets/jquery.min.js"></script>
-        <!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script> -->
+       <!-- <script type="text/javascript" src="/../../offline-assets/jquery.min.js"></script> -->
+         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
         <script type="text/javascript" src={{ asset('bundles/djmain/js/scripts.js') }}></script>
         <script type="text/javascript" src={{ asset('bundles/djmain/js/custom.js') }}></script>
         <script src="https://maps.googleapis.com/maps/api/js"></script>
         <script src={{ asset('bundles/djmain/js/overlay.js') }}></script> <!-- edit to add/remove oeverlay -->
         <script>
-            $.backstretch("{{ asset('bundles/djmain/img/background1.jpg') }}");
+            {% if pool['primary'].media %}
+               $.backstretch("{% path pool['primary'].media, 'big' %}");
+            {% else %}
+               $.backstretch("{{ asset('bundles/djmain/img/background1.jpg') }}");
+            {% endif %}
+
         </script>
 
     </body>
