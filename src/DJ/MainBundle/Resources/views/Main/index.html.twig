@@ -69,12 +69,31 @@
 {% endblock body %}
 
 {% block javascript %}
+    <script src="{{ asset('bundles/djmain/js/okvideo.min.js') }}"></script>
     <script>
-            {% if pool['primary'].media %}
-            $.backstretch("{% path pool['primary'].media, 'big' %}");
-            {% else %}
-               $.backstretch("{{ asset('bundles/djmain/img/background1.jpg') }}");
-            {% endif %}
+        $(function(){
+        "use strict";
+
+        //if mobile device, replace video background with background image (video background is restricted on mobile devices)
+        if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+            $.backstretch('bundles/djmain/img/background1.jpg');
+        }
+        else{
+            $.okvideo({
+                source: 'http://www.youtube.com/watch?v=8VZ4kKM94kg',  // enter here the url of your vimeo or youtube video
+                autoplay: true,
+                loop: true,
+                highdef: true,
+                hd: true,
+                adproof: true,
+                volume: 0 // video volume value from 0 (mute) to 100
+            })
+        }
+        });
+    if(!window.jQuery){
+        $.backstretch('bundles/djmain/img/background1.jpg');
+
+    }
     </script>
 {% endblock javascript %}
 

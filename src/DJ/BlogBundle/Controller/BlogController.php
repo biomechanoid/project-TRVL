@@ -29,7 +29,17 @@ class BlogController extends Controller
             $all_categories[] = $category;
         }
 
-        return array('categories' => $all_categories);
+        $pools = $this->get('doctrine')->getRepository('DJBlogBundle:Pool')
+                                ->findByPath('blog');
+        $pool = [];
+
+        foreach ($pools as $value) {
+            if($value->getName() == 'blog_primary_image') {
+                $pool['primary'] = $value;
+            }
+        }
+// var_dump($pool);exit;
+        return array('categories' => $all_categories,'pool'=>$pool);
     }
 
     /**

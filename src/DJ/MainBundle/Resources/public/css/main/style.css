@@ -237,13 +237,13 @@ section .container{
 
 .btn-black:after, .btn-black:before {
 
-    background: #282828;
+    background: #e94c0e;
 }
 
 .btn-black:hover {
     color: white;
-    background-color: #282828;
-    border-color: #282828;
+    background-color: #e94c0e;
+    border-color: #e94c0e;
 }
 
 /*NAVBAR */
@@ -292,7 +292,7 @@ section .container{
 }
 
 .navbar-nav > li > a {
-    font-size: 10px;
+    font-size: 13px;
     font-weight: 900;
     text-transform: uppercase;
     color: #d5d5d5;
@@ -516,7 +516,7 @@ p.bold{
 }
 
 .textOverlay{
-    padding-bottom:100px;
+    padding-bottom:90px;
     padding-top:100px;
     margin-left:-200px;
     z-index:6;
@@ -1027,7 +1027,9 @@ p.bold{
 .tableWrapper{
     height: 386px;
     position: relative;
-    /*padding:60px;*/
+    padding-top: 120px;
+    padding-left: 30px;
+    padding-right: 30px;
     border: solid 10px black;
     overflow: hidden;
 }

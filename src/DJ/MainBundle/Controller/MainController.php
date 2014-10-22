@@ -19,9 +19,9 @@ class MainController extends Controller
         $pool = [];
 
         foreach ($pools as $value) {
-            if($value->getName() == 'primary_image') {
+            if($value->getName() == 'index_primary_image') {
                 $pool['primary'] = $value;
-            } elseif($value->getName() == 'secondary_image') {
+            } elseif($value->getName() == 'index_secondary_image') {
                 $pool['secondary'] = $value;
             }
         }
