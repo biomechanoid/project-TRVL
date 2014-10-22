@@ -82,7 +82,7 @@ class BlogController extends Controller
             $this->assets['post_categories'] = [];
             $this->assets['category_posts'] = [];
 
-            foreach ($this->getCategory($category)->getPosts() as $value) {
+            foreach ( $this->assets['post_category']->getPosts() as $value) {
                 if($value->getSlug() == $post && $value->getDisplay() == true) {
                     $assets['post'] = true;
 

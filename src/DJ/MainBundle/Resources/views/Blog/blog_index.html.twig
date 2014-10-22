@@ -2,39 +2,11 @@
 
 {% block titlePage %}Blog{% endblock titlePage %}
 {% block body %}
-{# {% block intro %}
+{% block intro %}
 <section id="intro">
+
     <div class="black-overlay"></div>
     <div class="container valign">
-        <div class="row">
-            <div class="col-md-12">
-                <img src= {{ asset('bundles/djmain/img/logoWhite.png') }} class="img-responsive center-block introLogo" alt="Intro Logo">
-            </div>
-            <div class="col-md-12 text-center">
-                <h1>minimal & bold</h1>
-            </div>
-
-            <div class="col-md-12 text-center">
-                <img src={{ asset('bundles/djmain/img/separatorWhite.png') }} class="img-responsive center-block separator" alt="separator">
-            </div>
-
-            <div class="col-md-6 col-md-offset-3 text-center">
-                <p>
-                    Eat imagine you chiefly few end ferrars compass. Be visitor females am ferrars inquiry. Latter law remark two lively thrown. Spot set they know rest its.
-                </p>
-            </div>
-
-        </div>
-    </div>
-</section>
-{% endblock intro %} #}
-
-<section id="pricing">
-    <div class="container">
-
-        <h1 class="parallaxLetter letter1" data-stellar-ratio="1.2" data-stellar-vertical-offset="-200">K</h1>
-        <h1 class="parallaxLetter letter2" data-stellar-ratio="0.8">D</h1>
-
         <!--header-->
         <div class="row sectionIntro">
             <div class="col-md-8 col-md-offset-2 text-center">
@@ -50,6 +22,15 @@
             </div>
         </div>
         <!--end header-->
+    </div>
+</section>
+{% endblock intro %}
+
+<section id="pricing">
+    <div class="container">
+
+        <h1 class="parallaxLetter letter1" data-stellar-ratio="1.2" data-stellar-vertical-offset="-200">K</h1>
+        <h1 class="parallaxLetter letter2" data-stellar-ratio="0.8">D</h1>
 
         <!--content-->
         <div class="row">
@@ -98,28 +79,29 @@
 {% endblock body %}
 {% block javascript %}
     <script src="{{ asset('bundles/djmain/js/okvideo.min.js') }}"></script>
-         <script>
-            $(function(){
-                "use strict";
+    <script>
+        $(function(){
+            "use strict";
 
-                //if mobile device, replace video background with background image (video background is restricted on mobile devices)
-                if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-                    $.backstretch('bundles/djmain/img/background1.jpg');
-                }
-                else{
-                    $.okvideo({
-                        source: 'http://vimeo.com/18052127',  // enter here the url of your vimeo or youtube video
-                        autoplay: true,
-                        loop: true,
-                        highdef: true,
-                        hd: true,
-                        adproof: true,
-                        volume: 0 // video volume value from 0 (mute) to 100
-                    })
-                }
-            });
+            //if mobile device, replace video background with background image (video background is restricted on mobile devices)
+            if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+                $.backstretch('bundles/djmain/img/background1.jpg');
+            }
+            else{
+                $.okvideo({
+                    source: 'http://www.youtube.com/watch?v=8VZ4kKM94kg',  // enter here the url of your vimeo or youtube video
+                    autoplay: true,
+                    loop: true,
+                    highdef: true,
+                    hd: true,
+                    adproof: true,
+                    volume: 0 // video volume value from 0 (mute) to 100
+                })
+            }
+        });
+        if(!window.jQuery){
+            $.backstretch('bundles/djmain/img/background1.jpg');
 
-
-
-        </script>
+        }
+    </script>
 {% endblock javascript %}
