@@ -28,8 +28,11 @@
             <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
             <link rel="stylesheet" href={{ asset('bundles/djmain/css/fonts/font-awesome.min.css') }} rel='stylesheet' type='text/css'>
             <link rel="stylesheet" href={{ asset('bundles/djmain/css/bootstrap/bootstrap.min.css') }} rel='stylesheet' type='text/css'>
-            <link rel="stylesheet" href={{ asset('bundles/djmain/css/main/responsive.css') }} rel='stylesheet' type='text/css'>
-            <link rel="stylesheet" href={{ asset('bundles/djmain/css/main/style.css') }} rel='stylesheet' type='text/css'>
+            <link rel="stylesheet" href={{ asset('bundles/djmain/css/main/responsive.css') }} type='text/css'>
+            <link rel="stylesheet" href={{ asset('bundles/djmain/css/main/style.css') }} type='text/css'>
+            {# {% stylesheets %}
+            <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}"/>
+            {% endstylesheets %} #}
 
             {% block stylesheet %}{% endblock %}
         {% endblock stylesheets %}

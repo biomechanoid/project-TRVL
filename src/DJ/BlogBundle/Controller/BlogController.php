@@ -83,7 +83,7 @@ class BlogController extends Controller
      * @Route("/{category}/{post}", name="blog_post", requirements={"category" = "[a-zA-Z0-9-_]+","post" = "[a-zA-Z0-9-_]+"}, defaults={"category" = null})
      * @Template("DJMainBundle:Blog:blog_post.html.twig")
      */
-    public function postAction($category, $post, $page=1)
+    public function postAction($category, $post)
     {
 
          if($this->getCategory($category) != null) {

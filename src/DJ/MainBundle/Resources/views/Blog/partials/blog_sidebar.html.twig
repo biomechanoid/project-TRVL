@@ -36,7 +36,7 @@
                 <ul class="list">
                     {% for post in category_posts %}
                         {% if post.slug != current_post %}
-                            <li><a href={{ path('blog_category',{'category':post.slug}) }}>{{ post.name }}</a></li>
+                            <li><a href={{ path('blog_post',{'category':current_category,'post':post.slug}) }}>{{ post.name }}</a></li>
                         {% endif %}
                     {% endfor %}
 

@@ -272,6 +272,7 @@ section .container{
     background-color: #e94c0e;
     padding-top:10px;
     padding-bottom:10px;
+    box-shadow: 0 0 4px 0 rgba(167, 83, 45, 0.59);
 }
 
 .navbar-default .navbar-toggle .icon-bar {
@@ -334,9 +335,17 @@ section .container{
     border: 0;
     box-shadow: none;
 }
+.navbar-default .navbar-nav>li>a{
+    color: #ffffff;
+}
 
 .navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {
-    color: #d5d5d5;
+    color: #ffffff;
+    text-shadow:0 2px 1px rgba(0,0,0,0.2);
+}
+
+.navbar-nav>li:hover{
+    bottom:2px;
 }
 
 .dropdown-menu>.active>a, .dropdown-menu>.active>a:hover, .dropdown-menu>.active>a:focus {
@@ -1195,7 +1204,7 @@ label input, textarea{
 #footer .bottomLine {
     padding: 50px;
     margin: 0 auto;
-    background-color: #222222;
+    background-color: #e94c0e;
 }
 
 #footer .bottomLine p{
