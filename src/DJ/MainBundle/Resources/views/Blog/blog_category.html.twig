@@ -5,43 +5,36 @@
     <div class="blogPostsWrapper2">
         <div class="grid-sizer-blog-2"></div>
             {% for post in posts %}
-                    <div class="blogPost2">
-
-                        <a href={{ path('blog_post',{'category':category.slug,'post':post.slug}) }}>
-                            <div class="post-thumbnail">
-
-                            {% if post.media %}
-                               {% thumbnail post.media, 'medium' with {'class': 'img-responsive'} %} {# render the related thumbnail #}
-                               {# {% media post.media, 'small' %} #}
-                               {# render the media #}
-                            {% else %}
-                                <img  class="img-responsive" src={{ asset('bundles/djmain/img/gallery/1.jpg') }} alt="image"></a>
-                            {% endif %}
-
-
-
-                            </div>
-                        </a>
-
-                        <div class="post-content">
-                            <div class="post-title">
-                                <a href={{ path('blog_post',{'category':category.slug,'post':post.slug}) }}><h3>{{ post.title }}</h3></a>
-                            </div>
-                            <div class="post-info">
-                                <div class="postBy">
-                                    <p><i class="fa fa-pencil"></i> Posted by {{ post.author }} in <a href="#">Motion</a> on {{ post.created | date() }}</p>
-                                </div>
-                            </div>
-                            <img src={{ asset('bundles/djmain/img/lineSeparatorBlack.png') }} class="img-responsive blogSeparator" alt="separator">
-                            <p class="excerpt">
-
-                                {{- post.content | trim | strip_tags() | length >250 ? post.content | raw | slice(0,250)~ '...' : post.content | strip_tags()  -}}
-                                }
-                            </p>
-                            <a class="btn btn-default btn-black center-block" href={{ path('blog_post',{'category':category.slug,'post':post.slug}) }}>Read More</a>
+                <div class="blogPost2">
+                    <a href={{ path('blog_post',{'category':category.slug,'post':post.slug}) }}>
+                        <div class="post-thumbnail">
+                        {% if post.media %}
+                           {% thumbnail post.media, 'medium' with {'class': 'img-responsive'} %} {# render the related thumbnail #}
+                        {% else %}
+                            <img  class="img-responsive" src={{ asset('bundles/djmain/img/gallery/1.jpg') }} alt="image"></a>
+                        {% endif %}
                         </div>
+                    </a>
 
+                    <div class="post-content">
+                        <div class="post-title">
+                            <a href={{ path('blog_post',{'category':category.slug,'post':post.slug}) }}><h3>{{ post.title }}</h3></a>
+                        </div>
+                        <div class="post-info">
+                            <div class="postBy">
+                                <p><i class="fa fa-pencil"></i> Posted by {{ post.author }} in <a href="#">Motion</a> on {{ post.created | date() }}</p>
+                            </div>
+                        </div>
+                        <img src={{ asset('bundles/djmain/img/lineSeparatorBlack.png') }} class="img-responsive blogSeparator" alt="separator">
+                        <p class="excerpt">
+
+                            {{- post.content | trim | strip_tags() | length >250 ? post.content | raw | slice(0,250)~ '...' : post.content | strip_tags()  -}}
+                            }
+                        </p>
+                        <a class="btn btn-default btn-black center-block" href={{ path('blog_post',{'category':category.slug,'post':post.slug}) }}>Read More</a>
                     </div>
+
+                </div>
             {% endfor %}
 
     </div>

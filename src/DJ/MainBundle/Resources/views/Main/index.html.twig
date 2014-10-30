@@ -71,7 +71,7 @@
 {% block javascript %}
     <script src="{{ asset('bundles/djmain/js/okvideo.min.js') }}"></script>
     <script>
-        $(function(){
+        // $(function(){
         "use strict";
 
         //if mobile device, replace video background with background image (video background is restricted on mobile devices)
@@ -79,7 +79,7 @@
             $.backstretch('bundles/djmain/img/background1.jpg');
         }
         else{
-            $.backstretch("{{ asset('bundles/djmain/img/foz.gif') }}");
+            // $.backstretch("{{ asset('bundles/djmain/img/foz.gif') }}");
             // $.okvideo({
             //     source: 'http://www.youtube.com/watch?v=8VZ4kKM94kg',  // enter here the url of your vimeo or youtube video
             //     autoplay: true,
@@ -90,7 +90,7 @@
             //     volume: 0 // video volume value from 0 (mute) to 100
             // })
         }
-        });
+        // });
     if(!window.jQuery){
         $.backstretch('bundles/djmain/img/foZ.gif');
 

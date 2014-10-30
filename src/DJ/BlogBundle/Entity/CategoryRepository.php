@@ -12,4 +12,85 @@ use Doctrine\ORM\EntityRepository;
  */
 class CategoryRepository extends EntityRepository
 {
+    /**
+    * @return if no result emty array()
+    *         else array of object DJ\BlogBundle\Entity\Category
+    **/
+    public function findAllCategories($returnSmallArray = false) {
+        $em = $this->getEntityManager();
+        if (!$returnSmallArray) {
+            $categoryQuery = $em->createQuery('SELECT c FROM DJBlogBundle:Category c JOIN c.media m WHERE c.display=:display')
+                            ->setParameter('display',1);
+        } else {
+            $categoryQuery = $em->createQuery('SELECT c.name, c.slug FROM DJBlogBundle:Category c JOIN c.media m WHERE c.display=:display')
+                            ->setParameter('display',1);
+        }
+
+
+        return $categoryQuery->getResult();
+    }
+
+
+    public function findCategoryBySlug($slug) {
+        $em = $this->getEntityManager();
+        $categoryQuery = $em->createQuery('SELECT c FROM DJBlogBundle:Category c WHERE c.slug = :slug')
+                            ->setParameter('slug', $slug);
+
+
+        return $categoryQuery->getOneOrNullResult();
+    }
+
+
+    public function findPostsFromCategory($slug, $locale = '') {
+
+        if($locale == '') {
+            $locale = 'en';
+        }
+
+        $em = $this->getEntityManager();
+        $category = $em->createQuery('SELECT c.id FROM DJBlogBundle:Category c WHERE c.slug=:slug AND c.display=:display')
+                            ->setParameters(array(
+                                'slug' => $slug,
+                                'display' => 1
+                            ));
+        $categoryId = $category->getResult();
+
+        $post = $em->createQuery('SELECT p FROM DJBlogBundle:Post p WHERE p.category = :categoryId AND p.display=:display AND p.locale = :locale');
+        $post->setParameters(
+                    array(
+                        'categoryId' => $categoryId,
+                        'locale' => $locale,
+                        'display' =>1
+                    ));
+
+
+        return $post->getResult();
+    }
+
+    public function findOnePostFromCategory( $category_slug, $post_slug, $locale='' ) {
+        if($locale == '') {
+            $locale = 'en';
+        }
+
+        $em = $this->getEntityManager();
+        $category = $em->createQuery('SELECT c.id FROM DJBlogBundle:Category c WHERE c.slug=:slug AND c.display=:display');
+        $category->setParameters(array(
+                                'slug' => $category_slug,
+                                'display' => 1,
+                            ));
+        $categoryId = $category->getResult();
+
+        $post = $em->createQuery('SELECT p FROM DJBlogBundle:Post p WHERE p.category = :categoryId AND p.slug = :postSlug AND p.display=:display AND p.locale = :locale');
+        $post->setParameters(
+                    array(
+                        'categoryId' => $categoryId,
+                        'postSlug' => $post_slug,
+                        'locale' => $locale,
+                        'display' =>1
+                    ));
+
+
+        return $post->getOneOrNullResult();
+
+    }
 }

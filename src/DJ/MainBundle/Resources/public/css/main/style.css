@@ -268,6 +268,10 @@ section .container{
     background-color: transparent;
 }
 
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+    color:white;
+}
+
 .affix{
     background-color: #e94c0e;
     padding-top:10px;
@@ -1208,7 +1212,7 @@ label input, textarea{
 }
 
 #footer .bottomLine p{
-    color: #a5a5a5;
+    color: #ffffff;
     font-size:12px;
 }
 
