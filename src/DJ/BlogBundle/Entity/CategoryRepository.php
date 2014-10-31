@@ -31,59 +31,75 @@ class CategoryRepository extends EntityRepository
     }
 
 
-    public function findCategoryBySlug($slug) {
+    public function findCategoryBySlug($slug, $returnSmallArray = false) {
         $em = $this->getEntityManager();
-        $categoryQuery = $em->createQuery('SELECT c FROM DJBlogBundle:Category c WHERE c.slug = :slug')
+        if(!$returnSmallArray) {
+            $categoryQuery = $em->createQuery('SELECT c.slug, c.name FROM DJBlogBundle:Category c WHERE c.slug = :slug')
                             ->setParameter('slug', $slug);
+        } else {
+            $categoryQuery = $em->createQuery('SELECT c FROM DJBlogBundle:Category c WHERE c.slug = :slug')
+                            ->setParameter('slug', $slug);
+        }
 
 
         return $categoryQuery->getOneOrNullResult();
     }
 
 
-    public function findPostsFromCategory($slug, $locale = '') {
+    public function findPostsFromCategory(Category $category, $locale = '', $returnPaginatorFormat = false) {
 
         if($locale == '') {
             $locale = 'en';
         }
-
         $em = $this->getEntityManager();
-        $category = $em->createQuery('SELECT c.id FROM DJBlogBundle:Category c WHERE c.slug=:slug AND c.display=:display')
-                            ->setParameters(array(
-                                'slug' => $slug,
-                                'display' => 1
-                            ));
-        $categoryId = $category->getResult();
+        $category_posts = [];
 
-        $post = $em->createQuery('SELECT p FROM DJBlogBundle:Post p WHERE p.category = :categoryId AND p.display=:display AND p.locale = :locale');
-        $post->setParameters(
-                    array(
-                        'categoryId' => $categoryId,
-                        'locale' => $locale,
-                        'display' =>1
-                    ));
+        if($returnPaginatorFormat) {
+            $post = $em->createQuery('SELECT p.id, p.title, p.slug FROM DJBlogBundle:Post p WHERE p.category = :categoryId AND p.display=:display AND p.locale = :locale');
+            $post->setParameters(
+                        array(
+                            'categoryId' => $category->getId(),
+                            'locale' => $locale,
+                            'display' => 1
+                        ));
 
+        foreach ($post->getArrayResult() as $localKey=>$localPost) {
+            $category_posts[++$localKey] = array(
+                                                'id'=>  $localKey,
+                                                'real_id'=>$localPost['id'],
+                                                'name'=>$localPost['title'],
+                                                'slug'=>$localPost['slug']
+                                                 );
+        }
+
+        return $category_posts;
+
+        }else {
+            $post = $em->createQuery('SELECT p FROM DJBlogBundle:Post p WHERE p.category = :categoryId AND p.display=:display AND p.locale = :locale');
+            $post->setParameters(
+                        array(
+                            'categoryId' => $category->getId(),
+                            'locale' => $locale,
+                            'display' =>1
+                        ));
+        }
 
         return $post->getResult();
+
     }
 
-    public function findOnePostFromCategory( $category_slug, $post_slug, $locale='' ) {
+
+    public function findOnePostFromCategory( Category $category, $post_slug, $locale='' ) {
         if($locale == '') {
             $locale = 'en';
         }
 
         $em = $this->getEntityManager();
-        $category = $em->createQuery('SELECT c.id FROM DJBlogBundle:Category c WHERE c.slug=:slug AND c.display=:display');
-        $category->setParameters(array(
-                                'slug' => $category_slug,
-                                'display' => 1,
-                            ));
-        $categoryId = $category->getResult();
 
         $post = $em->createQuery('SELECT p FROM DJBlogBundle:Post p WHERE p.category = :categoryId AND p.slug = :postSlug AND p.display=:display AND p.locale = :locale');
         $post->setParameters(
                     array(
-                        'categoryId' => $categoryId,
+                        'categoryId' => $category->getId(),
                         'postSlug' => $post_slug,
                         'locale' => $locale,
                         'display' =>1

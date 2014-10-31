@@ -50,11 +50,12 @@ class BlogController extends Controller
     public function categoryAction($category)
     {
         $categoryRepository = $this->get('doctrine')->getRepository('DJBlogBundle:Category');
+        $categoryObject = $categoryRepository->findOneBySlug($category);
 
         if($categoryRepository->findCategoryBySlug($category) ) {
             $this->assets['category']['category'] = $categoryRepository->findCategoryBySlug($category);
             $this->assets['category']['categories'] = $categoryRepository->findAllCategories(true);
-            $this->assets['category']['posts'] = $categoryRepository->findPostsFromCategory($category, $this->get('request')->getLocale());
+            $this->assets['category']['posts'] = $categoryRepository->findPostsFromCategory($categoryObject, $this->get('request')->getLocale());
 
 
         return $this->assets['category'];
@@ -73,34 +74,28 @@ class BlogController extends Controller
     public function postAction($category, $post)
     {
         $categoryRepository = $this->get('doctrine')->getRepository('DJBlogBundle:Category');
-        $this->assets['post'] = $categoryRepository->findOnePostFromCategory( $category, $post, 'en' );
+        $categoryObject = $categoryRepository->findOneBySlug($category);
+        $this->assets['post'] = $categoryRepository->findOnePostFromCategory( $categoryObject,
+                                                                              $post,
+                                                                              $this->get('request')->getLocale()
+                                                                            );
 
-         if($categoryRepository->findCategoryBySlug($category)) {
-            $this->assets['post_categories'] = $categoryRepository->findAllCategories(true) ;
-            $this->assets['category_posts'] = [];
-            $this->assets['post_list'] = $categoryRepository->findPostsFromCategory($category,
-                                                                                    $this->get('request')->getLocale()
+         if($this->assets['post']) {
+            $this->assets['post_categories'] = $categoryRepository->findAllCategories(true);
+            $this->assets['post_category'] = $categoryRepository->findCategoryBySlug($category, true);
+            $this->assets['post_list'] = $categoryRepository->findPostsFromCategory($categoryObject,
+                                                                                    $this->get('request')->getLocale(),
+                                                                                    true
                                                                                     );
-            $this->assets['post_category'] = $categoryRepository->findCategoryBySlug($category);
-
-            foreach ($this->assets['post_category']->getPosts() as $localKey=>$localPost) {
-                $this->assets['category_posts'][++$localKey] = array(
-                                                        'id'=>  $localKey,
-                                                        'real_id'=>$localPost->getId(),
-                                                        'name'=>$localPost->getTitle(),
-                                                        'slug'=>$localPost->getSlug()
-                                                         );
-            }
 
         return array(
             'category' => $this->assets['post_category'],
             'categories' =>$this->assets['post_categories'],
-            'posts' => $this->assets['category_posts'],
+            'posts' => $this->assets['post_list'],
             'post' => $this->assets['post']
             );
-
         } else {
-                throw $this->createNotFoundException('Post does not exists in category or is set as invisible!' . 'In class '. __class__ .'. On line ' . __line__ );
+            throw $this->createNotFoundException('Post does not exists in category or is set as invisible!' . 'In class '. __class__ .'. On line ' . __line__ );
         }
     }
 
