@@ -39,6 +39,20 @@ class Post
      */
     private $title;
 
+        /**
+    * @var string
+    * @ORM\Column(name="contentFormatter", type="string", length=30)
+    *
+    */
+    private $contentFormatter;
+
+   /**
+    * @var string
+    * @ORM\Column(name="rawContent ", type="string", length=30)
+    *
+    */
+    private $rawContent ;
+
     /**
      * @var text
      *
@@ -111,6 +125,8 @@ class Post
     *
     */
     private $locale = 'en';
+
+
 
     /**
      * Constructor
@@ -527,5 +543,51 @@ class Post
     public function getMedia()
     {
         return $this->media;
+    }
+
+    /**
+     * Set contentFormatter
+     *
+     * @param string $contentFormatter
+     * @return Post
+     */
+    public function setContentFormatter($contentFormatter)
+    {
+        $this->contentFormatter = $contentFormatter;
+
+        return $this;
+    }
+
+    /**
+     * Get contentFormatter
+     *
+     * @return string 
+     */
+    public function getContentFormatter()
+    {
+        return $this->contentFormatter;
+    }
+
+    /**
+     * Set rawContent
+     *
+     * @param string $rawContent
+     * @return Post
+     */
+    public function setRawContent($rawContent)
+    {
+        $this->rawContent = $rawContent;
+
+        return $this;
+    }
+
+    /**
+     * Get rawContent
+     *
+     * @return string 
+     */
+    public function getRawContent()
+    {
+        return $this->rawContent;
     }
 }

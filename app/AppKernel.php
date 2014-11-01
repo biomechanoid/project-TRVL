@@ -26,10 +26,14 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
 
             new JMS\SerializerBundle\JMSSerializerBundle(),
-        new Sonata\IntlBundle\SonataIntlBundle(),
-        new Sonata\MediaBundle\SonataMediaBundle(),
-        new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
-        new Application\Sonata\MediaBundle\ApplicationSonataMediaBundle(),
+            new Sonata\IntlBundle\SonataIntlBundle(),
+            new Sonata\MediaBundle\SonataMediaBundle(),
+            new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
+            new Application\Sonata\MediaBundle\ApplicationSonataMediaBundle(),
+
+            new Knp\Bundle\MarkdownBundle\KnpMarkdownBundle(),
+            new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
+            new Sonata\FormatterBundle\SonataFormatterBundle(),
 
             new DJ\MainBundle\DJMainBundle(),
             new DJ\AdminBundle\DJAdminBundle(),

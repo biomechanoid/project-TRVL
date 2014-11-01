@@ -28,7 +28,8 @@
         "sonata-project/media-bundle": "2.3.0",
         "jms/serializer-bundle": "~0.13",
         "gedmo/doctrine-extensions": "2.3.9",
-        "pixassociates/sortable-behavior-bundle": "0.1.*@dev"
+        "pixassociates/sortable-behavior-bundle": "0.1.*@dev",
+        "sonata-project/formatter-bundle": "2.3.2"
 
     },
     "repositories": [

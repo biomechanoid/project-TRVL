@@ -29,7 +29,20 @@ class PostAdmin extends Admin
         $formMapper
         ->with('dj.admin.post.add.blog.title.header', array('description' => 'Manage your blog content'))
             ->add('title', 'text', array('help' => 'dj.admin.post.add.title.help'))
-            ->add('content','textarea', array('help' => 'dj.admin.post.add.content.help', 'attr'=>array('class'=>'ckeditor')))
+            // ->add('content','textarea', array('help' => 'dj.admin.post.add.content.help', 'attr'=>array('class'=>'ckeditor')))
+              ->add('Text_Editor', 'sonata_formatter_type', array(
+                    'event_dispatcher' => $formMapper->getFormBuilder()->getEventDispatcher(),
+                    'format_field'   => 'contentFormatter',
+                    'source_field'   => 'rawContent',
+                    'ckeditor_context'     => 'default',
+                    'source_field_options'      => array(
+                        'attr' => array('class' => 'span10', 'rows' => 20)
+                    ),
+                    'listener'       => true,
+                    'target_field'   => 'content'
+                ))
+            ->end()
+
             ->add('slug', 'text', array('help' => 'dj.admin.post.add.slug.help'))
             ->add('locale', 'choice', array(
                             'label' => 'dj.admin.post.add.locale.help',
