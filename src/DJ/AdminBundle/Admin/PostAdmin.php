@@ -30,18 +30,31 @@ class PostAdmin extends Admin
         ->with('dj.admin.post.add.blog.title.header', array('description' => 'Manage your blog content'))
             ->add('title', 'text', array('help' => 'dj.admin.post.add.title.help'))
             // ->add('content','textarea', array('help' => 'dj.admin.post.add.content.help', 'attr'=>array('class'=>'ckeditor')))
-              ->add('Text_Editor', 'sonata_formatter_type', array(
-                    'event_dispatcher' => $formMapper->getFormBuilder()->getEventDispatcher(),
-                    'format_field'   => 'contentFormatter',
-                    'source_field'   => 'rawContent',
-                    'ckeditor_context'     => 'default',
-                    'source_field_options'      => array(
-                        'attr' => array('class' => 'span10', 'rows' => 20)
+              // ->add('Text_Editor', 'sonata_formatter_type', array(
+              //       'event_dispatcher' => $formMapper->getFormBuilder()->getEventDispatcher(),
+              //       'format_field'   => 'contentFormatter',
+              //       'source_field'   => 'rawContent',
+              //       'ckeditor_context'     => 'default',
+              //       'source_field_options'      => array(
+              //           'attr' => array('class' => 'span10', 'rows' => 20)
+              //       ),
+              //       'listener'       => true,
+              //       'target_field'   => 'content'
+              //   ))
+            ->add('content', 'ckeditor', array(
+                    'config' => array(
+                        'stylesSet' => 'my_styles',
                     ),
-                    'listener'       => true,
-                    'target_field'   => 'content'
+                    'styles' => array(
+                        'my_styles' => array(
+                            array('name' => 'Blue Title', 'element' => 'h2', 'styles' => array('color' => 'Blue')),
+                            array('name' => 'CSS Style', 'element' => 'span', 'attributes' => array('class' => 'my_style')),
+                        ),
+                    ),
                 ))
+
             ->end()
+
 
             ->add('slug', 'text', array('help' => 'dj.admin.post.add.slug.help'))
             ->add('locale', 'choice', array(

@@ -14,4 +14,4 @@ ivory_ck_editor:
             filebrowserImageUploadRoute: admin_sonata_media_media_ckeditor_upload
             filebrowserImageUploadRouteParameters:
                 provider: sonata.media.provider.image
-                context: my-context # Optional, to upload in a custom context
+                context: default # Optional, to upload in a custom context

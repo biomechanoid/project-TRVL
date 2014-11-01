@@ -51,7 +51,7 @@ class Post
     * @ORM\Column(name="rawContent ", type="string", length=30)
     *
     */
-    private $rawContent ;
+    private $rawContent;
 
     /**
      * @var text
@@ -561,7 +561,7 @@ class Post
     /**
      * Get contentFormatter
      *
-     * @return string 
+     * @return string
      */
     public function getContentFormatter()
     {
@@ -584,7 +584,7 @@ class Post
     /**
      * Get rawContent
      *
-     * @return string 
+     * @return string
      */
     public function getRawContent()
     {
