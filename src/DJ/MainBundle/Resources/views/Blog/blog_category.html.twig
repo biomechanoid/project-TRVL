@@ -1,6 +1,7 @@
 {% extends "DJMainBundle:Blog:blog_layout.html.twig" %}
 {# {% block intro %}{% endblock %} #}
 {% block introHeader %}<span>{{ category.name }}</span>{% endblock %}
+{% block introTeaser %}<span>{{ category.description }}</span>{% endblock %}
 {% block content %}
     <div class="blogPostsWrapper2">
         <div class="grid-sizer-blog-2"></div>
@@ -29,7 +30,6 @@
                         <p class="excerpt">
 
                             {{- post.content | trim | strip_tags() | length >250 ? post.content | raw | slice(0,250)~ '...' : post.content | strip_tags()  -}}
-                            }
                         </p>
                         <a class="btn btn-default btn-black center-block" href={{ path('blog_post',{'category':category.slug,'post':post.slug}) }}>Read More</a>
                     </div>

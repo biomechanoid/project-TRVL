@@ -1,0 +1,119 @@
+ {% extends "DJMainBundle::layout.html.twig" %}
+{% block titlePage %}About Us{% endblock titlePage %}
+{% block stylesheet %}
+
+<link href="{{ asset('bundles/djmain/css/bootstrap/owl.carousel.css') }}" rel="stylesheet">
+{% endblock %}
+{% block body %}
+    <section id="team">
+
+        <div class="container">
+
+                <h1 class="parallaxLetter letter1" data-stellar-ratio="2">K</h1>
+                <h1 class="parallaxLetter letter2" data-stellar-ratio="0.5">D</h1>
+
+
+            <!--header-->
+            <div class="row sectionIntro">
+                <div class="col-md-8 col-md-offset-2 text-center">
+                    <h2 data-scroll-reveal="enter top move 10px over 1s after 0.2s">
+                        <span>who we are</span>
+                    </h2>
+                    <p data-scroll-reveal="enter bottom move 10px over 1s after 0.4s">
+                        We dream big, live minimally, eat well, exercise regularly, treat everyone with kindness and always take a time to enjoy the current moment.
+                    </p>
+
+                    <img src="{{ asset('bundles/djmain/img/separatorBlack.png') }}" class="img-responsive center-block separator" alt="separator">
+
+                </div>
+            </div>
+            <!--end header-->
+
+            <h1 class="parallaxLetter letter4" data-stellar-ratio="0.8">N</h1>
+
+            <h1 class="parallaxLetter letter3" data-stellar-ratio="1.2">X</h1>
+
+            <!--content-->
+            <div class="row content">
+
+                <div class="owl-carousel" id="owl-team">
+
+                    <!--member-->
+                    <div class="teamMember">
+
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <img src="{{ asset('bundles/djmain/img/team/2.png') }}" class="center-block img-responsive" alt="Team Image">
+                        </div>
+
+                        <div class="col-md-6 col-sm-6 col-xs-12 memberDescription">
+                            <h2 data-scroll-reveal="enter right move 10px over 1s after 0.2s">Denca</h2>
+                            <p class="position"  data-scroll-reveal="enter right move 10px over 1s after 0.4s">
+                                <span>
+                                    Web Designer
+                                </span>
+                            </p>
+
+                            <p class="memberParagraph" data-scroll-reveal="enter right move 10px over 1s after 0.6s">
+                                Her companions instrument set estimating sex remarkably solicitude motionless. Property men the why smallest graceful day insisted required. Inquiry justice country old placing sitting any ten age. Looking venture justice in evident in totally he do ability.
+                            </p>
+
+                            <p class="teamSocial">
+                                <a href="http://behance.net/artbreeze" data-scroll-reveal="enter right move 10px over 1s after 0.8s"><i class="fa fa-behance"></i></a>
+                                <a href="http://twitter.com/artbreeze02" data-scroll-reveal="enter right move 10px over 1s after 1s"><i class="fa fa-twitter"></i></a>
+                                <a href="http://dribbble.com/artbreeze02" data-scroll-reveal="enter right move 10px over 1s after 1.2s"><i class="fa fa-dribbble"></i></a>
+                            </p>
+
+                            <img src="{{ asset('bundles/djmain/img/lineSeparatorBlack.png') }}" class="lineSeparator hidden-xs" alt="separator">
+
+
+                        </div>
+                    </div>
+                    <!--end member-->
+
+
+                    <!--member-->
+                    <div class="teamMember">
+
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <img src="{{ asset('bundles/djmain/img/team/3.png') }}" class="center-block img-responsive" alt="Team Image">
+                        </div>
+
+                        <div class="col-md-6 col-sm-6 col-xs-12 memberDescription">
+                            <h2 data-scroll-reveal="enter right move 10px over 1s after 0.2s">Jakub</h2>
+                            <p class="position"  data-scroll-reveal="enter right move 10px over 1s after 0.4s">
+                                <span>
+                                    Web Developer
+                                </span>
+                            </p>
+
+                            <p class="memberParagraph" data-scroll-reveal="enter right move 10px over 1s after 0.6s">
+                                Satisfied conveying an dependent contented he gentleman agreeable do be. Warrant private blushes removed an in equally totally if. Delivered dejection necessary objection do mr prevailed. Mr feeling do chiefly cordial in do.
+                            </p>
+
+                            <p class="teamSocial">
+                                <a href="http://behance.net/artbreeze" data-scroll-reveal="enter right move 10px over 1s after 0.8s"><i class="fa fa-behance"></i></a>
+                                <a href="http://twitter.com/artbreeze02" data-scroll-reveal="enter right move 10px over 1s after 1s"><i class="fa fa-twitter"></i></a>
+                                <a href="http://dribbble.com/artbreeze02" data-scroll-reveal="enter right move 10px over 1s after 1.2s"><i class="fa fa-dribbble"></i></a>
+                            </p>
+
+                            <img src="{{ asset('bundles/djmain/img/lineSeparatorBlack.png') }}" class="lineSeparator hidden-xs" alt="separator">
+
+
+                        </div>
+                    </div>
+                    <!--end member-->
+
+
+                </div>
+
+            </div>
+
+            <!--end content-->
+        </div>
+    </section>
+        <section id="footer" class="dark">
+            <div class="topLine text-center">
+                <img src="{{ asset('bundles/djmain/img/logoWhite.png') }}" class="footerLogo center-block" alt="Small Logo" width="100" height="134">
+            </div>
+        </section>
+{% endblock body %}

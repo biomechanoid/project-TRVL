@@ -1,0 +1,182 @@
+  {% extends "DJMainBundle::layout.html.twig" %}
+{% block titlePage %}Gallery{% endblock titlePage %}
+{% block body %}
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <!--/* portfolio SECTION */-->
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <section id="portfolio">
+
+        <div class="portfolioIntro text-center">
+            <div class="black-overlay"></div>
+            <h2 data-scroll-reveal="enter top move 10px over 1s after 0.2s">
+                <span>gallery</span>
+            </h2>
+        </div>
+        <div class="portfolioFilters text-center">
+            <div class="" id="filters">
+                <button class="btn btn-default" data-filter="*" data-toggle="tooltip" data-placement="top" title="" data-original-title="18" data-scroll-reveal="enter bottom move 10px over 1s after 0.2s">Show All</button>
+                <button class="btn btn-default" data-filter=".graphics" data-toggle="tooltip" data-placement="top" title="" data-original-title="4" data-scroll-reveal="enter bottom move 10px over 1s after 0.3s">Graphics</button>
+                <button class="btn btn-default" data-filter=".video" data-toggle="tooltip" data-placement="top" title="" data-original-title="5" data-scroll-reveal="enter bottom move 10px over 1s after 0.5s">Video</button>
+                <button class="btn btn-default" data-filter=".mix" data-toggle="tooltip" data-placement="top" title="" data-original-title="6" data-scroll-reveal="enter bottom move 10px over 1s after 0.6s">Mix</button>
+            </div>
+        </div>
+
+        <div class="gallery js-isotope" data-isotope-options='{ "itemSelector": ".gallery-inner", "masonry": { "columnWidth": ".grid-sizer" } }'>
+
+            <!--grid sizer for columns to be used in the data-isotope-options-->
+            <div class="grid-sizer"></div>
+
+            <!--item -->
+            <div class="gallery-inner graphics">
+                <!-- caption -->
+                <div class="caption text-center ">
+                    <div class="captionWrapper valign">
+                        <a id="trigger-overlay" class="overlay-ajax" href="single-project.html" data-toggle="modal" >
+                            <div class="caption-heading">
+                                <p>Graphics / Motion</p>
+                                <h4>Big Experience</h4>
+                                <div class="btn btn-default">More</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <!-- end caption -->
+
+                <img alt="thumbnail" class="galleryImage" src="{{ asset('bundles/djmain/img/gallery/1.jpg') }}">
+
+            </div>
+            <!--end item -->
+
+            <!--item -->
+            <div class="gallery-inner video">
+                <!-- caption -->
+                <div class="caption text-center ">
+                    <div class="captionWrapper valign">
+                        <a id="trigger-overlay-two" class="overlay-ajax" href="single-project-video.html" data-toggle="modal" >
+                            <div class="caption-heading">
+                                <p>Video / Motion</p>
+                                <h4>Avaration</h4>
+                                <div class="btn btn-default">More</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <!-- end caption -->
+
+                <img alt="thumbnail" class="galleryImage" src="{{ asset('bundles/djmain/img/gallery/2.jpg') }}">
+
+            </div>
+            <!--end item -->
+
+            <!--item -->
+            <div class="gallery-inner graphics video">
+                <!-- caption -->
+                <div class="caption text-center ">
+                    <div class="captionWrapper valign">
+                        <a id="trigger-overlay-three" class="overlay-ajax" href="single-project-2.html" data-toggle="modal" >
+                            <div class="caption-heading">
+                                <p>Motion / Video</p>
+                                <h4>Foundation</h4>
+                                <div class="btn btn-default">More</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <!-- end caption -->
+
+                <img alt="thumbnail" class="galleryImage" src="{{ asset('bundles/djmain/img/gallery/3.jpg') }}">
+
+            </div>
+            <!--end item -->
+
+            <!--item -->
+            <div class="gallery-inner mix video">
+                <!-- caption -->
+                <div class="caption text-center ">
+                    <div class="captionWrapper valign">
+                        <a id="trigger-overlay-four" class="overlay-ajax" href="single-project-2.html" data-toggle="modal">
+                            <div class="caption-heading">
+                                <p>Graphics Mix</p>
+                                <h4>Bootstrap</h4>
+                                <div class="btn btn-default">More</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <!-- end caption -->
+
+                <img alt="thumbnail" class="galleryImage" src="{{ asset('bundles/djmain/img/gallery/4.jpg') }}">
+
+            </div>
+            <!--end item -->
+
+            <!--item -->
+            <div class="gallery-inner graphics mix">
+                <!-- caption -->
+                <div class="caption text-center ">
+                    <div class="captionWrapper valign">
+                        <a id="trigger-overlay-five" class="overlay-ajax" href="single-project-video.html" data-toggle="modal" >
+                            <div class="caption-heading">
+                                <p>Video / Overlay</p>
+                                <h4>Videolicious</h4>
+                                <div class="btn btn-default">More</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <!-- end caption -->
+
+                <img alt="thumbnail" class="galleryImage" src="{{ asset('bundles/djmain/img/gallery/5.jpg') }}">
+
+            </div>
+            <!--end item -->
+
+            <!--item -->
+            <div class="gallery-inner video mix">
+                <!-- caption -->
+                <div class="caption text-center ">
+                    <div class="captionWrapper valign">
+                        <a id="trigger-overlay-six" class="overlay-ajax" href="single-project-video.html" data-toggle="modal" >
+                            <div class="caption-heading">
+                                <p>Mixed Mix</p>
+                                <h4>Mixilicious</h4>
+                                <div class="btn btn-default">More</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <!-- end caption -->
+
+                <img alt="thumbnail" class="galleryImage" src="{{ asset('bundles/djmain/img/gallery/6.jpg') }}">
+
+            </div>
+            <!--end item -->
+
+            <!--item -->
+            <div class="gallery-inner graphics">
+                <!-- caption -->
+                <div class="caption text-center ">
+                    <div class="captionWrapper valign">
+                        <a id="trigger-overlay-seven" class="overlay-ajax" href="single-project.html" data-toggle="modal" >
+                            <div class="caption-heading">
+                                <p>Graphics / Design</p>
+                                <h4>Simple</h4>
+                                <div class="btn btn-default">More</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <!-- end caption -->
+
+                <img alt="thumbnail" class="galleryImage" src="{{ asset('bundles/djmain/img/gallery/7.jpg') }}">
+
+            </div>
+            <!--end item -->
+
+        </div>
+
+    </section>
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <!--/* end portfolio SECTION */-->
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+{% endblock body %}

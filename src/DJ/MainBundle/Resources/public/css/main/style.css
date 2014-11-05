@@ -268,15 +268,34 @@ section .container{
     background-color: transparent;
 }
 
-.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
-    color:white;
+.affix.navbar-default .navbar-nav>.active>a, .affix.navbar-default .navbar-nav>.active>a:hover, .affix.navbar-default .navbar-nav>.active>a:focus {
+    color: #333333;
+
 }
+
+.affix.navbar-default .navbar-brand:hover, .affix.navbar-default .navbar-brand:focus {
+    color:#333333;
+}
+
+.affix-top.navbar-default .navbar-nav>.active>a, .affix-top.navbar-default .navbar-nav>.active>a:hover, .affix-top.navbar-default .navbar-nav>.active>a:focus {
+    color: #ffffff;
+
+}
+
+.affix-top.navbar-default .navbar-brand:hover, .affix-top.navbar-default .navbar-brand:focus {
+    color:#ffffff;
+}
+
 
 .affix{
     background-color: #e94c0e;
     padding-top:10px;
     padding-bottom:10px;
     box-shadow: 0 0 4px 0 rgba(167, 83, 45, 0.59);
+
+}
+.affix .navbar-brand {
+    color: #333333;
 }
 
 .navbar-default .navbar-toggle .icon-bar {
@@ -340,11 +359,17 @@ section .container{
     box-shadow: none;
 }
 .navbar-default .navbar-nav>li>a{
-    color: #ffffff;
+    color: white;
 }
-
+.affix.navbar-default .navbar-nav>li>a{
+    color: #333333;
+}
 .navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {
     color: #ffffff;
+    text-shadow:0 2px 1px rgba(0,0,0,0.2);
+}
+.affix.navbar-default .navbar-nav>li>a:hover, .affix.navbar-default .navbar-nav>li>a:focus {
+    color: #333333;
     text-shadow:0 2px 1px rgba(0,0,0,0.2);
 }
 
@@ -630,7 +655,7 @@ p.bold{
 .portfolioIntro{
     position:relative;
     z-index:2;
-    background:url('../../../../bundles/djmain/img/portfolioIntro.jpg') no-repeat center center;
+    background:url('../../../../bundles/djmain/img/galleryIntro.jpg') no-repeat center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -1212,8 +1237,8 @@ label input, textarea{
 }
 
 #footer .bottomLine p{
-    color: #ffffff;
-    font-size:12px;
+    color: #333333;
+    font-size:13px;
 }
 
 #footer .container{
@@ -1307,7 +1332,7 @@ label input, textarea{
 }
 
 .backToTop a{
-    color:white;
+    color:#333333;
 
 }
 

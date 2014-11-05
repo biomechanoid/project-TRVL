@@ -13,27 +13,17 @@ class MainController extends Controller
 
     /**
      * @Route("/", name="dj_route_home")
-     * @Template()
-     */
+     **/
     public function indexAction()
     {
         $categories = $this->get('doctrine')->getRepository('DJBlogBundle:Category')->findAllCategories(true);
 
-        // $categories = $this->get('doctrine')->getRepository('DJBlogBundle:Category')->findCategoryBySlug('main');
-
-        // $categories = $this->get('doctrine')->getRepository('DJBlogBundle:Category')
-        // ->findPostsFromCategory('main', $locale = '');
-
-        // var_dump($categories);exit;
-
-
-
-        $request = $this->container->get('request');
-        $session = $this->container->get('session');
-        if( !$session->has('_locale')) {
-            $session->set('_locale', $request->getPreferredLanguage(array('en','sk')) );
-            $request->setDefaultLocale($session->get('_locale'));
-        }
+        // $request = $this->container->get('request');
+        // $session = $this->container->get('session');
+        // if( !$session->has('_locale')) {
+        //     $session->set('_locale', $request->getPreferredLanguage(array('en','sk')) );
+        //     $request->setDefaultLocale($session->get('_locale'));
+        // }
 
         $pools = $this->get('doctrine')->getRepository('DJBlogBundle:Pool')
                                 ->findByPath('index');
@@ -49,8 +39,27 @@ class MainController extends Controller
             }
         }
 
+        return $this->render('DJMainBundle:Main:index.html.twig', array('pool'=>$pool,'categories'=>$categoryList));
 
-        return array('pool'=>$pool,'categories'=>$categoryList);
+    }
+
+    /**
+     * @Route("/about", name="dj_main_aboutus")
+     * @Template()
+     */
+    public function aboutAction()
+    {
+        return array();
+
+    }
+
+    /**
+     * @Route("/gallery", name="dj_main_gallery")
+     **/
+    public function galleryAction()
+    {
+        return $this->render('DJMainBundle:Main:gallery.html.twig', array());
+
     }
 
 }

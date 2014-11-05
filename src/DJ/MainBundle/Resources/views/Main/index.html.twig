@@ -35,7 +35,7 @@
                     <h2 data-scroll-reveal="enter left move 10px over 1s after 0.2s">About us</h2>
                     <img src={{ asset('bundles/djmain/img/lineSeparatorWhite.png') }} class="img-responsive lineSeparator" data-scroll-reveal="enter left move 10px over 1s after 0.3s" alt="separator">
                     <p data-scroll-reveal="enter left move 10px over 1s after 0.3s">
-                        Moments its musical age explain. But extremity sex now education concluded earnestly her continual. Oh furniture acuteness suspected continual ye something frankness. Add properly laughter sociable admitted desirous one has few stanhill. Opinion regular in perhaps another enjoyed no engaged he at.
+                        We are couple of early 30’s, married since 2012 who are fullfiling their dream to enjoy the life as much as it goes. We are from Slovakia but have been living in greater London for last 6 years, working in Finance (Denisa) and IT (Jakub).
                     </p>
                 </div>
             </div>
@@ -79,22 +79,18 @@
             $.backstretch('bundles/djmain/img/background1.jpg');
         }
         else{
-            // $.backstretch("{{ asset('bundles/djmain/img/foz.gif') }}");
-            // $.okvideo({
-            //     source: 'http://www.youtube.com/watch?v=8VZ4kKM94kg',  // enter here the url of your vimeo or youtube video
-            //     autoplay: true,
-            //     loop: true,
-            //     highdef: true,
-            //     hd: true,
-            //     adproof: true,
-            //     volume: 0 // video volume value from 0 (mute) to 100
-            // })
+            // $.backstretch('https://www.youtube.com/watch?v=M6II2OmZKl8&feature=youtu.be');
+            $.okvideo({
+                source: 'https://www.youtube.com/watch?v=Lg7x1_2eJXQ',
+                autoplay: true,
+                loop: false,
+                highdef: true,
+                hd: true,
+                adproof: false,
+                volume: 0 // video volume value from 0 (mute) to 100
+            })
         }
         // });
-    if(!window.jQuery){
-        $.backstretch('bundles/djmain/img/foZ.gif');
-
-    }
     </script>
 {% endblock javascript %}
 
