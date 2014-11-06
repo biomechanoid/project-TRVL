@@ -33,7 +33,15 @@ class LoadPostsAssetsData extends AbstractFixture implements OrderedFixtureInter
 		->setDescription('primary image on blog index page')
 		->setPath('blog')
 		;
-		$manager->persist($pool2);
+		$manager->persist($pool3);
+
+		$pool4 = new Pool();
+		$pool4->setName('gallery_primary_image')
+		->setDescription('top image pool on the gallery page')
+		->setPath('gallery')
+		;
+		$manager->persist($pool4);
+
 
 		$asset1 = new Asset();
 		$asset1->setName('cool image')
