@@ -27,21 +27,30 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
 		];
 
 		$category1 = new Category();
-		$category1->setName('Main Category')
+		$category1->setName('Brazil')
 				 ->setParentCategory(0)
 				 ->setDescription('Lorem ipsum dolor sit amet, consectetur.')
-				 ->setSlug('main')
+				 ->setSlug('brazil')
 				 ->setDisplay(true);
+		$manager->persist($category1);
 
 		$category2 = new Category();
-		$category2->setName('My Books')
+		$category2->setName('Argentina')
 				->setParentCategory(0)
 				->setDescription('Lorem ipsum dolor sit amet, consectetur.')
-				->setSlug('my-books')
+				->setSlug('argentina')
 				->setDisplay(true);
-
-		$manager->persist($category1);
 		$manager->persist($category2);
+
+		$category3 = new Category();
+		$category3->setName('Peru')
+				->setParentCategory(0)
+				->setDescription('Lorem ipsum dolor sit amet, consectetur.')
+				->setSlug('peru')
+				->setDisplay(true);
+		$manager->persist($category3);
+
+
 		$iteration = 0;
 		foreach ($articles as $author=>$title) {
 			$iteration++;

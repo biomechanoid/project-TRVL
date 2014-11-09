@@ -73,6 +73,9 @@ class CategoryAdmin extends Admin
                 ->assertNotBlank()
                 ->assertNotNull()
             ->end();
+            $errorElement->with('media')
+                ->assertNotNull()
+            ->end();
 	}
 
 }

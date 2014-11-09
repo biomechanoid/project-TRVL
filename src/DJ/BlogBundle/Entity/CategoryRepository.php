@@ -34,7 +34,7 @@ class CategoryRepository extends EntityRepository
     public function findCategoryBySlug($slug, $returnSmallArray = false) {
         $em = $this->getEntityManager();
         if(!$returnSmallArray) {
-            $categoryQuery = $em->createQuery('SELECT c.slug, c.name FROM DJBlogBundle:Category c WHERE c.slug = :slug')
+            $categoryQuery = $em->createQuery('SELECT c.slug, c.name, c.description FROM DJBlogBundle:Category c WHERE c.slug = :slug')
                             ->setParameter('slug', $slug);
         } else {
             $categoryQuery = $em->createQuery('SELECT c FROM DJBlogBundle:Category c WHERE c.slug = :slug')
