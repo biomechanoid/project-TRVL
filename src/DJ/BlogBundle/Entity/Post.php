@@ -39,20 +39,6 @@ class Post
      */
     private $title;
 
-        /**
-    * @var string
-    * @ORM\Column(name="contentFormatter", type="string", length=30)
-    *
-    */
-    private $contentFormatter;
-
-   /**
-    * @var string
-    * @ORM\Column(name="rawContent ", type="string", length=30)
-    *
-    */
-    private $rawContent;
-
     /**
      * @var text
      *
@@ -590,4 +576,28 @@ class Post
     {
         return $this->rawContent;
     }
+
+    /**
+     * Set galery_media
+     *
+     * @param \Application\Sonata\MediaBundle\Entity\Media $galeryMedia
+     * @return Post
+     */
+    public function setGaleryMedia(\Application\Sonata\MediaBundle\Entity\Media $galeryMedia = null)
+    {
+        $this->galery_media = $galeryMedia;
+
+        return $this;
+    }
+
+    /**
+     * Get galery_media
+     *
+     * @return \Application\Sonata\MediaBundle\Entity\Media
+     */
+    public function getGaleryMedia()
+    {
+        return $this->galery_media;
+    }
+
 }

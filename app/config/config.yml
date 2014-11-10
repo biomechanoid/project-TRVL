@@ -169,7 +169,8 @@ sonata_admin:
                     - dj_admin.admin.post_asset
             Media:
                 items:
-                    - aplication.admin.media
+                    - application.admin.media
+                    - application.admin.gallery
         blocks:
             -
                 position: left
@@ -193,7 +194,6 @@ sonata_media:
     contexts:
         default:  # the default context is mandatory
             providers:
-                - sonata.media.provider.dailymotion
                 - sonata.media.provider.youtube
                 - sonata.media.provider.image
                 - sonata.media.provider.file

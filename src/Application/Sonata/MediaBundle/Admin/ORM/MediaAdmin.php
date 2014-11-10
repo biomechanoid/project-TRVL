@@ -29,16 +29,19 @@ class MediaAdmin extends BaseMediaAdmin
      */
     protected function configureListFields(ListMapper $listMapper)
     {
-        $listMapper
-            ->add('custom', 'string', array('template' =>  'SonataMediaBundle:MediaAdmin:list_custom.html.twig'))
-            ->add('enabled', 'boolean', array('editable' => true))
-            ->add('_action', 'actions', array(
-                'actions' => array(
-                    'show' => array(),
-                    'edit' => array(),
-                    'delete' => array(),
-                )
-            ))
+         $listMapper
+            ->addIdentifier('name')
+            ->add('description')
+            ->add('enabled')
+            ->add('size')
+        ;
+    }
+
+        protected function configureDatagridFilters(DatagridMapper $datagridMapper)
+    {
+        $datagridMapper
+            ->add('context')
+
         ;
     }
 
