@@ -12,7 +12,7 @@ class MainController extends Controller
 
 
     /**
-     * @Route("/", name="dj_route_home")
+     * @Route("/{_locale}{trailingSlash}", name="dj_route_home",requirements={"_locale"="|en|sk", "trailingSlash" = "[/]{0,1}" }, defaults={"trailingSlash" = "/" })
      **/
     public function indexAction()
     {
@@ -44,7 +44,7 @@ class MainController extends Controller
     }
 
     /**
-     * @Route("/about", name="dj_main_aboutus")
+     * @Route("/{_locale}/about", name="dj_main_aboutus", requirements={"_locale"="|en|sk" } )
      * @Template()
      */
     public function aboutAction()
@@ -54,7 +54,7 @@ class MainController extends Controller
     }
 
     /**
-     * @Route("/gallery", name="dj_main_gallery")
+     * @Route("/{_locale}/gallery", name="dj_main_gallery", requirements={"_locale"="|en|sk" })
      **/
     public function galleryAction()
     {
