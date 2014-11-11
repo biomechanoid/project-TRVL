@@ -46,7 +46,7 @@ class LoadPostsAssetsData extends AbstractFixture implements OrderedFixtureInter
 		$asset1 = new Asset();
 		$asset1->setName('cool image')
 			  ->setAlt('My best image')
-			  ->setSrc('/foo/bar/image.jpg')
+			  ->setSrc('/bundles/djmain/img/gallery/default/square-default.jpg')
 			  ;
 		$manager->persist($asset1);
 
@@ -59,8 +59,6 @@ class LoadPostsAssetsData extends AbstractFixture implements OrderedFixtureInter
 
 		$post1 = $manager->getRepository('DJBlogBundle:Post')->findOneBy(array('title'=>'The Lord of the Rings'));
 		$post2 = $manager->getRepository('DJBlogBundle:Post')->findOneBy(array('title'=>'Beloved'));
-
-// var_dump($post);exit;
 
 		$pa1 = new PostAsset();
 		$pa1->setPoolid($pool1)

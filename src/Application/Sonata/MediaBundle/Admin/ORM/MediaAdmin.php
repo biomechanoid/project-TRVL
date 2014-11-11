@@ -32,6 +32,7 @@ class MediaAdmin extends BaseMediaAdmin
          $listMapper
             ->addIdentifier('name')
             ->add('description')
+            ->add('context')
             ->add('enabled')
             ->add('size')
         ;
@@ -44,7 +45,3 @@ class MediaAdmin extends BaseMediaAdmin
 
         ;
     }
-
-
-
-}

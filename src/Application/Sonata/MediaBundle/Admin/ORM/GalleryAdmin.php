@@ -67,10 +67,11 @@ class GalleryAdmin extends Admin
 
         $formMapper
             ->with('Options')
-                ->add('context', 'sonata_type_translatable_choice', array(
-                    'choices' => $contexts,
-                    'catalogue' => 'SonataMediaBundle'
-                ))
+                // ->add('context', 'sonata_type_translatable_choice', array(
+                //     'choices' => $contexts,
+                //     'catalogue' => 'SonataMediaBundle'
+                // ))
+                ->add('context', 'text', array('data'=>$context,'disabled'=>true))
                 ->add('enabled', null, array('required' => false))
                 ->add('name')
                 ->add('defaultFormat', 'choice', array('choices' => $formats))

@@ -221,7 +221,14 @@ sonata_media:
                 small: { width: 150 , quality: 95}
                 medium: { width: 1400 , height: 661, quality: 90}
                 big:   { width: 787 , height: 591, quality: 90}
-
+        gallery:
+            providers:
+                - sonata.media.provider.image
+                - sonata.media.provider.youtube
+            formats:
+                square: { width: 800 ,height: 600 quality: 95}
+                tall: { width: 800 , height: 1200, quality: 95}
+                intro: { width: 2800 , height: 840, quality: 75}
 
     cdn:
         server:
