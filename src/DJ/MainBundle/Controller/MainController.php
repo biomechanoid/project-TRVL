@@ -1,5 +1,4 @@
 <?php
-
 namespace DJ\MainBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -17,14 +16,6 @@ class MainController extends Controller
     public function indexAction()
     {
         $categories = $this->get('doctrine')->getRepository('DJBlogBundle:Category')->findAllCategories(true);
-
-        // $request = $this->container->get('request');
-        // $session = $this->container->get('session');
-        // if( !$session->has('_locale')) {
-        //     $session->set('_locale', $request->getPreferredLanguage(array('en','sk')) );
-        //     $request->setDefaultLocale($session->get('_locale'));
-        // }
-
         $pools = $this->get('doctrine')->getRepository('DJBlogBundle:Pool')
                                 ->findByPath('index');
         $pool = [];
@@ -40,7 +31,6 @@ class MainController extends Controller
         }
 
         return $this->render('DJMainBundle:Main:index.html.twig', array('pool'=>$pool,'categories'=>$categoryList));
-
     }
 
     /**
@@ -50,7 +40,6 @@ class MainController extends Controller
     public function aboutAction()
     {
         return array();
-
     }
 
     /**
@@ -62,7 +51,6 @@ class MainController extends Controller
             return $this->render('DJMainBundle:Main:gallery.html.twig', array('gallery'=>array()));
         }
         $em = $this->get('doctrine');
-
         $gallery = $this->get('doctrine')->getRepository('ApplicationSonataMediaBundle:Gallery');
 
         if(!$gallery->findOneByName($category)) {
@@ -91,10 +79,7 @@ class MainController extends Controller
 
             }
         }
-        // var_dump($media[0]);
-        // exit;
+
         return $this->render('DJMainBundle:Main:gallery.html.twig', array('gallery'=>$media));
-
     }
-
 }

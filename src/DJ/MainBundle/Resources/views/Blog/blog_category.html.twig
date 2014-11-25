@@ -16,7 +16,6 @@
                         {% endif %}
                         </div>
                     </a>
-
                     <div class="post-content">
                         <div class="post-title">
                             <a href={{ path('blog_post',{'category':category.slug,'post':post.slug}) }}><h3>{{ post.title }}</h3></a>
@@ -28,27 +27,13 @@
                         </div>
                         <img src={{ asset('bundles/djmain/img/lineSeparatorBlack.png') }} class="img-responsive blogSeparator" alt="separator">
                         <p class="excerpt">
-
                             {{- post.content | trim | strip_tags() | length >250 ? post.content | raw | slice(0,250)~ '...' : post.content | strip_tags()  -}}
                         </p>
                         <a class="btn btn-default btn-black center-block" href={{ path('blog_post',{'category':category.slug,'post':post.slug}) }}>Read More</a>
                     </div>
-
                 </div>
             {% endfor %}
-
     </div>
-
-  {#   <hr>
-    <div class="row">
-        <br><br>
-        <div class="col-xs-6">
-            <a class="btn btn-default btn-black" href="#">&lt; Previous</a>
-        </div>
-        <div class="col-xs-6 text-right">
-            <a class="btn btn-default btn-black" href="#">Next &gt;</a>
-        </div>
-    </div> #}
 {% endblock content %}
 {% block sidebar %}
     {{ include('DJMainBundle:Blog:partials/blog_sidebar.html.twig', { 'categories': categories, 'current_category': category.slug, 'category_posts': null, 'current_post': null }) }}

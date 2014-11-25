@@ -2,8 +2,6 @@
 {% block titlePage %}Gallery{% endblock titlePage %}
     {% block bodyAttributes %} id="bigWrapper" data-spy="scroll" data-target=".navbar-default" data-offset="100"{% endblock %}
 {% block body %}
-
-
     <!--OVERLAY FOR THE PORTFOLIO MENU // DONT' DELETE IF YOU PLAN TO USE THIS OPTION-->
     <div class="container overlay overlay-slidedown">
 
@@ -44,9 +42,7 @@
 
             <!--grid sizer for columns to be used in the data-isotope-options-->
             <div class="grid-sizer"></div>
-
             {% for media in gallery %}
-
              <!--item -->
                 <div class="gallery-inner {{ media.media_type }}">
                     <!-- caption -->
@@ -62,26 +58,11 @@
                         </div>
                     </div>
                     <!-- end caption -->
-
                     <img alt="thumbnail" class="galleryImage" src="{% path media, 'tall' %}">
-
-
                 </div>
             <!--end item -->
-
-
             {% endfor %}
-
-
-
-
-
-
-
-
-
         </div>
-
     </section>
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <!--/* end portfolio SECTION */-->
@@ -107,10 +88,6 @@
             },
                     transEndEventName = transEndEventNames[ Modernizr.prefixed( 'transition' ) ],
                     support = { transitions : Modernizr.csstransitions };
-
-
         })();
-
     </script>
-
 {% endblock javascript %}

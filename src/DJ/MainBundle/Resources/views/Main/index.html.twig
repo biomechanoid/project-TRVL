@@ -11,23 +11,41 @@
                 <div class="col-md-12 text-center">
                     <h1>denca & kubo</h1>
                 </div>
-
                 <div class="col-md-12 text-center">
                     <img src={{ asset('bundles/djmain/img/separatorWhite.png') }} class="img-responsive center-block separator" alt="separator">
                 </div>
-
-
                 <div class="col-md-6 col-md-offset-3 text-center">
                     <p>
                         7 months, 3 continents, 10 countries <br>
                         Journey around the world with Ruttkays.
                     </p>
                 </div>
-
             </div>
         </div>
     </section>
-
+    <section id="welcome-separator">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-7 col-sm-6 hidden-xs image" >
+                    <div class="whiteOverlay"></div>
+                    {% if pool['secondary'].media %}
+                        {% media pool['secondary'].media, 'medium' with {'alt': 'background'} %}
+                    {% else %}
+                       <img src={{ asset('bundles/djmain/img/backgroundWelcome.jpg') }} alt="background">
+                    {% endif %}
+                </div>
+                <div class="col-md-5 col-sm-6 col-xs-12 textOverlay text-center">
+                    <h1 data-scroll-reveal="enter right move 10px over 1s after 0.2s">Welcome</h1>
+                    <img src={{ asset('bundles/djmain/img/separatorBlack.png') }} class="img-responsive center-block separator" alt="separator">
+                    <p data-scroll-reveal="enter right move 10px over 1s after 0.4s">
+                        For who thoroughly her boy estimating conviction. Removed demands expense account in outward tedious do. Particular way thoroughly unaffected projection favourable mrs can projecting own.
+                    </p>
+                    <br>
+                    <a data-scroll href={{ path('dj_blog_main') }} class="btn btn-default btn-black">Read blog</a>
+                </div>
+            </div>
+        </div>
+    </section>
     <section id="text-separator">
         <div class="container-fluid">
             <div class="row">
@@ -41,45 +59,15 @@
             </div>
         </div>
     </section>
-
-    <section id="welcome-separator">
-        <div class="container-fluid">
-            <div class="col-md-7 col-sm-6 hidden-xs image" >
-                <div class="whiteOverlay"></div>
-                {% if pool['secondary'].media %}
-                    {% media pool['secondary'].media, 'medium' with {'alt': 'background'} %}
-                {% else %}
-                   <img src={{ asset('bundles/djmain/img/backgroundWelcome.jpg') }} alt="background">
-                {% endif %}
-
-            </div>
-
-            <div class="col-md-5 col-sm-6 col-xs-12 textOverlay text-center">
-                <h1 data-scroll-reveal="enter right move 10px over 1s after 0.2s">Welcome</h1>
-                <img src={{ asset('bundles/djmain/img/separatorBlack.png') }} class="img-responsive center-block separator" alt="separator">
-                <p data-scroll-reveal="enter right move 10px over 1s after 0.4s">
-                    For who thoroughly her boy estimating conviction. Removed demands expense account in outward tedious do. Particular way thoroughly unaffected projection favourable mrs can projecting own.
-                </p>
-                <br>
-                <a data-scroll href={{ path('dj_blog_main') }} class="btn btn-default btn-black">Read blog</a>
-            </div>
-        </div>
-    </section>
-
 {% endblock body %}
-
 {% block javascript %}
     <script src="{{ asset('bundles/djmain/js/okvideo.min.js') }}"></script>
     <script>
-        // $(function(){
         "use strict";
-
-        //if mobile device, replace video background with background image (video background is restricted on mobile devices)
         if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
             $.backstretch('bundles/djmain/img/background1.jpg');
         }
         else{
-            // $.backstretch('https://www.youtube.com/watch?v=M6II2OmZKl8&feature=youtu.be');
             $.okvideo({
                 source: 'https://www.youtube.com/watch?v=Lg7x1_2eJXQ',
                 autoplay: true,
@@ -87,10 +75,9 @@
                 highdef: true,
                 hd: true,
                 adproof: false,
-                volume: 0 // video volume value from 0 (mute) to 100
+                volume: 0
             })
         }
-        // });
     </script>
 {% endblock javascript %}
 

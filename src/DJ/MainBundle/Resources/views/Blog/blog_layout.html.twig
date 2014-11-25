@@ -3,25 +3,8 @@
 {% set isBlogPage = true %}
 {% block titlePage %}Blog{% endblock titlePage %}
 {% block header %}
-
     {% block navigation %}
         {{ parent() }}
-            <!--OVERLAY FOR THE PORTFOLIO MENU // DONT' DELETE IF YOU PLAN TO USE THIS OPTION-->
-        <div class="container overlay overlay-slidedown">
-
-            <div class="row">
-
-                <div class="overlay-section"></div>
-
-                <div class="col-md-12 ">
-                    <a class="overlay-close">
-                        <br><br>
-                        <img class="img-responsive center-block" src={{ asset('bundles/djmain/img/xsep.png') }} alt="close image"  data-toggle="tooltip" title="Close">
-                    </a>
-                </div>
-            </div>
-        </div>
-        <!--end OVERLAY FOR THE PORTFOLIO MENU // DONT' DELETE IF YOU PLAN TO USE THIS OPTION-->
     {% endblock navigation %}
 {% endblock header %}
 {% block body %}
@@ -30,9 +13,7 @@
     <!--/* blog intro SECTION */-->
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <section id="blogIntro">
-
         <div class="container">
-
             <!--header-->
             <div class="row sectionIntro">
                 <div class="col-md-8 col-md-offset-2 text-center">
@@ -42,52 +23,38 @@
                     <p data-scroll-reveal="enter bottom move 10px over 1s after 0.2s">
                         {% block introTeaser %}{% endblock %}
                     </p>
-
                     <img src={{ asset('bundles/djmain/img/separatorBlack.png') }} class="img-responsive center-block separator" alt="separator">
-
                 </div>
             </div>
             <!--end header-->
-
         </div>
-
     </section>
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <!--/* END blog intro SECTION */-->
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     {% endblock intro %}
-
-
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <!--/* blog content SECTION */-->
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <section id="blogContent">
-
-    <div class="container">
-        <div class="row content">
-            <div class="col-md-9">
-                {% block content %}{% endblock content %}
+        <div class="container">
+            <div class="row content">
+                <div class="col-md-9">
+                    {% block content %}{% endblock content %}
+                </div>
+                <div class="col-md-3">
+                    {% block sidebar %}
+                    {% endblock %}
+                </div>
             </div>
-            <div class="col-md-3">
-                {% block sidebar %}
-                {% endblock %}
-            </div>
+            <h1 class="parallaxLetter letter3" data-stellar-ratio="1.5" data-stellar-vertical-offset="-600">D</h1>
+            <h1 class="parallaxLetter letter4" data-stellar-ratio="0.8" data-stellar-vertical-offset="0">K</h1>
+            <!--end content-->
         </div>
-
-
-        <h1 class="parallaxLetter letter3" data-stellar-ratio="1.5" data-stellar-vertical-offset="-600">D</h1>
-        <h1 class="parallaxLetter letter4" data-stellar-ratio="0.8" data-stellar-vertical-offset="0">K</h1>
-        <!--end content-->
-
-
-
-    </div>
-
     </section>
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <!--/* END blog content SECTION */-->
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-
 {% endblock body %}
 {% block javascript %}
     <script>

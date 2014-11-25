@@ -1,5 +1,4 @@
 <?php
-
 namespace DJ\BlogBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -12,16 +11,6 @@ class BlogController extends Controller
     protected $assets = array();
 
 
-    public function __construct() {
-
-        // $session = $this->get('session');
-        // $request = $this->get('request');
-        // // if( !$session->has('_locale')) {
-        //     $session->set('_locale', $request->getPreferredLanguage(array('en','sk')) );
-        //     // $request->setLocale($session->get('_locale'));
-
-    }
-
     /**
      * @Route("/", name="dj_blog_main")
      * @Template("DJMainBundle:Blog:blog_index.html.twig")
@@ -31,9 +20,7 @@ class BlogController extends Controller
         $all_categories = $this->get('doctrine')->getRepository('DJBlogBundle:Category')
                                                 ->findAllCategories();
         $pools = $this->get('doctrine')->getRepository('DJBlogBundle:Pool')->findByPath('blog');
-
         $pool = [];
-
         foreach ($pools as $value) {
             if($value->getName() == 'blog_primary_image') {
                 $pool['primary'] = $value;
