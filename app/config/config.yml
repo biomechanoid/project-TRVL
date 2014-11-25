@@ -185,7 +185,7 @@ sonata_admin:
         use_select2:    false
 
 sonata_media:
-    default_context: default
+    default_context: gallery
     db_driver: doctrine_orm
     class:
         media:              Application\Sonata\MediaBundle\Entity\Media
@@ -226,7 +226,7 @@ sonata_media:
                 - sonata.media.provider.image
                 - sonata.media.provider.youtube
             formats:
-                square: { width: 800 ,height: 600 quality: 95}
+                square: { width: 800 ,height: 600, quality: 95}
                 tall: { width: 800 , height: 1200, quality: 95}
                 intro: { width: 2800 , height: 840, quality: 75}
 

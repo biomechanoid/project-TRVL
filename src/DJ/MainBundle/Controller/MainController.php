@@ -54,11 +54,46 @@ class MainController extends Controller
     }
 
     /**
-     * @Route("/{_locale}/gallery", name="dj_main_gallery", requirements={"_locale"="|en|sk" })
+     * @Route("/{_locale}/gallery{trailingSlash}{category}", name="dj_main_gallery", requirements={"_locale"="|en|sk", "category" = "[a-zA-Z0-9-_]+", "trailingSlash" = "[/]{0,1}"}, defaults={"category" = null, "trailingSlash" = "/" })
      **/
-    public function galleryAction()
+    public function galleryAction($category)
     {
-        return $this->render('DJMainBundle:Main:gallery.html.twig', array());
+        if($category == '') {
+            return $this->render('DJMainBundle:Main:gallery.html.twig', array('gallery'=>array()));
+        }
+        $em = $this->get('doctrine');
+
+        $gallery = $this->get('doctrine')->getRepository('ApplicationSonataMediaBundle:Gallery');
+
+        if(!$gallery->findOneByName($category)) {
+            return $this->render('DJMainBundle:Main:gallery.html.twig', array('gallery'=>array()));
+        }
+
+        $galeryId = $gallery->findOneByName($category)->getId();
+        $ghm = $this->get('doctrine')->getRepository('ApplicationSonataMediaBundle:GalleryHasMedia');
+        $media= [];
+        $typeAllowed = array(
+                'images'=>array('jpg','jpeg','gif','png' ),
+                'video' =>array('mp4','mp3','vlc','aac')
+            );
+        foreach($ghm->findByGallery(1) as $key=>$value) {
+            $media[$key] = $value->getMedia();
+            // foreach ($media as $key => $value) {
+            if( in_array(strtolower(pathinfo($media[$key]->getName(), PATHINFO_EXTENSION)), $typeAllowed['images']) ) {
+            $media[$key]->media_type = 'graphics';
+
+
+            } elseif ( in_array(strtolower(pathinfo($media[$key]->getName(), PATHINFO_EXTENSION)), $typeAllowed['video']) ) {
+            $media[$key]->media_type = 'video';
+
+            } else {
+            $media[$key]->media_type = 'mix';
+
+            }
+        }
+        // var_dump($media[0]);
+        // exit;
+        return $this->render('DJMainBundle:Main:gallery.html.twig', array('gallery'=>$media));
 
     }
 

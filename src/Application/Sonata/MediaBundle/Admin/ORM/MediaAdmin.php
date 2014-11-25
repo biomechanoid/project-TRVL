@@ -45,3 +45,19 @@ class MediaAdmin extends BaseMediaAdmin
 
         ;
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    // protected function configureFormFields(FormMapper $formMapper)
+    // {
+    //     $formMapper
+    //         ->with($this->trans('Gallery'), array('class' => 'col-md-9'))->end()
+    //         ->with($this->trans('Options'), array('class' => 'col-md-3'))->end()
+    //     ;
+
+        // $formMapper
+        // ->with()
+        // ;
+    // }
+}
