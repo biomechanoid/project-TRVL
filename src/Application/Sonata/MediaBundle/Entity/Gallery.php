@@ -29,6 +29,12 @@ class Gallery extends BaseGallery
     protected $id;
 
     /**
+     * @var \Application\Sonata\MediaBundle\Entity\Media
+     * @ORM\ManytoOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media", cascade={"persist", "remove"}, fetch="LAZY")
+     */
+    private $media;
+
+    /**
      * Get id
      *
      * @return integer $id

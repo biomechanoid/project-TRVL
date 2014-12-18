@@ -69,5 +69,9 @@
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}
-    {% block javascript %}{% endblock %}
+    <script type="text/javascript" src={{ asset('bundles/djmain/js/scripts.js') }}></script>
+    <script type="text/javascript" src={{ asset('bundles/djmain/js/custom.js') }}></script>
+    {% block javascript %}
+
+    {% endblock %}
 {% endblock javascripts %}
