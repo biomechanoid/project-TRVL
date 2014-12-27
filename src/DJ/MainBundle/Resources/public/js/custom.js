@@ -144,30 +144,41 @@ $(document).ready(function () {
     });
 
 
-
-
     /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
     /* overlay portfolio */
     /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-    $("a.overlay-ajax").click(function(){
-        var url = $(this).attr("href");
-        $(".overlay-section").load(url + ' #transmitter');
-        $('.overlay-close img').tooltip();
-        return false;
-    });
+    // $("a.overlay-ajax").click(function(){
+    //     var url = $(this).attr("href");
+
+    //     // $('#container .bjqs').find('li').each(function(){
+    //     //          var currentImage = $(this).children().attr('href');
+    //     //         if(currentImage) {
+    //     //             $(this).remove();
+    //     //             console.log(this);
+    //     //             $('#container .bjqs').prepend('<li><img src="jjj" title=""></li></li>');
+
+    //     //         }
+    //     //      })
+    //     // $(".overlay-section").load(url + ' #transmitter');
+
+    //     $('.overlay-close img').tooltip();
+
+    //     return false;
+    // });
 
 
     //    no scroll on body when overlay is up
-    $(function () {
+    // $(function () {
 
-        $('a.overlay-ajax').click(function(){
-            $( "body" ).addClass( "noscroll" );
-        });
+    //     $('a.overlay-ajax').click(function(){
+    //         $( "body" ).addClass( "noscroll" );
+    //     });
 
-        $('a.overlay-close').click(function(){
-            $( "body" ).removeClass( "noscroll" );
-        });
-    });
+    //     $('a.overlay-close').click(function(){
+    //         $( "body" ).removeClass( "noscroll" );
+
+    //     });
+    // });
 
 
     /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
@@ -176,12 +187,6 @@ $(document).ready(function () {
     smoothScroll.init({
         speed: 1000
     });
-
-
-
-
-
-
 
 
     /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/

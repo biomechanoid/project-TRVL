@@ -27,29 +27,16 @@
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse navbar-right" id="navbar-collapse">
                         <ul class="nav navbar-nav">
-                            <li class="{% if not isBlogPage %}active{% endif %}"><a data-scroll href={{ path('dj_route_home') }}>Home</a></li>
+                            <li class="{% if not isBlogPage %}active{% endif %}"><a data-scroll href={{ path('dj_route_home') }}>{{ 'navigation.main.home' | trans }}</a></li>
                             {# <li class="{% if not isBlogPage %}active{% endif %}"><a data-scroll href={{ path('dj_main_aboutus') }}>About Us</a></li> #}
-                            <li class={% if isBlogPage %}active{% endif %}><a data-scroll href={{ path('dj_blog_main') }}>Blog</a></li>
-                            <li class={% if not isBlogPage %}active{% endif %}><a data-scroll href={{ path('dj_main_gallery') }}>Gallery</a></li>
+                            <li class={% if isBlogPage %}active{% endif %}><a data-scroll href={{ path('dj_blog_main') }}>{{ 'navigation.main.blog' | trans }}</a></li>
+                            <li class={% if not isBlogPage %}active{% endif %}><a data-scroll href={{ path('dj_main_gallery') }}>{{ 'navigation.main.gallery' | trans }}</a></li>
                         </ul>
                     </div><!-- /.navbar-collapse -->
                 </div><!-- /.container-fluid -->
             </nav>
         </header>
     {% endblock navigation %}
-    <!--OVERLAY FOR THE PORTFOLIO MENU // DONT' DELETE IF YOU PLAN TO USE THIS OPTION-->
-    <div class="container overlay overlay-slidedown">
-        <div class="row">
-            <div class="overlay-section"></div>
-            <div class="col-md-12 ">
-                <a class="overlay-close">
-                    <br><br>
-                    <img class="img-responsive center-block" src={{ asset('bundles/djmain/img/xsep.png') }} alt="close image"  data-toggle="tooltip" title="Close">
-                </a>
-            </div>
-        </div>
-    </div>
-    <!--end OVERLAY FOR THE PORTFOLIO MENU // DONT' DELETE IF YOU PLAN TO USE THIS OPTION-->
 {% endblock header %}
 {% block bodyAttributes %}id="bigWrapper" data-spy="scroll" data-target=".navbar-default" data-offset="100"{% endblock bodyAttributes %}
 {% block body %}
@@ -60,18 +47,14 @@
             <div class="backToTop">
                 <a data-scroll href="#intro">
                     <i class="fa fa-angle-double-up"></i><br>
-                    <h5>Back to top</h5>
+                    <h5>{{ 'footer.main.backtotop' | trans }}</h5>
                 </a>
             </div>
             <p class="bold">&copy; 2014 Denca and Kubo site.</p><p> All Rights Reserved. </p>
         </div>
     </section>
 {% endblock %}
-{% block javascripts %}
-    {{ parent() }}
-    <script type="text/javascript" src={{ asset('bundles/djmain/js/scripts.js') }}></script>
-    <script type="text/javascript" src={{ asset('bundles/djmain/js/custom.js') }}></script>
-    {% block javascript %}
 
-    {% endblock %}
-{% endblock javascripts %}
+{% block javascript %}
+    <script type="text/javascript" src={{ asset('bundles/djmain/js/custom.js') }}></script>
+{% endblock %}

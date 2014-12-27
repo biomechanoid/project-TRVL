@@ -1,23 +1,12 @@
   {% extends "DJMainBundle::layout.html.twig" %}
+  {% block stylesheet %}
+   {#  <link rel="stylesheet" href={{ asset('bundles/djmain/css/slider/bjqs.css') }} type='text/css'>
+    <link rel="stylesheet" href={{ asset('bundles/djmain/css/slider/demo.css') }} type='text/css'> #}
+    <link rel="stylesheet" href={{ asset('bundles/djmain/css/slider/smoothbox.css') }} type='text/css'>
+  {% endblock %}
 {% block titlePage %}Gallery{% endblock titlePage %}
     {% block bodyAttributes %} id="bigWrapper" data-spy="scroll" data-target=".navbar-default" data-offset="100"{% endblock %}
 {% block body %}
-    <!--OVERLAY FOR THE PORTFOLIO MENU // DONT' DELETE IF YOU PLAN TO USE THIS OPTION-->
-    <div class="container overlay overlay-slidedown">
-
-        <div class="row">
-
-            <div class="overlay-section"></div>
-
-            <div class="col-md-12">
-                <a class="overlay-close">
-                    <br><br>
-                    <img class="img-responsive center-block" src="{{ asset('bundles/djmain/img/xsep.png') }}" alt="close image"  data-toggle="tooltip" title="Close">
-                </a>
-            </div>
-        </div>
-    </div>
-    <!--end OVERLAY FOR THE PORTFOLIO MENU // DONT' DELETE IF YOU PLAN TO USE THIS OPTION-->
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <!--/* portfolio SECTION */-->
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
@@ -30,10 +19,10 @@
             <h2 data-scroll-reveal="enter top move 10px over 1s after 0.2s">
                 <span>{% if galleryName %} {{ galleryName }} {% endif %} </span>
             </h2>
-            <div class="" id="filters">
-                <button class="btn btn-default" data-filter="*" data-toggle="tooltip" data-placement="top" title="" data-original-title="18" data-scroll-reveal="enter bottom move 10px over 1s after 0.2s">Show All</button>
-                <button class="btn btn-default" data-filter=".graphics" data-toggle="tooltip" data-placement="top" title="" data-original-title="4" data-scroll-reveal="enter bottom move 10px over 1s after 0.3s">Graphics</button>
-                <button class="btn btn-default" data-filter=".video" data-toggle="tooltip" data-placement="top" title="" data-original-title="5" data-scroll-reveal="enter bottom move 10px over 1s after 0.5s">Video</button>
+            <div id="filters">
+                <button class="btn btn-default btn-white" data-filter="*" data-toggle="tooltip" data-placement="top" title="" data-original-title="18" data-scroll-reveal="enter bottom move 10px over 1s after 0.2s">Show All</button>
+                <button class="btn btn-default btn-white" data-filter=".graphics" data-toggle="tooltip" data-placement="top" title="" data-original-title="4" data-scroll-reveal="enter bottom move 10px over 1s after 0.3s">Graphics</button>
+                <button class="btn btn-default btn-white" data-filter=".video" data-toggle="tooltip" data-placement="top" title="" data-original-title="5" data-scroll-reveal="enter bottom move 10px over 1s after 0.5s">Video</button>
             </div>
         </div>
         <div class="gallery js-isotope" data-isotope-options='{ "itemSelector": ".gallery-inner", "masonry": { "columnWidth": ".grid-sizer" } }'>
@@ -44,48 +33,32 @@
              <!--item -->
                 <div class="gallery-inner {{ media.media_type }}">
                     <!-- caption -->
-                    <div class="caption text-center ">
-                        <div class="captionWrapper valign">
-                            <a id="trigger-overlay" class="overlay-ajax" href="{% path media, 'tall' %}" data-toggle="modal" >
+                    <div class="caption text-center">
+                        <div class="captionWrapper valign hidden-xs hidden-sm">
+                            <a class="sb overlay-ajax" href={% path media, 'tall' %} data-toggle="modal" >
                                 <div class="caption-heading">
-                                    <p>{{ media.createdAt | date('D d M Y ')}}</p>
                                     <h4>{{ media.name }}</h4>
-                                    <div class="btn btn-default">Preview</div>
+                                    <div class="btn btn-default btn-white">{{ 'gallery.gallery.button.preview' | trans }}</div>
                                 </div>
                             </a>
                         </div>
                     </div>
                     <!-- end caption -->
-                    <img alt="thumbnail" class="galleryImage" src="{% path media, 'tall' %}">
+                    <img alt="thumbnail" class="galleryImage" src={% path media, 'tall' %}>
                 </div>
             <!--end item -->
             {% endfor %}
+
+
         </div>
     </section>
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <!--/* end portfolio SECTION */-->
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 {% endblock body %}
-{% block javascript %}
-    <script>
-        (function() {
-            var triggerBttn = document.getElementById( 'trigger-overlay' ),
-                    triggerBttnTwo = document.getElementById( 'trigger-overlay-two' ),
-                    triggerBttnThree = document.getElementById( 'trigger-overlay-three' ),
-                    triggerBttnFour = document.getElementById( 'trigger-overlay-four' ),
-                    // add here more buttons trigger
 
-                    overlay = document.querySelector( 'div.overlay' ),
-                    closeBttn = overlay.querySelector( 'a.overlay-close' );
-            transEndEventNames = {
-                'WebkitTransition': 'webkitTransitionEnd',
-                'MozTransition': 'transitionend',
-                'OTransition': 'oTransitionEnd',
-                'msTransition': 'MSTransitionEnd',
-                'transition': 'transitionend'
-            },
-                    transEndEventName = transEndEventNames[ Modernizr.prefixed( 'transition' ) ],
-                    support = { transitions : Modernizr.csstransitions };
-        })();
-    </script>
-{% endblock javascript %}
+{% block javascripts %}
+  {{ parent() }}
+  <script type="text/javascript" src={{ asset('bundles/djmain/js/smoothbox.min.js') }}></script>
+  <script src={{ asset('bundles/djmain/js/overlay.js') }}></script>
+ {% endblock javascripts %}

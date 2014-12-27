@@ -11,19 +11,6 @@
 {% block titlePage %}Gallery{% endblock titlePage %}
     {% block bodyAttributes %} id="bigWrapper" data-spy="scroll" data-target=".navbar-default" data-offset="100"{% endblock %}
 {% block body %}
-    <!--OVERLAY FOR THE PORTFOLIO MENU // DONT' DELETE IF YOU PLAN TO USE THIS OPTION-->
-    <div class="container overlay overlay-slidedown">
-        <div class="row">
-            <div class="overlay-section"></div>
-            <div class="col-md-12">
-                <a class="overlay-close">
-                    <br><br>
-                    <img class="img-responsive center-block" src="{{ asset('bundles/djmain/img/xsep.png') }}" alt="close image"  data-toggle="tooltip" title="Close">
-                </a>
-            </div>
-        </div>
-    </div>
-    <!--end OVERLAY FOR THE PORTFOLIO MENU // DONT' DELETE IF YOU PLAN TO USE THIS OPTION-->
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <!--/* portfolio SECTION */-->
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
@@ -34,7 +21,7 @@
         <div class="portfolioFilters text-center">
             <div class="filters" id="filters">
             <h2 data-scroll-reveal="enter top move 10px over 1s after 0.2s">
-                <span class="">gallery</span>
+                <span>{{   'gallery.index.main.header' | trans }}</span>
             </h2>
             </div>
         </div>
@@ -55,6 +42,3 @@
     <!--/* end portfolio SECTION */-->
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 {% endblock body %}
-{% block javascripts %}
-    {{ parent() }}
-{% endblock %}

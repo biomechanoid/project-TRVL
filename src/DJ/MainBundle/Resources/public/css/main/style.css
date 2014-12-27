@@ -257,6 +257,9 @@ section.gallery-block #filters{
 .btn-black{
     color:#282828;
 }
+.btn-white{
+    color:#ffffff;
+}
 
 .btn-black:after, .btn-black:before {
 
@@ -264,6 +267,16 @@ section.gallery-block #filters{
 }
 
 .btn-black:hover {
+    color: white;
+    background-color: #e94c0e;
+    border-color: #e94c0e;
+}
+.btn-white:after, .btn-white:before {
+
+    background: #e94c0e;
+}
+
+.btn-white:hover {
     color: white;
     background-color: #e94c0e;
     border-color: #e94c0e;
@@ -820,7 +833,9 @@ section.gallery-index-block{
     transition: transform 0.4s ease-in-out;
 }
 
-
+.overlay-slidedown {
+    background-color: #4c4c4c;
+}
 
 .overlay-close img{
     cursor:pointer;

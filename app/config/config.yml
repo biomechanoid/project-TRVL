@@ -229,6 +229,7 @@ sonata_media:
                 square: { width: 800 ,height: 600, quality: 95}
                 tall: { width: 800 , height: 1200, quality: 95}
                 intro: { width: 2800 , height: 840, quality: 75}
+                slider: { width: 620 , height: 320, quality: 95}
 
     cdn:
         server:
