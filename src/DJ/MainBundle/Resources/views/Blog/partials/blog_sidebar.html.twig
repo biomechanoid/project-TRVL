@@ -3,7 +3,7 @@
         {% if category_posts | length == 1 and current_post in category_posts | keys  %}
         {% else %}
             <div class="widgetList widget">
-                <h4 class="montserrat">Related Posts</h4>
+                <h4 class="montserrat">{{ blog.sidebar.related | trans }}</h4>
                 <div class="blogPostSeparator"></div>
                 <ul class="list">
                     {% for post in category_posts %}
@@ -22,7 +22,7 @@
     {% if categories | length == 1 and current_category in categories | keys %}
     {% else %}
         <div class="widgetList widget">
-            <h4 class="montserrat">Categories</h4>
+            <h4 class="montserrat">{{ 'blog.sidebar.categories' | trans }}</h4>
             <div class="blogPostSeparator"></div>
             <ul class="list">
                 {% for category in categories %}

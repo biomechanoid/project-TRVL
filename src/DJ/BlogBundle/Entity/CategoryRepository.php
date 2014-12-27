@@ -3,7 +3,6 @@
 namespace DJ\BlogBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
-
 /**
  * CategoryRepository
  *

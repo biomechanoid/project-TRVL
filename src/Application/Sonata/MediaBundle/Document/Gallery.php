@@ -28,6 +28,7 @@ class Gallery extends BaseGallery
      */
     protected $id;
 
+
     /**
      * Get id
      *

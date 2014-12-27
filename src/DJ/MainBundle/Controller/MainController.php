@@ -47,39 +47,45 @@ class MainController extends Controller
      **/
     public function galleryAction($category)
     {
-        if($category == '') {
-            return $this->render('DJMainBundle:Main:gallery.html.twig', array('gallery'=>array()));
-        }
         $em = $this->get('doctrine');
-        $gallery = $this->get('doctrine')->getRepository('ApplicationSonataMediaBundle:Gallery');
+        $gallery = $em->getRepository('ApplicationSonataMediaBundle:Gallery');
+        $ghm = $em->getRepository('ApplicationSonataMediaBundle:GalleryHasMedia');
 
-        if(!$gallery->findOneByName($category)) {
-            return $this->render('DJMainBundle:Main:gallery.html.twig', array('gallery'=>array()));
+        if($category == '') {
+            $galleriesQuery = $gallery->createQueryBuilder('g')->where('g.enabled = 1')->getQuery();
+            $galleries = $galleriesQuery->getResult();
+
+            return $this->render('DJMainBundle:Main:gallery_index.html.twig', array('galleries'=>$galleries));
         }
 
-        $galeryId = $gallery->findOneByName($category)->getId();
-        $ghm = $this->get('doctrine')->getRepository('ApplicationSonataMediaBundle:GalleryHasMedia');
+        $galleryByCategory = $gallery->findOneByName($category);
+        if(!$galleryByCategory) {
+            throw $this->createNotFoundException('Gallery with this category name does not exists!' . 'In class '. __class__ .'. On line ' . __line__ );
+        }
+
+        $galleryId = $galleryByCategory->getId();
         $media= [];
         $typeAllowed = array(
                 'images'=>array('jpg','jpeg','gif','png' ),
                 'video' =>array('mp4','mp3','vlc','aac')
             );
-        foreach($ghm->findByGallery(1) as $key=>$value) {
-            $media[$key] = $value->getMedia();
-            // foreach ($media as $key => $value) {
-            if( in_array(strtolower(pathinfo($media[$key]->getName(), PATHINFO_EXTENSION)), $typeAllowed['images']) ) {
-            $media[$key]->media_type = 'graphics';
 
+        foreach($ghm->findByGallery($galleryId) as $key=>$value) {
+            $media[$key] = $value->getMedia();
+
+                $media[$key]->media_type = 'graphics';
+            if( in_array(strtolower(pathinfo($media[$key]->getName(), PATHINFO_EXTENSION)), $typeAllowed['images']) ) {
 
             } elseif ( in_array(strtolower(pathinfo($media[$key]->getName(), PATHINFO_EXTENSION)), $typeAllowed['video']) ) {
-            $media[$key]->media_type = 'video';
+                $media[$key]->media_type = 'video';
 
             } else {
-            $media[$key]->media_type = 'mix';
-
+                $media[$key]->media_type = 'mix';
             }
         }
 
-        return $this->render('DJMainBundle:Main:gallery.html.twig', array('gallery'=>$media));
+        return $this->render('DJMainBundle:Main:gallery.html.twig', array('gallery'=>$media,
+                                                                          'galleryName'=>$galleryByCategory->getName()
+                                                                          ));
     }
 }

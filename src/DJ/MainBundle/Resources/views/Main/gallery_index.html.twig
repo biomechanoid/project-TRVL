@@ -1,0 +1,44 @@
+{% extends "DJMainBundle::layout.html.twig" %}
+{% set images_in_row = galleries | length %}
+
+{% if images_in_row < 3 %}
+    {% set bootstrap_width_class = "col-xs-12 col-md-6" %}
+{% elseif images_in_row < 7 %}
+    {% set bootstrap_width_class = "col-xs-6 col-md-4" %}
+{% else %}
+    {% set bootstrap_width_class = "col-xs-6 col-md-3" %}
+{% endif %}
+{% block titlePage %}Gallery{% endblock titlePage %}
+    {% block bodyAttributes %} id="bigWrapper" data-spy="scroll" data-target=".navbar-default" data-offset="100"{% endblock %}
+{% block body %}
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <!--/* portfolio SECTION */-->
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <section id="portfolio" class="gallery-index-block" >
+        <div class="portfolioIntro text-center">
+            <div class="black-overlay"></div>
+        </div>
+        <div class="portfolioFilters text-center">
+            <div class="filters" id="filters">
+            <h2 data-scroll-reveal="enter top move 10px over 1s after 0.2s">
+                <span>{{   'gallery.index.main.header' | trans }}</span>
+            </h2>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                {% for gallery in galleries %}
+                      <div class="{{ bootstrap_width_class }}">
+                        <a href={{ path('dj_main_gallery', {'category': gallery.name | lower }) }} class="thumbnail">
+                          <img class="img-responsive" src={{ asset('bundles/djmain/img/gallery/default/index/gallery_index_' ~ gallery.name | lower ~ '.jpg') }} alt={{ gallery.name  }}>
+                          <p class="text-uppercase text-center overlay-text">{% if gallery.name %}{{ gallery.name }} {% endif %}</p>
+                        </a>
+                      </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <!--/* end portfolio SECTION */-->
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+{% endblock body %}
