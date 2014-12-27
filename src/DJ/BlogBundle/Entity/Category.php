@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Category
  *
- * @ORM\Table()
+ * @ORM\Table(name="category")
  * @ORM\Entity(repositoryClass="DJ\BlogBundle\Entity\CategoryRepository")
  */
 class Category
@@ -283,7 +283,7 @@ class Category
     /**
      * Get media
      *
-     * @return \Application\Sonata\MediaBundle\Entity\Media 
+     * @return \Application\Sonata\MediaBundle\Entity\Media
      */
     public function getMedia()
     {

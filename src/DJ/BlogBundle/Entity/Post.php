@@ -11,7 +11,7 @@ use Application\Sonata\MediaBundle\Entity\Media as Media ;
 /**
  * Post
  *
- * @ORM\Table()
+ * @ORM\Table(name="post")
  * @ORM\Entity
  */
 class Post
