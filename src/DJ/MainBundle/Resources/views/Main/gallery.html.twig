@@ -59,6 +59,9 @@
 
 {% block javascripts %}
   {{ parent() }}
-  <script type="text/javascript" src={{ asset('bundles/djmain/js/smoothbox.min.js') }}></script>
-  <script src={{ asset('bundles/djmain/js/overlay.js') }}></script>
+  {% javascripts
+        '@DJMainBundle/Resources/public/js/smoothbox.min.js'
+        '@DJMainBundle/Resources/public/js/overlay.js' output='js/compiled/gallery_main.js' %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+   {% endjavascripts %}
  {% endblock javascripts %}

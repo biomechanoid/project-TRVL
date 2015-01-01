@@ -63,7 +63,10 @@
 {% endblock body %}
 {% block javascripts %}
     {{ parent() }}
-    <script src="{{ asset('bundles/djmain/js/okvideo.min.js') }}"></script>
+    {% javascripts
+        '@DJMainBundle/Resources/public/js/okvideo.min.js' output='js/compiled/main-video.js' %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
     <script>
         "use strict";
         if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {

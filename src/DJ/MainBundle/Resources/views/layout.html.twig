@@ -56,5 +56,8 @@
 {% endblock %}
 
 {% block javascript %}
-    <script type="text/javascript" src={{ asset('bundles/djmain/js/custom.js') }}></script>
+    {% javascripts
+        '@DJMainBundle/Resources/public/js/custom.js' output='js/compiled/custom.js' %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 {% endblock %}
