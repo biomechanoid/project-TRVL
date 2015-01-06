@@ -71,7 +71,7 @@ module.exports = function(grunt) {
                 files: {
                     "web/css/main.css": "less/main.less"
                 }
-                
+
             }
         },
         php: {
@@ -83,17 +83,29 @@ module.exports = function(grunt) {
                     base: './web/'
                 }
             }
-        }
+        },
+        assetic_dump: {
+            options: {
+              // Task-specific options go here.
+              options.webDir: './web'
+            },
+            your_target: {
+              // Target-specific file lists and/or options go here.
+            },
+        },
+
     });
-   
+
     grunt.loadNpmTasks('grunt-shell');
     grunt.registerTask('default', ['shell:asseticDump', 'shell:assetsInstall']);
     grunt.loadNpmTasks('grunt-open');
     grunt.loadNpmTasks('grunt-php');
     grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-less');
-    
-    
+    // grunt.loadNpmTasks('grunt-contrib-less') ;
+
+    grunt.loadNpmTasks('grunt-assetic-dump');
+
+
     grunt.registerTask('dump', 'A task to dump all assets.', function() {
         grunt.task.run("shell:asseticDump");
         grunt.task.run("shell:assetsInstall");
@@ -110,21 +122,25 @@ module.exports = function(grunt) {
 //        grunt.task.run("open");
         grunt.task.run("watch:scripts");
     });
-    
+
     grunt.registerTask('phpwatch', ['php:watch','open','watch:scripts']);
-    
+
     grunt.registerTask('less', 'Watch for less and generate css', function() {
         grunt.task.run("all");
 //        grunt.task.run("open");
         grunt.task.run("watch:less");
     });
-    
-    grunt.registerTask('setDir', 'A task to set the web dir of the project.', function() {
-        grunt.config.set("dir", "web");
-        grunt.log.writeln("DIR: " + grunt.config.get("dir"));
-        grunt.log.writeln("BASE_URL: " + grunt.config.get("baseURL"));
-    });
 
-    console.info("BASE_URL: " + grunt.config.get("watch").scripts.files[0]);
-    grunt.task.run(['setDir']);
+    // grunt.registerTask('setDir', 'A task to set the web dir of the project.', function() {
+    //     grunt.config.set("dir", "web");
+    //     grunt.log.writeln("DIR: " + grunt.config.get("dir"));
+    //     grunt.log.writeln("BASE_URL: " + grunt.config.get("baseURL"));
+    // });
+
+    // console.info("BASE_URL: " + grunt.config.get("watch").scripts.files[0]);
+    // grunt.task.run(['setDir']);
+
+    grunt.registerTask('adump', 'Watch for less and generate css', function() {
+        grunt.task.run("assetic_dump");
+    });
 };
