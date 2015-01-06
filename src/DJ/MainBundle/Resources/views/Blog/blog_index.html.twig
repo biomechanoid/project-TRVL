@@ -27,7 +27,7 @@
         <div class="row">
             {% if categories is empty %}
                 <div class="col-md-4 col-sm-12 col-xs-12 text-center">
-                    {{ blog.index.sorry.message | trans }}
+                    {{ 'blog.index.sorry.message' | trans }}
                 </div>
             {% else %}
                     {% for category in categories %}

@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Comment
  *
- * @ORM\Table()
+ * @ORM\Table(name="comment")
  * @ORM\Entity
  */
 class Comment

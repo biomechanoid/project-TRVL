@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Pool
  *
- * @ORM\Table()
+ * @ORM\Table(name="pool")
  * @ORM\Entity
  */
 class Pool
@@ -219,7 +219,7 @@ class Pool
     /**
      * Get path
      *
-     * @return string 
+     * @return string
      */
     public function getPath()
     {

@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * PostAsset
  *
- * @ORM\Table()
+ * @ORM\Table(name="postasset")
  * @ORM\Entity(repositoryClass="DJ\BlogBundle\Entity\PostAssetRepository")
  */
 class PostAsset
