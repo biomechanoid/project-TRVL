@@ -71,6 +71,10 @@ class MainController extends Controller
             );
 
         foreach($ghm->findByGallery($galleryId) as $key=>$value) {
+            if(!$value->getMedia()) {
+                $media = array();
+                break;
+            }
             $media[$key] = $value->getMedia();
 
                 $media[$key]->media_type = 'graphics';
