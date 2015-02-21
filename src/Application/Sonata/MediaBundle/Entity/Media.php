@@ -28,6 +28,7 @@ class Media extends BaseMedia
      */
     protected $id;
 
+    protected $format;
     /**
      * Get id
      *
@@ -36,6 +37,16 @@ class Media extends BaseMedia
     public function getId()
     {
         return $this->id;
+    }
+
+    public function getFormat()
+    {
+        return $this->format;
+    }
+
+    public function setFormat($format)
+    {
+        $this->format = $format;
     }
     /**
      * @var \Doctrine\Common\Collections\Collection

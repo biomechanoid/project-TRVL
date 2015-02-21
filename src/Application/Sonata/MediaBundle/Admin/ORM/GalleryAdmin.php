@@ -45,8 +45,14 @@ class GalleryAdmin extends Admin
     {
         // define group zoning
         $formMapper
-            ->with($this->trans('Gallery'), array('class' => 'col-md-9'))->end()
-            ->with($this->trans('Options'), array('class' => 'col-md-3'))->end()
+            ->tab('General')
+                ->with($this->trans('Gallery'), array('class' => 'col-md-7'))->end()
+                ->with($this->trans('Options'), array('class' => 'col-md-5'))->end()
+                ->with($this->trans('Sub Galleries'), array('class' => 'col-md-7','collapsed'=>true ))->end()
+            ->end()
+            ->tab('Media')
+                ->with($this->trans('Media'), array('class' => 'col-md-9'))->end()
+            ->end()
         ;
 
         $context = $this->getPersistentParameter('context');
@@ -65,28 +71,61 @@ class GalleryAdmin extends Admin
             $contexts[$contextItem] = $contextItem;
         }
 
+        $parentId = $this->subject->getId();
+        $subjectId = $this->subject->getId();
+
+        $subject = $this->getSubject();
+        $subjectId = $subject->getId();
+
+        $em = $this->modelManager->getEntityManager('Application\Sonata\MediaBundle\Entity\Gallery');
+        $qb = $em->createQueryBuilder('p');
+
+        $query = $em->createQuery(
+                        'SELECT g
+                         FROM ApplicationSonataMediaBundle:Gallery g
+                         WHERE g.id = :subject')
+                    ->setParameter('subject', $subjectId);
+
+        $products = $query->getResult();
+
         $formMapper
-            ->with('Options')
-                ->add('context', 'sonata_type_translatable_choice', array(
-                    'choices' => $contexts,
-                    'catalogue' => 'SonataMediaBundle'
-                ))
-                // ->add('context', 'text', array('data'=>$context,'disabled'=>true))
-                ->add('enabled', null, array('required' => false))
-                ->add('name')
-                ->add('defaultFormat', 'choice', array('choices' => $formats))
+            ->tab('General')
+                ->with('Options')
+                    ->add('context', 'hidden', array('data' => $contexts['gallery']))
+                    ->add('defaultFormat', 'choice', array('choices' => $formats))
+                    ->add('enabled', null, array('required' => false))
+                ->end()
+                ->with('Gallery')
+                    ->add('name', 'text', array('attr'=>array('class'=>'gallery-name-form')))
+                ->end()
+                ->with('Sub Galleries')
+                    ->add('subgalleries', 'sonata_type_collection',
+                                array(
+                                    'cascade_validation' => true,
+                                    'by_reference'=>true
+
+                                    ),
+                                array(
+                                    'edit'=>'inline',
+                                    'inline'=>'table',
+                                    'allow_delete' => true
+                                      ))
+
+                ->end()
             ->end()
-            ->with('Gallery')
-                ->add('galleryHasMedias', 'sonata_type_collection', array(
-                        'cascade_validation' => true,
-                    ), array(
-                        'edit'              => 'inline',
-                        'inline'            => 'table',
-                        'sortable'          => 'position',
-                        'link_parameters'   => array('context' => $context),
-                        'admin_code'        => 'sonata.media.admin.gallery_has_media'
+            ->tab('Media')
+                ->with('Media')
+                    ->add('galleryHasMedias', 'sonata_type_collection', array(
+                            'cascade_validation' => true,
+                        ), array(
+                            'edit'              => 'inline',
+                            'inline'            => 'table',
+                            'sortable'          => 'position',
+                            'link_parameters'   => array('context' => $context),
+                            'admin_code'        => 'sonata.media.admin.gallery_has_media'
+                        )
                     )
-                )
+                ->end()
             ->end()
         ;
     }
@@ -101,6 +140,7 @@ class GalleryAdmin extends Admin
             ->add('enabled', 'boolean', array('editable' => true))
             ->add('context', 'trans', array('catalogue' => 'SonataMediaBundle'))
             ->add('defaultFormat', 'trans', array('catalogue' => 'SonataMediaBundle'))
+            ->add('parent')
         ;
     }
 
@@ -113,6 +153,7 @@ class GalleryAdmin extends Admin
             ->add('name')
             ->add('enabled')
             ->add('context')
+            ->add('parent')
         ;
     }
 
@@ -127,6 +168,8 @@ class GalleryAdmin extends Admin
 
         // fix weird bug with setter object not being call
         $gallery->setGalleryHasMedias($gallery->getGalleryHasMedias());
+
+        $gallery->setSubgalleries($gallery->getSubgalleries());
     }
 
     /**
@@ -136,6 +179,8 @@ class GalleryAdmin extends Admin
     {
         // fix weird bug with setter object not being call
         $gallery->setGalleryHasMedias($gallery->getGalleryHasMedias());
+
+        $gallery->setSubgalleries($gallery->getSubgalleries());
     }
 
     /**
@@ -165,4 +210,6 @@ class GalleryAdmin extends Admin
 
         return $gallery;
     }
+
+
 }

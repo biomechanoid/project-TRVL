@@ -4,6 +4,8 @@ imports:
     - { resource: '@DJAdminBundle/Resources/config/services.yml' }
     - { resource: @ApplicationSonataMediaBundle/Resources/config/services.yml }
     - { resource: ivory/ivory_ckeditor.yml }
+    # - { resource: sonata/sonata-clasification.yml }
+    # - { resource: sonata/sonata-news.yml }
 framework:
     #esi:             ~
     translator:      { fallback: en }
@@ -171,6 +173,7 @@ sonata_admin:
                 items:
                     - application.admin.media
                     - application.admin.gallery
+                    - dj_admin.admin.sub
         blocks:
             -
                 position: left
@@ -226,8 +229,8 @@ sonata_media:
                 - sonata.media.provider.image
                 - sonata.media.provider.youtube
             formats:
-                square: { width: 800 ,height: 600, quality: 95}
-                tall: { width: 800 , height: 1200, quality: 95}
+                square: { width: 450 , height: 337, quality: 95}
+                tall: { width: 450 , height: 674, quality: 95}
                 intro: { width: 2800 , height: 840, quality: 75}
                 slider: { width: 620 , height: 320, quality: 95}
 
@@ -259,39 +262,4 @@ sonata_media:
             thumbnail:  sonata.media.thumbnail.format
             allowed_extensions: ['jpg', 'png', 'jpeg']
             allowed_mime_types: ['image/pjpeg', 'image/jpeg', 'image/png', 'image/x-png']
-
-sonata_formatter:
-    formatters:
-        # markdown:
-        #     service: sonata.formatter.text.markdown
-        #     extensions:
-        #         - sonata.formatter.twig.control_flow
-        #         - sonata.formatter.twig.gist
-        #        - sonata.media.formatter.twig #keep this commented unless you are using media bundle.
-
-
-        # text:
-        #     service: sonata.formatter.text.text
-        #     extensions:
-        #         - sonata.formatter.twig.control_flow
-        #         - sonata.formatter.twig.gist
-        # #        - sonata.media.formatter.twig
-
-
-        # rawhtml:
-        #     service: sonata.formatter.text.raw
-        #     extensions:
-        #         - sonata.formatter.twig.control_flow
-        #         - sonata.formatter.twig.gist
-        # #        - sonata.media.formatter.twig
-
-
-        # richhtml:
-        #     service: sonata.formatter.text.raw
-        #     extensions:
-        #         - sonata.formatter.twig.control_flow
-        #         - sonata.formatter.twig.gist
-        #        - sonata.media.formatter.twig
-
-
 

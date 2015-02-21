@@ -48,3 +48,13 @@ services:
         arguments: [~, DJ\BlogBundle\Entity\PostAsset, 'SonataAdminBundle:CRUD']
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: PostAsset, label_translator_strategy: "sonata.admin.label.strategy.native"}
+
+    dj_admin.admin.sub:
+        class: DJ\AdminBundle\Admin\SubGalleryAdmin
+        arguments:
+            - ~
+            - DJ\BlogBundle\Entity\SubGallery
+            - ApplicationSonataMediaBundle:GalleryAdmin
+            - @sonata.media.pool
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: SubGallery}

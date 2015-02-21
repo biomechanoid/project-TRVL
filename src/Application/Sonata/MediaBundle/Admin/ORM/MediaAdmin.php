@@ -42,22 +42,22 @@ class MediaAdmin extends BaseMediaAdmin
     {
         $datagridMapper
             ->add('context')
-
         ;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    // protected function configureFormFields(FormMapper $formMapper)
-    // {
-    //     $formMapper
-    //         ->with($this->trans('Gallery'), array('class' => 'col-md-9'))->end()
-    //         ->with($this->trans('Options'), array('class' => 'col-md-3'))->end()
-    //     ;
+    protected function configureFormFields(FormMapper $formMapper)
+    {  parent::configureFormFields($formMapper);
+        $formats = array();
 
-        // $formMapper
-        // ->with()
-        // ;
-    // }
+        if($this->getSubject()->getContext() == 'gallery')
+        {
+            foreach ($this->pool->getContext('gallery')['formats'] as $key => $format) {
+                $formats[str_replace('gallery_','',$key)] = $key;
+            }
+
+            $formMapper->add('format','choice',array('choices'=> $formats));
+
+        }
+    }
+
 }

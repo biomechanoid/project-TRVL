@@ -17,5 +17,22 @@
             <generator strategy="AUTO"/>
         </id>
 
+        <many-to-one field="parent" target-entity="Gallery" inversedBy="children">
+            <join-column name="parent" referenced-column-name="id" />
+        </many-to-one>
+
+        <one-to-many field="subgalleries" target-entity="DJ\BlogBundle\Entity\SubGallery" mapped-by="parentGallery" orphan-removal="true">
+            <cascade>
+                <cascade-persist/>
+                <cascade-remove/>
+            </cascade>
+        </one-to-many>
+        <one-to-many field="topgalleries" target-entity="DJ\BlogBundle\Entity\SubGallery" mapped-by="childrenGallery" orphan-removal="true">
+            <orphan-removal>true</orphan-removal>
+            <cascade>
+                <cascade-persist/>
+                <cascade-remove/>
+            </cascade>
+        </one-to-many>
     </entity>
 </doctrine-mapping>

@@ -59,33 +59,39 @@ class MainController extends Controller
         }
 
         $galleryByCategory = $gallery->findOneByName($category);
+
         if(!$galleryByCategory) {
             throw $this->createNotFoundException('Gallery with this category name does not exists!' . 'In class '. __class__ .'. On line ' . __line__ );
         }
 
-        $galleryId = $galleryByCategory->getId();
-        $media= [];
-        $typeAllowed = array(
-                'images'=>array('jpg','jpeg','gif','png' ),
-                'video' =>array('mp4','mp3','vlc','aac')
-            );
+        $parentGalleryId = $galleryByCategory->getId();
+        $subgalleriesId = $galleryByCategory->getSubgalleriesId();
+        array_unshift($subgalleriesId, $parentGalleryId);
+        $media = [];
+        $galleries = [];
 
-        foreach($ghm->findByGallery($galleryId) as $key=>$value) {
-            $media[$key] = $value->getMedia();
+        foreach($subgalleriesId as $galleryId) {
 
-                $media[$key]->media_type = 'graphics';
-            if( in_array(strtolower(pathinfo($media[$key]->getName(), PATHINFO_EXTENSION)), $typeAllowed['images']) ) {
-
-            } elseif ( in_array(strtolower(pathinfo($media[$key]->getName(), PATHINFO_EXTENSION)), $typeAllowed['video']) ) {
-                $media[$key]->media_type = 'video';
-
-            } else {
-                $media[$key]->media_type = 'mix';
+            foreach ($ghm->findByGallery($galleryId) as $key=>$value) {
+                $media[] = array('media'=>$value->getMedia(),
+                                 'name'=>$value->getGallery()->getName(),
+                                 );
+                $galleries[] =  $value->getGallery()->getName();
             }
         }
 
         return $this->render('DJMainBundle:Main:gallery.html.twig', array('gallery'=>$media,
+                                                                          'gallery_list'=>array_values(array_unique($galleries,SORT_LOCALE_STRING)),
                                                                           'galleryName'=>$galleryByCategory->getName()
                                                                           ));
     }
+
+     /**
+     * @Route("/gallery{trailingSlash}{category}", name="dj_main_gallery_category", requirements={"category" = "[a-zA-Z0-9-_]+", "trailingSlash" = "[/]{0,1}"}, defaults={"category" = null, "trailingSlash" = "/" })
+     **/
+    public function galleryCategoryAction($category)
+    {
+        return $this->redirect($this->generateUrl('dj_main_gallery', array('category'=>$category)), 301);
+    }
+
 }

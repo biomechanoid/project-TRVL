@@ -1,4 +1,4 @@
-dj.admin.group.content: Mange your Blog resources
+dj.admin.group.content: Blog management
 dj.admin.post.add.blog.title.header: Create Article Content
 dj.admin.post.add.settings.title.header: Blog Settings
 dj.admin.post.add.title.help: Create main title for your Article.
