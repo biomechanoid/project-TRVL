@@ -7,11 +7,7 @@
 {% block titlePage %}Gallery{% endblock titlePage %}
     {% block bodyAttributes %} id="bigWrapper" data-spy="scroll" data-target=".navbar-default" data-offset="100"{% endblock %}
 {% block body %}
-    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-    <!--/* portfolio SECTION */-->
-    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <section id="portfolio" class="gallery-block">
-
         <div class="portfolioIntro text-center">
             <div class="black-overlay"></div>
         </div>
@@ -44,19 +40,16 @@
                                 </div>
                             </a>
                         </div>
+                        <!-- end caption -->
+                        <img alt="thumbnail" class="galleryImage" src={% path media, 'tall' %}>
                     </div>
                     <!-- end caption -->
                     <img alt="thumbnail" class="galleryImage" src="{% path media.media, media.media.format %}">
                 </div>
             <!--end item -->
             {% endfor %}
-
-
         </div>
     </section>
-    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-    <!--/* end portfolio SECTION */-->
-    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 {% endblock body %}
 
 {% block javascripts %}

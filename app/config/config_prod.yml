@@ -11,16 +11,16 @@ imports:
 #        result_cache_driver: apc
 #        query_cache_driver: apc
 
-monolog:
-    handlers:
+# monolog:
+#     handlers:
         # syslog:
         #     type: stream
         #     path: /var/log/symfony.log
         #     level: error
-        main:
-            type: fingers_crossed
-            action_level: warning
-            handler: file
-        file:
-            type: stream
-            level: debug
+        # main:
+        #     type: fingers_crossed
+        #     action_level: warning
+        #     handler: file
+        # file:
+        #     type: stream
+        #     level: debug
