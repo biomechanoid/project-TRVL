@@ -18,7 +18,7 @@ class MainController extends Controller
         $categories = $this->get('doctrine')->getRepository('DJBlogBundle:Category')->findAllCategories(true);
         $pools = $this->get('doctrine')->getRepository('DJBlogBundle:Pool')
                                 ->findByPath('index');
-        $pool = [];
+        $pool = ['primary'=>array(),'secondary'=>array()];
         $categoryList = $this->get('doctrine')->getRepository('DJBlogBundle:Category')
                                                             ->findAllCategories(true);
 

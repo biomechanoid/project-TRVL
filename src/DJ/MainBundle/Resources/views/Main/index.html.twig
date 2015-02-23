@@ -29,10 +29,12 @@
             <div class="row">
                 <div class="col-md-7 col-sm-6 hidden-xs image" >
                     <div class="whiteOverlay"></div>
-                    {% if pool['secondary'].media %}
-                        {% media pool['secondary'].media, 'medium' with {'alt': 'background'} %}
-                    {% else %}
-                       <img src={{ asset('bundles/djmain/img/backgroundWelcome.jpg') }} alt="background">
+                    {% if pool['secondary'] is not empty %}
+                        {% if pool['secondary'].media %}
+                            {% media pool['secondary'].media, 'medium' with {'alt': 'background'} %}
+                        {% else %}
+                           <img src={{ asset('bundles/djmain/img/backgroundWelcome.jpg') }} alt="background">
+                        {% endif %}
                     {% endif %}
                 </div>
                 <div class="col-md-5 col-sm-6 col-xs-12 textOverlay text-center">
