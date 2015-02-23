@@ -11,7 +11,7 @@ class MainController extends Controller
 
 
     /**
-     * @Route("/{_locale}{trailingSlash}", name="dj_route_home",requirements={"_locale"="|en|sk", "trailingSlash" = "[/]{0,1}" }, defaults={"trailingSlash" = "/" })
+     * @Route("/{_locale}{trailingSlash}", name="dj_route_home",requirements={"_locale"="%regions%", "trailingSlash" = "[/]{0,1}" }, defaults={"trailingSlash" = "/" })
      **/
     public function indexAction()
     {
@@ -34,7 +34,7 @@ class MainController extends Controller
     }
 
     /**
-     * @Route("/{_locale}/about", name="dj_main_aboutus", requirements={"_locale"="|en|sk" } )
+     * @Route("/about/{_locale}", name="dj_main_aboutus", requirements={"_locale"="%regions%" }, defaults={"_locale" = "%locale%"} )
      * @Template()
      */
     public function aboutAction()
@@ -42,8 +42,9 @@ class MainController extends Controller
         return array();
     }
 
-    /**
-     * @Route("/{_locale}/gallery{trailingSlash}{category}", name="dj_main_gallery", requirements={"_locale"="|en|sk", "category" = "[a-zA-Z0-9-_]+", "trailingSlash" = "[/]{0,1}"}, defaults={"category" = null, "trailingSlash" = "/" })
+     /**
+     * @Route("/gallery/{_locale}/{category}{trailingSlash}", name="dj_main_gallery", requirements={"_locale"="%regions%", "category" = "[a-zA-Z0-9-_]+", "trailingSlash" = "[/]{0,1}"}, defaults={"category" = null, "_locale" = "%locale%", "trailingSlash" = "/" })
+     *
      **/
     public function galleryAction($category)
     {
@@ -87,11 +88,11 @@ class MainController extends Controller
     }
 
      /**
-     * @Route("/gallery{trailingSlash}{category}", name="dj_main_gallery_category", requirements={"category" = "[a-zA-Z0-9-_]+", "trailingSlash" = "[/]{0,1}"}, defaults={"category" = null, "trailingSlash" = "/" })
+     * @Route("/gallery/{category}{trailingSlash}", name="dj_main_gallery_category", requirements={"category" = "[a-zA-Z0-9-_]+", "trailingSlash" = "[/]{0,1}"}, defaults={"category" = null, "_locale" = "%locale%", "trailingSlash" = "/" })
      **/
     public function galleryCategoryAction($category)
     {
-        return $this->redirect($this->generateUrl('dj_main_gallery', array('category'=>$category)), 301);
+      return $this->forward('DJMainBundle:Main:gallery',array('category'=>$category));
     }
 
 }

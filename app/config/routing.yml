@@ -1,9 +1,10 @@
 dj_blog:
     resource: "@DJBlogBundle/Controller/BlogController.php"
     type:     annotation
-    prefix:   /{_locale}/blog
+    prefix:   /blog/{_locale}
     requirements:
-        _locale: en|sk
+        _locale: %regions%
+    defaults:  { _locale: %locale% }
 
 dj_main:
     resource: "@DJMainBundle/Controller/MainController.php"

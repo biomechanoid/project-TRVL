@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d7b3742ed42531bafcc2cd425ecfa685",
+    "hash": "bce831a74af79ac472248cca950dedcc",
     "packages": [
         {
             "name": "dflydev/markdown",
@@ -1003,17 +1003,17 @@
         },
         {
             "name": "friendsofsymfony/rest-bundle",
-            "version": "1.5.0",
+            "version": "1.5.3",
             "target-dir": "FOS/RestBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSRestBundle.git",
-                "reference": "a9377f6a05fb516423d6adf9079c6e5fb41e4799"
+                "reference": "fdd21c4c0cb6222ae37efc9362c6a96bd1432412"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/a9377f6a05fb516423d6adf9079c6e5fb41e4799",
-                "reference": "a9377f6a05fb516423d6adf9079c6e5fb41e4799",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/fdd21c4c0cb6222ae37efc9362c6a96bd1432412",
+                "reference": "fdd21c4c0cb6222ae37efc9362c6a96bd1432412",
                 "shasum": ""
             },
             "require": {
@@ -1077,7 +1077,7 @@
             "keywords": [
                 "rest"
             ],
-            "time": "2015-01-27 09:39:58"
+            "time": "2015-02-16 15:26:12"
         },
         {
             "name": "friendsofsymfony/user-bundle",
@@ -2388,17 +2388,17 @@
         },
         {
             "name": "sensio/distribution-bundle",
-            "version": "v2.3.8",
+            "version": "v2.3.9",
             "target-dir": "Sensio/Bundle/DistributionBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioDistributionBundle.git",
-                "reference": "9a72f821957141ee3d9703da3fa8266d59ef4b1c"
+                "reference": "ac4893621b30faf8f970758afea7640122767817"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/9a72f821957141ee3d9703da3fa8266d59ef4b1c",
-                "reference": "9a72f821957141ee3d9703da3fa8266d59ef4b1c",
+                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/ac4893621b30faf8f970758afea7640122767817",
+                "reference": "ac4893621b30faf8f970758afea7640122767817",
                 "shasum": ""
             },
             "require": {
@@ -2430,7 +2430,7 @@
                 "configuration",
                 "distribution"
             ],
-            "time": "2015-01-07 07:11:03"
+            "time": "2015-02-01 05:39:51"
         },
         {
             "name": "sensio/framework-extra-bundle",
@@ -2489,17 +2489,17 @@
         },
         {
             "name": "sensio/generator-bundle",
-            "version": "v2.5.1",
+            "version": "v2.5.2",
             "target-dir": "Sensio/Bundle/GeneratorBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioGeneratorBundle.git",
-                "reference": "9e23fc3de265ae013690d84aab98e7a84f46edcd"
+                "reference": "4b09746520a826a7bf34a466ba31c7d8740fef7e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioGeneratorBundle/zipball/9e23fc3de265ae013690d84aab98e7a84f46edcd",
-                "reference": "9e23fc3de265ae013690d84aab98e7a84f46edcd",
+                "url": "https://api.github.com/repos/sensiolabs/SensioGeneratorBundle/zipball/4b09746520a826a7bf34a466ba31c7d8740fef7e",
+                "reference": "4b09746520a826a7bf34a466ba31c7d8740fef7e",
                 "shasum": ""
             },
             "require": {
@@ -2533,7 +2533,7 @@
                 }
             ],
             "description": "This bundle generates code for you",
-            "time": "2015-01-13 07:33:46"
+            "time": "2015-02-11 07:21:23"
         },
         {
             "name": "sonata-project/admin-bundle",
@@ -2741,23 +2741,23 @@
         },
         {
             "name": "sonata-project/classification-bundle",
-            "version": "dev-master",
+            "version": "2.2.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataClassificationBundle.git",
-                "reference": "7dc507d324c93f66b17325c61752dcc280f6ed89"
+                "reference": "7f19f1ea34a6ab43262dcd462626ad060351174c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataClassificationBundle/zipball/7dc507d324c93f66b17325c61752dcc280f6ed89",
-                "reference": "7dc507d324c93f66b17325c61752dcc280f6ed89",
+                "url": "https://api.github.com/repos/sonata-project/SonataClassificationBundle/zipball/7f19f1ea34a6ab43262dcd462626ad060351174c",
+                "reference": "7f19f1ea34a6ab43262dcd462626ad060351174c",
                 "shasum": ""
             },
             "require": {
+                "sonata-project/core-bundle": "~2.2",
                 "sonata-project/datagrid-bundle": "~2.2@dev",
-                "sonata-project/doctrine-orm-admin-bundle": "~2.3",
-                "symfony/form": "~2.3",
-                "symfony/framework-bundle": "~2.3"
+                "sonata-project/doctrine-orm-admin-bundle": "~2.2",
+                "symfony/symfony": "~2.2"
             },
             "require-dev": {
                 "friendsofsymfony/rest-bundle": "~1.1",
@@ -2770,7 +2770,7 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.3.x-dev"
+                    "dev-master": "2.2.x-dev"
                 }
             },
             "autoload": {
@@ -2800,7 +2800,7 @@
                 "tag",
                 "taxonomy"
             ],
-            "time": "2015-01-23 16:20:09"
+            "time": "2014-09-11 13:57:44"
         },
         {
             "name": "sonata-project/core-bundle",
@@ -3379,16 +3379,16 @@
         },
         {
             "name": "sonata-project/media-bundle",
-            "version": "2.3.0",
+            "version": "2.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataMediaBundle.git",
-                "reference": "1a1e89f5a6daf586969be210ed41e1b38aba7ac2"
+                "reference": "479d0cfb0f15f678812398918466ef0c8511f6f2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataMediaBundle/zipball/1a1e89f5a6daf586969be210ed41e1b38aba7ac2",
-                "reference": "1a1e89f5a6daf586969be210ed41e1b38aba7ac2",
+                "url": "https://api.github.com/repos/sonata-project/SonataMediaBundle/zipball/479d0cfb0f15f678812398918466ef0c8511f6f2",
+                "reference": "479d0cfb0f15f678812398918466ef0c8511f6f2",
                 "shasum": ""
             },
             "require": {
@@ -3461,7 +3461,7 @@
                 "vimeo",
                 "youtube"
             ],
-            "time": "2014-09-09 15:05:56"
+            "time": "2015-01-16 15:25:37"
         },
         {
             "name": "sonata-project/news-bundle",
@@ -3469,12 +3469,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataNewsBundle.git",
-                "reference": "c906030e2555d9ea2f677cc34c7889c57a7add46"
+                "reference": "e6dd562450c93d9528043d68a98527990ead0249"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataNewsBundle/zipball/c906030e2555d9ea2f677cc34c7889c57a7add46",
-                "reference": "c906030e2555d9ea2f677cc34c7889c57a7add46",
+                "url": "https://api.github.com/repos/sonata-project/SonataNewsBundle/zipball/e6dd562450c93d9528043d68a98527990ead0249",
+                "reference": "e6dd562450c93d9528043d68a98527990ead0249",
                 "shasum": ""
             },
             "require": {
@@ -3534,7 +3534,7 @@
                 "post",
                 "sonata"
             ],
-            "time": "2015-01-27 11:45:29"
+            "time": "2015-02-21 12:47:30"
         },
         {
             "name": "sonata-project/notification-bundle",
@@ -3912,16 +3912,16 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v2.6.3",
+            "version": "v2.6.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "c34ef418015793a4653f2670afb69dd167ebf578"
+                "reference": "23b647f1e4eeb24a457d3c47f5f5046377d5a3bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/c34ef418015793a4653f2670afb69dd167ebf578",
-                "reference": "c34ef418015793a4653f2670afb69dd167ebf578",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/23b647f1e4eeb24a457d3c47f5f5046377d5a3bf",
+                "reference": "23b647f1e4eeb24a457d3c47f5f5046377d5a3bf",
                 "shasum": ""
             },
             "require": {
@@ -4024,7 +4024,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2015-01-07 14:47:29"
+            "time": "2015-02-02 18:02:30"
         },
         {
             "name": "twbs/bootstrap",
