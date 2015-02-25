@@ -40,11 +40,9 @@
                                 </div>
                             </a>
                         </div>
-                        <!-- end caption -->
-                        <img alt="thumbnail" class="galleryImage" src={% path media, 'tall' %}>
+                        <img alt="{{ media.media.name }}" class="galleryImage" src="{% path media.media, media.media.format %}">
                     </div>
                     <!-- end caption -->
-                    <img alt="thumbnail" class="galleryImage" src="{% path media.media, media.media.format %}">
                 </div>
             <!--end item -->
             {% endfor %}
