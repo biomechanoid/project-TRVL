@@ -1,7 +1,5 @@
   {% extends "DJMainBundle::layout.html.twig" %}
   {% block stylesheet %}
-   {#  <link rel="stylesheet" href={{ asset('bundles/djmain/css/slider/bjqs.css') }} type='text/css'>
-    <link rel="stylesheet" href={{ asset('bundles/djmain/css/slider/demo.css') }} type='text/css'> #}
     <link rel="stylesheet" href={{ asset('bundles/djmain/css/slider/smoothbox.css') }} type='text/css'>
   {% endblock %}
 {% block titlePage %}Gallery{% endblock titlePage %}
@@ -40,9 +38,9 @@
                                 </div>
                             </a>
                         </div>
-                        <img alt="{{ media.media.name }}" class="galleryImage" src="{% path media.media, media.media.format %}">
                     </div>
                     <!-- end caption -->
+                    <img alt="{{ media.media.name }}" class="galleryImage" src="{% path media.media, media.media.format %}">
                 </div>
             <!--end item -->
             {% endfor %}
