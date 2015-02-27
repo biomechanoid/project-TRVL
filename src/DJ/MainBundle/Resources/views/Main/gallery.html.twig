@@ -17,7 +17,7 @@
                 {% if gallery_list|length > 1 %}
                     <button class="btn btn-default btn-white" data-filter="*" data-toggle="tooltip" data-placement="top" title="" data-original-title="18" data-scroll-reveal="enter bottom move 10px over 1s after 0.2s">Show All</button>
                     {% for galleryFilter in gallery_list %}
-                        <button class="btn btn-default btn-white" data-filter=".{{ galleryFilter }}" data-toggle="tooltip" data-placement="top" title="" data-original-title="18" data-scroll-reveal="enter bottom move 10px over 1s after 0.3s">{{ galleryFilter }}</button>
+                        <button class="btn btn-default btn-white" data-filter=".{{ galleryFilter|lower|replace({' ':'-'}) }}" data-toggle="tooltip" data-placement="top" title="" data-original-title="18" data-scroll-reveal="enter bottom move 10px over 1s after {{ 0.3 + (loop.index/10)}}s">{{ galleryFilter }}</button>
                     {% endfor %}
                 {% endif %}
             </div>
@@ -27,7 +27,7 @@
             <div class="grid-sizer"></div>
             {% for media in gallery %}
              <!--item -->
-                <div class="gallery-inner {{ media.name }}">
+                <div class="gallery-inner {{ media.name|lower|replace({' ':'-'}) }}">
                     <!-- caption -->
                     <div class="caption text-center">
                         <div class="captionWrapper valign hidden-xs hidden-sm">
