@@ -97,8 +97,14 @@ sonata_block:
 
         # Some specific block from the SonataMediaBundle
         sonata.media.block.media:
+            contexts:   [admin]
         sonata.media.block.gallery:
+            contexts:   [admin]
         sonata.media.block.feature_media:
+            contexts:   [admin]
+
+        #blocks on front pages
+        dj.main.block.gallery_section:
 
 sonata_doctrine_orm_admin:
     # default value is null, so doctrine uses the value defined in the configuration

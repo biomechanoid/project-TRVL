@@ -3,3 +3,8 @@ services:
         class: DJ\MainBundle\Extension\MainTwigExtension
         tags:
             -  { name: twig.extension }
+    dj.main.block.gallery_section:
+        class: DJ\MainBundle\Block\GallerySectionBlockService
+        arguments: ["dj.main.block.gallery_section", @templating, @doctrine.orm.entity_manager]
+        tags:
+            - { name: sonata.block }

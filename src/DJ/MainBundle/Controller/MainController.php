@@ -53,10 +53,7 @@ class MainController extends Controller
         $ghm = $em->getRepository('ApplicationSonataMediaBundle:GalleryHasMedia');
 
         if($category == '') {
-            $galleriesQuery = $gallery->createQueryBuilder('g')->where('g.enabled = 1')->getQuery();
-            $galleries = $galleriesQuery->getResult();
-
-            return $this->render('DJMainBundle:Main:gallery_index.html.twig', array('galleries'=>$galleries));
+          return $this->render('DJMainBundle:Main:gallery_index.html.twig');
         }
 
         $galleryByCategory = $gallery->findOneByName($category);
