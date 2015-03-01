@@ -1,29 +1,19 @@
 {% extends "DJMainBundle::layout.html.twig" %}
 
 {% block titlePage %}Gallery{% endblock titlePage %}
-    {% block bodyAttributes %} id="bigWrapper" data-spy="scroll" data-target=".navbar-default" data-offset="100"{% endblock %}
+{% block bodyAttributes %} id="bigWrapper" data-spy="scroll" data-target=".navbar-default" data-offset="100"{% endblock %}
 {% block body %}
-    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-    <!--/* portfolio SECTION */-->
-    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    {% block intro %}
+         {{ sonata_block_render({ 'type': 'dj.main.block.intro_section' },{
+            'title': 'gallery',
+            'image_url': '/bundles/djmain/img/gallery/default/default-gallery.jpg',
+            }) }}
+    {% endblock intro %}
     <section id="portfolio" class="gallery-index-block" >
-        <div class="portfolioIntro text-center">
-            <div class="black-overlay"></div>
-        </div>
-        <div class="portfolioFilters text-center">
-            <div class="filters" id="filters">
-            <h2 data-scroll-reveal="enter top move 10px over 1s after 0.2s">
-                <span>{{   'gallery.index.main.header' | trans }}</span>
-            </h2>
-            </div>
-        </div>
         <div class="container">
             <div class="row">
                 {{ sonata_block_render({ 'type': 'dj.main.block.gallery_section' }) }}
             </div>
         </div>
     </section>
-    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-    <!--/* end portfolio SECTION */-->
-    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 {% endblock body %}

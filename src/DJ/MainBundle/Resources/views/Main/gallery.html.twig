@@ -1,20 +1,19 @@
-  {% extends "DJMainBundle::layout.html.twig" %}
-  {% block stylesheet %}
-   {#  <link rel="stylesheet" href={{ asset('bundles/djmain/css/slider/bjqs.css') }} type='text/css'>
-    <link rel="stylesheet" href={{ asset('bundles/djmain/css/slider/demo.css') }} type='text/css'> #}
-    <link rel="stylesheet" href={{ asset('bundles/djmain/css/slider/smoothbox.css') }} type='text/css'>
-  {% endblock %}
+{% extends "DJMainBundle::layout.html.twig" %}
+{% block stylesheet %}
+<link rel="stylesheet" href={{ asset('bundles/djmain/css/slider/smoothbox.css') }} type='text/css'>
+{% endblock %}
 {% block titlePage %}Gallery{% endblock titlePage %}
-    {% block bodyAttributes %} id="bigWrapper" data-spy="scroll" data-target=".navbar-default" data-offset="100"{% endblock %}
+{% block bodyAttributes %} id="bigWrapper" data-spy="scroll" data-target=".navbar-default" data-offset="100"{% endblock %}
 {% block body %}
+    {% block intro %}
+        {% if galleryName %}  {% set galleryName = galleryName %}  {% else %} {% set galleryName = 'gallery' %}  {% endif %}
+        {{ sonata_block_render({ 'type': 'dj.main.block.intro_section' },{
+            'title': galleryName,
+            'image_url': '/bundles/djmain/img/gallery/default/default-gallery.jpg',
+            }) }}
+    {% endblock intro %}
     <section id="portfolio" class="gallery-block">
-        <div class="portfolioIntro text-center">
-            <div class="black-overlay"></div>
-        </div>
         <div class="portfolioFilters text-center">
-            <h2 data-scroll-reveal="enter top move 10px over 1s after 0.2s">
-                <span>{% if galleryName %} {{ galleryName }} {% endif %} </span>
-            </h2>
             <div id="filters">
                 {% if gallery_list|length > 1 %}
                     <button class="btn btn-default btn-white" data-filter="*" data-toggle="tooltip" data-placement="top" title="" data-original-title="18" data-scroll-reveal="enter bottom move 10px over 1s after 0.2s">Show All</button>
@@ -41,7 +40,6 @@
                             </a>
                         </div>
                         <!-- end caption -->
-                        {# <img alt="thumbnail" class="galleryImage" src={% path media, 'tall' %}> #}
                     </div>
                     <!-- end caption -->
                     <img alt="thumbnail" class="galleryImage" src="{% path media.media, media.media.format %}">
@@ -57,7 +55,7 @@
   {% javascripts
         '@DJMainBundle/Resources/public/js/modernizr.custom.js'
         '@DJMainBundle/Resources/public/js/smoothbox.min.js'
-        '@DJMainBundle/Resources/public/js/overlay.js' output='js/compiled/gallery_main.js' %}
+        '@DJMainBundle/Resources/public/js/overlay.js' output='js/compiled/gallery.js' %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
    {% endjavascripts %}
  {% endblock javascripts %}

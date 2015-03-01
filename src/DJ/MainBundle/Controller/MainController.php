@@ -68,9 +68,7 @@ class MainController extends Controller
         $media = [];
         $galleries = [];
 
-
         foreach($subgalleriesId as $galleryId) {
-
             foreach ($ghm->findByGallery($galleryId) as $key=>$value) {
                 $media[] = array('media'=>$value->getMedia(),
                                  'name'=>$value->getGallery()->getName(),

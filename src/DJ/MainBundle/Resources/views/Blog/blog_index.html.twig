@@ -2,61 +2,37 @@
 
 {% block titlePage %}Blog{% endblock titlePage %}
 {% block body %}
-{% block intro %}
-<section id="intro">
-    <div class="black-overlay"></div>
-    <div class="container valign">
-        <!--header-->
-        <div class="row sectionIntro">
-            <div class="col-md-8 col-md-offset-2 text-center">
-                <h2 data-scroll-reveal="enter top move 10px over 1s after 0.2s">
-                    <span>blog</span>
-                </h2>
+    {% block intro %}
+        {{ sonata_block_render({ 'type': 'dj.main.block.intro_section' },{'title': 'blog'}) }}
+    {% endblock intro %}
+    <section id="pricing">
+        <div class="container">
+            <h1 class="parallaxLetter letter1" data-stellar-ratio="1.2" data-stellar-vertical-offset="-200">K</h1>
+            <h1 class="parallaxLetter letter2" data-stellar-ratio="0.8">D</h1>
+            <!--content-->
+            <div class="row">
+                {% if categories is empty %}
+                    <div class="col-md-4 col-sm-12 col-xs-12 text-center">
+                        {{ 'blog.index.sorry.message' | trans }}
+                    </div>
+                {% else %}
+                        {% for category in categories %}
+                            {% if (loop.index % 4) == 0 %}
+                                <div class="col-xs-12">&nbsp;</div>
+                            {% endif %}
+                            <a href="{{ path('blog_category',{'category':category.slug}) }}">
+                            <div class="col-md-4 col-sm-12 col-xs-12 text-center">
+                                <div class="tableWrapper" data-scroll-reveal="enter left move 10px over 1s after 0.2s">
+                                    {% if category.media %}
+                                        {% thumbnail category.media, 'medium' with {'class':'img-responsive'} %}
+                                    {% endif %}
+                                    <a class="btn btn-default btn-black" href={{ path('blog_category',{'category':category.slug}) }}>{{ category.name}}</a>
+                                </div>
+                            </div></a>
+                        {% endfor %}
+                {% endif %}
             </div>
+            <!--end content-->
         </div>
-        <!--end header-->
-    </div>
-</section>
-{% endblock intro %}
-
-<section id="pricing">
-    <div class="container">
-        <h1 class="parallaxLetter letter1" data-stellar-ratio="1.2" data-stellar-vertical-offset="-200">K</h1>
-        <h1 class="parallaxLetter letter2" data-stellar-ratio="0.8">D</h1>
-        <!--content-->
-        <div class="row">
-            {% if categories is empty %}
-                <div class="col-md-4 col-sm-12 col-xs-12 text-center">
-                    {{ 'blog.index.sorry.message' | trans }}
-                </div>
-            {% else %}
-                    {% for category in categories %}
-                        {% if (loop.index % 4) == 0 %}
-                            <div class="col-xs-12">&nbsp;</div>
-                        {% endif %}
-                        <a href="{{ path('blog_category',{'category':category.slug}) }}">
-                        <div class="col-md-4 col-sm-12 col-xs-12 text-center">
-                            <div class="tableWrapper" data-scroll-reveal="enter left move 10px over 1s after 0.2s">
-                                {% if category.media %}
-                                    {% thumbnail category.media, 'medium' with {'class':'img-responsive'} %}
-                                {% endif %}
-                                <a class="btn btn-default btn-black" href={{ path('blog_category',{'category':category.slug}) }}>{{ category.name}}</a>
-                            </div>
-                        </div></a>
-                    {% endfor %}
-            {% endif %}
-        </div>
-        <!--end content-->
-    </div>
-</section>
-<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-<!--/* END pricing SECTION */-->
-<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    </section>
 {% endblock body %}
-
-{% block javascripts %}
-    {{ parent() }}
-    <script>
-        $.backstretch("{{ asset('bundles/djmain/img/background1.jpg') }}");
-    </script>
-{% endblock javascripts %}

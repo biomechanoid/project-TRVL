@@ -8,3 +8,8 @@ services:
         arguments: ["dj.main.block.gallery_section", @templating, @doctrine.orm.entity_manager]
         tags:
             - { name: sonata.block }
+    dj.main.block.intro_section:
+        class: DJ\MainBundle\Block\IntroSectionBlockService
+        arguments: ["dj.main.block.gallery_section", @templating]
+        tags:
+            - { name: sonata.block }

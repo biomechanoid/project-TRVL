@@ -105,6 +105,7 @@ sonata_block:
 
         #blocks on front pages
         dj.main.block.gallery_section:
+        dj.main.block.intro_section:
 
 sonata_doctrine_orm_admin:
     # default value is null, so doctrine uses the value defined in the configuration

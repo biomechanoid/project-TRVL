@@ -4,8 +4,13 @@ index.blog.button: Read blog
 index.main.paragraph.one: 6 months, 3 continents, 9 countries
 index.main.paragraph.two: Journey around the world with Ruttkays.
 index.about.main: About us
-index.about.paragraph: This site is esetialy truly reflexion of our thoughs and feelings on our life journey. After the profesional brake we packed our fortune and went explore real world. Come with us and explore the world with us.
-index.welcome.paragraph: "We are couple of early 30’s, married since 2012 who are fullfiling their dream to enjoy the life as much as it goes. We are from Slovakia but have been living in greater London for last 6 years, working in Finance (Denisa) and IT (Jakub)."
+index.about.paragraph: >
+           "We are a couple in our early 30’s, married since 2012 who fullfil the dream to enjoy the life as much as possible. We came from Slovakia but have been living in
+            Greater London since 2007, working in Finance (Denisa) and IT (Jakub)."
+index.welcome.paragraph: >
+    "This site is essentialy a true reflection of our thoughts and feelings on our life journey. After many years dedicated to career, study and personal development we
+     have taken a professional break in September 2014, packed our backpacks and went to explore the world. A trip which has taught us more than any lesson or book can,
+     especially about ourselves."
 index.welcome.main: Welcome
 blog.index.sorry.message: Sorry no category here..
 blog.post.posted.by: Posted by
