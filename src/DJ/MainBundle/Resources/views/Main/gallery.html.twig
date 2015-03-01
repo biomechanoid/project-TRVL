@@ -1,4 +1,5 @@
 {% extends "DJMainBundle::layout.html.twig" %}
+
 {% block stylesheet %}
 <link rel="stylesheet" href={{ asset('bundles/djmain/css/slider/smoothbox.css') }} type='text/css'>
 {% endblock %}
@@ -18,7 +19,7 @@
                 {% if gallery_list|length > 1 %}
                     <button class="btn btn-default btn-white" data-filter="*" data-toggle="tooltip" data-placement="top" title="" data-original-title="18" data-scroll-reveal="enter bottom move 10px over 1s after 0.2s">Show All</button>
                     {% for galleryFilter in gallery_list %}
-                        <button class="btn btn-default btn-white" data-filter=".{{ galleryFilter }}" data-toggle="tooltip" data-placement="top" title="" data-original-title="18" data-scroll-reveal="enter bottom move 10px over 1s after 0.3s">{{ galleryFilter }}</button>
+                        <button class="btn btn-default btn-white" data-filter=".{{ galleryFilter|lower|replace({' ':'-'}) }}" data-toggle="tooltip" data-placement="top" title="" data-original-title="18" data-scroll-reveal="enter bottom move 10px over 1s after {{ 0.3 + (loop.index/10)}}s">{{ galleryFilter }}</button>
                     {% endfor %}
                 {% endif %}
             </div>
@@ -28,7 +29,7 @@
             <div class="grid-sizer"></div>
             {% for media in gallery %}
              <!--item -->
-                <div class="gallery-inner {{ media.name }}">
+                <div class="gallery-inner {{ media.name|lower|replace({' ':'-'}) }}">
                     <!-- caption -->
                     <div class="caption text-center">
                         <div class="captionWrapper valign hidden-xs hidden-sm">
@@ -39,10 +40,13 @@
                                 </div>
                             </a>
                         </div>
+<<<<<<< HEAD
                         <!-- end caption -->
+=======
+>>>>>>> d6949c13d369d5861d7f5651773a0f905d91e21c
                     </div>
                     <!-- end caption -->
-                    <img alt="thumbnail" class="galleryImage" src="{% path media.media, media.media.format %}">
+                    <img alt="{{ media.media.name }}" class="galleryImage" src="{% path media.media, media.media.format %}">
                 </div>
             <!--end item -->
             {% endfor %}

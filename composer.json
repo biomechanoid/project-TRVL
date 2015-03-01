@@ -34,8 +34,6 @@
         "sonata-project/classification-bundle": "2.2.*@dev",
         "sonata-project/news-bundle": "2.3.*@dev",
         "sonata-project/seo-bundle": "1.1.*@dev"
-
-
     },
     "repositories": [
         {
