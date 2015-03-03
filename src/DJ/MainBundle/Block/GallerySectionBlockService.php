@@ -33,7 +33,7 @@ class GallerySectionBlockService extends BaseBlockService
     {
         $resolver->setDefaults(array(
             'url'      => false,
-            'title'    => 'Insert the rss title',
+            'title'    => 'gallery',
             'template' => 'DJMainBundle:Block:gallery_section_list.html.twig',
         ));
     }
@@ -41,9 +41,7 @@ class GallerySectionBlockService extends BaseBlockService
     public function execute(BlockContextInterface $blockContext, Response $response = null)
     {
         $gallery = $this->em->getRepository('ApplicationSonataMediaBundle:Gallery');
-
-        $galleriesQuery = $gallery->createQueryBuilder('g')->where('g.enabled = 1')->getQuery();
-        $galleries = $galleriesQuery->getResult();
+        $galleries = $gallery->getAllMainGalleries();
 
         return $this->renderResponse($blockContext->getTemplate(),
                                 array('block' => $blockContext->getBlock(),

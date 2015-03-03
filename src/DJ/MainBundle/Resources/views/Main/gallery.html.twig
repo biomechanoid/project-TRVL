@@ -16,7 +16,7 @@
     <section id="portfolio" class="gallery-block">
         <div class="portfolioFilters text-center">
             <div id="filters">
-                {% if gallery_list|length > 1 %}
+                {% if gallery_list %}
                     <button class="btn btn-default btn-white" data-filter="*" data-toggle="tooltip" data-placement="top" title="" data-original-title="18" data-scroll-reveal="enter bottom move 10px over 1s after 0.2s">Show All</button>
                     {% for galleryFilter in gallery_list %}
                         <button class="btn btn-default btn-white" data-filter=".{{ galleryFilter|lower|replace({' ':'-'}) }}" data-toggle="tooltip" data-placement="top" title="" data-original-title="18" data-scroll-reveal="enter bottom move 10px over 1s after {{ 0.3 + (loop.index/10)}}s">{{ galleryFilter }}</button>
@@ -40,10 +40,6 @@
                                 </div>
                             </a>
                         </div>
-<<<<<<< HEAD
-                        <!-- end caption -->
-=======
->>>>>>> d6949c13d369d5861d7f5651773a0f905d91e21c
                     </div>
                     <!-- end caption -->
                     <img alt="{{ media.media.name }}" class="galleryImage" src="{% path media.media, media.media.format %}">

@@ -48,37 +48,21 @@ class MainController extends Controller
      **/
     public function galleryAction($category)
     {
-        $em = $this->get('doctrine');
-        $gallery = $em->getRepository('ApplicationSonataMediaBundle:Gallery');
-        $ghm = $em->getRepository('ApplicationSonataMediaBundle:GalleryHasMedia');
-
         if($category == '') {
           return $this->render('DJMainBundle:Main:gallery_index.html.twig');
         }
 
+        $gallery = $this->get('doctrine')->getRepository('ApplicationSonataMediaBundle:Gallery');
         $galleryByCategory = $gallery->findOneByName($category);
 
         if(!$galleryByCategory) {
             throw $this->createNotFoundException('Gallery with this category name does not exists!' . 'In class '. __class__ .'. On line ' . __line__ );
         }
 
-        $parentGalleryId = $galleryByCategory->getId();
-        $subgalleriesId = $galleryByCategory->getSubgalleriesId();
-        array_unshift($subgalleriesId, $parentGalleryId);
-        $media = [];
-        $galleries = [];
+        $media = $gallery->getAllSubGalleriesMedia($galleryByCategory);
 
-        foreach($subgalleriesId as $galleryId) {
-            foreach ($ghm->findByGallery($galleryId) as $key=>$value) {
-                $media[] = array('media'=>$value->getMedia(),
-                                 'name'=>$value->getGallery()->getName(),
-                                 );
-                $galleries[] =  $value->getGallery()->getName();
-            }
-        }
-
-        return $this->render('DJMainBundle:Main:gallery.html.twig', array('gallery'=>$media,
-                                                                          'gallery_list'=>array_values(array_unique($galleries,SORT_LOCALE_STRING)),
+        return $this->render('DJMainBundle:Main:gallery.html.twig', array('gallery'=>$media['media'],
+                                                                          'gallery_list'=>$media['nameMedia'],
                                                                           'galleryName'=>$galleryByCategory->getName()
                                                                           ));
     }
