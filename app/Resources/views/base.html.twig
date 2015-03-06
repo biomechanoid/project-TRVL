@@ -29,6 +29,11 @@
             <link rel="stylesheet" href={{ asset('bundles/djmain/css/fonts/font-awesome.min.css') }} type='text/css'>
             <link rel="stylesheet" href={{ asset('bundles/djmain/css/bootstrap/bootstrap.min.css') }} type='text/css'>
             {% block stylesheet %}{% endblock %}
+                {# {% stylesheets
+                        '@DJMainBundle/Resources/public/css/main/responsive.css'
+                        '@DJMainBundle/Resources/public/css/main/style.css' filter='cssrewrite' output='css/compiled/main.css' %}
+                    <link rel="stylesheet" href="{{ asset_url }}" />
+                {% endstylesheets %} #}
             <link rel="stylesheet" href={{ asset('bundles/djmain/css/main/responsive.css') }} type='text/css'>
             <link rel="stylesheet" href={{ asset('bundles/djmain/css/main/style.css') }} type='text/css'>
         {% endblock stylesheets %}
@@ -41,7 +46,7 @@
             <![endif]-->
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
             <!--
-            {# <script src={{ asset('js/offline/jquery.min.js') }}></script> #}
+            {# <script src={{ asset('/bundles/sonatajquery/jquery-1.10.2.js') }}></script> #}
             -->
             <script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>

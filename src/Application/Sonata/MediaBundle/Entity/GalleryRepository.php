@@ -25,7 +25,6 @@ class GalleryRepository extends EntityRepository
 // TODO: add posibility to return media from parent gallery with children
 
         foreach ($mediaQuery->iterate() as $key => $value) {
-            // var_dump($value[0]->getMedia());exit;
             $media[] = array('media'=>$value[0]->getMedia(),
                              'name'=>$value[0]->getGallery()->getName(),
                             );

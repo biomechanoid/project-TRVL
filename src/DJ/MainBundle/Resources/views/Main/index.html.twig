@@ -18,6 +18,9 @@
                         {% if pool['secondary'].media %}
                             {% media pool['secondary'].media, 'medium' with {'alt': 'background'} %}
                         {% else %}
+                            {# {% image '@DJMainBundle/Resources/public/img/backgroundWelcome.jpg' %}
+                                <img src="{{ asset_url }}" alt="background" />
+                            {% endimage %} #}
                            <img src={{ asset('bundles/djmain/img/backgroundWelcome.jpg') }} alt="background">
                         {% endif %}
                     {% endif %}
