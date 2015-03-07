@@ -3,7 +3,7 @@
     <head>
         {% block meta %}
             <meta name="msapplication-TileColor" content="#333333">
-            <meta name="msapplication-TileImage" content="../../img/favicon/mstile-144x144.png">
+            <meta name="msapplication-TileImage" content="{{ asset('bundles/djmain/img/favicon/mstile-144x144.png') }}">
             {% block metaAdd %}{% endblock %}
         {% endblock meta %}
         <title>{% block title %}{% block titlePage %}Welcome{% endblock titlePage %} - Denca&amp;Kubo {% endblock %}</title>
