@@ -1,8 +1,15 @@
  {% extends "DJMainBundle::layout.html.twig" %}
+
 {% block titlePage %}About Us{% endblock titlePage %}
 {% block stylesheet %}
-
-<link href="{{ asset('bundles/djmain/css/bootstrap/owl.carousel.css') }}" rel="stylesheet">
+    {% stylesheets
+        '@DJMainBundle/Resources/public/css/bootstrap/owl.carousel.css'
+        filter='cssrewrite'
+        filter='?uglifycss'
+        output='css/compiled/owl.carousel.css'
+    %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
 {% endblock %}
 {% block body %}
     <section id="team">
@@ -20,34 +27,32 @@
                     <p data-scroll-reveal="enter bottom move 10px over 1s after 0.4s">
                         We dream big, live minimally, eat well, exercise regularly, treat everyone with kindness and always take a time to enjoy the current moment.
                     </p>
-
-                    <img src="{{ asset('bundles/djmain/img/separatorBlack.png') }}" class="img-responsive center-block separator" alt="separator">
-
+                    {% image '@DJMainBundle/Resources/public/img/separatorBlack.png' output='img/'  %}
+                        <img src="{{ asset_url }}" class="img-responsive center-block separator" alt="separator" />
+                    {% endimage %}
                 </div>
             </div>
             <!--end header-->
 
             <h1 class="parallaxLetter letter4" data-stellar-ratio="0.8">D</h1>
-
             <h1 class="parallaxLetter letter3" data-stellar-ratio="1.2">K</h1>
 
             <!--content-->
             <div class="row content">
-
                 <div class="owl-carousel" id="owl-team">
-
                     <!--member-->
                     <div class="teamMember">
-
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <img src="{{ asset('bundles/djmain/img/team/2.png') }}" class="center-block img-responsive" alt="Team Image">
+                            {% image '@DJMainBundle/Resources/public/img/team/2.png' output='img/about/'  %}
+                                <img src="{{ asset_url }}"  class="center-block img-responsive" alt="Team Image" />
+                            {% endimage %}
+                            {# <img src="{{ asset('bundles/djmain/img/team/2.png') }}" class="center-block img-responsive" alt="Team Image"> #}
                         </div>
-
                         <div class="col-md-6 col-sm-6 col-xs-12 memberDescription">
                             <h2 data-scroll-reveal="enter right move 10px over 1s after 0.2s">Denca</h2>
                             <p class="position"  data-scroll-reveal="enter right move 10px over 1s after 0.4s">
                                 <span>
-                                    Web Designer
+                                    Finance manager
                                 </span>
                             </p>
 
@@ -60,22 +65,20 @@
                                 <a href="http://twitter.com/artbreeze02" data-scroll-reveal="enter right move 10px over 1s after 1s"><i class="fa fa-twitter"></i></a>
                                 <a href="http://dribbble.com/artbreeze02" data-scroll-reveal="enter right move 10px over 1s after 1.2s"><i class="fa fa-dribbble"></i></a>
                             </p>
-
-                            <img src="{{ asset('bundles/djmain/img/lineSeparatorBlack.png') }}" class="lineSeparator hidden-xs" alt="separator">
-
-
+                            {% image '@DJMainBundle/Resources/public/img/lineSeparatorBlack.png' output='img/'  %}
+                                <img src="{{ asset_url }}" class="lineSeparator hidden-xs" alt="separator" />
+                            {% endimage %}
                         </div>
                     </div>
                     <!--end member-->
-
-
                     <!--member-->
                     <div class="teamMember">
-
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <img src="{{ asset('bundles/djmain/img/team/3.png') }}" class="center-block img-responsive" alt="Team Image">
+                            {% image '@DJMainBundle/Resources/public/img/team/3.png' output='img/about/'  %}
+                                <img src="{{ asset_url }}"  class="center-block img-responsive" alt="Team Image" />
+                            {% endimage %}
+                            {# <img src="{{ asset('bundles/djmain/img/team/3.png') }}" class="center-block img-responsive" alt="Team Image"> #}
                         </div>
-
                         <div class="col-md-6 col-sm-6 col-xs-12 memberDescription">
                             <h2 data-scroll-reveal="enter right move 10px over 1s after 0.2s">Jakub</h2>
                             <p class="position"  data-scroll-reveal="enter right move 10px over 1s after 0.4s">
@@ -93,25 +96,24 @@
                                 <a href="http://twitter.com/artbreeze02" data-scroll-reveal="enter right move 10px over 1s after 1s"><i class="fa fa-twitter"></i></a>
                                 <a href="http://dribbble.com/artbreeze02" data-scroll-reveal="enter right move 10px over 1s after 1.2s"><i class="fa fa-dribbble"></i></a>
                             </p>
-
-                            <img src="{{ asset('bundles/djmain/img/lineSeparatorBlack.png') }}" class="lineSeparator hidden-xs" alt="separator">
-
-
+                            {% image '@DJMainBundle/Resources/public/img/lineSeparatorBlack.png' output='img/'  %}
+                                <img src="{{ asset_url }}" class="lineSeparator hidden-xs" alt="separator" />
+                            {% endimage %}
+                            {# <img src="{{ asset('bundles/djmain/img/lineSeparatorBlack.png') }}" class="lineSeparator hidden-xs" alt="separator"> #}
                         </div>
                     </div>
                     <!--end member-->
-
-
                 </div>
-
             </div>
-
             <!--end content-->
         </div>
     </section>
         <section id="footer" class="dark">
             <div class="topLine text-center">
-                <img src="{{ asset('bundles/djmain/img/logoWhite.png') }}" class="footerLogo center-block" alt="Small Logo" width="100" height="134">
+                {% image '@DJMainBundle/Resources/public/img/logoWhite.png' output='img/'  %}
+                    <img src="{{ asset_url }}" class="footerLogo center-block" alt="Small Logo" width="100" height="134" />
+                {% endimage %}
+                {# <img src="{{ asset('bundles/djmain/img/logoWhite.png') }}" class="footerLogo center-block" alt="Small Logo" width="100" height="134"> #}
             </div>
         </section>
 {% endblock body %}

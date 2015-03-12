@@ -9,33 +9,26 @@
 {% endblock header %}
 {% block body %}
     {% block intro %}
-    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-    <!--/* blog intro SECTION */-->
-    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-    <section id="blogIntro">
-        <div class="container">
-            <!--header-->
-            <div class="row sectionIntro">
-                <div class="col-md-8 col-md-offsetp-2 text-center">
-                    <h2 data-scroll-reveal="enter top move 10px over 1s after 0.2s">
-                       {% block introHeader %}<span>Blog</span>{% endblock %}
-                    </h2>
-                    <p data-scroll-reveal="enter bottom move 10px over 1s after 0.2s">
-                        {% block introTeaser %}{% endblock %}
-                    </p>
-                    <img src={{ asset('bundles/djmain/img/separatorBlack.png') }} class="img-responsive center-block separator" alt="separator">
+        <section id="blogIntro">
+            <div class="container">
+                <!--header-->
+                <div class="row sectionIntro">
+                    <div class="col-md-8 col-md-offsetp-2 text-center">
+                        <h2 data-scroll-reveal="enter top move 10px over 1s after 0.2s">
+                           {% block introHeader %}<span>Blog</span>{% endblock %}
+                        </h2>
+                        <p data-scroll-reveal="enter bottom move 10px over 1s after 0.2s">
+                            {% block introTeaser %}{% endblock %}
+                        </p>
+                        {% image '@DJMainBundle/Resources/public/img/separatorBlack.png' output='img/'  %}
+                            <img src="{{ asset_url }}" class="img-responsive center-block separator" alt="separator" />
+                        {% endimage %}
+                    </div>
                 </div>
+                <!--end header-->
             </div>
-            <!--end header-->
-        </div>
-    </section>
-    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-    <!--/* END blog intro SECTION */-->
-    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+        </section>
     {% endblock intro %}
-    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-    <!--/* blog content SECTION */-->
-    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <section id="blogContent">
         <div class="container">
             <div class="row content">
@@ -52,7 +45,4 @@
             <!--end content-->
         </div>
     </section>
-    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-    <!--/* END blog content SECTION */-->
-    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 {% endblock body %}

@@ -1,7 +1,11 @@
 {% extends "DJMainBundle::layout.html.twig" %}
 
+{# <link rel="stylesheet" href={{ asset('bundles/djmain/css/slider/smoothbox.css') }} type='text/css'> #}
 {% block stylesheet %}
-<link rel="stylesheet" href={{ asset('bundles/djmain/css/slider/smoothbox.css') }} type='text/css'>
+    {% stylesheets
+            '@DJMainBundle/Resources/public/css/slider/smoothbox.css' filter='cssrewrite' output='css/compiled/main.css' %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
 {% endblock %}
 {% block titlePage %}Gallery{% endblock titlePage %}
 {% block bodyAttributes %} id="bigWrapper" data-spy="scroll" data-target=".navbar-default" data-offset="100"{% endblock %}

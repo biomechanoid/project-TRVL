@@ -31,11 +31,13 @@ framework:
 # Assetic Configuration
 assetic:
     debug:          "%kernel.debug%"
-    use_controller: true
+    use_controller: false
     bundles:        [ FOSUserBundle, DJUserBundle, DJMainBundle ]
     #java: /usr/bin/java
     filters:
         cssrewrite: ~
+        uglifycss:
+            bin: %kernel.root_dir%/../node_modules/.bin/uglifycss
         less:
             node: C:\Program Files\nodejs\npm
             node_paths: ['C:\Program Files\nodejs\node_modules\npm\node_modules']

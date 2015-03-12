@@ -9,10 +9,11 @@
 {% set paginationRouteName  = 'blog_post' %}
 {% set paginationLastPage = max_posts %}
 
-
 {% block intro %}
     <div class="col-md-12 text-center">
-        <img src={{ asset('bundles/djmain/img/separatorWhite.png') }} class="img-responsive center-block separator" alt="separator">
+        {% image '@DJMainBundle/Resources/public/img/separatorWhite.png' output='img/'  %}
+            <img src="{{ asset_url }}" class="img-responsive center-block separator" alt="separator" />
+        {% endimage %}
     </div>
 {% endblock intro %}
 {% block content %}
@@ -21,7 +22,9 @@
             {% if post.media %}
                {% media post.media, 'big' with {'class':'img-responsive'}  %}
             {% else %}
-                <img class="img-responsive" src={{ asset('bundles/djmain/img/gallery/1.jpg') }} alt="image">
+                {% image '@DJMainBundle/Resources/public/img/gallery/1.jpg' output='img/'  %}
+                    <img src="{{ asset_url }}" class="img-responsive center-block separator" class="img-responsive" alt="image" />
+                {% endimage %}
             {% endif %}
         </div>
         <div class="post-content">
@@ -33,7 +36,9 @@
                     <p><i class="fa fa-pencil"></i> {{ blog.post.posted.by | trans }} {{ post.author }} {{ blog.post.posted.on | trans }} {{ post.created | date }}</p>
                 </div>
             </div>
-            <img src={{ asset('bundles/djmain/img/lineSeparatorBlack.png') }} class="img-responsive blogSeparator" alt="separator">
+            {% image '@DJMainBundle/Resources/public/img/lineSeparatorBlack.png' output='img/'  %}
+                <img src="{{ asset_url }}" class="img-responsive blogSeparator" alt="separator" />
+            {% endimage %}
             {% block blogContent %}
                 {{- post.content | raw -}}
             {% endblock %}
