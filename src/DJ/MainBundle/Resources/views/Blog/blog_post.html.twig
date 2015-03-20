@@ -11,7 +11,7 @@
 
 {% block intro %}
     <div class="col-md-12 text-center">
-        {% image '@DJMainBundle/Resources/public/img/separatorWhite.png' output='img/'  %}
+        {% image '@DJMainBundle/Resources/public/img/separatorWhite.png' output='img/separatorWhite.png'  %}
             <img src="{{ asset_url }}" class="img-responsive center-block separator" alt="separator" />
         {% endimage %}
     </div>
@@ -22,7 +22,7 @@
             {% if post.media %}
                {% media post.media, 'big' with {'class':'img-responsive'}  %}
             {% else %}
-                {% image '@DJMainBundle/Resources/public/img/gallery/1.jpg' output='img/'  %}
+                {% image '@DJMainBundle/Resources/public/img/gallery/1.jpg' output='img/gallery/default/square.jpg'  %}
                     <img src="{{ asset_url }}" class="img-responsive center-block separator" class="img-responsive" alt="image" />
                 {% endimage %}
             {% endif %}
@@ -36,7 +36,7 @@
                     <p><i class="fa fa-pencil"></i> {{ blog.post.posted.by | trans }} {{ post.author }} {{ blog.post.posted.on | trans }} {{ post.created | date }}</p>
                 </div>
             </div>
-            {% image '@DJMainBundle/Resources/public/img/lineSeparatorBlack.png' output='img/'  %}
+            {% image '@DJMainBundle/Resources/public/img/lineSeparatorBlack.png' output='img/lineSeparatorOrange.png'  %}
                 <img src="{{ asset_url }}" class="img-responsive blogSeparator" alt="separator" />
             {% endimage %}
             {% block blogContent %}

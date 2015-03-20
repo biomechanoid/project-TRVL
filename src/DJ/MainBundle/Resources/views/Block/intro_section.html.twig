@@ -15,7 +15,7 @@
             {% elseif settings.title_style == 'text'  %}
                 <div class="row">
                     <div class="col-md-12">
-                        {% image '@DJMainBundle/Resources/public/img/logoWhite.png' output='img/'  %}
+                        {% image '@DJMainBundle/Resources/public/img/logoWhite.png' output='img/logoWhite.png'  %}
                             <img src="{{ asset_url }}" class="img-responsive center-block introLogo" alt="Intro Logo" />
                         {% endimage %}
                     </div>
@@ -23,7 +23,7 @@
                         <h1>{{ settings.title|raw }}</h1>
                     </div>
                     <div class="col-md-12 text-center">
-                        {% image '@DJMainBundle/Resources/public/img/separatorWhite.png' output='img/'  %}
+                        {% image '@DJMainBundle/Resources/public/img/separatorWhite.png' output='img/separatorWhite.png'  %}
                             <img src="{{ asset_url }}" class="img-responsive center-block separator" alt="separator" />
                         {% endimage %}
                     </div>
@@ -40,7 +40,7 @@
             <script>
                 "use strict";
                 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-                    $.backstretch('bundles/djmain/img/background1.jpg');
+                    $.backstretch('img/default/background.jpg');
                 }
                 else{
                     $(function(){

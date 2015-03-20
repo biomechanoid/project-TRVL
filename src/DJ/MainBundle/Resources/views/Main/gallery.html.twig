@@ -1,9 +1,12 @@
 {% extends "DJMainBundle::layout.html.twig" %}
 
-{# <link rel="stylesheet" href={{ asset('bundles/djmain/css/slider/smoothbox.css') }} type='text/css'> #}
 {% block stylesheet %}
     {% stylesheets
-            '@DJMainBundle/Resources/public/css/slider/smoothbox.css' filter='cssrewrite' output='css/compiled/main.css' %}
+            '@DJMainBundle/Resources/public/css/slider/smoothbox.css'
+            filter='?uglifycss'
+            filter='cssrewrite'
+            output='css/smoothbox.css'
+            %}
         <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}
 {% endblock %}
@@ -14,7 +17,7 @@
         {% if galleryName %}  {% set galleryName = galleryName %}  {% else %} {% set galleryName = 'gallery' %}  {% endif %}
         {{ sonata_block_render({ 'type': 'dj.main.block.intro_section' },{
             'title': galleryName,
-            'image_url': '/bundles/djmain/img/gallery/default/default-gallery.jpg',
+            'image_url': '/img/default/galleryIntro.jpg',
             }) }}
     {% endblock intro %}
     <section id="portfolio" class="gallery-block">
@@ -54,12 +57,14 @@
     </section>
 {% endblock body %}
 
-{% block javascripts %}
-  {{ parent() }}
+{% block javascript %}
   {% javascripts
         '@DJMainBundle/Resources/public/js/modernizr.custom.js'
         '@DJMainBundle/Resources/public/js/smoothbox.min.js'
-        '@DJMainBundle/Resources/public/js/overlay.js' output='js/compiled/gallery.js' %}
+        '@DJMainBundle/Resources/public/js/overlay.js'
+        filter='?uglifyjs2'
+        output='js/gallery.js'
+        %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
    {% endjavascripts %}
- {% endblock javascripts %}
+ {% endblock javascript %}

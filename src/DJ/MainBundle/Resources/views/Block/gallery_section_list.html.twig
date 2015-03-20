@@ -13,7 +13,7 @@
     {% for gallery in galleries %}
       <div class="{{ bootstrap_width_class }}">
         <a href={{ path('dj_main_gallery', {'category': gallery.name | lower }) }} class="thumbnail">
-          <img class="img-responsive" src={{ asset('bundles/djmain/img/gallery/default/index/gallery_index_' ~ gallery.name | lower ~ '.jpg') }} alt={{ gallery.name  }}>
+          <img class="img-responsive" src={{ asset('img/gallery/cover/gallery_index_' ~ gallery.name | lower ~ '.jpg') }} alt={{ gallery.name }}>
           <p class="text-uppercase text-center overlay-text">{% if gallery.name %}{{ gallery.name }} {% endif %}</p>
         </a>
       </div>

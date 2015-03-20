@@ -3,9 +3,7 @@
 {% set isBlogPage = true %}
 {% block titlePage %}Blog{% endblock titlePage %}
 {% block header %}
-    {% block navigation %}
-        {{ parent() }}
-    {% endblock navigation %}
+    {% block navigation %}{{ parent() }}{% endblock navigation %}
 {% endblock header %}
 {% block body %}
     {% block intro %}
@@ -20,7 +18,7 @@
                         <p data-scroll-reveal="enter bottom move 10px over 1s after 0.2s">
                             {% block introTeaser %}{% endblock %}
                         </p>
-                        {% image '@DJMainBundle/Resources/public/img/separatorBlack.png' output='img/'  %}
+                        {% image '@DJMainBundle/Resources/public/img/separatorBlack.png' output='img/separatorBlack.png'  %}
                             <img src="{{ asset_url }}" class="img-responsive center-block separator" alt="separator" />
                         {% endimage %}
                     </div>

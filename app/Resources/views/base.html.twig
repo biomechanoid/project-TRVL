@@ -3,38 +3,37 @@
     <head>
         {% block meta %}
             <meta name="msapplication-TileColor" content="#333333">
-            <meta name="msapplication-TileImage" content="{{ asset('bundles/djmain/img/favicon/mstile-144x144.png') }}">
+            <meta name="msapplication-TileImage" content="{{ asset('img/favicon/mstile-144x144.png') }}">
             {% block metaAdd %}{% endblock %}
         {% endblock meta %}
         <title>{% block title %}{% block titlePage %}Welcome{% endblock titlePage %} - Denca&amp;Kubo {% endblock %}</title>
         {% block favicon %}
-            <link rel="apple-touch-icon" sizes="57x57" href={{ asset('bundles/djmain/img/favicon/apple-touch-icon-57x57.png') }}>
-        <link rel="apple-touch-icon" sizes="114x114" href={{ asset('bundles/djmain/img/favicon/apple-touch-icon-114x114.png') }}>
-        <link rel="apple-touch-icon" sizes="72x72" href={{ asset('bundles/djmain/img/favicon/apple-touch-icon-72x72.png') }}>
-        <link rel="apple-touch-icon" sizes="144x144" href={{ asset('bundles/djmain/img/favicon/apple-touch-icon-144x144.png') }}>
-        <link rel="apple-touch-icon" sizes="60x60" href={{ asset('bundles/djmain/img/favicon/apple-touch-icon-60x60.png') }}>
-        <link rel="apple-touch-icon" sizes="120x120" href={{ asset('bundles/djmain/img/favicon/apple-touch-icon-120x120.png') }}>
-        <link rel="apple-touch-icon" sizes="76x76" href={{ asset('bundles/djmain/img/favicon/apple-touch-icon-76x76.png') }}>
-        <link rel="apple-touch-icon" sizes="152x152" href={{ asset('bundles/djmain/img/favicon/apple-touch-icon-152x152.png') }}>
-        <link rel="icon" type="image/png" href={{ asset('bundles/djmain/img/favicon/favicon-196x196.png') }} sizes="196x196">
-        <link rel="icon" type="image/png" href={{ asset('bundles/djmain/img/favicon/favicon-160x160.png') }} sizes="160x160">
-        <link rel="icon" type="image/png" href={{ asset('bundles/djmain/img/favicon/favicon-96x96.png') }} sizes="96x96">
-        <link rel="icon" type="image/png" href={{ asset('bundles/djmain/img/favicon/favicon-16x16.png') }} sizes="16x16">
-        <link rel="icon" type="image/png" href={{ asset('bundles/djmain/img/favicon/favicon-32x32.png') }} sizes="32x32">
+        <link rel="apple-touch-icon" sizes="57x57" href={{ asset('img/favicon/apple-touch-icon-57x57.png') }}>
+        <link rel="apple-touch-icon" sizes="114x114" href={{ asset('img/favicon/apple-touch-icon-114x114.png') }}>
+        <link rel="apple-touch-icon" sizes="72x72" href={{ asset('img/favicon/apple-touch-icon-72x72.png') }}>
+        <link rel="apple-touch-icon" sizes="144x144" href={{ asset('img/favicon/apple-touch-icon-144x144.png') }}>
+        <link rel="apple-touch-icon" sizes="60x60" href={{ asset('img/favicon/apple-touch-icon-60x60.png') }}>
+        <link rel="apple-touch-icon" sizes="120x120" href={{ asset('img/favicon/apple-touch-icon-120x120.png') }}>
+        <link rel="apple-touch-icon" sizes="76x76" href={{ asset('img/favicon/apple-touch-icon-76x76.png') }}>
+        <link rel="apple-touch-icon" sizes="152x152" href={{ asset('img/favicon/apple-touch-icon-152x152.png') }}>
+        <link rel="icon" type="image/png" href={{ asset('img/favicon/favicon-196x196.png') }} sizes="196x196">
+        <link rel="icon" type="image/png" href={{ asset('img/favicon/favicon-160x160.png') }} sizes="160x160">
+        <link rel="icon" type="image/png" href={{ asset('img/favicon/favicon-96x96.png') }} sizes="96x96">
+        <link rel="icon" type="image/png" href={{ asset('img/favicon/favicon-16x16.png') }} sizes="16x16">
+        <link rel="icon" type="image/png" href={{ asset('img/favicon/favicon-32x32.png') }} sizes="32x32">
         {% endblock favicon %}
-
         {% block stylesheets %}
-            <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
-            <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
             {% block stylesheet %}{% endblock %}
                 {% stylesheets
+                    'http://fonts.googleapis.com/css?family=Open+Sans:400,700,300'
+                    'http://fonts.googleapis.com/css?family=Montserrat:400,700'
                     '@DJMainBundle/Resources/public/css/fonts/font-awesome.min.css'
                     '@DJMainBundle/Resources/public/css/bootstrap/bootstrap.min.css'
-                    '@DJMainBundle/Resources/public/css/main/responsive.css'
                     '@DJMainBundle/Resources/public/css/main/style.css'
-                    filter='cssrewrite'
+                    '@DJMainBundle/Resources/public/css/main/responsive.css'
                     filter='?uglifycss'
-                    output='css/compiled/main.css'
+                    filter='cssrewrite'
+                    output='css/main.css'
                 %}
                     <link rel="stylesheet" href="{{ asset_url }}" />
                 {% endstylesheets %}
@@ -49,12 +48,17 @@
             <!--
             {# <script src={{ asset('/bundles/sonatajquery/jquery-1.10.2.js') }}></script> #}
             -->
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-            <script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-            {% javascripts '@DJMainBundle/Resources/public/js/scripts.js'
-                           '@DJMainBundle/Resources/public/js/okvideo.min.js' output='js/compiled/main.js' %}
-                <script type="text/javascript" src="{{ asset_url }}"></script>
+            {# // <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> #}
+            {# // <script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script> #}
+            {# // <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script> #}
+            {% javascripts 'https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js'
+                           'http://code.jquery.com/jquery-migrate-1.2.1.js'
+                           'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js'
+                           '@DJMainBundle/Resources/public/js/scripts.js'
+                           '@DJMainBundle/Resources/public/js/okvideo.min.js'
+                           filter='?uglifyjs2'
+                           output='js/main.js' %}
+                <script src="{{ asset_url }}"></script>
             {% endjavascripts %}
         {% endblock head_javascript %}    </head>
     <body {% block bodyAttributes %}{% endblock %} class="{% block bodyClass %}{% endblock bodyClass %}">
@@ -63,8 +67,11 @@
         {% block footer %}{% endblock %}
         {% block javascripts %}
             {{ sonata_block_include_javascripts("all") }}
-            {% javascripts '@DJMainBundle/Resources/public/js/custom.js' output='js/compiled/main-custom.js' %}
-                <script type="text/javascript" src="{{ asset_url }}"></script>
+            {% javascripts '@DJMainBundle/Resources/public/js/custom.js'
+            filter='?uglifyjs2'
+            output='js/custom.js'
+            %}
+                <script src="{{ asset_url }}"></script>
             {% endjavascripts %}
         {% endblock javascripts %}
         {% block javascript %}{% endblock %}

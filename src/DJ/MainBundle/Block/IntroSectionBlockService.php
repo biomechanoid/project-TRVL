@@ -26,7 +26,7 @@ class IntroSectionBlockService extends BaseBlockService
             'title_style' => 'default',
             'title'    => 'denca &amp; kubo',
             'comment'  => false,
-            'image_url'      => '/bundles/djmain/img/background1.jpg',
+            'image_url'      => '/img/default/background.jpg',
             'video_url'      => 'https://www.youtube.com/watch?v=Lg7x1_2eJXQ',
             'video'    => false,
             'template' => 'DJMainBundle:Block:intro_section.html.twig',

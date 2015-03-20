@@ -32,16 +32,19 @@ framework:
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
-    bundles:        [ FOSUserBundle, DJUserBundle, DJMainBundle ]
+    bundles:        [ FOSUserBundle, DJUserBundle, DJMainBundle, DJBlogBundle ]
     #java: /usr/bin/java
+    node: node
     filters:
         cssrewrite: ~
+        uglifyjs2:
+            bin: %kernel.root_dir%/Resources/node_modules/uglify-js/bin/uglifyjs
         uglifycss:
-            bin: %kernel.root_dir%/../node_modules/.bin/uglifycss
-        less:
-            node: C:\Program Files\nodejs\npm
-            node_paths: ['C:\Program Files\nodejs\node_modules\npm\node_modules']
-            apply_to: '\.less$'
+            bin: %kernel.root_dir%/Resources/node_modules/uglifycss/uglifycss
+        # less:
+        #     node: C:\Program Files\nodejs\npm
+        #     node_paths: ['C:\Program Files\nodejs\node_modules\npm\node_modules']
+        #     apply_to: '\.less$'
 
 # Doctrine Configuration
 doctrine:
@@ -55,10 +58,6 @@ doctrine:
         charset:  UTF8
         types:
             json: Sonata\Doctrine\Types\JsonType
-        # if using pdo_sqlite as your database driver, add the path in parameters.yml
-        # e.g. database_path: "%kernel.root_dir%/data/data.db3"
-        # path:     "%database_path%"
-
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
         # auto_mapping: true

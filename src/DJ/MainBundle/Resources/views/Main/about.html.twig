@@ -4,9 +4,9 @@
 {% block stylesheet %}
     {% stylesheets
         '@DJMainBundle/Resources/public/css/bootstrap/owl.carousel.css'
-        filter='cssrewrite'
         filter='?uglifycss'
-        output='css/compiled/owl.carousel.css'
+        filter='cssrewrite'
+        output='css/owl.carousel.css'
     %}
         <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}
@@ -14,10 +14,8 @@
 {% block body %}
     <section id="team">
         <div class="container">
-
                 <h1 class="parallaxLetter letter1" data-stellar-ratio="2">K</h1>
                 <h1 class="parallaxLetter letter2" data-stellar-ratio="0.5">D</h1>
-
             <!--header-->
             <div class="row sectionIntro">
                 <div class="col-md-8 col-md-offset-2 text-center">
@@ -27,26 +25,23 @@
                     <p data-scroll-reveal="enter bottom move 10px over 1s after 0.4s">
                         We dream big, live minimally, eat well, exercise regularly, treat everyone with kindness and always take a time to enjoy the current moment.
                     </p>
-                    {% image '@DJMainBundle/Resources/public/img/separatorBlack.png' output='img/'  %}
+                    {% image '@DJMainBundle/Resources/public/img/separatorBlack.png' output='img/separatorBlack.png' %}
                         <img src="{{ asset_url }}" class="img-responsive center-block separator" alt="separator" />
                     {% endimage %}
                 </div>
             </div>
             <!--end header-->
-
             <h1 class="parallaxLetter letter4" data-stellar-ratio="0.8">D</h1>
             <h1 class="parallaxLetter letter3" data-stellar-ratio="1.2">K</h1>
-
             <!--content-->
             <div class="row content">
                 <div class="owl-carousel" id="owl-team">
                     <!--member-->
                     <div class="teamMember">
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            {% image '@DJMainBundle/Resources/public/img/team/2.png' output='img/about/'  %}
+                            {% image '@DJMainBundle/Resources/public/img/team/2.png' output='img/about/denca.png'  %}
                                 <img src="{{ asset_url }}"  class="center-block img-responsive" alt="Team Image" />
                             {% endimage %}
-                            {# <img src="{{ asset('bundles/djmain/img/team/2.png') }}" class="center-block img-responsive" alt="Team Image"> #}
                         </div>
                         <div class="col-md-6 col-sm-6 col-xs-12 memberDescription">
                             <h2 data-scroll-reveal="enter right move 10px over 1s after 0.2s">Denca</h2>
@@ -55,17 +50,15 @@
                                     Finance manager
                                 </span>
                             </p>
-
                             <p class="memberParagraph" data-scroll-reveal="enter right move 10px over 1s after 0.6s">
                                 Her companions instrument set estimating sex remarkably solicitude motionless. Property men the why smallest graceful day insisted required. Inquiry justice country old placing sitting any ten age. Looking venture justice in evident in totally he do ability.
                             </p>
-
                             <p class="teamSocial">
                                 <a href="http://behance.net/artbreeze" data-scroll-reveal="enter right move 10px over 1s after 0.8s"><i class="fa fa-behance"></i></a>
                                 <a href="http://twitter.com/artbreeze02" data-scroll-reveal="enter right move 10px over 1s after 1s"><i class="fa fa-twitter"></i></a>
                                 <a href="http://dribbble.com/artbreeze02" data-scroll-reveal="enter right move 10px over 1s after 1.2s"><i class="fa fa-dribbble"></i></a>
                             </p>
-                            {% image '@DJMainBundle/Resources/public/img/lineSeparatorBlack.png' output='img/'  %}
+                            {% image '@DJMainBundle/Resources/public/img/lineSeparatorBlack.png' output='img/lineSeparatorOrange.png'  %}
                                 <img src="{{ asset_url }}" class="lineSeparator hidden-xs" alt="separator" />
                             {% endimage %}
                         </div>
@@ -74,10 +67,9 @@
                     <!--member-->
                     <div class="teamMember">
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            {% image '@DJMainBundle/Resources/public/img/team/3.png' output='img/about/'  %}
+                            {% image '@DJMainBundle/Resources/public/img/team/3.png' output='img/about/jakub.png'  %}
                                 <img src="{{ asset_url }}"  class="center-block img-responsive" alt="Team Image" />
                             {% endimage %}
-                            {# <img src="{{ asset('bundles/djmain/img/team/3.png') }}" class="center-block img-responsive" alt="Team Image"> #}
                         </div>
                         <div class="col-md-6 col-sm-6 col-xs-12 memberDescription">
                             <h2 data-scroll-reveal="enter right move 10px over 1s after 0.2s">Jakub</h2>
@@ -86,20 +78,17 @@
                                     Web Developer
                                 </span>
                             </p>
-
                             <p class="memberParagraph" data-scroll-reveal="enter right move 10px over 1s after 0.6s">
                                 Satisfied conveying an dependent contented he gentleman agreeable do be. Warrant private blushes removed an in equally totally if. Delivered dejection necessary objection do mr prevailed. Mr feeling do chiefly cordial in do.
                             </p>
-
                             <p class="teamSocial">
                                 <a href="http://behance.net/artbreeze" data-scroll-reveal="enter right move 10px over 1s after 0.8s"><i class="fa fa-behance"></i></a>
                                 <a href="http://twitter.com/artbreeze02" data-scroll-reveal="enter right move 10px over 1s after 1s"><i class="fa fa-twitter"></i></a>
                                 <a href="http://dribbble.com/artbreeze02" data-scroll-reveal="enter right move 10px over 1s after 1.2s"><i class="fa fa-dribbble"></i></a>
                             </p>
-                            {% image '@DJMainBundle/Resources/public/img/lineSeparatorBlack.png' output='img/'  %}
+                            {% image '@DJMainBundle/Resources/public/img/lineSeparatorBlack.png' output='img/lineSeparatorOrange.png'  %}
                                 <img src="{{ asset_url }}" class="lineSeparator hidden-xs" alt="separator" />
                             {% endimage %}
-                            {# <img src="{{ asset('bundles/djmain/img/lineSeparatorBlack.png') }}" class="lineSeparator hidden-xs" alt="separator"> #}
                         </div>
                     </div>
                     <!--end member-->
@@ -110,10 +99,9 @@
     </section>
         <section id="footer" class="dark">
             <div class="topLine text-center">
-                {% image '@DJMainBundle/Resources/public/img/logoWhite.png' output='img/'  %}
+                {% image '@DJMainBundle/Resources/public/img/logoWhite.png' output='img/logoWhite.png'  %}
                     <img src="{{ asset_url }}" class="footerLogo center-block" alt="Small Logo" width="100" height="134" />
                 {% endimage %}
-                {# <img src="{{ asset('bundles/djmain/img/logoWhite.png') }}" class="footerLogo center-block" alt="Small Logo" width="100" height="134"> #}
             </div>
         </section>
 {% endblock body %}

@@ -5,7 +5,6 @@ body {
     padding:0;
     margin-left:0;
     margin-right:0;
-
 }
 
 body {
@@ -13,7 +12,6 @@ body {
     font-weight: 300;
 
 }
-
 
 a{
     color: #252525;
@@ -26,7 +24,6 @@ a:hover, a:focus{
     outline: 0;
 }
 
-
 img {
     -moz-user-select: none;
     /*-webkit-user-select: none;*/
@@ -35,7 +32,6 @@ img {
     /*-webkit-user-drag: none;*/
     user-drag: none;
 }
-
 
 .valign{
     position: relative;
@@ -105,8 +101,6 @@ section.gallery-block #filters{
     width: 15%;
 }
 
-
-
 .black-overlay {
     position: absolute;
     left: 0;
@@ -121,7 +115,6 @@ section.gallery-block #filters{
     background: -ms-radial-gradient(center, ellipse cover, rgba(0,0,0,0) 0%,rgba(0,0,0,0.8) 100%); /* IE10+ */
     background: radial-gradient(ellipse at center, rgba(0,0,0,0) 0%,rgba(0,0,0,0.8) 100%); /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-
 }
 
 .sectionIntro h2 span{
@@ -157,7 +150,6 @@ section.gallery-block #filters{
     height: 300px;
 }
 
-
 .letter1{
     right:20%;
 }
@@ -175,7 +167,6 @@ section.gallery-block #filters{
 }
 
 
-
 /*buttons*/
 
 .btn{
@@ -183,7 +174,6 @@ section.gallery-block #filters{
     border-radius:0;
     border:0;
 }
-
 
 .btn-default{
     font-family: 'Montserrat', sans-serif;
@@ -218,8 +208,6 @@ section.gallery-block #filters{
     background: white;
 }
 
-
-
 .btn-default:before {
     left: -8px;
 }
@@ -235,8 +223,6 @@ section.gallery-block #filters{
 .btn-default:hover:after {
     right: 0;
 }
-
-
 
 .btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open>.dropdown-toggle.btn-default {
     color: #333;
@@ -462,14 +448,12 @@ p.bold{
 }
 
 
-
 /*<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->*/
 /*<!--Intro -->*/
 /*<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->*/
 
 #intro h1, #intro p{
     color:white;
-
 }
 
 .introLogo{
@@ -501,7 +485,6 @@ p.bold{
     padding-bottom:50px;
     padding-left:15px;
     overflow:hidden;
-
 }
 
 #text-separator h2,
@@ -548,11 +531,6 @@ p.bold{
     background-color:white;
 }
 
-#welcome-separator .col-md-7,
-#welcome-separator .container-fluid{
-    padding:0;
-}
-
 #welcome-separator .separator{
     width: 120px;
     max-width: 120px;
@@ -560,9 +538,9 @@ p.bold{
     margin-bottom: 40px;
 }
 
-
 #welcome-separator .image{
     height:500px;
+    padding: 0;
     overflow:hidden;
 }
 
@@ -570,9 +548,8 @@ p.bold{
     height: 100%;
 }
 
-
 .whiteOverlay{
-    background: transparent url("../../../../bundles/djmain/img/gradient.png") bottom right repeat-y;
+    background: transparent url("/img/default/gradient.png") bottom right repeat-y;
     bottom: 0;
     height: 500px;
     right: 0;
@@ -607,8 +584,6 @@ p.bold{
     padding-top:200px;
 }
 
-
-
 .aboutIconWrapper{
     position:absolute;
 }
@@ -622,15 +597,12 @@ p.bold{
     font-size:80px;
     color:#f5f5f5;
     z-index:0;
-
 }
 
 .aboutItem{
     margin-top:30px;
     margin-bottom:30px;
 }
-
-
 
 .progress-bar {
     color: #fff;
@@ -652,7 +624,6 @@ p.bold{
     box-shadow: none;
     border: 3px solid black;
 }
-
 
 
 /*<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->*/
@@ -686,8 +657,7 @@ p.bold{
     margin:20px;
 }
 
-
-.portfolioIntro{
+/*.portfolioIntro{
     position:relative;
     z-index:2;
     background:url('../../../../bundles/djmain/img/galleryIntro.jpg') no-repeat center center;
@@ -697,7 +667,7 @@ p.bold{
     background-size: cover;
     background-position: 50% 0, 50% 0, 50% 0, 50% 0;
     background-repeat: repeat, repeat, repeat ,no-repeat;
-}
+}*/
 
 #portfolio .black-overlay{
     background: -moz-radial-gradient(center, ellipse cover, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%); /* FF3.6+ */
@@ -772,7 +742,6 @@ section.gallery-index-block{
     content: '';
     display: block;
     clear: both;
-
 }
 
 /* 5 columns, percentage width */
@@ -796,8 +765,6 @@ section.gallery-index-block{
     width: 100%;
     height: auto;
 }
-
-
 
 /* Overlay style */
 .overlay {
@@ -976,8 +943,6 @@ section.gallery-index-block{
     padding-bottom:110px;
 }
 
-
-
 #text-separator-clients h3 span{
     padding:25px 50px;
     border: solid 10px white;
@@ -987,12 +952,10 @@ section.gallery-index-block{
     color:white;
 }
 
-
 .clientLogo img{
     width:180px;
     margin-top: 15px;
 }
-
 
 /*<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->*/
 /*<!--Services -->*/
@@ -1031,7 +994,7 @@ section.gallery-index-block{
 .introServiceBox{
     position:relative;
     z-index:2;
-    background:url('../../../../bundles/djmain/img/backgroundService.jpg') no-repeat center center;
+    background:url('/img/default/backgroundService.jpg') no-repeat center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -1039,7 +1002,6 @@ section.gallery-index-block{
     background-position: 50% 0, 50% 0, 50% 0, 50% 0;
     background-repeat: repeat, repeat, repeat ,no-repeat;
 }
-
 
 .whiteBox{
     background:white;
@@ -1065,16 +1027,15 @@ section.gallery-index-block{
     letter-spacing: 6px;
     color:white;
 }
+
 #text-separator-testimonials h3{
     padding-top:100px;
 }
-
 
 .review{
     text-align:center;
     padding:40px;
 }
-
 
 .review p.titulation{
     color:#c8c8c8;
@@ -1136,11 +1097,9 @@ section.gallery-index-block{
     padding-bottom:10px;
 }
 
-
 .subscriptionPrice h2{
     letter-spacing:0;
 }
-
 
 .subscriptionPrice h2,
 .subscriptionPrice p{
@@ -1204,13 +1163,10 @@ label input, textarea{
     letter-spacing:1px;
 }
 
-
-
 .infoContact{
     list-style:none;
     padding:20px;
 }
-
 
 .infoContact li{
     padding-left:20px;
@@ -1372,7 +1328,6 @@ label input, textarea{
 
 .backToTop a{
     color:#333333;
-
 }
 
 
@@ -1497,8 +1452,6 @@ line-height: 24px;
 #blogContent .container {
     padding-top:0;
 }
-
-
 
 
 /* ---- isotope ---- */

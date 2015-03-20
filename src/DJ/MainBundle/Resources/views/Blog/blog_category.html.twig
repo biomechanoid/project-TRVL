@@ -12,7 +12,7 @@
                         {% if post.media %}
                            {% thumbnail post.media, 'medium' with {'class': 'img-responsive'} %} {# render the related thumbnail #}
                         {% else %}
-                            {% image '@DJMainBundle/Resources/public/img/gallery/1.jpg' output='img/'  %}
+                            {% image '@DJMainBundle/Resources/public/img/gallery/1.jpg' output='img/gallery/default/square.jpg'  %}
                                 <img src="{{ asset_url }}" class="img-responsive center-block separator" alt="image" />
                             {% endimage %}
                         {% endif %}
@@ -27,7 +27,7 @@
                                 <p><i class="fa fa-pencil"></i> Posted by {{ post.author }} in <a href="#">Motion</a> on {{ post.created | date() }}</p>
                             </div>
                         </div>
-                        {% image '@DJMainBundle/Resources/public/img/lineSeparatorBlack.png' output='img/'  %}
+                        {% image '@DJMainBundle/Resources/public/img/lineSeparatorBlack.png' output='img/lineSeparatorOrange.png'  %}
                             <img src="{{ asset_url }}" class="img-responsive center-block separator" class="img-responsive blogSeparator" alt="separator"/>
                         {% endimage %}
                         <p class="excerpt">
