@@ -24,14 +24,19 @@
         <div class="portfolioFilters text-center">
             <div id="filters">
                 {% if gallery_list %}
-                    <button class="btn btn-default btn-white" data-filter="*" data-toggle="tooltip" data-placement="top" title="" data-original-title="18" data-scroll-reveal="enter bottom move 10px over 1s after 0.2s">Show All</button>
+                    {# <button class="btn btn-default btn-white" data-name="all" data-filter="*" data-toggle="tooltip" data-placement="top" title="" data-original-title="18" data-scroll-reveal="enter bottom move 10px over 1s after 0.2s">Show All</button> #}
                     {% for galleryFilter in gallery_list %}
-                        <button class="btn btn-default btn-white" data-filter=".{{ galleryFilter|lower|replace({' ':'-'}) }}" data-toggle="tooltip" data-placement="top" title="" data-original-title="18" data-scroll-reveal="enter bottom move 10px over 1s after {{ 0.3 + (loop.index/10)}}s">{{ galleryFilter }}</button>
+                        <button class="btn btn-default btn-white" data-name="{{ galleryFilter }}" data-filter=".{{ galleryFilter|lower|replace({' ':'-'}) }}" data-toggle="tooltip" data-placement="top" title="" data-original-title="18" data-scroll-reveal="enter bottom move 10px over 1s after {{ 0.3 + (loop.index/10)}}s">{{ galleryFilter }}</button>
                     {% endfor %}
                 {% endif %}
             </div>
         </div>
-        <div class="gallery js-isotope" data-isotope-options='{ "itemSelector": ".gallery-inner", "masonry": { "columnWidth": ".grid-sizer" } }'>
+       {#  {% if app.request.xmlHttpRequest %}
+         'acme.templates.full'
+        {% else %}
+         'acme.templates.partial' {{ app.request.xmlHttpRequest }}
+        {% endif %} #}
+        {# <div class="gallery js-isotope" data-isotope-options='{ "itemSelector": ".gallery-inner", "vertical": { "columnWidth": ".grid-sizer" } }'>
             <!--grid sizer for columns to be used in the data-isotope-options-->
             <div class="grid-sizer"></div>
             {% for media in gallery %}
@@ -49,11 +54,32 @@
                         </div>
                     </div>
                     <!-- end caption -->
-                    <img alt="{{ media.media.name }}" class="galleryImage" src="{% path media.media, media.media.format %}">
+                    <img alt="{{ media.media.name }}" class="lazy galleryImage" src="{% path media.media, media.media.format %}">
                 </div>
             <!--end item -->
             {% endfor %}
-        </div>
+        </div> #}
+
+        {# ajax layout #}
+            <div class="gallery" id="gallery">
+                <div class="grid-sizer"></div>
+                <div id="ajax-spinner"></div>
+                <!-- First item to be sure isotope works correctly-->
+                <div class="gallery-inner {{ 'media.name'|lower|replace({' ':'-'}) }}">
+                   {#  <div class="caption text-center">
+                        <div class="captionWrapper valign hidden-xs hidden-sm">
+                            <a class="sb overlay-ajax" href=""  >
+                                <div class="caption-heading">
+                                    <h4>{{ 'media.media.name' }}</h4>
+                                    <div class="btn btn-default btn-white">{{ 'gallery.gallery.button.preview' | trans }}</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div> #}
+                    {# <img src="http://images1.wookmark.com/266985_tumblr_mj8oltkccc1qjd5wfo1_500.png" width="200" height= "300"> #}
+                </div>
+            </div>
+        {# end of ajax layout #}
     </section>
 {% endblock body %}
 
@@ -62,9 +88,224 @@
         '@DJMainBundle/Resources/public/js/modernizr.custom.js'
         '@DJMainBundle/Resources/public/js/smoothbox.min.js'
         '@DJMainBundle/Resources/public/js/overlay.js'
+        '@DJMainBundle/Resources/public/js/spin.min.js'
         filter='?uglifyjs2'
         output='js/gallery.js'
         %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
    {% endjavascripts %}
+   <script>
+$(document).ready(function () {
+
+    // $('#gallery').append(Object.spinner.el);
+    galleryName = "{{ galleryName }}";
+    filter = $('#filters').find('button:nth-of-type(2)').attr('data-name');
+    ajaxReady = true;
+    dataEnd = false;
+
+    pageContainer = {
+        galleries: {},
+        getCurrentPage: function($galleryName) {
+            if(this.galleries.hasOwnProperty($galleryName)) {
+                this.galleries[$galleryName] = this.galleries[$galleryName] + 1;
+            } else {
+                 this.setCurrentPage($galleryName, 1);
+            }
+            return this.galleries[$galleryName];
+        },
+        setCurrentPage: function($galleryName, $page) {
+            this.galleries[$galleryName] = $page;
+        },
+        galleryItem : function(format, name, url, width, height) {
+            var element =
+                    '<div class="gallery-inner '+ format + '">' +
+                    '<div class="caption text-center">' +
+                    '<div class="captionWrapper valign hidden-xs hidden-sm">' +
+                    '<a class="sb overlay-ajax" href=""  >' +
+                    '<div class="caption-heading">' +
+                    '<h4>'+ name +'</h4>' +
+                    '<div class="btn btn-default btn-white">{{ "gallery.gallery.button.preview" | trans }}</div>' +
+                    '</div>' +
+                    '</a>' +
+                    '</div>' +
+                    '</div>' +
+                    '<img class="lazy galleryImage" data-original="' + url + '" width="' + width + '" height="' + height + '" style="width:'+width+'px; height:'+height+'px"/>' +
+                    '</div>';
+
+            return element;
+        }
+    };
+
+function AjaxRequest(route,spinnerWrapperId) {
+    var spinner = new Object();
+    var ajaxArea = document.getElementById('gallery');
+        if(spinnerWrapperId) {
+            spinner.wrapper = $('#'+ spinnerWrapperId);
+        } else{
+            spinner.wrapper = $(ajaxArea);
+        }
+        $.ajax({
+          url: route,
+          dataType: 'json',
+          context: ajaxArea,
+          beforeSend: function() {
+            if(ajaxReady === false || dataEnd == true) {
+                return false;
+            } else {
+                ajaxReady = false;
+                Object.spinner.spin();
+                spinner.wrapper.append(Object.spinner.el);
+                if(spinnerWrapperId) {
+                    spinner.wrapper.css('display','block');
+                }
+            }
+          },
+          complete: function(){
+            ajaxReady = true;
+            if(spinnerWrapperId) {
+                spinner.wrapper.css('display','none');
+            }
+            Object.spinner.stop();
+          }
+        }).done(function(media) {
+            newElements = [];
+            $.each(media.data, function (key, value) {
+                newElements+=
+                    pageContainer.galleryItem(value.format, value.name, value.url, value.width, value.height)
+                    ;
+        });
+
+        var $newElems = $(newElements);
+
+        $(this).append($newElems).imagesLoaded(function () {
+            $('#gallery').isotope('appended', $newElems);
+            $("img.lazy").lazyload({
+                effect : "fadeIn",
+                skip_invisible : false
+            });
+        });
+
+        if(media.data == false)
+        {
+            dataEnd = true;
+        } else {
+            dataEnd= false;
+        }
+    });
+}
+
+    $container = $('#gallery').imagesLoaded( function() {
+        $container.isotope({
+            filter: '*',
+            itemSelector: '.gallery-inner',
+            columnWidth: '.grid-sizer',
+            onLayout: function () {
+                $(window).trigger("scroll");
+            }
+        });
+    });
+
+    $('#filters').on( 'click', 'button', function(galleryName,pageContainer) {
+        filterValue = $(this).attr('data-name');
+        $container.isotope({ filter: filterValue });
+        // var route = Routing.generate('dj_ajax_gallery', {main:galleryName, sub:filterValue, page:pageContainer.getCurrentPage(filterValue)});
+    });
+
+// On load ajax
+    route = Routing.generate('dj_ajax_gallery', {
+                    main: galleryName,
+                    sub: filter,
+                    page: pageContainer.getCurrentPage(filter)
+                });
+    AjaxRequest(route);
+    // $.ajax({
+    //   url: route,
+    //   dataType: 'json',
+    //   context: document.getElementById('gallery'),
+    //   beforeSend: function() {
+    //     if(ajaxReady === false) {
+    //         return false;
+    //     } else {
+    //         $(this).append(Object.spinner.el);
+    //         ajaxReady = false;
+    //     }
+    //   },
+    //   complete: function(){
+    //     ajaxReady = true;
+    //     Object.spinner.stop();
+    //   }
+    // }).done(function(media) {
+    //     newElements = [];
+    //     $.each(media.data, function (key, value) {
+    //         newElements+=
+    //             pageContainer.galleryItem(value.format, value.name, value.url, value.width, value.height)
+    //             ;
+    //     });
+
+    //     var $newElems = $(newElements);
+
+    //     $('#gallery').append($newElems).imagesLoaded(function () {
+    //         $('#gallery').isotope('appended', $newElems);
+    //         $("img.lazy").lazyload({
+    //             effect : "fadeIn",
+    //             skip_invisible : false
+    //         });
+    //     });
+    // });
+
+// load data when scroll to the bottom of the page
+    $(window).on('scroll',(function() {
+        if( $(window).scrollTop() + $(window).height() == $(document).height()) {
+            route = Routing.generate('dj_ajax_gallery', {
+                    main: galleryName,
+                    sub: filter,
+                    page: pageContainer.getCurrentPage(filter)
+                });
+            AjaxRequest(route,'ajax-spinner');
+            // var spinner = Object.spinner.spin();
+
+            // $.ajax({
+            //     url: route,
+            //     dataType: 'json',
+            //     context: document.getElementById('gallery'),
+            //     beforeSend: function(){
+            //         if(ajaxReady === false || dataEnd == true) {
+            //             return false;
+            //         } else {
+            //             ajaxReady = false;
+            //             $('#ajax-spinner').append(spinner.el).css('display','block');
+            //         }
+            //     },
+            //     complete: function(){
+            //         ajaxReady = true;
+            //         $('#ajax-spinner').css('display','none');
+            //         spinner.stop();
+            //     }
+            // }).done(function(media) {
+            //     newElements = [];
+            //     $.each(media.data, function (key, value) {
+            //         newElements += pageContainer.galleryItem(value.format, value.name, value.url, value.width, value.height);
+            //     });
+
+            //     var $newElems = $(newElements);
+
+            //     $(this).append($newElems).imagesLoaded(function () {
+            //         $('#gallery').isotope('appended', $newElems);
+            //         $("img.lazy").lazyload({
+            //             effect : "fadeIn",
+            //             skip_invisible : false
+            //         });
+            //     });
+
+            //     if(media.data == false)
+            //     {
+            //         dataEnd = true;
+            //     } else {
+            //         dataEnd= false;
+            //     }
+            // });
+        }
+    }));
+});
+   </script>
  {% endblock javascript %}

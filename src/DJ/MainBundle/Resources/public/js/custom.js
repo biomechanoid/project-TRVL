@@ -97,21 +97,20 @@ $(document).ready(function () {
     /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
     /* Isotope */
     /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-    var $container = $('.gallery').imagesLoaded( function() {
-        $container.isotope({
-            // options
-        });
-    });
+    // var $container = $('.gallery').imagesLoaded( function() {
+    //     $container.isotope({
+    //         // options
+    //     });
+    // });
 
+    // $('#filters').on( 'click', 'button', function() {
+    //     var filterValue = $(this).attr('data-filter');
+    //     $container.isotope({ filter: filterValue });
+    // });
 
-    $('#filters').on( 'click', 'button', function() {
-        var filterValue = $(this).attr('data-filter');
-        $container.isotope({ filter: filterValue });
-    });
-
-    $container.isotope({
-        filter: '*' // IF YOU WANT TO DISPLAY AT FIRST ONLY ONE FILTER, FOR EXAMPLE DESIGNS: SUBSTIUTE '*' WITH '.designs'
-    });
+    // $container.isotope({
+    //     filter: '*' // IF YOU WANT TO DISPLAY AT FIRST ONLY ONE FILTER, FOR EXAMPLE DESIGNS: SUBSTIUTE '*' WITH '.designs'
+    // });
 
 
     //    masonry 3 columns
@@ -130,7 +129,7 @@ $(document).ready(function () {
 
 
     //    masonry 2 columns
-    $( function() {
+    $(function() {
         var $container3 = $('.blogPostsWrapper2');
         // initialize Masonry after all images have loaded
         $container3.imagesLoaded(function () {
@@ -265,4 +264,25 @@ $(document).ready(function () {
 
     }, { offset: 500 });
 
+    // spin.js
+   window.opts = {
+      lines: 20, // The number of lines to draw
+      length: 30, // The length of each line
+      width: 5, // The line thickness
+      radius: 20, // The radius of the inner circle
+      corners: 1, // Corner roundness (0..1)
+      rotate: 11, // The rotation offset
+      direction: 1, // 1: clockwise, -1: counterclockwise
+      color: ['#f80c12','#f80c12','#ee1100','#ff3311','#ff4422','#ff6644','#ff9933','#feae2d','#ccbb33','#d0c310','#aacc22','#69d025','#22ccaa','#12bdb9','#11aabb','#4444dd','#3311bb','#3b0cbd','#442299'], // #rgb or #rrggbb or array of colors
+      speed: 1.2, // Rounds per second
+      trail: 100, // Afterglow percentage
+      shadow: false, // Whether to render a shadow
+      hwaccel: true, // Whether to use hardware acceleration
+      className: 'spinner', // The CSS class to assign to the spinner
+      zIndex: 2e9, // The z-index (defaults to 2000000000)
+      top: '50%', // Top position relative to parent
+      left: '50%' // Left position relative to parent
+    };
+
+    Object.spinner = new Spinner(opts).spin();
 });

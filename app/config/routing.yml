@@ -1,3 +1,6 @@
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+
 dj_blog:
     resource: "@DJBlogBundle/Controller/BlogController.php"
     type:     annotation

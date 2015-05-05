@@ -1,6 +1,7 @@
 parameters:
     sonata.media.admin.media.class: Application\Sonata\MediaBundle\Admin\ORM\MediaAdmin
     sonata.media.admin.gallery.class: Application\Sonata\MediaBundle\Admin\ORM\GalleryAdmin
+    sonata.gallery.repository.class: Application\Sonata\MediaBundle\Entity\GalleryRepository
 
 services:
     application.admin.media:

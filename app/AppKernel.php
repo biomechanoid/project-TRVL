@@ -34,6 +34,7 @@ class AppKernel extends Kernel
             new Knp\Bundle\MarkdownBundle\KnpMarkdownBundle(),
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
             new Sonata\FormatterBundle\SonataFormatterBundle(),
+            new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
 
             new DJ\MainBundle\DJMainBundle(),
             new DJ\AdminBundle\DJAdminBundle(),

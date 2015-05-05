@@ -271,3 +271,4 @@ sonata_media:
             allowed_extensions: ['jpg', 'png', 'jpeg']
             allowed_mime_types: ['image/pjpeg', 'image/jpeg', 'image/png', 'image/x-png']
 
+
