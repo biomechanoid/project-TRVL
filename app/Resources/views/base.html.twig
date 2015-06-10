@@ -24,9 +24,9 @@
         {% endblock favicon %}
         {% block stylesheets %}
             {% block stylesheet %}{% endblock %}
+                <link rel="stylesheet" href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,300' />
+                <link rel="stylesheet" href='http://fonts.googleapis.com/css?family=Montserrat:400,700' />
                 {% stylesheets
-                    'http://fonts.googleapis.com/css?family=Open+Sans:400,700,300'
-                    'http://fonts.googleapis.com/css?family=Montserrat:400,700'
                     '@DJMainBundle/Resources/public/css/fonts/font-awesome.min.css'
                     '@DJMainBundle/Resources/public/css/bootstrap/bootstrap.min.css'
                     '@DJMainBundle/Resources/public/css/main/style.css'
@@ -40,7 +40,7 @@
         {% endblock stylesheets %}
         {% block head_javascript %}
             <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-            <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+            <!-- WARNING: Respond.js doesn't work   if you view the page via file:// -->
             <!--[if lt IE 9]>
             <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
             <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -54,13 +54,16 @@
             {% javascripts 'https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js'
                            'http://code.jquery.com/jquery-migrate-1.2.1.js'
                            'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js'
+                           'bundles/fosjsrouting/js/router.js'
                            '@DJMainBundle/Resources/public/js/scripts.js'
                            '@DJMainBundle/Resources/public/js/okvideo.min.js'
                            filter='?uglifyjs2'
                            output='js/main.js' %}
                 <script src="{{ asset_url }}"></script>
             {% endjavascripts %}
-        {% endblock head_javascript %}    </head>
+            <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+        {% endblock head_javascript %}
+    </head>
     <body {% block bodyAttributes %}{% endblock %} class="{% block bodyClass %}{% endblock bodyClass %}">
         {% block header %}{% endblock header %}
         {% block body %}{% endblock %}

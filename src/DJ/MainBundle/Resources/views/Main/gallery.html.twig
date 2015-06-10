@@ -13,6 +13,7 @@
 {% block titlePage %}Gallery{% endblock titlePage %}
 {% block bodyAttributes %} id="bigWrapper" data-spy="scroll" data-target=".navbar-default" data-offset="100"{% endblock %}
 {% block body %}
+    <div class="gallery-overlay"><div class="image-wrapper"></div></div>
     {% block intro %}
         {% if galleryName %}  {% set galleryName = galleryName %}  {% else %} {% set galleryName = 'gallery' %}  {% endif %}
         {{ sonata_block_render({ 'type': 'dj.main.block.intro_section' },{
@@ -24,36 +25,25 @@
         <div class="portfolioFilters text-center">
             <div id="filters">
                 {% if gallery_list %}
-                    <button class="btn btn-default btn-white" data-filter="*" data-toggle="tooltip" data-placement="top" title="" data-original-title="18" data-scroll-reveal="enter bottom move 10px over 1s after 0.2s">Show All</button>
+                    {# <button class="btn btn-default btn-white" data-name="all" data-filter="*" data-toggle="tooltip" data-placement="top" title="" data-original-title="18" data-scroll-reveal="enter bottom move 10px over 1s after 0.2s">Show All</button> #}
                     {% for galleryFilter in gallery_list %}
-                        <button class="btn btn-default btn-white" data-filter=".{{ galleryFilter|lower|replace({' ':'-'}) }}" data-toggle="tooltip" data-placement="top" title="" data-original-title="18" data-scroll-reveal="enter bottom move 10px over 1s after {{ 0.3 + (loop.index/10)}}s">{{ galleryFilter }}</button>
+                        <button class="btn btn-default btn-white" data-use-filter="true" data-name="{{ galleryFilter }}" data-filter=".{{ galleryFilter|lower|replace({' ':'-'}) }}" data-toggle="tooltip" data-placement="top" title="" data-original-title="18" data-scroll-reveal="enter bottom move 10px over 1s after {{ 0.3 + (loop.index/10)}}s">{{ galleryFilter }}</button>
                     {% endfor %}
                 {% endif %}
             </div>
         </div>
-        <div class="gallery js-isotope" data-isotope-options='{ "itemSelector": ".gallery-inner", "masonry": { "columnWidth": ".grid-sizer" } }'>
-            <!--grid sizer for columns to be used in the data-isotope-options-->
+       {#  {% if app.request.xmlHttpRequest %}
+         'acme.templates.full'
+        {% else %}
+         'acme.templates.partial' {{ app.request.xmlHttpRequest }}
+        {% endif %} #}
+
+        {# ajax layout #}
+        <div class="gallery" id="gallery">
             <div class="grid-sizer"></div>
-            {% for media in gallery %}
-             <!--item -->
-                <div class="gallery-inner {{ media.name|lower|replace({' ':'-'}) }}">
-                    <!-- caption -->
-                    <div class="caption text-center">
-                        <div class="captionWrapper valign hidden-xs hidden-sm">
-                            <a class="sb overlay-ajax" href="{% path media.media, media.media.format %}" data-toggle="modal" >
-                                <div class="caption-heading">
-                                    <h4>{{ media.media.name }}</h4>
-                                    <div class="btn btn-default btn-white">{{ 'gallery.gallery.button.preview' | trans }}</div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <!-- end caption -->
-                    <img alt="{{ media.media.name }}" class="galleryImage" src="{% path media.media, media.media.format %}">
-                </div>
-            <!--end item -->
-            {% endfor %}
+            <div id="ajax-spinner"></div>
         </div>
+        {# end of ajax layout #}
     </section>
 {% endblock body %}
 
@@ -62,9 +52,161 @@
         '@DJMainBundle/Resources/public/js/modernizr.custom.js'
         '@DJMainBundle/Resources/public/js/smoothbox.min.js'
         '@DJMainBundle/Resources/public/js/overlay.js'
+        '@DJMainBundle/Resources/public/js/spin.min.js'
         filter='?uglifyjs2'
         output='js/gallery.js'
         %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
    {% endjavascripts %}
+   <script>
+$(document).ready(function () {
+    galleryName = "{{ galleryName }}";
+    filter = $('#filters').find('button[data-use-filter]:nth(0)').attr('data-name');
+    ajaxReady = true;
+    isDataAvailable = true;
+
+    $container = $('#gallery').imagesLoaded( function() {
+        $container.isotope({
+            filter: '*',
+            itemSelector: '.gallery-inner',
+            columnWidth: '.grid-sizer',
+            onLayout: function () {
+                $(window).trigger("scroll");
+            }
+        });
+    });
+
+    pageContainer = {
+        galleries: {},
+        getCurrentPage: function($galleryName) {
+            if(this.galleries.hasOwnProperty($galleryName)) {
+                this.galleries[$galleryName] = this.galleries[$galleryName] + 1;
+            } else {
+                 this.setCurrentPage($galleryName, 1);
+            }
+            return this.galleries[$galleryName];
+        },
+        setCurrentPage: function($galleryName, $page) {
+            this.galleries[$galleryName] = $page;
+        },
+        firstImageSetLoaded: function($galleryName){
+            if(this.galleries.hasOwnProperty($galleryName)) {
+                return true;
+            }
+            return false;
+        },
+        galleryItem : function(format, name, url, width, height) {
+            var element =
+                    '<div class="gallery-inner '+ format + '">' +
+                    '<div class="caption text-center">' +
+                    '<div class="captionWrapper valign hidden-xs">' +
+                    '<a class="sb overlay-ajax" data-src="'+ url +'" >' +
+                    '<div class="caption-heading">' +
+                    '<h4>'+ name +'</h4>' +
+                    '<div class="btn btn-default btn-white preview_btn">{{ "gallery.gallery.button.preview" | trans }}</div>' +
+                    '</div>' +
+                    '</a>' +
+                    '</div>' +
+                    '</div>' +
+                    '<img class="galleryImage" src="' + url +'" />' +
+                    '</div>';
+
+            return element;
+        }
+    };
+
+    function AjaxRequest(target,spinnerWrapperId) {
+        var spinner = new Object();
+        var ajaxArea = document.getElementById('gallery');
+
+            if(spinnerWrapperId) {
+                spinner.wrapper = $('#'+ spinnerWrapperId);
+            } else{
+                spinner.wrapper = $(ajaxArea);
+            }
+            $.ajax({
+              url: target,
+              dataType: 'json',
+              context: ajaxArea,
+              beforeSend: function() {
+                if(ajaxReady === false || isDataAvailable == false) {
+                    return false;
+                } else {
+                    ajaxReady = false;
+                    Object.spinner.spin();
+                    spinner.wrapper.append(Object.spinner.el);
+                    if(spinnerWrapperId) {
+                        spinner.wrapper.css('display','block');
+                    }
+                }
+              },
+              complete: function(){
+                if(spinnerWrapperId) {
+                    spinner.wrapper.css('display','none');
+                }
+                Object.spinner.stop();
+                ajaxReady = true;
+              }
+            }).done(function(media) {
+                newElements = [];
+                $.each(media.data, function (key, value) {
+                    newElements +=
+                        pageContainer.galleryItem(value.format, value.name, value.url, value.width, value.height)
+                        ;
+            });
+            var $newElems = $(newElements);
+            $container.append($newElems).imagesLoaded(function () {
+                $container.isotope('appended', $newElems);
+                $container.isotope({
+                    filter: '.' + filter.toLowerCase().split(' ').join('-')
+                });
+            });
+
+            if(media.data == false)
+            {
+                isDataAvailable = false;
+            } else {
+                isDataAvailable= true;
+            }
+        });
+    }
+
+    // On load ajax
+    route = Routing.generate('dj_ajax_gallery', {
+                    main: galleryName,
+                    sub: filter,
+                    page: pageContainer.getCurrentPage(filter)
+                });
+    AjaxRequest(route);
+
+    $('#filters').on( 'click', 'button', function() {
+        filter = $(this).attr('data-name');
+        $container.isotope({
+            filter: '.' + filter.toLowerCase().split(' ').join('-')
+        });
+        if(ajaxReady) {
+            //TODO: when ajax loading on scroll we can not click on button
+            if(!pageContainer.firstImageSetLoaded(filter)) {
+                route = Routing.generate('dj_ajax_gallery', {main:galleryName, sub:filter.toString(), page:pageContainer.getCurrentPage(filter)});
+                AjaxRequest(route);
+            }
+        }
+    });
+
+    // load data when scroll to the bottom of the page
+    $(window).on('scroll',function () {
+        if($(document).height() - 150 <= $(window).scrollTop() + $(window).height() ) {
+            if(ajaxReady && isDataAvailable) {
+                route = Routing.generate('dj_ajax_gallery', {
+                        main: galleryName,
+                        sub: filter,
+                        page: pageContainer.getCurrentPage(filter)
+                    });
+                AjaxRequest(route,'ajax-spinner');
+           }
+        }
+    });
+});
+
+   </script>
  {% endblock javascript %}
