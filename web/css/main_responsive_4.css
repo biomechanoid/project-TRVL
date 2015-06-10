@@ -120,7 +120,6 @@
 
     .gallery .gallery-inner, .gallery .grid-sizer {
         width: 50%;
-        overflow: auto;
     }
 
     .singleProjectInfo ul {

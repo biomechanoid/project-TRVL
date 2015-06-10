@@ -16,7 +16,8 @@ use Sonata\MediaBundle\Model\MediaInterface;
  */
 class GalleryRepository extends EntityRepository
 {
-    public function getAllSubGalleriesMedia( Gallery $mainCategory, $returnParent = false) {
+    public function getAllSubGalleriesMedia( Gallery $mainCategory, $returnParent = false)
+    {
         $em = $this->getEntityManager();
         $mainId = $mainCategory->getId();
         $galleries = $this->getSubGalleries($mainId);
@@ -25,8 +26,6 @@ class GalleryRepository extends EntityRepository
 
         $mediaQuery = $em->createQuery('SELECT ghm FROM ApplicationSonataMediaBundle:GalleryHasMedia ghm WHERE ghm.gallery IN(:subgalleries) AND ghm.enabled=1')
                          ->setParameter('subgalleries', $galleries);
-
-// TODO: add posibility to return media from parent gallery with children
 
         foreach ($mediaQuery->iterate() as $key => $value) {
             $media[] = array('media'=>$value[0]->getMedia(),
@@ -40,8 +39,8 @@ class GalleryRepository extends EntityRepository
         return array('media'=>$media,'nameMedia'=>$galleryNames);
     }
 
-    public function getAjaxMediaByCategory(Gallery $mainCategory, Gallery $subCategory, Pool $pool, $round=1, $limit=5) {
-
+    public function getAjaxMediaByCategory(Gallery $mainCategory, Gallery $subCategory, Pool $pool, $round=1, $limit=5)
+    {
         $galleryId = $mainCategory->getId();
         $subGaleryId = $subCategory->getId();
         $offset = ($round-1)*$limit;

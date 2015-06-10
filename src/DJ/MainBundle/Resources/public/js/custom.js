@@ -108,6 +108,7 @@ $(document).ready(function () {
     //     $container.isotope({ filter: filterValue });
     // });
 
+
     // $container.isotope({
     //     filter: '*' // IF YOU WANT TO DISPLAY AT FIRST ONLY ONE FILTER, FOR EXAMPLE DESIGNS: SUBSTIUTE '*' WITH '.designs'
     // });
@@ -280,9 +281,33 @@ $(document).ready(function () {
       hwaccel: true, // Whether to use hardware acceleration
       className: 'spinner', // The CSS class to assign to the spinner
       zIndex: 2e9, // The z-index (defaults to 2000000000)
-      top: '50%', // Top position relative to parent
+      top: '40%', // Top position relative to parent
       left: '50%' // Left position relative to parent
     };
 
     Object.spinner = new Spinner(opts).spin();
+
+// Gallery images
+
+    $('#gallery').on('click','a',function(e){
+        e.preventDefault();
+        var image = new Image();
+        image.src = $(this).data('src').replace(new RegExp('square|tall'),'intro');
+        image.className = "center-block";
+        image.style.padding='1%';
+        image.setAttribute('width','auto');
+        image.setAttribute('height',window.document.body.clientHeight);
+
+        $('.gallery-overlay').append(image).fadeToggle();
+    });
+
+    $('.gallery-overlay').on('click',function(e){
+        $(this).fadeToggle('slow',function(){
+            $(this).find('img').remove();
+        });
+    });
+
+
+
+
 });
