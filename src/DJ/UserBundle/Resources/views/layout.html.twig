@@ -1,14 +1,14 @@
 {% extends '::base.html.twig' %}
 {% block title %}Admin section{% endblock %}
 {% block stylesheets %}
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-    {% stylesheets '@DJUserBundle/Resources/public/css/login_form.css'
-                filter='?uglifycss'
-                filter='cssrewrite'
-                output='css/user.css'
-                %}
-        <link rel="stylesheet" href="{{ asset_url }}" />
-    {% endstylesheets %}
+   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+   {% stylesheets '@DJUserBundle/Resources/public/css/login_form.css'
+             filter='?uglifycss'
+             filter='cssrewrite'
+             output='css/user.css'
+             %}
+     <link rel="stylesheet" href="{{ asset_url }}" />
+   {% endstylesheets %}
 {% endblock stylesheets %}
 
 {% block body %}

@@ -1,15 +1,5 @@
 {% extends "DJMainBundle::layout.html.twig" %}
 
-{% block stylesheet %}
-    {% stylesheets
-            '@DJMainBundle/Resources/public/css/slider/smoothbox.css'
-            filter='?uglifycss'
-            filter='cssrewrite'
-            output='css/smoothbox.css'
-            %}
-        <link rel="stylesheet" href="{{ asset_url }}" />
-    {% endstylesheets %}
-{% endblock %}
 {% block titlePage %}Gallery{% endblock titlePage %}
 {% block bodyAttributes %} id="bigWrapper" data-spy="scroll" data-target=".navbar-default" data-offset="100"{% endblock %}
 {% block body %}
@@ -50,8 +40,6 @@
 {% block javascript %}
   {% javascripts
         '@DJMainBundle/Resources/public/js/modernizr.custom.js'
-        '@DJMainBundle/Resources/public/js/smoothbox.min.js'
-        '@DJMainBundle/Resources/public/js/overlay.js'
         '@DJMainBundle/Resources/public/js/spin.min.js'
         filter='?uglifyjs2'
         output='js/gallery.js'
